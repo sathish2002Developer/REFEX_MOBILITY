@@ -1,0 +1,364 @@
+/* Footer Styles - Exact Design Match */
+footer.footer-one {
+  background: #FFF9F8;
+  color: #5D3F3A;
+  position: relative;
+  padding: 0;
+}
+
+footer.footer-one.iq-bg-dark {
+  background: #FFF9F8;
+}
+
+footer.footer-one.iq-over-dark-90 {
+  background: #FFF9F8;
+}
+
+.footer-topbar {
+  display: none;
+}
+
+.footer-top {
+  background: #FFF9F8;
+  border-bottom: 1px solid #FCEBE9;
+  padding: 60px 0 45px;
+}
+
+.footer-top .widget {
+  margin-bottom: 0;
+}
+
+.footer-top .widget img {
+  max-width: 158px;
+  height: auto;
+  margin-bottom: 0;
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.footer-top .col-lg-3 .social-media-icons {
+  margin-top: 25px;
+  display: flex !important;
+}
+
+.footer-top .widget .social-media-icons {
+  display: flex !important;
+  visibility: visible !important;
+}
+
+.footer-title {
+  margin-bottom: 15px;
+  color: #F4553B;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: 'Poppins', Sans-serif;
+  line-height: 1.4;
+}
+
+.ftr-menus {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ftr-menus li {
+  margin-bottom: 15px;
+}
+
+.ftr-menus li a {
+  color: #5D3F3A;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Poppins', Sans-serif;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.ftr-menus li a:hover {
+  color: #F4553B;
+}
+
+.widget.text-left {
+  text-align: left;
+}
+
+.widget.footer-logo {
+  text-align: left;
+}
+
+.copyright-footer {
+  position: relative;
+  background: #FFF9F8;
+  color: #5D3F3A;
+  border-top: 1px solid #FCEBE9;
+}
+
+.copyright {
+  color: #5D3F3A;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Poppins', Sans-serif;
+}
+
+.copyright a {
+  color: #F4553B;
+  text-decoration: none;
+}
+
+.copyright a:hover {
+  text-decoration: underline;
+}
+
+/* Footer Address Styles */
+.footer-address {
+  margin-bottom: 20px;
+}
+
+.footer-address p {
+  margin: 0 0 8px 0;
+  color: #5D3F3A;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Poppins', Sans-serif;
+  line-height: 1.6;
+}
+
+.footer-address .company-name {
+  font-weight: 600;
+  color: #5D3F3A;
+  margin-bottom: 10px;
+}
+
+.footer-address .address-line {
+  color: #5D3F3A;
+}
+
+.footer-address .cin-info {
+  color: #666666;
+  font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-address .phone-info,
+.footer-address .email-info {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-address .phone-info i,
+.footer-address .email-info i {
+  color: #F4553B;
+  font-size: 16px;
+  min-width: 18px;
+  text-align: center;
+}
+
+.footer-address .phone-info a,
+.footer-address .email-info a {
+  color: #F4553B;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-address .phone-info a:hover,
+.footer-address .email-info a:hover {
+  color: #E64A2E;
+  text-decoration: underline;
+}
+
+/* Social Media Icons */
+.social-media-icons {
+  display: flex !important;
+  gap: 12px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.social-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #F4553B;
+  color: #FFFFFF !important;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative;
+}
+
+.social-icon:hover {
+  background-color: #E64A2E;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(244, 85, 59, 0.4);
+}
+
+.social-icon i {
+  line-height: 1;
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* X (Twitter) SVG icon */
+.social-icon .social-icon-svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: currentColor;
+}
+
+@media (max-width: 991px) {
+  .footer-top {
+    padding: 50px 0 40px;
+  }
+  
+  .widget {
+    margin-bottom: 30px;
+  }
+  
+  .widget.text-left {
+    text-align: center !important;
+  }
+  
+  .widget.footer-logo.text-left {
+    text-align: center !important;
+  }
+
+  .footer-top .widget img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-address {
+    text-align: center;
+  }
+
+  .footer-address .phone-info,
+  .footer-address .email-info {
+    justify-content: center;
+  }
+
+  .ftr-menus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ftr-menus li {
+    text-align: center;
+  }
+
+  .social-media-icons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-top {
+    padding: 40px 0 30px;
+  }
+
+  .widget {
+    margin-bottom: 40px;
+  }
+  
+  .footer-top .widget img {
+    max-width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-address {
+    text-align: center;
+  }
+
+  .footer-address p {
+    font-size: 13px;
+  }
+
+  .footer-address .phone-info,
+  .footer-address .email-info {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .footer-address .phone-info i,
+  .footer-address .email-info i {
+    flex-shrink: 0;
+  }
+
+  .footer-title {
+    text-align: center !important;
+  }
+
+  .ftr-menus {
+    align-items: center;
+  }
+
+  .social-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-top {
+    padding: 35px 0 25px;
+  }
+
+  .footer-top .widget img {
+    max-width: 100px;
+  }
+
+  .footer-address p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .footer-address .phone-info,
+  .footer-address .email-info {
+    gap: 8px;
+  }
+
+  .footer-address .phone-info a,
+  .footer-address .email-info a {
+    word-break: break-word;
+    text-align: center;
+  }
+
+  .footer-title {
+    font-size: 13px;
+  }
+
+  .ftr-menus li a {
+    font-size: 13px;
+  }
+
+  .social-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .copyright {
+    font-size: 12px;
+  }
+}
+

@@ -1,0 +1,3267 @@
+/* Business Commute Page Styles */
+
+/* Hero Section - Full Width Override */
+.business-commute .elementor-element-b485948 {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  left: 0 !important;
+  right: 0 !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  padding-top: 0 !important;
+  padding-bottom: 100px !important;
+  align-items: flex-start !important;
+}
+
+.business-commute .elementor-element-b485948.elementor-section-stretched {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* Hero Section Container Alignment - Match Header */
+.business-commute .elementor-element-b485948 .elementor-container {
+  max-width: 1200px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  padding-top: 90px !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure hero content aligns with header logo */
+.business-commute .elementor-element-b485948 .elementor-column {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Global Alignment Fixes for All Sections */
+.business-commute .elementor-section {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.business-commute .elementor-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.business-commute .elementor-column {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.business-commute .elementor-widget-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Client Logos Carousel Section - Reduce Height */
+.business-commute .elementor-element-5db7e2b {
+  padding: 40px 0 !important;
+  min-height: auto !important;
+  height: auto !important;
+}
+
+.business-commute .elementor-element-5db7e2b .elementor-container {
+  padding: 0 15px !important;
+}
+
+.business-commute .elementor-element-5db7e2b .elementor-widget-container {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.business-commute .elementor-element-5db7e2b .client-logos-swiper {
+  height: auto !important;
+  min-height: auto !important;
+  padding: 20px 0 !important;
+}
+
+.business-commute .elementor-element-5db7e2b .swiper-wrapper {
+  align-items: center !important;
+  height: auto !important;
+  min-height: auto !important;
+}
+
+.business-commute .elementor-element-5db7e2b .swiper-slide {
+  width: calc(33.333% - 30px) !important;
+  height: auto !important;
+  min-height: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+}
+
+.business-commute .elementor-element-5db7e2b .elementor-carousel-image {
+  width: 100% !important;
+  height: 100px !important;
+  max-height: 100px !important;
+  min-height: 100px !important;
+  background-size: contain !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block !important;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 1024px) {
+  .business-commute .elementor-element-5db7e2b .swiper-slide {
+    width: calc(50% - 20px) !important;
+    padding: 10px !important;
+  }
+
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image {
+    height: 90px !important;
+    max-height: 90px !important;
+    min-height: 90px !important;
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .business-commute .elementor-element-5db7e2b {
+    padding: 20px 0 !important;
+  }
+
+  .business-commute .elementor-element-5db7e2b .swiper-slide {
+    width: 100% !important;
+    padding: 5px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image {
+    height: 70px !important;
+    max-height: 70px !important;
+    min-height: 70px !important;
+    padding: 0 !important;
+  }
+  
+  /* Reliable Solution for every Industry Section - Mobile */
+  .business-commute .elementor-element-ee11ef7,
+  .business-commute .elementor-element-ee11ef7.elementor-hidden-mobile {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    padding: 30px 0 !important;
+    border-radius: 20px !important;
+  }
+  
+  .business-commute .elementor-element-ee11ef7 .elementor-container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  
+  .business-commute .elementor-element-ee11ef7 .elementor-image-box-title {
+    font-size: 28px !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+    padding: 0 10px !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .business-commute .elementor-element-ee11ef7 .elementor-image-box-description {
+    font-size: 15px !important;
+    text-align: center !important;
+    padding: 0 10px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 25px !important;
+  }
+  
+  .every-industry {
+    padding: 15px 0 !important;
+  }
+  
+  .every-industry .elementor-container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  
+  .every-industry .elementor-container.elementor-column-gap-wide {
+    gap: 15px !important;
+  }
+  
+  .every-industry .elementor-col-50 {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 15px !important;
+    padding: 0 !important;
+  }
+  
+  .every-industry .elementor-widget-container {
+    min-height: auto !important;
+    padding: 20px 15px !important;
+    border-radius: 20px !important;
+    text-align: center !important;
+  }
+  
+  .every-industry .elementor-image-box-wrapper {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .every-industry .elementor-image-box-img {
+    margin-bottom: 15px !important;
+  }
+  
+  .every-industry .elementor-image-box-img img {
+    width: 65px !important;
+    height: 65px !important;
+    max-width: 65px !important;
+    max-height: 65px !important;
+  }
+  
+  .every-industry .elementor-image-box-title {
+    font-size: 18px !important;
+    margin-bottom: 10px !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+  }
+  
+  .every-industry .elementor-image-box-description {
+    font-size: 13px !important;
+    text-align: center !important;
+    line-height: 1.5 !important;
+  }
+  
+  .every-industry .elementor-image-box-description br {
+    display: none !important;
+  }
+  
+  .every-industry .elementor-image-box-content {
+    text-align: center !important;
+    width: 100% !important;
+  }
+}
+
+/* Business Form Section */
+.business-commute .bussiness-form {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.business-commute .bussiness-form .elementor-element-924c6f3 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.business-commute .bussiness-form .elementor-element-924c6f3 p {
+  font-family: "Poppins", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #5D3F3A;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Form Container */
+.business-commute .bussiness-form .wpforms-container-full {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #FFF5F4;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 2px 10px rgba(244, 85, 59, 0.08);
+}
+
+/* Form Fields */
+.business-commute .bussiness-form .wpforms-field {
+  margin-bottom: 20px;
+}
+
+.business-commute .bussiness-form .wpforms-field-label {
+  font-family: "Poppins", Sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #5D3F3A;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.business-commute .bussiness-form .wpforms-required-label {
+  color: #F4553B;
+}
+
+.business-commute .bussiness-form input[type="text"],
+.business-commute .bussiness-form input[type="email"],
+.business-commute .bussiness-form input[type="tel"],
+.business-commute .bussiness-form input[type="number"],
+.business-commute .bussiness-form textarea,
+.business-commute .bussiness-form select {
+  font-family: "Poppins", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #5D3F3A;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #E2E2E2;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Phone field with country code - react-phone-number-input */
+.business-commute .bussiness-form .PhoneInput {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.business-commute .bussiness-form .PhoneInputCountry {
+  flex-shrink: 0;
+  margin-right: 0;
+}
+
+.business-commute .bussiness-form .PhoneInputCountryIcon {
+  width: 20px;
+  height: 15px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.business-commute .bussiness-form .PhoneInputCountrySelect {
+  font-family: "Poppins", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #5D3F3A;
+  padding: 12px 16px;
+  padding-right: 30px;
+  border: 1px solid #E2E2E2;
+  border-radius: 8px;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%235D3F3A' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  min-width: 100px;
+  transition: border-color 0.3s ease;
+}
+
+.business-commute .bussiness-form .PhoneInputCountrySelect:focus {
+  outline: none;
+  border-color: #4F4F4F;
+}
+
+.business-commute .bussiness-form .PhoneInputInput {
+  flex: 1;
+  font-family: "Poppins", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #5D3F3A;
+  padding: 12px 16px;
+  border: 1px solid #E2E2E2;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.business-commute .bussiness-form .PhoneInputInput:focus {
+  outline: none;
+  border-color: #4F4F4F;
+  box-shadow: none;
+}
+
+.business-commute .bussiness-form .PhoneInputInput::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+.business-commute .bussiness-form .business-phone-input {
+  width: 100%;
+}
+
+.business-commute .bussiness-form .business-phone-input .PhoneInput {
+  width: 100%;
+}
+
+.business-commute .bussiness-form .PhoneInputCountrySelectArrow {
+  display: none;
+}
+
+.business-commute .bussiness-form .PhoneInputCountryIconImg {
+  width: 20px;
+  height: 15px;
+  object-fit: cover;
+}
+
+/* Override default react-phone-number-input styles */
+.business-commute .bussiness-form .PhoneInputCountryIcon--border {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.business-commute .bussiness-form .PhoneInputCountryIcon--square {
+  border-radius: 2px;
+}
+
+/* Native select dropdown styling - fallback if Choices.js not loaded */
+.business-commute .bussiness-form select.choicesjs-select:not(.choices) {
+  appearance: auto !important;
+  -webkit-appearance: menulist !important;
+  -moz-appearance: menulist !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%235D3F3A' d='M6 8L0 0h12z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  padding-right: 40px !important;
+  cursor: pointer !important;
+}
+
+.business-commute .bussiness-form select.choicesjs-select option {
+  padding: 12px 16px !important;
+  color: #5D3F3A !important;
+  background-color: #fff !important;
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 16px !important;
+}
+
+.business-commute .bussiness-form input[type="text"]:focus,
+.business-commute .bussiness-form input[type="email"]:focus,
+.business-commute .bussiness-form input[type="tel"]:focus,
+.business-commute .bussiness-form input[type="number"]:focus,
+.business-commute .bussiness-form textarea:focus,
+.business-commute .bussiness-form select:focus {
+  outline: none;
+  border-color: #4F4F4F;
+  box-shadow: none;
+}
+
+.business-commute .bussiness-form input::placeholder,
+.business-commute .bussiness-form textarea::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+.business-commute .bussiness-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Two Column Layout */
+.business-commute .bussiness-form .wpforms-one-half {
+  width: 48%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.business-commute .bussiness-form .wpforms-first {
+  margin-right: 4%;
+}
+
+.business-commute .bussiness-form .wpforms-last {
+  margin-right: 0;
+}
+
+/* Full Width Fields */
+.business-commute .bussiness-form .wpforms-field-number,
+.business-commute .bussiness-form .wpforms-field-textarea {
+  width: 100% !important;
+}
+
+/* Select Dropdown Styling */
+.business-commute .bussiness-form .choices {
+  position: relative !important;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+/* Hide native select when Choices.js is initialized */
+.business-commute .bussiness-form .choices select.choicesjs-select {
+  position: absolute !important;
+  left: -9999px !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.business-commute .bussiness-form .choices.is-open {
+  z-index: 10000;
+}
+
+.business-commute .bussiness-form .choices.is-open .choices__list--dropdown {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  min-height: 50px !important;
+  height: auto !important;
+}
+
+/* Ensure dropdown has content visible */
+.business-commute .bussiness-form .choices__list--dropdown[aria-expanded="true"],
+.business-commute .bussiness-form .choices.is-open .choices__list--dropdown {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.business-commute .bussiness-form .choices__inner {
+  min-height: 48px;
+  padding: 8px 16px;
+  padding-right: 40px;
+  font-family: "Poppins", Sans-serif;
+  font-size: 16px;
+  border: 1px solid #E2E2E2 !important;
+  border-radius: 8px !important;
+  background-color: #fff;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 4px !important;
+  cursor: pointer !important;
+}
+
+.business-commute .bussiness-form .choices__list--multiple {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 4px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+/* Ensure Choices.js container is visible */
+.business-commute .bussiness-form .choices__container--open {
+  display: block !important;
+}
+
+.business-commute .bussiness-form .choices__container--closed {
+  display: none !important;
+}
+
+.business-commute .bussiness-form .choices__list--multiple .choices__item {
+  background-color: #F4553B !important;
+  border: 1px solid #F4553B !important;
+  color: #fff !important;
+  padding: 6px 4px 6px 12px !important;
+  margin: 4px 4px 4px 0 !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  font-family: "Poppins", Sans-serif !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  line-height: 1.5 !important;
+  min-height: 32px !important;
+  box-sizing: border-box !important;
+  vertical-align: middle !important;
+}
+
+.business-commute .bussiness-form .choices__list--multiple .choices__item > span {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  line-height: 1.5 !important;
+}
+
+.business-commute .bussiness-form .choices__list--multiple .choices__item .choices__button {
+  border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #fff !important;
+  margin-left: 6px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+  line-height: 1 !important;
+  height: 20px !important;
+  width: 20px !important;
+  min-width: 20px !important;
+  max-width: 20px !important;
+  cursor: pointer !important;
+  opacity: 0.9 !important;
+  transition: opacity 0.2s ease !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  top: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.business-commute .bussiness-form .choices__list--multiple .choices__item .choices__button:hover {
+  opacity: 1 !important;
+}
+
+.business-commute .bussiness-form .choices__list--multiple .choices__item .choices__button::after {
+  content: "×" !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Dropdown List Styling */
+.business-commute .bussiness-form .choices__list--dropdown {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  background-color: #fff !important;
+  border: 1px solid #E2E2E2 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  margin-top: 4px !important;
+  max-height: 300px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  z-index: 10001 !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.business-commute .bussiness-form .choices.is-open .choices__list--dropdown {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.business-commute .bussiness-form .choices__list--dropdown .choices__item {
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #5D3F3A !important;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid #F5F5F5 !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  line-height: 1.5 !important;
+}
+
+.business-commute .bussiness-form .choices__list--dropdown .choices__item--choice {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.business-commute .bussiness-form .choices__list--dropdown .choices__item:last-child {
+  border-bottom: none !important;
+}
+
+.business-commute .bussiness-form .choices__list--dropdown .choices__item--selectable {
+  cursor: pointer !important;
+}
+
+.business-commute .bussiness-form .choices__list--dropdown .choices__item--selectable:hover,
+.business-commute .bussiness-form .choices__list--dropdown .choices__item--selectable.is-highlighted {
+  background-color: #FFF5F4 !important;
+  color: #F4553B !important;
+}
+
+.business-commute .bussiness-form .choices__list--dropdown .choices__item--choice.is-selected {
+  background-color: #FFF5F4 !important;
+  color: #F4553B !important;
+  font-weight: 500 !important;
+}
+
+.business-commute .bussiness-form .choices__list--dropdown .choices__item--choice.is-selected::after {
+  content: "✓" !important;
+  float: right !important;
+  color: #F4553B !important;
+  font-weight: 600 !important;
+  margin-left: 10px !important;
+}
+
+/* Dropdown Arrow/Button */
+.business-commute .bussiness-form .choices__inner .choices__button {
+  background-image: none !important;
+  border: none !important;
+  width: 20px !important;
+  height: 20px !important;
+  right: 16px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  opacity: 0.5 !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+.business-commute .bussiness-form .choices__inner .choices__button::after {
+  content: "" !important;
+  border: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-left: 5px solid transparent !important;
+  border-right: 5px solid transparent !important;
+  border-top: 6px solid #5D3F3A !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.business-commute .bussiness-form .choices.is-open .choices__inner .choices__button::after {
+  border-top: none !important;
+  border-bottom: 6px solid #5D3F3A !important;
+  transform: translate(-50%, -50%) rotate(180deg) !important;
+}
+
+.business-commute .bussiness-form .choices.is-open .choices__inner {
+  border-color: #4F4F4F !important;
+}
+
+/* Ensure dropdown container is visible when open */
+.business-commute .bussiness-form .choices.is-open .choices__list--dropdown,
+.business-commute .bussiness-form .choices.is-open .choices__list {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure all dropdown items are visible */
+.business-commute .bussiness-form .choices__list--dropdown .choices__list {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.business-commute .bussiness-form .choices__list--dropdown .choices__list .choices__item {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+}
+
+/* Ensure dropdown items are not hidden */
+.business-commute .bussiness-form .choices__list--dropdown .choices__item--choice,
+.business-commute .bussiness-form .choices__list--dropdown .choices__item--selectable {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  min-height: 44px !important;
+  line-height: 1.5 !important;
+}
+
+/* Placeholder text in dropdown */
+.business-commute .bussiness-form .choices__inner .choices__placeholder {
+  color: #999 !important;
+  opacity: 1 !important;
+}
+
+/* Search input in dropdown - make it look like part of dropdown, not a text field */
+.business-commute .bussiness-form .choices__input {
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 16px !important;
+  color: #5D3F3A !important;
+  background-color: transparent !important;
+  border: none !important;
+  padding: 8px 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  min-width: 100px !important;
+  box-shadow: none !important;
+  outline: none !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  line-height: 1.5 !important;
+}
+
+.business-commute .bussiness-form .choices__list--multiple .choices__input {
+  flex: 1 1 auto !important;
+  min-width: 100px !important;
+  margin: 4px 0 !important;
+  padding: 4px 0 !important;
+  height: auto !important;
+  line-height: 1.5 !important;
+}
+
+.business-commute .bussiness-form .choices__input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.business-commute .bussiness-form .choices__input--cloned {
+  display: none !important;
+}
+
+/* Selected value display */
+.business-commute .bussiness-form .choices__inner .choices__list--single .choices__item {
+  color: #5D3F3A !important;
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 16px !important;
+  padding: 0 !important;
+}
+
+.business-commute .bussiness-form .choices__inner .choices__list--single {
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Scrollbar styling for dropdown */
+.business-commute .bussiness-form .choices__list--dropdown::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+.business-commute .bussiness-form .choices__list--dropdown::-webkit-scrollbar-track {
+  background: #F5F5F5 !important;
+  border-radius: 4px !important;
+}
+
+.business-commute .bussiness-form .choices__list--dropdown::-webkit-scrollbar-thumb {
+  background: #D9D9D9 !important;
+  border-radius: 4px !important;
+}
+
+.business-commute .bussiness-form .choices__list--dropdown::-webkit-scrollbar-thumb:hover {
+  background: #C0C0C0 !important;
+}
+
+/* Submit Button */
+.business-commute .bussiness-form .wpforms-submit-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.business-commute .bussiness-form button.wpforms-submit,
+.business-commute .bussiness-form #wpforms-submit-4974 {
+  font-family: "Poppins", Sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #FFFFFF;
+  background-color: #FF8A80 !important;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: auto;
+  min-width: 200px;
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(255, 138, 128, 0.3);
+}
+
+.business-commute .bussiness-form button.wpforms-submit:hover,
+.business-commute .bussiness-form #wpforms-submit-4974:hover {
+  background-color: #FF6B5F !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 138, 128, 0.4);
+}
+
+.business-commute .bussiness-form button.wpforms-submit:active,
+.business-commute .bussiness-form #wpforms-submit-4974:active {
+  transform: translateY(0);
+}
+
+/* Form Field Layout */
+.business-commute .bussiness-form .wpforms-field-layout {
+  margin-bottom: 20px;
+}
+
+.business-commute .bussiness-form .wpforms-layout-column-50 {
+  width: 48%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.business-commute .bussiness-form .wpforms-layout-column-50:first-child {
+  margin-right: 4%;
+}
+
+/* reCAPTCHA Styling */
+.business-commute .bussiness-form .wpforms-recaptcha-container {
+  margin: 20px 0;
+  text-align: center;
+  padding: 15px 0;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.business-commute .bussiness-form .g-recaptcha {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin: 0 auto;
+}
+
+.business-commute .bussiness-form .wpforms-is-recaptcha {
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* Responsive reCAPTCHA */
+@media (max-width: 768px) {
+  .business-commute .bussiness-form .wpforms-recaptcha-container {
+    margin: 15px 0;
+    padding: 10px 0;
+  }
+  
+  .business-commute .bussiness-form .g-recaptcha {
+    transform: scale(0.85);
+    transform-origin: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .business-commute .bussiness-form .g-recaptcha {
+    transform: scale(0.77);
+    transform-origin: center;
+  }
+  
+  /* Reliable Solution for every Industry Section - Small Mobile */
+  .business-commute .elementor-element-ee11ef7 {
+    padding: 25px 0 !important;
+    border-radius: 15px !important;
+  }
+  
+  .business-commute .elementor-element-ee11ef7 .elementor-container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  
+  .business-commute .elementor-element-ee11ef7 .elementor-image-box-title {
+    font-size: 24px !important;
+    padding: 0 5px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .business-commute .elementor-element-ee11ef7 .elementor-image-box-description {
+    font-size: 14px !important;
+    padding: 0 5px !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .every-industry {
+    padding: 10px 0 !important;
+  }
+  
+  .every-industry .elementor-container {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+  
+  .every-industry .elementor-container.elementor-column-gap-wide {
+    gap: 10px !important;
+  }
+  
+  .every-industry .elementor-widget-container {
+    padding: 18px 12px !important;
+    border-radius: 15px !important;
+    min-height: auto !important;
+  }
+  
+  .every-industry .elementor-image-box-img img {
+    width: 60px !important;
+    height: 60px !important;
+    max-width: 60px !important;
+    max-height: 60px !important;
+  }
+  
+  .every-industry .elementor-image-box-title {
+    font-size: 16px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .every-industry .elementor-image-box-description {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+  
+  .every-industry .elementor-col-50 {
+    margin-bottom: 12px !important;
+  }
+}
+
+/* Form Field Sizes */
+.business-commute .bussiness-form .wpforms-field-large {
+  width: 100%;
+}
+
+.business-commute .bussiness-form .wpforms-field-medium {
+  width: 100%;
+}
+
+/* Error Messages */
+.business-commute .bussiness-form .wpforms-error {
+  color: #F4553B;
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Required Field Indicator */
+.business-commute .bussiness-form .wpforms-required-label {
+  color: #F4553B;
+  margin-left: 2px;
+}
+
+/* Form Description Text */
+.business-commute .bussiness-form .elementor-element-924c6f3 {
+  margin-bottom: 30px;
+}
+
+/* FAQ Section */
+.business-commute .faq-sec {
+  padding: 80px 0;
+  background-color: #fff !important;
+}
+
+.business-commute .faq-sec .elementor-image-box-title {
+  font-family: "Lexend Deca", Sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #5D3F3A;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.business-commute .faq-sec .elementor-image-box-title span {
+  color: #F4553B;
+}
+
+.business-commute .frequently-qus {
+  margin-top: 40px;
+}
+
+.business-commute .frequently-qus .elementor-toggle-item {
+  margin-bottom: 15px;
+}
+
+.business-commute .frequently-qus .elementor-tab-title {
+  font-family: "Poppins", Sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #5D3F3A;
+  padding: 20px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.business-commute .frequently-qus .elementor-tab-title .elementor-toggle-icon {
+  order: -1;
+  margin-right: 15px;
+}
+
+.business-commute .frequently-qus .elementor-tab-title:hover {
+  background-color: #FFF5F4;
+}
+
+.business-commute .frequently-qus .elementor-tab-title.active {
+  background-color: #FFF5F4;
+}
+
+.business-commute .frequently-qus .elementor-toggle-title {
+  flex: 1;
+  text-align: left;
+  padding-right: 20px;
+  color: #5D3F3A;
+  text-decoration: none;
+}
+
+.business-commute .frequently-qus .elementor-toggle-icon {
+  width: 30px;
+  height: 30px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.business-commute .frequently-qus .elementor-toggle-icon i {
+  font-size: 20px !important;
+  color: #F4553B !important;
+  transition: transform 0.3s ease;
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+}
+
+.business-commute .frequently-qus .elementor-toggle-icon .ion,
+.business-commute .frequently-qus .elementor-toggle-icon .ion-plus,
+.business-commute .frequently-qus .elementor-toggle-icon .ion-minus {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-size: 20px !important;
+  color: #F4553B !important;
+}
+
+/* Fallback for icons if font doesn't load - using CSS content */
+.business-commute .frequently-qus .elementor-toggle-icon-closed .ion-plus::before {
+  content: "+" !important;
+  display: inline-block !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #F4553B !important;
+  line-height: 1 !important;
+}
+
+.business-commute .frequently-qus .elementor-toggle-icon-opened .ion-minus::before {
+  content: "−" !important;
+  display: inline-block !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #F4553B !important;
+  line-height: 1 !important;
+}
+
+/* Ensure icon spans are visible */
+.business-commute .frequently-qus .elementor-toggle-icon span {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.business-commute .frequently-qus .elementor-tab-title.active .elementor-toggle-icon-closed {
+  display: none;
+}
+
+.business-commute .frequently-qus .elementor-tab-title:not(.active) .elementor-toggle-icon-opened {
+  display: none;
+}
+
+.business-commute .frequently-qus .elementor-tab-title:not(.active) .elementor-toggle-icon-closed {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.business-commute .frequently-qus .elementor-tab-title.active .elementor-toggle-icon-opened {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.business-commute .frequently-qus .elementor-toggle-icon-closed,
+.business-commute .frequently-qus .elementor-toggle-icon-opened {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Smooth transition for content */
+.business-commute .frequently-qus .elementor-tab-content {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.business-commute .frequently-qus .elementor-tab-content {
+  padding: 20px 25px 25px 25px !important;
+  font-family: "Poppins", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #5D3F3A;
+  line-height: 1.8;
+}
+
+.business-commute .frequently-qus .elementor-tab-content p {
+  margin-bottom: 15px;
+}
+
+.business-commute .frequently-qus .elementor-tab-content ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.business-commute .frequently-qus .elementor-tab-content li {
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+
+/* Reliable Solution for every Industry Section */
+.business-commute .elementor-element-ee11ef7 {
+  background-color: #FFF9F8 !important;
+  padding: 30px 0;
+  display: block !important;
+  visibility: visible !important;
+}
+
+.business-commute .elementor-element-ee11ef7 .elementor-element-e26d1c7 {
+  margin-bottom: 15px;
+}
+
+.business-commute .elementor-element-ee11ef7 .elementor-image-box-title {
+  font-family: "Poppins", Sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #5D3F3A;
+  line-height: 1.2em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.business-commute .elementor-element-ee11ef7 .elementor-image-box-title span {
+  color: #F4553B;
+}
+
+.business-commute .elementor-element-ee11ef7 .elementor-image-box-description {
+  font-family: "Poppins", Sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #5D3F3A;
+  line-height: 1.6em;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 15px auto;
+}
+
+.business-commute .elementor-element-ee11ef7 .elementor-image-box-wrapper {
+  text-align: center;
+}
+
+.business-commute .elementor-element-ee11ef7 .elementor-image-box-content {
+  text-align: center;
+}
+
+.every-industry {
+  padding: 20px 0;
+}
+
+.every-industry .elementor-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.every-industry .elementor-container.elementor-column-gap-wide {
+  gap: 20px !important;
+}
+
+.every-industry .elementor-widget-container {
+  background-color: #ffffff;
+  padding: 30px 25px;
+  border-radius: 50px;
+  border: 1px solid rgba(244, 85, 59, 0.15);
+  box-shadow: 0 2px 10px rgba(244, 85, 59, 0.08);
+  min-height: 350px;
+ 
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  height: auto;
+  visibility: visible;
+  opacity: 1;
+}
+
+.every-industry .elementor-widget-container:hover {
+  box-shadow: 0 4px 20px rgba(244, 85, 59, 0.15);
+  transform: translateY(-3px);
+  border-color: rgba(244, 85, 59, 0.25);
+}
+
+.every-industry .elementor-image-box-wrapper {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  visibility: visible !important;
+}
+
+.every-industry .elementor-image-box-img {
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.every-industry .elementor-image-box-img img {
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+  width: 80px !important;
+  height: 80px !important;
+  max-width: 80px !important;
+  max-height: 80px !important;
+}
+
+/* Specific icon sizes for each card - reduced for better design */
+.every-industry .elementor-element-2da40a0 .elementor-image-box-img img {
+  width: 80px !important;
+  height: 80px !important;
+  max-width: 80px !important;
+  max-height: 80px !important;
+}
+
+.every-industry .elementor-element-1c4e028 .elementor-image-box-img img {
+  width: 85px !important;
+  height: 85px !important;
+  max-width: 85px !important;
+  max-height: 85px !important;
+}
+
+.every-industry .elementor-element-a02668d .elementor-image-box-img img,
+.every-industry .elementor-element-d153232 .elementor-image-box-img img {
+  width: 80px !important;
+  height: 80px !important;
+  max-width: 80px !important;
+  max-height: 80px !important;
+}
+
+.every-industry .elementor-image-box-content {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.every-industry .elementor-image-box-title {
+  font-family: "Poppins", Sans-serif;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #5D3F3A !important;
+  line-height: 1.4em !important;
+  margin-bottom: 6px !important;
+  text-align: center !important;
+}
+
+.every-industry .elementor-image-box-description {
+  font-family: "Poppins", Sans-serif;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: #5D3F3A !important;
+  line-height: 1.6em !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+.every-industry .elementor-image-box-description b {
+  font-weight: 600;
+  color: #5D3F3A;
+}
+
+.every-industry .elementor-col-50 {
+  margin-bottom: 15px;
+  padding: 0 8px !important;
+  flex: 0 0 calc(50% - 10px) !important;
+  max-width: calc(50% - 10px) !important;
+}
+
+.every-industry .elementor-position-top .elementor-image-box-wrapper {
+  flex-direction: column;
+}
+
+.every-industry .elementor-position-top .elementor-image-box-img {
+  order: 1;
+  margin-bottom: 12px;
+}
+
+.every-industry .elementor-position-top .elementor-image-box-content {
+  order: 2;
+}
+
+/* Why Choose Refex for Business Section */
+.whychoose-sec.bussiness,
+.whychoose-sec.choose-us {
+  padding: 40px 0 !important;
+  background-color: #FFFFFF !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.whychoose-sec.bussiness .elementor-container,
+.whychoose-sec.choose-us .elementor-container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 15px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.whychoose-sec.bussiness .elementor-widget-container,
+.whychoose-sec.choose-us .elementor-widget-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+
+.whychoose-sec.bussiness .swiper-wrapper,
+.whychoose-sec.choose-us .swiper-wrapper {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+.whychoose-sec.bussiness .elementor-column,
+.whychoose-sec.choose-us .elementor-column {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.whychoose-sec.bussiness .elementor-widget-wrap,
+.whychoose-sec.choose-us .elementor-widget-wrap {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.whychoose-sec.bussiness .elementor-element-85ebe70,
+.whychoose-sec.choose-us .elementor-element-9bd76b7 {
+  margin-bottom: 20px !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.whychoose-sec.choose-us .elementor-element-9bd76b7.elementor-widget__width-initial {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.whychoose-sec.choose-us .elementor-element-9bd76b7 .elementor-widget-wrap {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.whychoose-sec.bussiness .elementor-element-85ebe70 .elementor-widget-container,
+.whychoose-sec.choose-us .elementor-element-9bd76b7 .elementor-widget-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.whychoose-sec.bussiness .elementor-element-85ebe70 .elementor-image-box-wrapper,
+.whychoose-sec.choose-us .elementor-element-9bd76b7 .elementor-image-box-wrapper {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.whychoose-sec.bussiness .elementor-element-85ebe70 .elementor-image-box-content,
+.whychoose-sec.choose-us .elementor-element-9bd76b7 .elementor-image-box-content {
+  display: block !important;
+  text-align: center !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.whychoose-sec.bussiness .elementor-element-85ebe70 .elementor-widget-container,
+.whychoose-sec.choose-us .elementor-element-9bd76b7 .elementor-widget-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.whychoose-sec.bussiness .elementor-image-box-title,
+.whychoose-sec.choose-us .elementor-image-box-title {
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 42px !important;
+  font-weight: 700 !important;
+  color: #5D3F3A !important;
+  line-height: 1.2em !important;
+  margin-bottom: 15px !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+.whychoose-sec.bussiness .elementor-image-box-wrapper,
+.whychoose-sec.choose-us .elementor-image-box-wrapper {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.whychoose-sec.bussiness .elementor-image-box-content,
+.whychoose-sec.choose-us .elementor-image-box-content {
+  text-align: center !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+/* Ensure column and widget wrap are centered */
+.whychoose-sec.choose-us .elementor-column.elementor-element-01f0ea9 {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.whychoose-sec.choose-us .elementor-column.elementor-element-01f0ea9 .elementor-widget-wrap {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column !important;
+}
+
+.whychoose-sec.bussiness .elementor-image-box-title span,
+.whychoose-sec.choose-us .elementor-image-box-title span {
+  display: inline-block !important;
+  color: #F4553B !important;
+}
+
+.whychoose-sec.bussiness .elementor-image-box-description,
+.whychoose-sec.choose-us .elementor-image-box-description {
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  color: #5D3F3A !important;
+  line-height: 1.6em !important;
+  text-align: center !important;
+  max-width: 800px !important;
+  margin: 0 auto 20px auto !important;
+}
+
+.whychoose-sec.bussiness .elementor-element-a2874ba,
+.whychoose-sec.bussiness .elementor-element-9503ae3 {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.whychoose-sec.bussiness .elementor-main-swiper,
+.whychoose-sec.choose-us .elementor-main-swiper {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.whychoose-sec.bussiness .elementor-swiper,
+.whychoose-sec.choose-us .elementor-swiper {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+
+.whychoose-sec.bussiness .elementor-main-swiper .swiper-slide,
+.whychoose-sec.choose-us .elementor-main-swiper .swiper-slide {
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+  height: auto !important;
+}
+
+.whychoose-sec.bussiness .elementor-testimonial,
+.whychoose-sec.choose-us .elementor-testimonial {
+  text-align: center !important;
+  padding: 30px 25px !important;
+  background: #FFFFFF !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(244, 85, 59, 0.15) !important;
+  box-shadow: 0 2px 8px rgba(244, 85, 59, 0.08) !important;
+  transition: all 0.3s ease !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  min-height: auto !important;
+}
+
+.whychoose-sec.bussiness .elementor-testimonial:hover,
+.whychoose-sec.choose-us .elementor-testimonial:hover {
+  box-shadow: 0 4px 15px rgba(244, 85, 59, 0.15) !important;
+  transform: translateY(-3px) !important;
+  border-color: rgba(244, 85, 59, 0.2) !important;
+}
+
+.whychoose-sec.bussiness .elementor-testimonial--layout-image_above .elementor-testimonial {
+  flex-direction: column !important;
+}
+
+.whychoose-sec.bussiness .elementor-testimonial--layout-image_above .elementor-testimonial__footer {
+  order: -1 !important;
+  margin-bottom: 15px !important;
+  margin-top: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  flex-shrink: 0 !important;
+}
+
+.whychoose-sec.bussiness .elementor-testimonial--layout-image_above .elementor-testimonial__content {
+  order: 1 !important;
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.whychoose-sec.bussiness .elementor-testimonial__footer,
+.whychoose-sec.choose-us .elementor-testimonial__footer {
+  order: -1 !important;
+  margin-bottom: 15px !important;
+  margin-top: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  flex-shrink: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.whychoose-sec.bussiness .elementor-testimonial__image,
+.whychoose-sec.choose-us .elementor-testimonial__image {
+  margin: 0 auto 15px auto !important;
+  display: flex !important;
+  text-align: center !important;
+  width: 120px !important;
+  height: 120px !important;
+  flex-shrink: 0 !important;
+  padding: 20px !important;
+  background-color: #FFF5F4 !important;
+  background: #FFF5F4 !important;
+  border-radius: 50% !important;
+  border: 2px solid #F4553B !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.whychoose-sec.bussiness .elementor-testimonial__image img,
+.whychoose-sec.choose-us .elementor-testimonial__image img {
+  width: 80px !important;
+  height: 80px !important;
+  max-width: 80px !important;
+  max-height: 80px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+  filter: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.whychoose-sec.bussiness .elementor-testimonial__content,
+.whychoose-sec.choose-us .elementor-testimonial__content {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-top: 0 !important;
+}
+
+.whychoose-sec.bussiness .elementor-testimonial__text,
+.whychoose-sec.choose-us .elementor-testimonial__text {
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #5D3F3A !important;
+  line-height: 1.4em !important;
+  margin-bottom: 10px !important;
+  margin-top: 0 !important;
+  display: block !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.whychoose-sec.bussiness .elementor-testimonial__cite,
+.whychoose-sec.choose-us .elementor-testimonial__cite {
+  margin-top: 0 !important;
+  font-style: normal !important;
+  text-align: center !important;
+}
+
+.whychoose-sec.bussiness .elementor-testimonial__title,
+.whychoose-sec.choose-us .elementor-testimonial__title {
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #5D3F3A !important;
+  line-height: 1.6em !important;
+  display: block !important;
+  text-align: center !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 10px !important;
+}
+
+.whychoose-sec.bussiness .elementor-swiper-button,
+.whychoose-sec.choose-us .elementor-swiper-button {
+  width: 50px !important;
+  height: 50px !important;
+  background-color: #FFF5F4 !important;
+  background: #FFF5F4 !important;
+  border: none !important;
+  border-radius: 50% !important;
+  color: #F4553B !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+  z-index: 10 !important;
+  box-shadow: 0 2px 8px rgba(244, 85, 59, 0.15) !important;
+  cursor: pointer !important;
+}
+
+.whychoose-sec.bussiness .elementor-swiper-button:hover,
+.whychoose-sec.choose-us .elementor-swiper-button:hover {
+  background-color: #FFF5F4 !important;
+  color: #F4553B !important;
+  box-shadow: 0 4px 12px rgba(244, 85, 59, 0.25) !important;
+  transform: scale(1.05) !important;
+}
+
+.whychoose-sec.bussiness .elementor-swiper-button-prev,
+.whychoose-sec.choose-us .elementor-swiper-button-prev {
+  left: 10px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.whychoose-sec.bussiness .elementor-swiper-button-next,
+.whychoose-sec.choose-us .elementor-swiper-button-next {
+  right: 10px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.whychoose-sec.bussiness .elementor-swiper-button i,
+.whychoose-sec.choose-us .elementor-swiper-button i {
+  font-size: 20px !important;
+  color: inherit !important;
+}
+
+.whychoose-sec.bussiness .elementor-swiper-button i svg,
+.whychoose-sec.choose-us .elementor-swiper-button i svg {
+  width: 20px !important;
+  height: 20px !important;
+  stroke: currentColor !important;
+}
+
+.whychoose-sec.bussiness .swiper-pagination,
+.whychoose-sec.choose-us .swiper-pagination {
+  position: relative !important;
+  margin-top: 30px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.whychoose-sec.bussiness .swiper-pagination-bullet,
+.whychoose-sec.choose-us .swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #D9D9D9 !important;
+  opacity: 1 !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease;
+}
+
+.whychoose-sec.bussiness .swiper-pagination-bullet-active,
+.whychoose-sec.choose-us .swiper-pagination-bullet-active {
+  background-color: #F4553B !important;
+  width: 30px !important;
+  border-radius: 6px !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .whychoose-sec.bussiness .elementor-container,
+  .whychoose-sec.choose-us .elementor-container {
+    padding: 0 40px !important;
+  }
+
+  .whychoose-sec.bussiness .elementor-swiper-button-prev,
+  .whychoose-sec.choose-us .elementor-swiper-button-prev {
+    left: 5px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  .whychoose-sec.bussiness .elementor-swiper-button-next,
+  .whychoose-sec.choose-us .elementor-swiper-button-next {
+    right: 5px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  button#wpforms-submit-4974 {
+    width: 100% !important;
+  }
+
+  .business-commute .bussiness-form {
+    padding: 60px 0;
+  }
+  .business-commute .bussiness-form .wpforms-container-full {
+    max-width: 100%;
+    padding: 30px 20px;
+    margin: 0 15px;
+  }
+  .business-commute .bussiness-form .wpforms-one-half,
+  .business-commute .bussiness-form .wpforms-layout-column-50 {
+    width: 100% !important;
+    margin-right: 0 !important;
+    margin-bottom: 20px;
+  }
+  .business-commute .bussiness-form .wpforms-first {
+    margin-right: 0;
+  }
+  .business-commute .bussiness-form button.wpforms-submit,
+  .business-commute .bussiness-form #wpforms-submit-4974 {
+    width: 100% !important;
+    min-width: auto;
+  }
+  .business-commute .bussiness-form .PhoneInput {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .business-commute .bussiness-form .PhoneInputCountrySelect {
+    width: 100%;
+  }
+  .business-commute .bussiness-form .PhoneInputInput {
+    width: 100%;
+  }
+
+  /* Dropdown mobile styles */
+  .business-commute .bussiness-form .choices__list--dropdown {
+    max-height: 250px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+  }
+
+  .business-commute .bussiness-form .choices__list--dropdown .choices__item {
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+  }
+
+  .business-commute .bussiness-form .choices__inner {
+    padding-right: 40px !important;
+    font-size: 14px !important;
+  }
+
+  .business-commute .faq-sec {
+    padding: 60px 0;
+  }
+  .business-commute .faq-sec .elementor-image-box-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  .business-commute .frequently-qus .elementor-tab-title {
+    font-size: 16px;
+    padding: 15px 20px;
+  }
+  .business-commute .frequently-qus .elementor-tab-content {
+    font-size: 14px;
+    padding: 15px 20px 20px 20px !important;
+  }
+
+  .business-commute .elementor-element-ee11ef7 {
+    padding: 40px 0;
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  .business-commute .elementor-element-ee11ef7 .elementor-container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .business-commute .elementor-element-ee11ef7 .elementor-image-box-title {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-align: center !important;
+  }
+
+  .business-commute .elementor-element-ee11ef7 .elementor-image-box-description {
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: center !important;
+    padding: 0 20px !important;
+  }
+  
+  .every-industry .elementor-col-50 {
+    width: 50% !important;
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+
+  .every-industry {
+    padding: 15px 0;
+  }
+
+  .every-industry .elementor-widget-container {
+    min-height: 280px !important;
+    padding: 25px 18px;
+    border-radius: 12px !important;
+  }
+
+  .every-industry .elementor-image-box-img {
+    margin-bottom: 12px;
+  }
+
+  .every-industry .elementor-image-box-img img {
+    width: 70px !important;
+    height: 70px !important;
+    max-width: 70px !important;
+    max-height: 70px !important;
+  }
+
+  .every-industry .elementor-element-2da40a0 .elementor-image-box-img img {
+    width: 70px !important;
+    height: 70px !important;
+    max-width: 70px !important;
+    max-height: 70px !important;
+  }
+
+  .every-industry .elementor-element-1c4e028 .elementor-image-box-img img {
+    width: 75px !important;
+    height: 75px !important;
+    max-width: 75px !important;
+    max-height: 75px !important;
+  }
+
+  .every-industry .elementor-element-a02668d .elementor-image-box-img img,
+  .every-industry .elementor-element-d153232 .elementor-image-box-img img {
+    width: 70px !important;
+    height: 70px !important;
+    max-width: 70px !important;
+    max-height: 70px !important;
+  }
+
+  .every-industry .elementor-image-box-title {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .every-industry .elementor-image-box-description {
+    font-size: 14px;
+  }
+
+  .every-industry .elementor-col-50 {
+    margin-bottom: 20px;
+  }
+
+  .every-industry .elementor-widget-testimonial-carousel .swiper-slide {
+    margin-bottom: 20px;
+  }
+  
+  /* Reliable Solution for every Industry Section - Mobile Responsive */
+  .business-commute .elementor-element-ee11ef7 {
+    display: block !important;
+    visibility: visible !important;
+    padding: 30px 0 !important;
+  }
+  
+  .business-commute .elementor-element-ee11ef7 .elementor-container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  
+  .business-commute .elementor-element-ee11ef7 .elementor-image-box-title {
+    font-size: 32px !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+    padding: 0 15px !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .business-commute .elementor-element-ee11ef7 .elementor-image-box-description {
+    font-size: 16px !important;
+    text-align: center !important;
+    padding: 0 15px !important;
+    line-height: 1.6 !important;
+  }
+  
+  .every-industry .elementor-container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  
+  .every-industry .elementor-col-50 {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 15px !important;
+    padding: 0 5px !important;
+  }
+  
+  .every-industry .elementor-widget-container {
+    text-align: center !important;
+  }
+  
+  .every-industry .elementor-image-box-wrapper {
+    align-items: center !important;
+  }
+  
+  .every-industry .elementor-image-box-content {
+    text-align: center !important;
+  }
+  
+  .every-industry .elementor-image-box-description br {
+    display: none !important;
+  }
+
+  /* Why Choose Refex for Business Section - Mobile Styles */
+  .whychoose-sec.bussiness,
+  .whychoose-sec.choose-us {
+    padding: 60px 0 !important;
+    background-color: #FFFFFF !important;
+  }
+
+  .whychoose-sec.bussiness .elementor-element-85ebe70,
+  .whychoose-sec.choose-us .elementor-element-9bd76b7 {
+    margin-bottom: 50px;
+  }
+
+  .whychoose-sec.bussiness .elementor-element-85ebe70 .elementor-widget-container,
+  .whychoose-sec.choose-us .elementor-element-9bd76b7 .elementor-widget-container {
+    display: block;
+  }
+
+  .whychoose-sec.bussiness .elementor-element-85ebe70 .elementor-image-box-wrapper,
+  .whychoose-sec.choose-us .elementor-element-9bd76b7 .elementor-image-box-wrapper {
+    display: block;
+    text-align: center;
+  }
+
+  .whychoose-sec.bussiness .elementor-element-85ebe70 .elementor-image-box-content,
+  .whychoose-sec.choose-us .elementor-element-9bd76b7 .elementor-image-box-content {
+    display: block;
+    text-align: center;
+  }
+
+  .whychoose-sec.bussiness .elementor-image-box-title,
+  .whychoose-sec.choose-us .elementor-image-box-title {
+    font-family: "Poppins", Sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #5D3F3A;
+    line-height: 1.2em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .whychoose-sec.bussiness .elementor-image-box-description,
+  .whychoose-sec.choose-us .elementor-image-box-description {
+    font-family: "Poppins", Sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #5D3F3A;
+    line-height: 1.6em;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .whychoose-sec.bussiness .elementor-testimonial,
+  .whychoose-sec.choose-us .elementor-testimonial {
+    padding: 25px 20px !important;
+    min-height: 280px !important;
+  }
+
+  .whychoose-sec.bussiness .elementor-testimonial__image,
+  .whychoose-sec.choose-us .elementor-testimonial__image {
+    width: 120px !important;
+    height: 120px !important;
+    padding: 20px !important;
+    margin-bottom: 15px !important;
+    border-radius: 50% !important;
+    border: 2px solid #F4553B !important;
+    background-color: #FFF5F4 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .whychoose-sec.bussiness .elementor-testimonial__image img,
+  .whychoose-sec.choose-us .elementor-testimonial__image img {
+    width: 80px !important;
+    height: 80px !important;
+    max-width: 80px !important;
+    max-height: 80px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .whychoose-sec.bussiness .elementor-testimonial__text,
+  .whychoose-sec.choose-us .elementor-testimonial__text {
+    font-size: 20px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .whychoose-sec.bussiness .elementor-testimonial__title,
+  .whychoose-sec.choose-us .elementor-testimonial__title {
+    font-size: 14px !important;
+    padding: 0 5px !important;
+  }
+
+  .whychoose-sec.bussiness .elementor-swiper-button-prev,
+  .whychoose-sec.choose-us .elementor-swiper-button-prev {
+    left: 5px;
+  }
+
+  .whychoose-sec.bussiness .elementor-swiper-button-next,
+  .whychoose-sec.choose-us .elementor-swiper-button-next {
+    right: 5px;
+  }
+
+  .whychoose-sec.bussiness .swiper-pagination,
+  .whychoose-sec.choose-us .swiper-pagination {
+    margin-top: 20px !important;
+  }
+}
+
+/* Business Car with Features Section - Matching Image Design */
+.business-commute .elementor-element-234530b {
+  position: relative !important;
+  overflow: hidden !important;
+  min-height: 450px !important;
+  padding: 20px 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.business-commute .elementor-element-234530b.elementor-section-stretched {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-container {
+  padding: 0 15px !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-e30dbde {
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 auto !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-e30dbde .elementor-widget-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-6fb14df {
+  padding: 0 !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-6fb14df .elementor-container {
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  box-sizing: border-box !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-2c3f27f {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding-right: 20px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  height: 100% !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-4ba57f2 {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+  padding-left: 20px !important;
+  align-items: stretch !important;
+  padding-right: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  height: auto !important;
+  min-height: auto !important;
+}
+
+/* Ensure columns are properly aligned */
+.business-commute .elementor-element-234530b .elementor-col-50 {
+  width: 50% !important;
+  max-width: 50% !important;
+  box-sizing: border-box !important;
+  float: none !important;
+  display: block !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-container {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: stretch !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+}
+
+/* Desktop view - Ensure proper alignment */
+@media (min-width: 1025px) {
+  .business-commute .elementor-element-234530b .elementor-element-2c3f27f {
+    padding-right: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .business-commute .elementor-element-234530b .elementor-element-4ba57f2 {
+    padding-left: 30px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+  }
+  
+  .business-commute .elementor-element-234530b .elementor-col-50 {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .business-commute .elementor-element-234530b .elementor-col-50 {
+    width: 50% !important;
+    max-width: 50% !important;
+    flex: 0 0 50% !important;
+  }
+  
+  .business-commute .elementor-element-234530b .elementor-element-2c3f27f {
+    padding-right: 15px !important;
+  }
+  
+  .business-commute .elementor-element-234530b .elementor-element-4ba57f2 {
+    padding-left: 15px !important;
+  }
+}
+
+.business-commute .elementor-element-234530b .elementor-element-8bb7ad7 {
+  margin-top: 0 !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-8bb7ad7 .elementor-widget-container {
+  margin-top: 0 !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-8bb7ad7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-8bb7ad7 .elementor-widget-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-8bb7ad7 img {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-4ba57f2 .elementor-widget-wrap {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  align-items: stretch !important;
+  box-sizing: border-box !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-4ba57f2 .elementor-widget {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-4ba57f2 .elementor-widget * {
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+  text-orientation: mixed !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-7ad6f31,
+.business-commute .elementor-element-234530b .elementor-element-2e09b12,
+.business-commute .elementor-element-234530b .elementor-element-2b00761 {
+  margin-bottom: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-7ad6f31 .elementor-widget,
+.business-commute .elementor-element-234530b .elementor-element-2e09b12 .elementor-widget,
+.business-commute .elementor-element-234530b .elementor-element-2b00761 .elementor-widget {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Prevent vertical text stacking - Force horizontal text flow */
+.business-commute .elementor-element-234530b * {
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  direction: ltr !important;
+}
+
+.business-commute .elementor-element-234530b h1,
+.business-commute .elementor-element-234530b h2,
+.business-commute .elementor-element-234530b h3,
+.business-commute .elementor-element-234530b h4,
+.business-commute .elementor-element-234530b h5,
+.business-commute .elementor-element-234530b h6,
+.business-commute .elementor-element-234530b p,
+.business-commute .elementor-element-234530b span,
+.business-commute .elementor-element-234530b div {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  text-align: left !important;
+  line-height: normal !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-7ad6f31 .elementor-widget-container,
+.business-commute .elementor-element-234530b .elementor-element-2e09b12 .elementor-widget-container,
+.business-commute .elementor-element-234530b .elementor-element-2b00761 .elementor-widget-container {
+  background-color: #FFFFFF !important;
+  border-radius: 12px !important;
+  padding: 15px 18px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  transition: all 0.3s ease !important;
+  width: 100% !important;
+  flex-wrap: nowrap !important;
+  box-sizing: border-box !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-element-7ad6f31 .elementor-widget-container:hover,
+.business-commute .elementor-element-234530b .elementor-element-2e09b12 .elementor-widget-container:hover,
+.business-commute .elementor-element-234530b .elementor-element-2b00761 .elementor-widget-container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.business-commute .elementor-element-234530b .elementor-image-box-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-wrap: nowrap !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-image-box-img {
+  margin: 0;
+  flex-shrink: 0;
+  width: auto;
+  height: auto;
+  position: relative;
+  padding: 0;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.business-commute .elementor-element-234530b .elementor-image-box-img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 56px;
+  height: 56px;
+  background-color: #FFF5F4;
+  border-radius: 10px;
+  z-index: 0;
+}
+
+.business-commute .elementor-element-234530b .elementor-image-box-img img {
+  width: 48px;
+  height: 48px;
+  max-width: 48px;
+  max-height: 48px;
+  object-fit: contain;
+  filter: none;
+  display: block;
+  position: relative;
+  z-index: 1;
+  padding: 4px;
+}
+
+.business-commute .elementor-element-234530b .elementor-image-box-content {
+  flex: 1 !important;
+  text-align: left !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  align-items: center;
+  min-width: 0 !important;
+  width: 100% !important;
+  word-wrap: break-word !important;
+  word-break: normal !important;
+  white-space: normal !important;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  direction: ltr !important;
+}
+
+.business-commute .elementor-element-234530b .elementor-image-box-title {
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #5D3F3A !important;
+  line-height: 1.4em !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  display: block !important;
+  width: 100% !important;
+  word-wrap: break-word !important;
+  word-break: normal !important;
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  direction: ltr !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+@media (max-width: 768px) {
+  .business-commute .elementor-element-234530b {
+    min-height: auto !important;
+    padding: 20px 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .business-commute .elementor-element-234530b .elementor-container {
+    padding: 0 15px !important;
+    max-width: 100% !important;
+  }
+
+  .business-commute .elementor-element-234530b .elementor-element-6fb14df .elementor-container {
+    padding: 0 15px !important;
+    max-width: 100% !important;
+  }
+
+  .business-commute .elementor-element-234530b .elementor-col-50 {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  .business-commute .elementor-element-234530b .elementor-container {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+  }
+
+  .business-commute .elementor-element-234530b .elementor-element-2c3f27f {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    justify-content: center !important;
+    margin-bottom: 20px;
+    width: 100% !important;
+  }
+
+  .business-commute .elementor-element-234530b .elementor-element-4ba57f2 {
+    padding-left: 0 !important;
+    margin-top: 15px;
+    gap: 10px;
+    align-items: stretch !important;
+  }
+
+  .business-commute .elementor-element-234530b .elementor-element-8bb7ad7 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+  }
+
+  .business-commute .elementor-element-234530b .elementor-element-8bb7ad7 img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+  }
+
+  .business-commute .elementor-element-234530b .elementor-element-7ad6f31 .elementor-widget-container,
+  .business-commute .elementor-element-234530b .elementor-element-2e09b12 .elementor-widget-container,
+  .business-commute .elementor-element-234530b .elementor-element-2b00761 .elementor-widget-container {
+    padding: 12px 15px;
+    width: 100% !important;
+  }
+
+  .business-commute .elementor-element-234530b .elementor-image-box-wrapper {
+    gap: 10px;
+    width: 100% !important;
+  }
+
+  .business-commute .elementor-element-234530b .elementor-element-4ba57f2 .elementor-widget-wrap {
+    gap: 10px;
+    width: 100% !important;
+  }
+
+  .business-commute .elementor-element-234530b .elementor-image-box-img img {
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+  }
+
+  .business-commute .elementor-element-234530b .elementor-image-box-title {
+    font-size: 16px;
+  }
+}
+
+/* How to Get Started Section - Matching Powering Corporate Commutes Design */
+.business-commute .elementor-element-get-started {
+  background-color: #FFF9F8 !important;
+  background: #FFF9F8 !important;
+  padding: 60px 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* Force horizontal text flow for all elements in Get Started section */
+.business-commute .elementor-element-get-started * {
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  direction: ltr !important;
+}
+
+.business-commute .elementor-element-get-started h1,
+.business-commute .elementor-element-get-started h2,
+.business-commute .elementor-element-get-started h3,
+.business-commute .elementor-element-get-started h4,
+.business-commute .elementor-element-get-started h5,
+.business-commute .elementor-element-get-started h6,
+.business-commute .elementor-element-get-started p,
+.business-commute .elementor-element-get-started span,
+.business-commute .elementor-element-get-started div {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  text-align: left !important;
+  line-height: normal !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-container {
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: stretch !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-get-started-inner .elementor-container {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+  padding: 0 !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-container,
+.business-commute .elementor-element-get-started .elementor-column,
+.business-commute .elementor-element-get-started .elementor-widget-wrap,
+.business-commute .elementor-element-get-started .elementor-inner-section {
+  background-color: #FFF9F8 !important;
+  background: #FFF9F8 !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-get-started-image {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  order: 1 !important;
+  width: 50% !important;
+  max-width: 50% !important;
+  flex: 0 0 50% !important;
+  box-sizing: border-box !important;
+  padding-right: 20px !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-get-started-img-widget {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-get-started-img-widget .elementor-widget-container {
+  background-color: #FFFFFF !important;
+  border-radius: 20px !important;
+  padding: 30px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  height: 100% !important;
+  min-height: 500px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-get-started-img-widget img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  border-radius: 10px !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-get-started-content {
+  order: 2 !important;
+  width: 50% !important;
+  max-width: 50% !important;
+  flex: 0 0 50% !important;
+  box-sizing: border-box !important;
+  padding-left: 40px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-image-box-title {
+  font-family: "Lexend Deca", Sans-serif !important;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  color: #5D3F3A !important;
+  margin-bottom: 40px !important;
+  text-align: left !important;
+  line-height: 1.2em !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-image-box-title span {
+  color: #F4553B !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-get-started-step1,
+.business-commute .elementor-element-get-started .elementor-element-get-started-step2,
+.business-commute .elementor-element-get-started .elementor-element-get-started-step3 {
+  margin-bottom: 25px !important;
+  padding: 0 !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-get-started-step3 {
+  margin-bottom: 0 !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-get-started-step1 .elementor-container,
+.business-commute .elementor-element-get-started .elementor-element-get-started-step2 .elementor-container,
+.business-commute .elementor-element-get-started .elementor-element-get-started-step3 .elementor-container {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 20px !important;
+  padding: 0 !important;
+}
+
+.business-commute .elementor-element-get-started .number-sec {
+  flex-shrink: 0 !important;
+}
+
+.business-commute .elementor-element-get-started .number-sec .elementor-widget-container {
+  border: 2px solid #F4553B !important;
+  width: 51px !important;
+  height: 51px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+}
+
+.business-commute .elementor-element-get-started .number-sec .elementor-widget-container p {
+  font-family: "Lexend Deca", Sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #F4553B !important;
+  text-align: center !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+  display: block !important;
+  width: auto !important;
+  white-space: normal !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-image-box-title {
+  font-family: "Lexend Deca", Sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  color: #5D3F3A !important;
+  margin-bottom: 10px !important;
+  text-align: left !important;
+  line-height: 1.4em !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+  display: block !important;
+  width: 100% !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-image-box-description {
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #5D3F3A !important;
+  line-height: 1.6em !important;
+  text-align: left !important;
+  margin: 0 !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+  display: block !important;
+  width: 100% !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-image-box-content {
+  text-align: left !important;
+  flex: 1 !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-image-box-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+  width: 100% !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-get-started-num1,
+.business-commute .elementor-element-get-started .elementor-element-get-started-num2,
+.business-commute .elementor-element-get-started .elementor-element-get-started-num3 {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-get-started-text1,
+.business-commute .elementor-element-get-started .elementor-element-get-started-text2,
+.business-commute .elementor-element-get-started .elementor-element-get-started-text3 {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+/* Fix for inner sections using old IDs (2cef8ef, 494158e, 89b0148, cbc34a1) */
+.business-commute .elementor-element-get-started .elementor-element-2cef8ef,
+.business-commute .elementor-element-get-started .elementor-element-494158e,
+.business-commute .elementor-element-get-started .elementor-element-89b0148,
+.business-commute .elementor-element-get-started .elementor-element-cbc34a1 {
+  margin-bottom: 25px !important;
+  padding: 0 !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-cbc34a1 {
+  margin-bottom: 0 !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-2cef8ef .elementor-container,
+.business-commute .elementor-element-get-started .elementor-element-494158e .elementor-container,
+.business-commute .elementor-element-get-started .elementor-element-89b0148 .elementor-container,
+.business-commute .elementor-element-get-started .elementor-element-cbc34a1 .elementor-container {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 20px !important;
+  padding: 0 !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-db9c8db,
+.business-commute .elementor-element-get-started .elementor-element-333c1ab,
+.business-commute .elementor-element-get-started .elementor-element-b3d0c2c,
+.business-commute .elementor-element-get-started .elementor-element-62ab4a7 {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-9202232,
+.business-commute .elementor-element-get-started .elementor-element-a4626f7,
+.business-commute .elementor-element-get-started .elementor-element-d76c196,
+.business-commute .elementor-element-get-started .elementor-element-a1d44a0 {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-9202232 .elementor-image-box-title,
+.business-commute .elementor-element-get-started .elementor-element-a4626f7 .elementor-image-box-title,
+.business-commute .elementor-element-get-started .elementor-element-d76c196 .elementor-image-box-title,
+.business-commute .elementor-element-get-started .elementor-element-a1d44a0 .elementor-image-box-title {
+  font-family: "Lexend Deca", Sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  color: #5D3F3A !important;
+  margin-bottom: 10px !important;
+  text-align: left !important;
+  line-height: 1.4em !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+  display: block !important;
+  width: 100% !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+.business-commute .elementor-element-get-started .elementor-element-9202232 .elementor-image-box-description,
+.business-commute .elementor-element-get-started .elementor-element-a4626f7 .elementor-image-box-description,
+.business-commute .elementor-element-get-started .elementor-element-d76c196 .elementor-image-box-description,
+.business-commute .elementor-element-get-started .elementor-element-a1d44a0 .elementor-image-box-description {
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #5D3F3A !important;
+  line-height: 1.6em !important;
+  text-align: left !important;
+  margin: 0 !important;
+  writing-mode: horizontal-tb !important;
+  direction: ltr !important;
+  display: block !important;
+  width: 100% !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Desktop view - Ensure proper column alignment */
+@media (min-width: 1025px) {
+  .business-commute .elementor-element-get-started .elementor-col-50 {
+    width: 50% !important;
+    max-width: 50% !important;
+    flex: 0 0 50% !important;
+    box-sizing: border-box !important;
+  }
+
+  .business-commute .elementor-element-get-started .elementor-element-get-started-inner .elementor-container {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .business-commute .elementor-element-get-started .elementor-element-get-started-image {
+    order: 1 !important;
+    padding-right: 30px !important;
+    width: 50% !important;
+    max-width: 50% !important;
+    flex: 0 0 50% !important;
+  }
+
+  .business-commute .elementor-element-get-started .elementor-element-get-started-content {
+    order: 2 !important;
+    padding-left: 40px !important;
+    width: 50% !important;
+    max-width: 50% !important;
+    flex: 0 0 50% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .business-commute .elementor-element-get-started {
+    padding: 40px 0 !important;
+  }
+
+  .business-commute .elementor-element-get-started .elementor-element-get-started-inner .elementor-container {
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+  }
+
+  .business-commute .elementor-element-get-started .elementor-element-get-started-image {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    padding-right: 0 !important;
+    margin-bottom: 30px !important;
+  }
+
+  .business-commute .elementor-element-get-started .elementor-element-get-started-content {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    padding-left: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .business-commute .elementor-element-get-started .elementor-image-box-title {
+    font-size: 28px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .business-commute .elementor-element-get-started .number-sec .elementor-widget-container {
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+  .business-commute .elementor-element-get-started .number-sec .elementor-widget-container p {
+    font-size: 20px !important;
+  }
+
+  .business-commute .elementor-element-get-started .elementor-inner-section {
+    margin-bottom: 20px !important;
+  }
+
+  .business-commute .elementor-element-get-started .elementor-inner-section .elementor-container {
+    gap: 15px !important;
+  }
+
+  .business-commute .elementor-element-get-started .elementor-image-box-title {
+    font-size: 20px !important;
+  }
+
+  .business-commute .elementor-element-get-started .elementor-image-box-description {
+    font-size: 14px !important;
+  }
+}
+
+/* Powering Corporate Commutes Section - Original Design */
+.business-commute .elementor-element-4e2da43 {
+  background-color: #FFF9F8 !important;
+  background: #FFF9F8 !important;
+  padding: 60px 0;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-container,
+.business-commute .elementor-element-4e2da43 .elementor-column,
+.business-commute .elementor-element-4e2da43 .elementor-widget-wrap,
+.business-commute .elementor-element-4e2da43 .elementor-inner-section {
+  background-color: #FFF9F8 !important;
+  background: #FFF9F8 !important;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-element-485cb03 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-element-227e12f img {
+  width: 100%;
+  max-width: 489px;
+  height: auto;
+  object-fit: contain;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-element-ee225d0 {
+  padding-left: 40px;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-image-box-title {
+  font-family: "Lexend Deca", Sans-serif !important;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  color: #5D3F3A !important;
+  margin-bottom: 40px !important;
+  text-align: left !important;
+  line-height: 1.2em !important;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-image-box-title span {
+  color: #F4553B !important;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-element-2cef8ef,
+.business-commute .elementor-element-4e2da43 .elementor-element-494158e,
+.business-commute .elementor-element-4e2da43 .elementor-element-89b0148,
+.business-commute .elementor-element-4e2da43 .elementor-element-cbc34a1 {
+  margin-bottom: 25px;
+  padding: 0;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-element-cbc34a1 {
+  margin-bottom: 0;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-element-2cef8ef .elementor-container,
+.business-commute .elementor-element-4e2da43 .elementor-element-494158e .elementor-container,
+.business-commute .elementor-element-4e2da43 .elementor-element-89b0148 .elementor-container,
+.business-commute .elementor-element-4e2da43 .elementor-element-cbc34a1 .elementor-container {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 20px !important;
+  padding: 0 !important;
+  flex-wrap: nowrap !important;
+}
+
+.business-commute .elementor-element-4e2da43 .number-sec {
+  flex-shrink: 0;
+}
+
+.business-commute .elementor-element-4e2da43 .number-sec .elementor-widget-container {
+  border: none !important;
+  width: 51px !important;
+  height: 51px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #F4553B !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.business-commute .elementor-element-4e2da43 .number-sec .elementor-widget-container p {
+  font-family: "Lexend Deca", Sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  text-align: center !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-image-box-title {
+  font-family: "Lexend Deca", Sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  color: #5D3F3A !important;
+  margin-bottom: 10px !important;
+  text-align: left !important;
+  line-height: 1.4em !important;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-image-box-description {
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #5D3F3A !important;
+  line-height: 1.6em !important;
+  text-align: left !important;
+  margin: 0 !important;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-image-box-content {
+  text-align: left !important;
+  flex: 1;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-element-db9c8db,
+.business-commute .elementor-element-4e2da43 .elementor-element-333c1ab,
+.business-commute .elementor-element-4e2da43 .elementor-element-b3d0c2c,
+.business-commute .elementor-element-4e2da43 .elementor-element-62ab4a7 {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: auto !important;
+}
+
+.business-commute .elementor-element-4e2da43 .elementor-element-9202232,
+.business-commute .elementor-element-4e2da43 .elementor-element-a4626f7,
+.business-commute .elementor-element-4e2da43 .elementor-element-d76c196,
+.business-commute .elementor-element-4e2da43 .elementor-element-a1d44a0 {
+  flex: 1 !important;
+  min-width: 0 !important;
+  width: auto !important;
+}
+
+@media (max-width: 768px) {
+  .business-commute .elementor-element-4e2da43 {
+    padding: 40px 0;
+  }
+
+  .business-commute .elementor-element-4e2da43 .elementor-element-ee225d0 {
+    padding-left: 0;
+    margin-top: 30px;
+  }
+
+  .business-commute .elementor-element-4e2da43 .elementor-image-box-title {
+    font-size: 28px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .business-commute .elementor-element-4e2da43 .number-sec .elementor-widget-container {
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+  .business-commute .elementor-element-4e2da43 .number-sec .elementor-widget-container p {
+    font-size: 20px !important;
+  }
+
+  .business-commute .elementor-element-4e2da43 .elementor-inner-section {
+    margin-bottom: 20px;
+  }
+
+  .business-commute .elementor-element-4e2da43 .elementor-inner-section .elementor-container {
+    gap: 15px;
+  }
+
+  .business-commute .elementor-element-4e2da43 .elementor-image-box-title {
+    font-size: 20px !important;
+  }
+
+  .business-commute .elementor-element-4e2da43 .elementor-image-box-description {
+    font-size: 14px !important;
+  }
+}
+
