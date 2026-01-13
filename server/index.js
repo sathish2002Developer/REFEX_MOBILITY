@@ -174,7 +174,7 @@ app.get("*", (req, res) => {
 });
 
 // set port
-const PORT = process.env.APP_PORT || 8080;
+const PORT = process.env.APP_PORT || 3007;
 
 sequelize
   .sync({ alter: true })
