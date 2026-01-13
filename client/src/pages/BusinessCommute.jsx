@@ -154,14 +154,14 @@ const BusinessCommute = () => {
     heroBgStyle.textContent = `
       .elementor-5464 .elementor-element.elementor-element-b485948:not(.elementor-motion-effects-element-type-background),
       .elementor-5464 .elementor-element.elementor-element-b485948 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
-        --wpr-bg-822373e4-734c-4c2b-aff4-8d7474887c73: url('https://refexmobility.com/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp');
-        background-image: url('https://refexmobility.com/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp');
+        --wpr-bg-822373e4-734c-4c2b-aff4-8d7474887c73: url('/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp');
+        background-image: url('/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp');
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
       }
       .elementor-5464 .elementor-element.elementor-element-b485948 {
-        background-image: url('https://refexmobility.com/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp');
+        background-image: url('/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp');
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
@@ -210,8 +210,8 @@ const BusinessCommute = () => {
       }
       .elementor-5464 .elementor-element.elementor-element-234530b:not(.elementor-motion-effects-element-type-background),
       .elementor-5464 .elementor-element.elementor-element-234530b > .elementor-motion-effects-container > .elementor-motion-effects-layer {
-        --wpr-bg-a27440ee-df27-4a53-b179-87b15267dae2: url('https://refexmobility.com/wp-content/uploads/2025/07/bg-img.png');
-        background-image: url('https://refexmobility.com/wp-content/uploads/2025/07/bg-img.png');
+        --wpr-bg-a27440ee-df27-4a53-b179-87b15267dae2: url('/wp-content/uploads/2025/07/bg-img.png');
+        background-image: url('/wp-content/uploads/2025/07/bg-img.png');
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
@@ -248,8 +248,8 @@ const BusinessCommute = () => {
 
     // Load external scripts
     const scripts = [
-      'https://refexmobility.com/wp-content/themes/enerzee/assets/js/bootstrap.min.js',
-      'https://refexmobility.com/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js',
+      '/wp-content/themes/enerzee/assets/js/bootstrap.min.js',
+      '/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js',
       'https://cdn.jsdelivr.net/npm/choices.js@10.2.0/public/assets/scripts/choices.min.js'
     ]
 
@@ -694,7 +694,7 @@ const BusinessCommute = () => {
                           data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
                           fetchPriority="high"
                           style={{
-                            backgroundImage: "url('https://refexmobility.com/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp')",
+                            backgroundImage: "url('/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp')",
                             backgroundSize: 'cover',
                             backgroundPosition: 'center center',
                             backgroundRepeat: 'no-repeat',
@@ -872,7 +872,7 @@ const BusinessCommute = () => {
                                                             width="196" 
                                                             height="196" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/seamless-icon.png" 
+                                                            src="/wp-content/uploads/2025/07/seamless-icon.png" 
                                                             alt="Seamless user management"
                                                             loading="lazy"
                                                           />
@@ -896,7 +896,7 @@ const BusinessCommute = () => {
                                                             width="196" 
                                                             height="197" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/booking-icon.png" 
+                                                            src="/wp-content/uploads/2025/07/booking-icon.png" 
                                                             alt="Create Guest Booking"
                                                             loading="lazy"
                                                           />
@@ -920,7 +920,7 @@ const BusinessCommute = () => {
                                                             width="196" 
                                                             height="197" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/headphn.png" 
+                                                            src="/wp-content/uploads/2025/07/headphn.png" 
                                                             alt="24/7 Assistance"
                                                             loading="lazy"
                                                           />
@@ -944,7 +944,7 @@ const BusinessCommute = () => {
                                                             width="196" 
                                                             height="197" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/dashboard-icon.png" 
+                                                            src="/wp-content/uploads/2025/07/dashboard-icon.png" 
                                                             alt="Dedicated Enterprise Dashboard"
                                                             loading="lazy"
                                                           />
@@ -968,7 +968,7 @@ const BusinessCommute = () => {
                                                             width="197" 
                                                             height="197" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/payment-icon.png" 
+                                                            src="/wp-content/uploads/2025/07/payment-icon.png" 
                                                             alt="Flexible payment options"
                                                             loading="lazy"
                                                           />
@@ -992,7 +992,7 @@ const BusinessCommute = () => {
                                                             width="197" 
                                                             height="197" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/monthly-report.png" 
+                                                            src="/wp-content/uploads/2025/07/monthly-report.png" 
                                                             alt="Monthly MIS Report"
                                                             loading="lazy"
                                                           />
@@ -1016,7 +1016,7 @@ const BusinessCommute = () => {
                                                             width="197" 
                                                             height="197" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/luxuries-icon.png" 
+                                                            src="/wp-content/uploads/2025/07/luxuries-icon.png" 
                                                             alt="Luxuries & Amenities"
                                                             loading="lazy"
                                                           />
@@ -1108,7 +1108,7 @@ const BusinessCommute = () => {
                                                   width="144" 
                                                   height="145" 
                                                   decoding="async" 
-                                                  src="https://refexmobility.com/wp-content/uploads/2025/07/user-m.png" 
+                                                  src="/wp-content/uploads/2025/07/user-m.png" 
                                                   className="attachment-full size-full wp-image-5926" 
                                                   alt="Corporates"
                                                   loading="lazy"
@@ -1135,7 +1135,7 @@ const BusinessCommute = () => {
                                                   width="150" 
                                                   height="150" 
                                                   decoding="async" 
-                                                  src="https://refexmobility.com/wp-content/uploads/2025/07/heart-img.png" 
+                                                  src="/wp-content/uploads/2025/07/heart-img.png" 
                                                   className="attachment-full size-full wp-image-6709" 
                                                   alt="Healthcare & Pharmaceuticals"
                                                   loading="lazy"
@@ -1172,7 +1172,7 @@ const BusinessCommute = () => {
                                                   width="144" 
                                                   height="144" 
                                                   decoding="async" 
-                                                  src="https://refexmobility.com/wp-content/uploads/2025/07/graduation-icon.png" 
+                                                  src="/wp-content/uploads/2025/07/graduation-icon.png" 
                                                   className="attachment-full size-full wp-image-5924" 
                                                   alt="Education & Ed-Tech"
                                                   loading="lazy"
@@ -1199,7 +1199,7 @@ const BusinessCommute = () => {
                                                   width="144" 
                                                   height="144" 
                                                   decoding="async" 
-                                                  src="https://refexmobility.com/wp-content/uploads/2025/07/cap-icon.png" 
+                                                  src="/wp-content/uploads/2025/07/cap-icon.png" 
                                                   className="attachment-full size-full wp-image-5925" 
                                                   alt="Hospitality"
                                                   loading="lazy"
@@ -1258,7 +1258,7 @@ const BusinessCommute = () => {
                                               width="489" 
                                               height="610" 
                                               decoding="async" 
-                                              src="https://refexmobility.com/wp-content/uploads/elementor/thumbs/power-img-r8ej8v6dlibnyy4xedoz6t2xk0a7zoexu3iikyktg4.png" 
+                                              src="/wp-content/uploads/elementor/thumbs/power-img-r8ej8v6dlibnyy4xedoz6t2xk0a7zoexu3iikyktg4.png" 
                                               className="attachment-full size-full wp-image-power" 
                                               alt="Powering Corporate Commutes" 
                                               loading="lazy"
@@ -1461,7 +1461,7 @@ const BusinessCommute = () => {
                           data-element_type="section"
                           data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
                           style={{
-                            backgroundImage: "url('https://refexmobility.com/wp-content/uploads/2025/07/bg-img.png')",
+                            backgroundImage: "url('/wp-content/uploads/2025/07/bg-img.png')",
                             backgroundSize: 'cover',
                             backgroundPosition: 'center center',
                             backgroundRepeat: 'no-repeat',
@@ -1499,7 +1499,7 @@ const BusinessCommute = () => {
                                               width="300" 
                                               height="291" 
                                               decoding="async" 
-                                              src="https://refexmobility.com/wp-content/uploads/2025/07/busiiness-car-300x291.png" 
+                                              src="/wp-content/uploads/2025/07/busiiness-car-300x291.png" 
                                               className="attachment-medium size-medium wp-image-8627" 
                                               alt="Business Car"
                                               loading="lazy"
@@ -1518,7 +1518,7 @@ const BusinessCommute = () => {
                                                   width="144" 
                                                   height="144" 
                                                   decoding="async" 
-                                                  src="https://refexmobility.com/wp-content/uploads/2025/07/clock-wall.png" 
+                                                  src="/wp-content/uploads/2025/07/clock-wall.png" 
                                                   className="attachment-full size-full wp-image-5556" 
                                                   alt="Quick Onboarding"
                                                   loading="lazy"
@@ -1538,7 +1538,7 @@ const BusinessCommute = () => {
                                                   width="144" 
                                                   height="148" 
                                                   decoding="async" 
-                                                  src="https://refexmobility.com/wp-content/uploads/2025/07/custom-pricing.png" 
+                                                  src="/wp-content/uploads/2025/07/custom-pricing.png" 
                                                   className="attachment-full size-full wp-image-5566" 
                                                   alt="Custom Pricing"
                                                   loading="lazy"
@@ -1558,7 +1558,7 @@ const BusinessCommute = () => {
                                                   width="146" 
                                                   height="148" 
                                                   decoding="async" 
-                                                  src="https://refexmobility.com/wp-content/uploads/2025/07/support-icon.png" 
+                                                  src="/wp-content/uploads/2025/07/support-icon.png" 
                                                   className="attachment-full size-full wp-image-5567" 
                                                   alt="Dedicated Account Support"
                                                   loading="lazy"
@@ -1687,7 +1687,7 @@ const BusinessCommute = () => {
                                           <div className="wpforms-submit-container">
                                             <input type="hidden" name="wpforms[id]" value="4974" />
                                             <input type="hidden" name="page_title" value="Business Commute" />
-                                            <input type="hidden" name="page_url" value="https://refexmobility.com/business-commute/" />
+                                            <input type="hidden" name="page_url" value="/business-commute/" />
                                             <input type="hidden" name="page_id" value="5464" />
                                             <input type="hidden" name="wpforms[post_id]" value="5464" />
                                             <button type="submit" name="wpforms[submit]" id="wpforms-submit-4974" className="wpforms-submit wp-forms-submit" data-alt-text="Sending..." data-submit-text="Submit Details" aria-live="assertive" value="wpforms-submit">Submit Details</button>

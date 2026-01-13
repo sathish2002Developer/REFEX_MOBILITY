@@ -204,153 +204,46 @@ class EmailService {
   // Send business commute form email
   async sendBusinessCommuteEmail(formData) {
     try {
-      const { 
-        name, 
-        companyName, 
-        email, 
-        phone, 
-        department, 
-        regions, 
-        numberOfEmployees, 
+      const {
+        name,
+        companyName,
+        email,
+        phone,
+        department,
+        regions,
+        numberOfEmployees,
         comment,
-        recaptchaToken 
+        ipAddress
       } = formData;
 
-      // Format regions array
-      const regionsText = Array.isArray(regions) ? regions.join(', ') : (regions || 'Not provided');
+      const regionsText = Array.isArray(regions) ? regions.join(', ') : regions;
 
-      // Email content
       const mailOptions = {
-        from: process.env.SMTP_USER || 'your-email@gmail.com',
-        to: 'sathishkumar.r@refex.co.in',
-        subject: `New Business Commute Form Submission from ${name}`,
+        from: `"Refex Mobility" <meet.g@refex.co.in>`,
+        to: 'meet.g@refex.co.in',
+        replyTo: email,
+        subject: `Business Commute Enquiry - ${name}`,
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-            <div style="background: linear-gradient(135deg, #F4553B, #FF6B4A); color: white; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;">
-              <h2 style="margin: 0; font-size: 24px;">New Business Commute Form Submission</h2>
-              <p style="margin: 10px 0 0 0; opacity: 0.9;">Refex Mobility Website</p>
-            </div>
-            
-            <div style="padding: 30px; background: #f9f9f9;">
-              <div style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                <h3 style="color: #F4553B; margin-top: 0; border-bottom: 2px solid #F4553B; padding-bottom: 10px;">Contact Details</h3>
-                
-                <div style="margin-bottom: 20px;">
-                  <strong style="color: #333; display: inline-block; width: 150px;">Name:</strong>
-                  <span style="color: #666;">${name}</span>
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                  <strong style="color: #333; display: inline-block; width: 150px;">Company Name:</strong>
-                  <span style="color: #666;">${companyName || 'Not provided'}</span>
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                  <strong style="color: #333; display: inline-block; width: 150px;">Email:</strong>
-                  <span style="color: #666;">${email}</span>
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                  <strong style="color: #333; display: inline-block; width: 150px;">Phone:</strong>
-                  <span style="color: #666;">${phone || 'Not provided'}</span>
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                  <strong style="color: #333; display: inline-block; width: 150px;">Department:</strong>
-                  <span style="color: #666;">${department || 'Not provided'}</span>
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                  <strong style="color: #333; display: inline-block; width: 150px;">Regions:</strong>
-                  <span style="color: #666;">${regionsText}</span>
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                  <strong style="color: #333; display: inline-block; width: 150px;">No. of Employees:</strong>
-                  <span style="color: #666;">${numberOfEmployees || 'Not provided'}</span>
-                </div>
-                
-                ${comment ? `
-                <div style="margin-bottom: 20px;">
-                  <strong style="color: #333; display: block; margin-bottom: 10px;">Comment:</strong>
-                  <div style="background: #f8f8f8; padding: 15px; border-radius: 5px; border-left: 4px solid #F4553B; color: #555; line-height: 1.6;">
-                    ${comment.replace(/\n/g, '<br>')}
-                  </div>
-                </div>
-                ` : ''}
-              </div>
-              
-              <div style="margin-top: 25px; padding: 20px; background: #fff5f4; border-radius: 8px; border-left: 4px solid #F4553B;">
-                <h4 style="color: #F4553B; margin-top: 0;">Submission Details</h4>
-                <p style="margin: 5px 0; color: #666;">
-                  <strong>Submitted:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
-                </p>
-                <p style="margin: 5px 0; color: #666;">
-                  <strong>IP Address:</strong> ${formData.ipAddress || 'Not available'}
-                </p>
-                <p style="margin: 5px 0; color: #666;">
-                  <strong>reCAPTCHA:</strong> ${recaptchaToken ? 'Verified' : 'Not verified'}
-                </p>
-              </div>
-            </div>
-            
-            <div style="text-align: center; padding: 20px; background: #f0f0f0; border-radius: 0 0 10px 10px;">
-              <p style="margin: 0; color: #666; font-size: 14px;">
-                This email was sent from the Refex Mobility Business Commute contact form.
-              </p>
-              <p style="margin: 5px 0 0 0; color: #999; font-size: 12px;">
-                Please respond to the customer's inquiry promptly.
-              </p>
-            </div>
-          </div>
-        `,
-        text: `
-          New Business Commute Form Submission from Refex Mobility Website
-          
-          Contact Details:
-          Name: ${name}
-          Company Name: ${companyName || 'Not provided'}
-          Email: ${email}
-          Phone: ${phone || 'Not provided'}
-          Department: ${department || 'Not provided'}
-          Regions: ${regionsText}
-          No. of Employees: ${numberOfEmployees || 'Not provided'}
-          ${comment ? `Comment: ${comment}` : ''}
-          
-          Submitted: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
-          IP Address: ${formData.ipAddress || 'Not available'}
-          reCAPTCHA: ${recaptchaToken ? 'Verified' : 'Not verified'}
+          <h2>Business Commute Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Company:</strong> ${companyName || 'Not provided'}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+          <p><strong>Department:</strong> ${department || 'Not provided'}</p>
+          <p><strong>Regions:</strong> ${regionsText || 'Not provided'}</p>
+          <p><strong>No. of Employees:</strong> ${numberOfEmployees || 'Not provided'}</p>
+          <p><strong>Comment:</strong> ${comment || 'N/A'}</p>
+          <hr>
+          <p><strong>IP Address:</strong> ${ipAddress || 'N/A'}</p>
+          <p><strong>Submitted:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
         `
       };
 
-      // Send email
-      const result = await this.transporter.sendMail(mailOptions);
-      console.log('Business commute email sent successfully:', result.messageId);
-      
-      return {
-        success: true,
-        messageId: result.messageId,
-        message: 'Email sent successfully'
-      };
-
+      await this.transporter.sendMail(mailOptions);
+      return { success: true };
     } catch (error) {
-      console.error('Error sending business commute email:', error);
-      
-      // Provide user-friendly error messages
-      let errorMessage = 'Failed to send email. Please try again later.';
-      
-      if (error.message && error.message.includes('Application-specific password')) {
-        errorMessage = 'Email configuration error. Please contact the administrator.';
-        console.error('SMTP Configuration Error: Gmail requires an App Password. Please generate one at https://myaccount.google.com/apppasswords');
-      } else if (error.message && error.message.includes('Invalid login')) {
-        errorMessage = 'Email configuration error. Please contact the administrator.';
-        console.error('SMTP Authentication Error: Invalid credentials. Please check SMTP_USER and SMTP_PASS in .env file');
-      } else if (error.message) {
-        // Use the original error message for other cases
-        errorMessage = `Failed to send email: ${error.message}`;
-      }
-      
-      throw new Error(errorMessage);
+      console.error('Business commute email error:', error);
+      throw new Error('Failed to send business commute email');
     }
   }
 

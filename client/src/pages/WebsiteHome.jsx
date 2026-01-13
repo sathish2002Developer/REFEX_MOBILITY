@@ -169,15 +169,15 @@ const WebsiteHome = () => {
     heroBgStyle.textContent = `
       .elementor-5677 .elementor-element.elementor-element-b485948:not(.elementor-motion-effects-element-type-background),
       .elementor-5677 .elementor-element.elementor-element-b485948 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
-        --wpr-bg-5d23b3ca-cc54-4132-afee-c75ea875315c: url('https://refexmobility.com/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
-        background-image: url('https://refexmobility.com/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
+        --wpr-bg-5d23b3ca-cc54-4132-afee-c75ea875315c: url('/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
+        background-image: url('/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
       }
       
       .main-banner-sec {
-        background-image: url('https://refexmobility.com/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
+        background-image: url('/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
@@ -188,14 +188,14 @@ const WebsiteHome = () => {
       
       @media (max-width: 768px) {
         .main-banner-sec {
-          background-image: url('https://refexmobility.com/wp-content/uploads/2025/07/home-mobile.png');
+          background-image: url('/wp-content/uploads/2025/07/home-mobile.png');
           min-height: 500px;
         }
       }
       
       @media (min-width: 769px) and (max-width: 1024px) {
         .main-banner-sec {
-          background-image: url('https://refexmobility.com/wp-content/uploads/2025/07/home-bg-image.png');
+          background-image: url('/wp-content/uploads/2025/07/home-bg-image.png');
         }
       }
     `
@@ -203,8 +203,8 @@ const WebsiteHome = () => {
 
     // Load external scripts
     const scripts = [
-      'https://refexmobility.com/wp-content/themes/enerzee/assets/js/bootstrap.min.js',
-      'https://refexmobility.com/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js'
+      '/wp-content/themes/enerzee/assets/js/bootstrap.min.js',
+      '/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js'
     ]
 
     scripts.forEach(src => {
@@ -510,7 +510,7 @@ const WebsiteHome = () => {
                           data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
                           fetchPriority="high"
                           style={{
-                            backgroundImage: "url('https://refexmobility.com/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp')",
+                            backgroundImage: "url('/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp')",
                             backgroundSize: 'cover',
                             backgroundPosition: 'center center',
                             backgroundRepeat: 'no-repeat',
@@ -710,7 +710,7 @@ const WebsiteHome = () => {
                                                     width="196" 
                                                     height="196" 
                                                     decoding="async" 
-                                                    src="https://refexmobility.com/wp-content/uploads/2025/07/car-icons.png" 
+                                                    src="/wp-content/uploads/2025/07/car-icons.png" 
                                                     alt="Eco-Friendly Rides"
                                                   />
                                                 </div>
@@ -733,7 +733,7 @@ const WebsiteHome = () => {
                                                     width="196" 
                                                     height="196" 
                                                     decoding="async" 
-                                                    src="https://refexmobility.com/wp-content/uploads/2025/07/corporate-icon.png" 
+                                                    src="/wp-content/uploads/2025/07/corporate-icon.png" 
                                                     alt="Corporate Ride Solutions"
                                                   />
                                                 </div>
@@ -756,7 +756,7 @@ const WebsiteHome = () => {
                                                     width="196" 
                                                     height="196" 
                                                     decoding="async" 
-                                                    src="https://refexmobility.com/wp-content/uploads/2025/07/verified-icon.png" 
+                                                    src="/wp-content/uploads/2025/07/verified-icon.png" 
                                                     alt="Verified and Trained Drivers"
                                                   />
                                                 </div>
@@ -779,7 +779,7 @@ const WebsiteHome = () => {
                                                     width="196" 
                                                     height="196" 
                                                     decoding="async" 
-                                                    src="https://refexmobility.com/wp-content/uploads/2025/07/safty-icon.png" 
+                                                    src="/wp-content/uploads/2025/07/safty-icon.png" 
                                                     alt="Safety and Hygiene Protocols"
                                                   />
                                                 </div>
@@ -957,7 +957,7 @@ const WebsiteHome = () => {
                                                                           width="430" 
                                                                           height="350" 
                                                                           decoding="async" 
-                                                                          src="https://refexmobility.com/wp-content/uploads/elementor/thumbs/corpotate-img-r8jucgvni2gpbsuyfk3lfw5sh886uge24wkr57tjxo.png" 
+                                                                          src="/wp-content/uploads/elementor/thumbs/corpotate-img-r8jucgvni2gpbsuyfk3lfw5sh886uge24wkr57tjxo.png" 
                                                                           title="corpotate-img" 
                                                                           alt="corpotate-img" 
                                                                           loading="lazy" 
@@ -1021,7 +1021,7 @@ const WebsiteHome = () => {
                                                                           width="430" 
                                                                           height="350" 
                                                                           decoding="async" 
-                                                                          src="https://refexmobility.com/wp-content/uploads/elementor/thumbs/airports-r8lh8mocw6sys37h6icg1dm0u481sua6mq756q8j70.png" 
+                                                                          src="/wp-content/uploads/elementor/thumbs/airports-r8lh8mocw6sys37h6icg1dm0u481sua6mq756q8j70.png" 
                                                                           title="airports" 
                                                                           alt="airports" 
                                                                           loading="lazy" 
@@ -1085,7 +1085,7 @@ const WebsiteHome = () => {
                                                                           width="430" 
                                                                           height="350" 
                                                                           decoding="async" 
-                                                                          src="https://refexmobility.com/wp-content/uploads/elementor/thumbs/hourly_rentals-r8lhafj7zr9r16l9nsdpbf8ttpcdjyfnvn7natkd9o.png" 
+                                                                          src="/wp-content/uploads/elementor/thumbs/hourly_rentals-r8lhafj7zr9r16l9nsdpbf8ttpcdjyfnvn7natkd9o.png" 
                                                                           title="hourly_rentals" 
                                                                           alt="hourly_rentals" 
                                                                           loading="lazy" 
@@ -1149,7 +1149,7 @@ const WebsiteHome = () => {
                                                                           width="430" 
                                                                           height="350" 
                                                                           decoding="async" 
-                                                                          src="https://refexmobility.com/wp-content/uploads/elementor/thumbs/outstanding-img-r97rc31a974htbzyt30e7ra24cs8axu2myh0lsb9kc.png" 
+                                                                          src="/wp-content/uploads/elementor/thumbs/outstanding-img-r97rc31a974htbzyt30e7ra24cs8axu2myh0lsb9kc.png" 
                                                                           title="outstanding-img" 
                                                                           alt="outstanding-img" 
                                                                           loading="lazy" 
@@ -1236,7 +1236,7 @@ const WebsiteHome = () => {
                                                             width="400" 
                                                             height="400" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/banglore-img.png" 
+                                                            src="/wp-content/uploads/2025/07/banglore-img.png" 
                                                             alt="Bangalore"
                                                             loading="lazy"
                                                           />
@@ -1257,7 +1257,7 @@ const WebsiteHome = () => {
                                                             width="400" 
                                                             height="400" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/hydrabad-img.png" 
+                                                            src="/wp-content/uploads/2025/07/hydrabad-img.png" 
                                                             alt="Hyderabad"
                                                             loading="lazy"
                                                           />
@@ -1278,7 +1278,7 @@ const WebsiteHome = () => {
                                                             width="408" 
                                                             height="408" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/delhi-img.png" 
+                                                            src="/wp-content/uploads/2025/07/delhi-img.png" 
                                                             alt="Delhi"
                                                             loading="lazy"
                                                           />
@@ -1299,7 +1299,7 @@ const WebsiteHome = () => {
                                                             width="400" 
                                                             height="400" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/mumbai-img.png" 
+                                                            src="/wp-content/uploads/2025/07/mumbai-img.png" 
                                                             alt="Mumbai"
                                                             loading="lazy"
                                                           />
@@ -1320,7 +1320,7 @@ const WebsiteHome = () => {
                                                             width="408" 
                                                             height="408" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/channai-img.png" 
+                                                            src="/wp-content/uploads/2025/07/channai-img.png" 
                                                             alt="Chennai"
                                                             loading="lazy"
                                                           />
@@ -1461,7 +1461,7 @@ const WebsiteHome = () => {
                                               decoding="async" 
                                               width="996" 
                                               height="756" 
-                                              src="https://refexmobility.com/wp-content/uploads/2025/07/about-imgss.png" 
+                                              src="/wp-content/uploads/2025/07/about-imgss.png" 
                                               className="attachment-full size-full wp-image-8642" 
                                               alt="About Refex Mobility"
                                               loading="lazy"
