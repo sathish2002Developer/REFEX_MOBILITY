@@ -8,8 +8,8 @@ class EmailService {
       port: process.env.SMTP_PORT || 587,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: process.env.SMTP_USER || 'sathku007@gmail.com',
-        pass: process.env.SMTP_PASS ||'kwuy sdpw ltzy uwch'
+        user: process.env.SMTP_USER || 'refexmobility@refex.co.in',
+        pass: process.env.SMTP_PASS ||'xxgi abgr kywt lhqg'
       },
       tls: {
         rejectUnauthorized: false
@@ -219,8 +219,8 @@ class EmailService {
       const regionsText = Array.isArray(regions) ? regions.join(', ') : regions;
 
       const mailOptions = {
-        from: `"Refex Mobility" <meet.g@refex.co.in>`,
-        to: 'meet.g@refex.co.in',
+        from: `"Refex Mobility" <refexmobility@refex.co.in>`,
+        to: 'refexmobility@refex.co.in',
         replyTo: email,
         subject: `Business Commute Enquiry - ${name}`,
         html: `
