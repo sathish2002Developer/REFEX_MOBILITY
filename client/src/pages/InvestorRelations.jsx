@@ -17,7 +17,7 @@ const InvestorRelations = () => {
   const [heroData, setHeroData] = useState({
     title: 'Investor Relations',
     description: 'Building trust through transparency. Access our financial reports, annual returns, and investor communications to stay informed about our growth and performance.',
-    backgroundImage: 'https://refexmobility.com/wp-content/uploads/2025/07/investor-banner.webp'
+    backgroundImage: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1920&auto=format&fit=crop'
   })
   
   const [menuItems, setMenuItems] = useState([
@@ -100,9 +100,9 @@ const InvestorRelations = () => {
     const savedHeroData = localStorage.getItem('investorHeroData')
     const savedMenuItems = localStorage.getItem('investorMenuItems')
 
-    if (savedHeroData) {
-      setHeroData(JSON.parse(savedHeroData))
-    }
+    // if (savedHeroData) {
+    //   setHeroData(JSON.parse(savedHeroData))
+    // }
     
     let itemsToSet = [
       { id: 'annual-return', label: 'Annual Return', hasSubItems: true },
@@ -129,66 +129,39 @@ const InvestorRelations = () => {
     loadFilesFromAPI()
   }, [])
 
-  const handleDownload = async (file) => {
-    try {
-      // If URL is relative, make it absolute using API base URL
-      let fileUrl = file.url
-      if (file.url && !file.url.startsWith('http')) {
-        fileUrl = `${API_BASE_URL}${file.url.startsWith('/') ? '' : '/'}${file.url}`
-      }
+const handleDownload = (file) => {
+  let fileUrl = file.url
 
-      // Fetch the file as a blob
-      const response = await fetch(fileUrl, {
-        method: 'GET',
-        headers: {}
-      })
-      
-      if (!response.ok) {
-        throw new Error('Failed to download file')
-      }
-
-      const blob = await response.blob()
-      
-      // Create a temporary URL for the blob
-      const blobUrl = window.URL.createObjectURL(blob)
-      
-      // Create download link
-      const link = document.createElement('a')
-      link.href = blobUrl
-      link.style.display = 'none'
-      
-      // Get file extension from original filename or type
-      let fileName = file.name || file.originalName || 'download'
-      // Ensure filename has proper extension
-      if (!fileName.includes('.')) {
-        const extension = file.type === 'pdf' ? '.pdf' : 
-                         file.type === 'doc' ? '.doc' : 
-                         file.type === 'docx' ? '.docx' :
-                         file.type === 'xls' ? '.xls' : 
-                         file.type === 'xlsx' ? '.xlsx' : '.pdf'
-        fileName = `${fileName}${extension}`
-      }
-      
-      link.download = fileName
-      document.body.appendChild(link)
-      link.click()
-      
-      // Clean up after a short delay
-      setTimeout(() => {
-        document.body.removeChild(link)
-        window.URL.revokeObjectURL(blobUrl)
-      }, 100)
-    } catch (error) {
-      console.error('Download error:', error)
-      // Fallback: try to open in new tab
-      let fileUrl = file.url
-      if (file.url && !file.url.startsWith('http')) {
-        fileUrl = `${API_BASE_URL}${file.url.startsWith('/') ? '' : '/'}${file.url}`
-      }
-      window.open(fileUrl, '_blank')
-      alert('Unable to download file directly. The file has been opened in a new tab. Please use the browser\'s save option to download.')
-    }
+  // Fix relative URL
+  if (fileUrl && !fileUrl.startsWith('http')) {
+    fileUrl = `${API_BASE_URL}${fileUrl.startsWith('/') ? '' : '/'}${fileUrl}`
   }
+
+  // Fix wrong https//
+  fileUrl = fileUrl.replace('https//', 'https://')
+
+  // File name
+  let fileName = file.name || file.originalName || 'download'
+
+  if (!fileName.includes('.')) {
+    const extension =
+      file.type === 'pdf' ? '.pdf' :
+      file.type === 'doc' ? '.doc' :
+      file.type === 'docx' ? '.docx' :
+      file.type === 'xls' ? '.xls' :
+      file.type === 'xlsx' ? '.xlsx' : '.pdf'
+    fileName += extension
+  }
+
+  // Force download
+  const link = document.createElement('a')
+  link.href = fileUrl
+  link.setAttribute('download', fileName)
+  link.setAttribute('target', '_self') // IMPORTANT: no new tab
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
 
   const handleView = (file) => {
     // If URL is relative, make it absolute using API base URL
