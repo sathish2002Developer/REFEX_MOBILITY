@@ -35,10 +35,11 @@ const AdminInvestorRelations = () => {
   const [newYear, setNewYear] = useState('')
   const [saveMessage, setSaveMessage] = useState('')
   const [uploading, setUploading] = useState(false)
+  
   const [selectedFile, setSelectedFile] = useState(null)
   const [loading, setLoading] = useState(false)
   const [expandedYears, setExpandedYears] = useState({}) // Track which years are expanded in admin
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://uat.refexmobility.in'
 
   // Load data from database and localStorage on mount
   useEffect(() => {
