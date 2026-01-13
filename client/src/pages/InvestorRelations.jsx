@@ -11,7 +11,7 @@ const InvestorRelations = () => {
   const [expandedYears, setExpandedYears] = useState({}) // Track which years are expanded
   const [loading, setLoading] = useState(true)
   
-  const API_BASE_URL =  'https://uat.refexmobility.in'
+  const API_BASE_URL =  'https://refexmobility.com'
   
   // Load data from localStorage or use defaults
   const [heroData, setHeroData] = useState({

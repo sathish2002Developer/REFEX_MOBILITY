@@ -117,7 +117,7 @@ const BusinessCommute = () => {
   const [openFaqs, setOpenFaqs] = useState({})
   const [phoneNumber, setPhoneNumber] = useState('')
   const [submitting, setSubmitting] = useState(false)
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://uat.refexmobility.in'
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://refexmobility.com'
 
   const toggleFaq = (index) => {
     setOpenFaqs(prev => ({
