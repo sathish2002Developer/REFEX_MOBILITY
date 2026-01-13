@@ -612,7 +612,7 @@ const WebsiteHome = () => {
                                               <div className="elementor-counter-title">CO₂  Saved</div>
                                               <div className="elementor-counter-number-wrapper">
                                                 <span className="elementor-counter-number-prefix"></span>
-                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="2800" data-from-value="0">2800</span>
+                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="4600" data-from-value="0">4600 </span>
                                                 <span className="elementor-counter-number-suffix"> Tonnes+</span>
                                               </div>
                                             </div>
@@ -628,8 +628,8 @@ const WebsiteHome = () => {
                                               <div className="elementor-counter-title">Kms Covered</div>
                                               <div className="elementor-counter-number-wrapper">
                                                 <span className="elementor-counter-number-prefix"></span>
-                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="43.6" data-from-value="0">4.6</span>
-                                                <span className="elementor-counter-number-suffix"> Million+</span>
+                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="7.22" data-from-value="0">7.22 </span>
+                                                <span className="elementor-counter-number-suffix"> Crore+</span>
                                               </div>
                                             </div>
                                           </div>
@@ -644,7 +644,7 @@ const WebsiteHome = () => {
                                               <div className="elementor-counter-title">Ltrs Of Fuel Saved</div>
                                               <div className="elementor-counter-number-wrapper">
                                                 <span className="elementor-counter-number-prefix"></span>
-                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="3.4" data-from-value="0">3.4</span>
+                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="5.74" data-from-value="0">5.74 </span>
                                                 <span className="elementor-counter-number-suffix"> Million+</span>
                                               </div>
                                             </div>

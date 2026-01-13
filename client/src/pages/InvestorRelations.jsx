@@ -459,14 +459,7 @@ const InvestorRelations = () => {
                                                         }}>
                                                           FY {year}
                                                         </h3>
-                                                        <i 
-                                                          className={`fa fa-chevron-${isExpanded ? 'up' : 'down'}`}
-                                                          style={{
-                                                            fontSize: '16px',
-                                                            color: '#F4553B',
-                                                            transition: 'transform 0.3s ease'
-                                                          }}
-                                                        ></i>
+                                                       
                                                       </div>
 
                                                       {/* Year Content - Files List */}
@@ -689,14 +682,7 @@ const InvestorRelations = () => {
                                                           }}>
                                                             {year !== 'general' ? `FY ${year}` : 'General Notices'}
                                                           </h3>
-                                                          <i 
-                                                            className={`fa fa-chevron-${isExpanded ? 'up' : 'down'}`}
-                                                            style={{
-                                                              fontSize: '16px',
-                                                              color: '#F4553B',
-                                                              transition: 'transform 0.3s ease'
-                                                            }}
-                                                          ></i>
+                                                         
                                                         </div>
 
                                                         {/* Year Content - Files List - Auto Expanded */}
@@ -754,7 +740,7 @@ const InvestorRelations = () => {
                                                                             fontWeight: 500
                                                                           }}>{file.type}</span>
                                                                           {file.size && <span className="file-size">{file.size}</span>}
-                                                                          {file.date && <span className="file-date">{file.date}</span>}
+                                                                        
                                                                         </div>
                                                                       </div>
                                                                     <div className="file-actions" style={{
