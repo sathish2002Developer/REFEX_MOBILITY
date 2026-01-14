@@ -186,16 +186,25 @@ const WebsiteHome = () => {
         align-items: center;
       }
       
-      @media (max-width: 768px) {
+      /* Extra Large Screens */
+      @media (min-width: 1920px) {
         .main-banner-sec {
-          background-image: url('/wp-content/uploads/2025/07/home-mobile.png');
-          min-height: 500px;
+          background-image: url('/wp-content/uploads/2025/07/home-bg-image-1-2048x1065.webp');
         }
       }
       
+      /* Tablets */
       @media (min-width: 769px) and (max-width: 1024px) {
         .main-banner-sec {
-          background-image: url('/wp-content/uploads/2025/07/home-bg-image.png');
+          background-image: url('/wp-content/uploads/2025/07/home-bg-image-1-2000x1200.webp');
+        }
+      }
+      
+      /* Mobile Devices */
+      @media (max-width: 768px) {
+        .main-banner-sec {
+          background-image: url('/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
+          min-height: 500px;
         }
       }
     `
@@ -591,7 +600,7 @@ const WebsiteHome = () => {
                                     <div className="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-5100cab impact-counter-box" data-id="5100cab" data-element_type="column">
                                       <div className="elementor-widget-wrap elementor-element-populated">
                                         <div className="elementor-element elementor-element-bd6824b km-covered text-left elementor-widget elementor-widget-counter" data-id="bd6824b" data-element_type="widget" data-widget_type="counter.default">
-                                          <div className="elementor-widget-container" style={{width: '270px'}}>
+                                          <div className="elementor-widget-container">
                                             <div className="elementor-counter">
                                               <div className="elementor-counter-title">Happy Riders</div>
                                               <div className="elementor-counter-number-wrapper">
@@ -607,7 +616,7 @@ const WebsiteHome = () => {
                                     <div className="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-4a50dd4 impact-counter-box" data-id="4a50dd4" data-element_type="column">
                                       <div className="elementor-widget-wrap elementor-element-populated">
                                         <div className="elementor-element elementor-element-93af9ec km-covered text-left elementor-widget elementor-widget-counter" data-id="93af9ec" data-element_type="widget" data-widget_type="counter.default">
-                                          <div className="elementor-widget-container" style={{width: '270px'}}>
+                                          <div className="elementor-widget-container">
                                             <div className="elementor-counter">
                                               <div className="elementor-counter-title">CO₂  Saved</div>
                                               <div className="elementor-counter-number-wrapper">
@@ -623,7 +632,7 @@ const WebsiteHome = () => {
                                     <div className="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-aef092e impact-counter-box" data-id="aef092e" data-element_type="column">
                                       <div className="elementor-widget-wrap elementor-element-populated">
                                         <div className="elementor-element elementor-element-a61b893 km-covered text-left elementor-widget elementor-widget-counter" data-id="a61b893" data-element_type="widget" data-widget_type="counter.default">
-                                          <div className="elementor-widget-container" style={{width: '270px'}}>
+                                          <div className="elementor-widget-container">
                                             <div className="elementor-counter">
                                               <div className="elementor-counter-title">Kms Covered</div>
                                               <div className="elementor-counter-number-wrapper">
@@ -639,7 +648,7 @@ const WebsiteHome = () => {
                                     <div className="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-d8f9e9a impact-counter-box" data-id="d8f9e9a" data-element_type="column">
                                       <div className="elementor-widget-wrap elementor-element-populated">
                                         <div className="elementor-element elementor-element-e30c7b3 km-covered text-center elementor-widget elementor-widget-counter" data-id="e30c7b3" data-element_type="widget" data-widget_type="counter.default">
-                                          <div className="elementor-widget-container" style={{width: '270px'}}>
+                                          <div className="elementor-widget-container">
                                             <div className="elementor-counter">
                                               <div className="elementor-counter-title">Ltrs Of Fuel Saved</div>
                                               <div className="elementor-counter-number-wrapper">

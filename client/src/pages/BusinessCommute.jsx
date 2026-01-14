@@ -216,25 +216,126 @@ const BusinessCommute = () => {
         background-position: center center;
         background-repeat: no-repeat;
       }
+      /* Extra Large Screens (1920px and above) */
+      @media (min-width: 1920px) {
+        .elementor-5464 .elementor-element.elementor-element-b485948 {
+          background-image: url('/wp-content/uploads/2025/07/bussiness-banner-1-2048x853.webp');
+        }
+      }
+      
+      /* Large Desktop (1550px - 1919px) */
+      @media (min-width: 1550px) and (max-width: 1919px) {
+        .elementor-5464 .elementor-element.elementor-element-b485948 {
+          background-image: url('/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp');
+        }
+      }
+      
+      /* Desktop and Large Tablets (1025px - 1549px) */
+      @media (min-width: 1025px) and (max-width: 1549px) {
+        .elementor-5464 .elementor-element.elementor-element-b485948 {
+          background-image: url('/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp');
+        }
+      }
+      
+      /* Tablets (768px - 1024px) */
+      @media (min-width: 768px) and (max-width: 1024px) {
+        .elementor-5464 .elementor-element.elementor-element-b485948 {
+          background-image: url('/wp-content/uploads/2025/07/bussiness-banner-1-2000x1200.webp');
+          min-height: 550px;
+          padding: 80px 0;
+        }
+        .elementor-5464 .elementor-element.elementor-element-c00bf29 .elementor-heading-title {
+          font-size: 48px;
+        }
+        .elementor-5464 .elementor-element.elementor-element-a11fdc0 {
+          font-size: 18px;
+        }
+        .elementor-5464 .elementor-element.elementor-element-b485948 .elementor-container {
+          padding-top: 80px !important;
+        }
+      }
+      
+      /* Mobile Devices (480px - 767px) */
       @media (max-width: 767px) {
         .elementor-5464 .elementor-element.elementor-element-b485948 {
+          background-image: url('/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp');
           min-height: 500px;
           padding: 60px 0;
+          align-items: flex-start !important;
+        }
+        .elementor-5464 .elementor-element.elementor-element-b485948 .elementor-container {
+          padding-top: 70px !important;
+          padding-left: 15px !important;
+          padding-right: 15px !important;
         }
         .elementor-5464 .elementor-element.elementor-element-c00bf29 .elementor-heading-title {
           font-size: 36px;
+          text-align: center !important;
         }
         .elementor-5464 .elementor-element.elementor-element-a11fdc0 {
           font-size: 16px;
+          text-align: center !important;
+        }
+        .elementor-5464 .elementor-element.elementor-element-a11fdc0 p {
+          text-align: center !important;
+        }
+        .elementor-5464 .elementor-element.elementor-element-bc8f999 {
+          text-align: center !important;
         }
         .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button {
           font-size: 16px;
           padding: 12px 30px;
+          margin: 0 auto;
+        }
+        .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button-wrapper {
+          display: flex;
+          justify-content: center;
         }
       }
-      @media (min-width: 768px) and (max-width: 1024px) {
+      
+      /* Small Mobile (480px and below) */
+      @media (max-width: 480px) {
+        .elementor-5464 .elementor-element.elementor-element-b485948 {
+          min-height: 450px;
+          padding: 50px 0;
+        }
+        .elementor-5464 .elementor-element.elementor-element-b485948 .elementor-container {
+          padding-top: 60px !important;
+          padding-left: 12px !important;
+          padding-right: 12px !important;
+        }
         .elementor-5464 .elementor-element.elementor-element-c00bf29 .elementor-heading-title {
-          font-size: 48px;
+          font-size: 32px;
+        }
+        .elementor-5464 .elementor-element.elementor-element-a11fdc0 {
+          font-size: 15px;
+        }
+        .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button {
+          font-size: 14px;
+          padding: 10px 25px;
+        }
+      }
+      
+      /* Very Small Mobile (360px and below) */
+      @media (max-width: 360px) {
+        .elementor-5464 .elementor-element.elementor-element-b485948 {
+          min-height: 400px;
+          padding: 40px 0;
+        }
+        .elementor-5464 .elementor-element.elementor-element-b485948 .elementor-container {
+          padding-top: 50px !important;
+          padding-left: 10px !important;
+          padding-right: 10px !important;
+        }
+        .elementor-5464 .elementor-element.elementor-element-c00bf29 .elementor-heading-title {
+          font-size: 28px;
+        }
+        .elementor-5464 .elementor-element.elementor-element-a11fdc0 {
+          font-size: 14px;
+        }
+        .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button {
+          font-size: 13px;
+          padding: 10px 20px;
         }
       }
     `
@@ -310,12 +411,28 @@ const BusinessCommute = () => {
               type: 'bullets',
             },
             breakpoints: {
+              1920: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+              1550: {
+                slidesPerView: 3,
+                spaceBetween: 25,
+              },
               1024: {
                 slidesPerView: 2,
-                spaceBetween: 15,
+                spaceBetween: 20,
               },
               768: {
                 slidesPerView: 2,
+                spaceBetween: 15,
+              },
+              600: {
+                slidesPerView: 1,
+                spaceBetween: 15,
+              },
+              480: {
+                slidesPerView: 1,
                 spaceBetween: 12,
               },
               0: {
