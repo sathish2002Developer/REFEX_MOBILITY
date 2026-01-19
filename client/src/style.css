@@ -309,7 +309,20 @@ header a.navbar-brand img{
     -webkit-box-align: center;
           -ms-flex-align: center;
               align-items: center;
+              display: flex !important;
+              flex-wrap: nowrap !important;
+              white-space: nowrap !important;
   }
+  
+  /* Ensure counter number, prefix, and suffix stay on one line */
+  .count-impact .elementor-counter .elementor-counter-number,
+  .count-impact .elementor-counter .elementor-counter-number-prefix,
+  .count-impact .elementor-counter .elementor-counter-number-suffix {
+    display: inline !important;
+    white-space: nowrap !important;
+    vertical-align: baseline !important;
+  }
+  
    .count-impact .elementor-counter .elementor-counter-number-suffix{
           font-size: 30px;
   }
@@ -1008,24 +1021,31 @@ header a.navbar-brand img{
               .whychoose-sec i.eicon-chevron-left, i.eicon-chevron-right{
                   display:none;
               }
-            .count-impact .elementor-counter-number-wrapper {
+           .count-impact .elementor-counter-number-wrapper {
                  display: flex !important;
                  flex-wrap: nowrap !important;
                  align-items: baseline !important;
                  justify-content: center !important;
-                 line-height: 31px !important;
+                 line-height: 1.2 !important;
                  white-space: nowrap !important;
+                 gap: 0 !important;
       }
               .count-impact .elementor-counter .elementor-counter-number,
               .count-impact .elementor-counter .elementor-counter-number-prefix,
               .count-impact .elementor-counter .elementor-counter-number-suffix {
                   white-space: nowrap !important;
-                  display: inline-block !important;
+                  display: inline !important;
+                  vertical-align: baseline !important;
               }
               .count-impact .elementor-counter .elementor-counter-number-suffix {
-      font-size: 14px;
-                  text-align: center;
-  }
+                  font-size: 14px !important;
+                  text-align: center !important;
+                  margin-left: 2px !important;
+              }
+              .count-impact .elementor-counter .elementor-counter-number-prefix {
+                  font-size: 14px !important;
+                  margin-right: 2px !important;
+              }
               .count-impact .elementor-counter .elementor-counter-title {
                   white-space: nowrap !important;
                   display: block !important;
@@ -1036,10 +1056,34 @@ header a.navbar-brand img{
                   .count-impact .elementor-counter .elementor-counter-title {
                       font-size: 13px !important;
                   }
+                  .count-impact .elementor-counter-number-wrapper {
+                      flex-wrap: nowrap !important;
+                      white-space: nowrap !important;
+                  }
+                  .count-impact .elementor-counter .elementor-counter-number-suffix {
+                      font-size: 12px !important;
+                  }
               }
               @media (max-width: 480px) {
                   .count-impact .elementor-counter .elementor-counter-title {
-                      font-size: 12px !important;
+                      font-size: 11px !important;
+                  }
+                  .count-impact .elementor-counter .elementor-counter-number-suffix {
+                      font-size: 10px !important;
+                  }
+                  .count-impact .elementor-counter .elementor-counter-number {
+                      font-size: 24px !important;
+                  }
+              }
+              @media (max-width: 360px) {
+                  .count-impact .elementor-counter .elementor-counter-title {
+                      font-size: 10px !important;
+                  }
+                  .count-impact .elementor-counter .elementor-counter-number-suffix {
+                      font-size: 9px !important;
+                  }
+                  .count-impact .elementor-counter .elementor-counter-number {
+                      font-size: 20px !important;
                   }
               }
   
@@ -1428,15 +1472,19 @@ header a.navbar-brand img{
       align-items: baseline !important;
       flex-wrap: nowrap !important;
       width: 100% !important;
+      white-space: nowrap !important;
+      gap: 3px !important;
     }
     
-    /* Center all counter number elements */
+    /* Center all counter number elements and keep on one line */
     .count-impact .elementor-counter-number,
     .count-impact .elementor-counter-number-prefix,
     .count-impact .elementor-counter-number-suffix,
     .count-impact .text-left .elementor-counter-number,
     .count-impact .text-left .elementor-counter-number-suffix {
       text-align: center !important;
+      display: inline !important;
+      white-space: nowrap !important;
     }
     
     .count-impact .elementor-counter-number {
@@ -1446,6 +1494,11 @@ header a.navbar-brand img{
     
     .count-impact .elementor-counter-number-suffix {
       font-size: 16px !important;
+      display: inline !important;
+    }
+    
+    .count-impact .elementor-counter-number-prefix {
+      display: inline !important;
     }
     
     .count-impact .impact-counter-box {
@@ -1569,31 +1622,37 @@ header a.navbar-brand img{
       display: flex !important;
       align-items: baseline !important;
       width: 100% !important;
+      flex-wrap: nowrap !important;
+      white-space: nowrap !important;
+      gap: 2px !important;
     }
     
     .count-impact .elementor-counter-number {
       font-size: 32px !important;
       line-height: 1.2 !important;
+      display: inline !important;
+      white-space: nowrap !important;
     }
     
     .count-impact .elementor-counter-number-suffix {
       font-size: 14px !important;
+      display: inline !important;
+      white-space: nowrap !important;
+    }
+    
+    .count-impact .elementor-counter-number-prefix {
+      display: inline !important;
+      white-space: nowrap !important;
     }
     
     .count-impact .impact-counter-box {
       margin-bottom: 25px !important;
       padding: 0 5px !important;
     }
-    
-    .count-impact .elementor-counter-number-wrapper {
-      line-height: 1.1 !important;
-      flex-wrap: wrap !important;
-      justify-content: center !important;
-    }
   }
   
-  /* Very Small Mobile (max-width: 360px) */
-  @media (max-width: 360px) {
+/* Very Small Mobile (max-width: 360px) */
+@media (max-width: 360px) {
     .impact-sec .elementor-image-box-title {
       font-size: 22px !important;
     }
@@ -1604,7 +1663,9 @@ header a.navbar-brand img{
     }
     
     .count-impact .elementor-counter-number {
-      font-size: 28px !important;
+      font-size: 26px !important;
+      display: inline !important;
+      white-space: nowrap !important;
     }
     
     .count-impact .elementor-counter-title {
@@ -1612,7 +1673,20 @@ header a.navbar-brand img{
     }
     
     .count-impact .elementor-counter-number-suffix {
-      font-size: 13px !important;
+      font-size: 11px !important;
+      display: inline !important;
+      white-space: nowrap !important;
+    }
+    
+    .count-impact .elementor-counter-number-prefix {
+      display: inline !important;
+      white-space: nowrap !important;
+    }
+    
+    .count-impact .elementor-counter-number-wrapper {
+      flex-wrap: nowrap !important;
+      white-space: nowrap !important;
+      gap: 2px !important;
     }
   }
   
@@ -4784,7 +4858,8 @@ header a.navbar-brand img{
 
   /* Step sections alignment */
   .get-started .elementor-inner-section {
-    margin-bottom: 30px !important;
+    margin-bottom: 25px !important;
+    margin-top: 0 !important;
   }
 
   .get-started .elementor-inner-section:last-child {
@@ -4795,11 +4870,15 @@ header a.navbar-brand img{
     display: flex !important;
     align-items: flex-start !important;
     gap: 20px !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .get-started .elementor-inner-section .elementor-column {
     display: flex !important;
     align-items: flex-start !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .get-started .elementor-inner-section .elementor-col-50:first-child {
@@ -4808,6 +4887,22 @@ header a.navbar-brand img{
 
   .get-started .elementor-inner-section .elementor-col-50:last-child {
     flex: 1 !important;
+  }
+  
+  /* Ensure consistent spacing for all image box content in get-started */
+  .get-started .elementor-image-box-content {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .get-started .elementor-image-box-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .get-started .elementor-widget-wrap {
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   /* Documents Required Section */

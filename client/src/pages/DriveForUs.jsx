@@ -550,7 +550,7 @@ const DriveForUs = () => {
                                                   <div className="elementor-image-box-wrapper">
                                                     <div className="elementor-image-box-content">
                                                       <h3 className="elementor-image-box-title">Get a Call from Our Team</h3>
-                                                      <p className="elementor-image-box-descri toption">We'll reach out to guide you through the next steps.</p>
+                                                      <p className="elementor-image-box-description">We'll reach out to guide you through the next steps.</p>
                                                     </div>
                                                   </div>
                                                 </div>
