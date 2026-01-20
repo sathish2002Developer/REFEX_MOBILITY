@@ -605,7 +605,7 @@ const WebsiteHome = () => {
                                               <div className="elementor-counter-title">Happy Riders</div>
                                               <div className="elementor-counter-number-wrapper">
                                                 <span className="elementor-counter-number-prefix"></span>
-                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="25000" data-from-value="0">25000</span>
+                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="50000" data-from-value="0">50000</span>
                                                 <span className="elementor-counter-number-suffix">+</span>
                                               </div>
                                             </div>
