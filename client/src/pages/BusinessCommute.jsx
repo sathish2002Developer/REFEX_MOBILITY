@@ -369,7 +369,7 @@ const BusinessCommute = () => {
         if (clientLogosSwiper && !clientLogosSwiper.swiper) {
           new window.Swiper(clientLogosSwiper, {
             slidesPerView: 5,
-            spaceBetween: 25,
+            spaceBetween: 15,
             speed: 500,
             autoplay: {
               delay: 1000,
@@ -377,17 +377,25 @@ const BusinessCommute = () => {
             },
             loop: true,
             breakpoints: {
+              1920: {
+                slidesPerView: 5,
+                spaceBetween: 15,
+              },
               1024: {
-                slidesPerView: 4,
+                slidesPerView: 5,
                 spaceBetween: 10,
               },
               768: {
+                slidesPerView: 4,
+                spaceBetween: 8,
+              },
+              480: {
                 slidesPerView: 3,
-                spaceBetween: 0,
+                spaceBetween: 6,
               },
               0: {
-                slidesPerView: 3,
-                spaceBetween: 0,
+                slidesPerView: 2,
+                spaceBetween: 6,
               }
             }
           })

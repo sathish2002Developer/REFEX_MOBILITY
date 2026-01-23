@@ -288,9 +288,11 @@
 }
 
 .business-commute .elementor-element-5db7e2b .client-logos-swiper {
+  width: 100% !important;
   height: auto !important;
   min-height: auto !important;
   padding: 10px 0 !important;
+  overflow: hidden !important;
 }
 
 .business-commute .elementor-element-5db7e2b .swiper-wrapper {
@@ -300,7 +302,6 @@
 }
 
 .business-commute .elementor-element-5db7e2b .swiper-slide {
-  width: calc(33.333% - 30px) !important;
   height: auto !important;
   min-height: auto !important;
   display: flex !important;
@@ -308,16 +309,16 @@
   justify-content: center !important;
   padding: 5px !important;
   box-sizing: border-box !important;
-  min-width: 200px !important;
+  /* width controlled by Swiper slidesPerView - no fixed width/min-width */
 }
 
 .business-commute .elementor-element-5db7e2b .elementor-carousel-image {
   width: 100% !important;
-  max-width: 220px !important;
+  max-width: 150px !important;
   height: 100px !important;
   max-height: 100px !important;
   min-height: 100px !important;
-  min-width: 180px !important;
+  min-width: 90px !important;
   background-size: contain !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
@@ -373,9 +374,9 @@
 
 /* Lemon Tree Hotels logo - increase height */
 .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Lemon Tree Hotels"] {
-  height: 160px !important;
-  max-height: 160px !important;
-  min-height: 160px !important;
+  height: 200px !important;
+  max-height: 200px !important;
+  min-height: 200px !important;
 }
 
 @media (max-width: 1024px) {
@@ -468,7 +469,6 @@
 
 @media (max-width: 1024px) {
   .business-commute .elementor-element-5db7e2b .swiper-slide {
-    width: calc(50% - 20px) !important;
     padding: 5px !important;
   }
 
@@ -498,14 +498,13 @@
   }
 
   .business-commute .elementor-element-5db7e2b .swiper-slide {
-    width: 100% !important;
     padding: 3px !important;
   }
   
   .business-commute .elementor-element-5db7e2b .elementor-carousel-image {
     width: 100% !important;
     max-width: 150px !important;
-    min-width: 120px !important;
+    min-width: 80px !important;
     height: 70px !important;
     max-height: 70px !important;
     min-height: 70px !important;
@@ -3907,7 +3906,7 @@
   align-items: stretch !important;
   gap: 0 !important;
   padding: 0 !important;
-}
+} 
 
 .business-commute .elementor-element-get-started .elementor-container,
 .business-commute .elementor-element-get-started .elementor-column,
