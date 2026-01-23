@@ -273,13 +273,13 @@
 
 /* Client Logos Carousel Section - Reduce Height */
 .business-commute .elementor-element-5db7e2b {
-  padding: 40px 0 !important;
+  padding: 20px 0 !important;
   min-height: auto !important;
   height: auto !important;
 }
 
 .business-commute .elementor-element-5db7e2b .elementor-container {
-  padding: 0 15px !important;
+  padding: 0 8px !important;
 }
 
 .business-commute .elementor-element-5db7e2b .elementor-widget-container {
@@ -290,7 +290,7 @@
 .business-commute .elementor-element-5db7e2b .client-logos-swiper {
   height: auto !important;
   min-height: auto !important;
-  padding: 20px 0 !important;
+  padding: 10px 0 !important;
 }
 
 .business-commute .elementor-element-5db7e2b .swiper-wrapper {
@@ -306,55 +306,211 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 20px !important;
+  padding: 5px !important;
   box-sizing: border-box !important;
+  min-width: 200px !important;
 }
 
 .business-commute .elementor-element-5db7e2b .elementor-carousel-image {
   width: 100% !important;
+  max-width: 220px !important;
   height: 100px !important;
   max-height: 100px !important;
   min-height: 100px !important;
+  min-width: 180px !important;
   background-size: contain !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
   padding: 0 !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
   display: block !important;
   background-color: transparent !important;
   border-radius: 0 !important;
   box-shadow: none !important;
 }
 
+/* London Stock Exchange logo - increase height */
+.business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="London Stock Exchange"] {
+  height: 160px !important;
+  max-height: 160px !important;
+  min-height: 160px !important;
+}
+
+/* J.P. Morgan logo - increase height */
+.business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="J.P. Morgan"] {
+  height: 160px !important;
+  max-height: 160px !important;
+  min-height: 160px !important;
+}
+
+/* Samsung logo - increase height */
+.business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Samsung"] {
+  height: 160px !important;
+  max-height: 160px !important;
+  min-height: 160px !important;
+}
+
+/* Titan logo - increase height */
+.business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Titan"] {
+  height: 160px !important;
+  max-height: 160px !important;
+  min-height: 160px !important;
+}
+
+/* Raintree Hotels logo - increase height */
+.business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Raintree Hotels"] {
+  height: 160px !important;
+  max-height: 160px !important;
+  min-height: 160px !important;
+}
+
+/* Nestlé logo - increase height */
+.business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Nestlé"] {
+  height: 160px !important;
+  max-height: 160px !important;
+  min-height: 160px !important;
+}
+
+/* Lemon Tree Hotels logo - increase height */
+.business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Lemon Tree Hotels"] {
+  height: 160px !important;
+  max-height: 160px !important;
+  min-height: 160px !important;
+}
+
+@media (max-width: 1024px) {
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="London Stock Exchange"] {
+    height: 130px !important;
+    max-height: 130px !important;
+    min-height: 130px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="J.P. Morgan"] {
+    height: 130px !important;
+    max-height: 130px !important;
+    min-height: 130px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Samsung"] {
+    height: 130px !important;
+    max-height: 130px !important;
+    min-height: 130px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Titan"] {
+    height: 130px !important;
+    max-height: 130px !important;
+    min-height: 130px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Raintree Hotels"] {
+    height: 130px !important;
+    max-height: 130px !important;
+    min-height: 130px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Nestlé"] {
+    height: 130px !important;
+    max-height: 130px !important;
+    min-height: 130px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Lemon Tree Hotels"] {
+    height: 130px !important;
+    max-height: 130px !important;
+    min-height: 130px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="London Stock Exchange"] {
+    height: 110px !important;
+    max-height: 110px !important;
+    min-height: 110px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="J.P. Morgan"] {
+    height: 110px !important;
+    max-height: 110px !important;
+    min-height: 110px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Samsung"] {
+    height: 110px !important;
+    max-height: 110px !important;
+    min-height: 110px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Titan"] {
+    height: 110px !important;
+    max-height: 110px !important;
+    min-height: 110px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Raintree Hotels"] {
+    height: 110px !important;
+    max-height: 110px !important;
+    min-height: 110px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Nestlé"] {
+    height: 110px !important;
+    max-height: 110px !important;
+    min-height: 110px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-carousel-image[aria-label="Lemon Tree Hotels"] {
+    height: 110px !important;
+    max-height: 110px !important;
+    min-height: 110px !important;
+  }
+}
+
 @media (max-width: 1024px) {
   .business-commute .elementor-element-5db7e2b .swiper-slide {
     width: calc(50% - 20px) !important;
-    padding: 10px !important;
+    padding: 5px !important;
   }
 
   .business-commute .elementor-element-5db7e2b .elementor-carousel-image {
+    width: 100% !important;
+    max-width: 180px !important;
+    min-width: 150px !important;
     height: 90px !important;
     max-height: 90px !important;
     min-height: 90px !important;
     padding: 0 !important;
+    margin: 0 auto !important;
   }
 }
 
 @media (max-width: 768px) {
   .business-commute .elementor-element-5db7e2b {
-    padding: 20px 0 !important;
+    padding: 10px 0 !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .elementor-container {
+    padding: 0 5px !important;
+  }
+  
+  .business-commute .elementor-element-5db7e2b .client-logos-swiper {
+    padding: 8px 0 !important;
   }
 
   .business-commute .elementor-element-5db7e2b .swiper-slide {
     width: 100% !important;
-    padding: 5px !important;
+    padding: 3px !important;
   }
   
   .business-commute .elementor-element-5db7e2b .elementor-carousel-image {
+    width: 100% !important;
+    max-width: 150px !important;
+    min-width: 120px !important;
     height: 70px !important;
     max-height: 70px !important;
     min-height: 70px !important;
     padding: 0 !important;
+    margin: 0 auto !important;
   }
   
   /* Reliable Solution for every Industry Section - Mobile */
@@ -1974,6 +2130,7 @@
   box-sizing: border-box !important;
   visibility: visible !important;
   opacity: 1 !important;
+  overflow: hidden !important;
 }
 
 .whychoose-sec.bussiness .elementor-testimonial__image img,
@@ -1988,6 +2145,9 @@
   filter: none !important;
   visibility: visible !important;
   opacity: 1 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
 }
 
 .whychoose-sec.bussiness .elementor-testimonial__content,
@@ -2265,6 +2425,8 @@
     width: 110px !important;
     height: 110px !important;
     padding: 18px !important;
+    overflow: hidden !important;
+    border-radius: 50% !important;
   }
   
   .whychoose-sec.bussiness .elementor-testimonial__image img,
@@ -2273,6 +2435,9 @@
     height: 75px !important;
     max-width: 75px !important;
     max-height: 75px !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
   }
   
   .whychoose-sec.bussiness .elementor-testimonial__text,
@@ -2749,6 +2914,7 @@
     align-items: center !important;
     visibility: visible !important;
     opacity: 1 !important;
+    overflow: hidden !important;
   }
 
   .whychoose-sec.bussiness .elementor-testimonial__image img,
@@ -2760,6 +2926,9 @@
     object-fit: contain !important;
     display: block !important;
     margin: 0 auto !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
     visibility: visible !important;
     opacity: 1 !important;
   }
@@ -2876,6 +3045,8 @@
     height: 100px !important;
     padding: 15px !important;
     margin-bottom: 12px !important;
+    overflow: hidden !important;
+    border-radius: 50% !important;
   }
 
   .whychoose-sec.bussiness .elementor-testimonial__image img,
@@ -2884,6 +3055,9 @@
     height: 70px !important;
     max-width: 70px !important;
     max-height: 70px !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
   }
 
   .whychoose-sec.bussiness .elementor-testimonial__text,

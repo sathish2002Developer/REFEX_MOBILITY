@@ -4681,13 +4681,14 @@ header a.navbar-brand img{
     margin: 0 auto !important;
     display: block !important;
     text-align: center !important;
-    width: 196px !important;
-    height: 196px !important;
+    width: 110px !important;
+    height: 110px !important;
     flex-shrink: 0 !important;
     background-color: #FFF5F4 !important;
-    border-radius: 15px !important;
-    padding: 20px !important;
+    border-radius: 50% !important;
+    padding: 15px !important;
     box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
   .whychoose-sec.drive-us .elementor-testimonial__image img {
@@ -4699,6 +4700,9 @@ header a.navbar-brand img{
     display: block !important;
     margin: 0 auto !important;
     filter: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
   }
 
   .whychoose-sec.drive-us .elementor-testimonial__content {
@@ -6295,19 +6299,25 @@ header a.navbar-brand img{
       margin: 0 auto !important;
       display: block !important;
       text-align: center !important;
-      width: 196px !important;
-      height: 196px !important;
+      width: 110px !important;
+      height: 110px !important;
       flex-shrink: 0 !important;
+      border-radius: 50% !important;
+      overflow: hidden !important;
+      padding: 15px !important;
     }
 
     .whychoose-sec.drive-us .elementor-testimonial__image img {
-      width: 196px !important;
-      height: 196px !important;
-      max-width: 196px !important;
-      max-height: 196px !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
       object-fit: contain !important;
       display: block !important;
       margin: 0 auto !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      padding: 0 !important;
     }
 
     .whychoose-sec.drive-us .elementor-testimonial__content {
@@ -6643,15 +6653,21 @@ header a.navbar-brand img{
     }
     
     .whychoose-sec.drive-us .elementor-testimonial__image {
-      width: 160px !important;
-      height: 160px !important;
+      width: 100px !important;
+      height: 100px !important;
+      border-radius: 50% !important;
+      overflow: hidden !important;
+      padding: 12px !important;
     }
     
     .whychoose-sec.drive-us .elementor-testimonial__image img {
-      width: 160px !important;
-      height: 160px !important;
-      max-width: 160px !important;
-      max-height: 160px !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      padding: 0 !important;
     }
     
     .whychoose-sec.drive-us .elementor-testimonial__text {
@@ -6932,15 +6948,21 @@ header a.navbar-brand img{
     }
     
     .whychoose-sec.drive-us .elementor-testimonial__image {
-      width: 140px !important;
-      height: 140px !important;
+      width: 90px !important;
+      height: 90px !important;
+      border-radius: 50% !important;
+      overflow: hidden !important;
+      padding: 10px !important;
     }
     
     .whychoose-sec.drive-us .elementor-testimonial__image img {
-      width: 140px !important;
-      height: 140px !important;
-      max-width: 140px !important;
-      max-height: 140px !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      padding: 0 !important;
     }
     
     .whychoose-sec.drive-us .elementor-testimonial__text {
