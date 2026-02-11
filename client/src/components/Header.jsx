@@ -50,8 +50,8 @@ const Header = () => {
               <nav className="navbar navbar-expand-lg navbar-light">
                 <Link className="navbar-brand" to="/">
                   <img 
-                    width="150" 
-                    height="106" 
+                    width="20" 
+                    height="90" 
                     className="img-fluid logo" 
                     src="https://refexmobility.com/wp-content/uploads/2025/07/heder-log.png" 
                     alt="refex mobility"

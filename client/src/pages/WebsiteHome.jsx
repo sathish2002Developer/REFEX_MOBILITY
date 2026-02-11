@@ -169,15 +169,15 @@ const WebsiteHome = () => {
     heroBgStyle.textContent = `
       .elementor-5677 .elementor-element.elementor-element-b485948:not(.elementor-motion-effects-element-type-background),
       .elementor-5677 .elementor-element.elementor-element-b485948 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
-        --wpr-bg-5d23b3ca-cc54-4132-afee-c75ea875315c: url('https://refexmobility.com/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
-        background-image: url('https://refexmobility.com/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
+        --wpr-bg-5d23b3ca-cc54-4132-afee-c75ea875315c: url('/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
+        background-image: url('/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
       }
       
       .main-banner-sec {
-        background-image: url('https://refexmobility.com/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
+        background-image: url('/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
@@ -186,16 +186,25 @@ const WebsiteHome = () => {
         align-items: center;
       }
       
-      @media (max-width: 768px) {
+      /* Extra Large Screens */
+      @media (min-width: 1920px) {
         .main-banner-sec {
-          background-image: url('https://refexmobility.com/wp-content/uploads/2025/07/home-mobile.png');
-          min-height: 500px;
+          background-image: url('/wp-content/uploads/2025/07/home-bg-image-1-2048x1065.webp');
         }
       }
       
+      /* Tablets */
       @media (min-width: 769px) and (max-width: 1024px) {
         .main-banner-sec {
-          background-image: url('https://refexmobility.com/wp-content/uploads/2025/07/home-bg-image.png');
+          background-image: url('/wp-content/uploads/2025/07/home-bg-image-1-2000x1200.webp');
+        }
+      }
+      
+      /* Mobile Devices */
+      @media (max-width: 768px) {
+        .main-banner-sec {
+          background-image: url('/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp');
+          min-height: 500px;
         }
       }
     `
@@ -203,8 +212,8 @@ const WebsiteHome = () => {
 
     // Load external scripts
     const scripts = [
-      'https://refexmobility.com/wp-content/themes/enerzee/assets/js/bootstrap.min.js',
-      'https://refexmobility.com/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js'
+      '/wp-content/themes/enerzee/assets/js/bootstrap.min.js',
+      '/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js'
     ]
 
     scripts.forEach(src => {
@@ -510,7 +519,7 @@ const WebsiteHome = () => {
                           data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
                           fetchPriority="high"
                           style={{
-                            backgroundImage: "url('https://refexmobility.com/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp')",
+                            backgroundImage: "url('/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp')",
                             backgroundSize: 'cover',
                             backgroundPosition: 'center center',
                             backgroundRepeat: 'no-repeat',
@@ -591,12 +600,12 @@ const WebsiteHome = () => {
                                     <div className="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-5100cab impact-counter-box" data-id="5100cab" data-element_type="column">
                                       <div className="elementor-widget-wrap elementor-element-populated">
                                         <div className="elementor-element elementor-element-bd6824b km-covered text-left elementor-widget elementor-widget-counter" data-id="bd6824b" data-element_type="widget" data-widget_type="counter.default">
-                                          <div className="elementor-widget-container" style={{width: '270px'}}>
+                                          <div className="elementor-widget-container">
                                             <div className="elementor-counter">
                                               <div className="elementor-counter-title">Happy Riders</div>
                                               <div className="elementor-counter-number-wrapper">
                                                 <span className="elementor-counter-number-prefix"></span>
-                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="25000" data-from-value="0">25000</span>
+                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="50000" data-from-value="0">50000</span>
                                                 <span className="elementor-counter-number-suffix">+</span>
                                               </div>
                                             </div>
@@ -607,12 +616,12 @@ const WebsiteHome = () => {
                                     <div className="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-4a50dd4 impact-counter-box" data-id="4a50dd4" data-element_type="column">
                                       <div className="elementor-widget-wrap elementor-element-populated">
                                         <div className="elementor-element elementor-element-93af9ec km-covered text-left elementor-widget elementor-widget-counter" data-id="93af9ec" data-element_type="widget" data-widget_type="counter.default">
-                                          <div className="elementor-widget-container" style={{width: '270px'}}>
+                                          <div className="elementor-widget-container">
                                             <div className="elementor-counter">
                                               <div className="elementor-counter-title">CO₂  Saved</div>
                                               <div className="elementor-counter-number-wrapper">
                                                 <span className="elementor-counter-number-prefix"></span>
-                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="2800" data-from-value="0">2800</span>
+                                                <span className="elementor-counter-number" data-duration="2000" data-to-value=" 5200" data-from-value="0"> 5200 </span>
                                                 <span className="elementor-counter-number-suffix"> Tonnes+</span>
                                               </div>
                                             </div>
@@ -623,13 +632,13 @@ const WebsiteHome = () => {
                                     <div className="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-aef092e impact-counter-box" data-id="aef092e" data-element_type="column">
                                       <div className="elementor-widget-wrap elementor-element-populated">
                                         <div className="elementor-element elementor-element-a61b893 km-covered text-left elementor-widget elementor-widget-counter" data-id="a61b893" data-element_type="widget" data-widget_type="counter.default">
-                                          <div className="elementor-widget-container" style={{width: '270px'}}>
+                                          <div className="elementor-widget-container">
                                             <div className="elementor-counter">
                                               <div className="elementor-counter-title">Kms Covered</div>
                                               <div className="elementor-counter-number-wrapper">
                                                 <span className="elementor-counter-number-prefix"></span>
-                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="43.6" data-from-value="0">4.6</span>
-                                                <span className="elementor-counter-number-suffix"> Million+</span>
+                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="8" data-from-value="0">8 </span>
+                                                <span className="elementor-counter-number-suffix"> Crore+</span>
                                               </div>
                                             </div>
                                           </div>
@@ -639,12 +648,12 @@ const WebsiteHome = () => {
                                     <div className="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-d8f9e9a impact-counter-box" data-id="d8f9e9a" data-element_type="column">
                                       <div className="elementor-widget-wrap elementor-element-populated">
                                         <div className="elementor-element elementor-element-e30c7b3 km-covered text-center elementor-widget elementor-widget-counter" data-id="e30c7b3" data-element_type="widget" data-widget_type="counter.default">
-                                          <div className="elementor-widget-container" style={{width: '270px'}}>
+                                          <div className="elementor-widget-container">
                                             <div className="elementor-counter">
                                               <div className="elementor-counter-title">Ltrs Of Fuel Saved</div>
                                               <div className="elementor-counter-number-wrapper">
                                                 <span className="elementor-counter-number-prefix"></span>
-                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="3.4" data-from-value="0">3.4</span>
+                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="6.36" data-from-value="0">6.36 </span>
                                                 <span className="elementor-counter-number-suffix"> Million+</span>
                                               </div>
                                             </div>
@@ -710,7 +719,7 @@ const WebsiteHome = () => {
                                                     width="196" 
                                                     height="196" 
                                                     decoding="async" 
-                                                    src="https://refexmobility.com/wp-content/uploads/2025/07/car-icons.png" 
+                                                    src="/wp-content/uploads/2025/07/car-icons.png" 
                                                     alt="Eco-Friendly Rides"
                                                   />
                                                 </div>
@@ -733,7 +742,7 @@ const WebsiteHome = () => {
                                                     width="196" 
                                                     height="196" 
                                                     decoding="async" 
-                                                    src="https://refexmobility.com/wp-content/uploads/2025/07/corporate-icon.png" 
+                                                    src="/wp-content/uploads/2025/07/corporate-icon.png" 
                                                     alt="Corporate Ride Solutions"
                                                   />
                                                 </div>
@@ -756,7 +765,7 @@ const WebsiteHome = () => {
                                                     width="196" 
                                                     height="196" 
                                                     decoding="async" 
-                                                    src="https://refexmobility.com/wp-content/uploads/2025/07/verified-icon.png" 
+                                                    src="/wp-content/uploads/2025/07/verified-icon.png" 
                                                     alt="Verified and Trained Drivers"
                                                   />
                                                 </div>
@@ -779,7 +788,7 @@ const WebsiteHome = () => {
                                                     width="196" 
                                                     height="196" 
                                                     decoding="async" 
-                                                    src="https://refexmobility.com/wp-content/uploads/2025/07/safty-icon.png" 
+                                                    src="/wp-content/uploads/2025/07/safty-icon.png" 
                                                     alt="Safety and Hygiene Protocols"
                                                   />
                                                 </div>
@@ -957,7 +966,7 @@ const WebsiteHome = () => {
                                                                           width="430" 
                                                                           height="350" 
                                                                           decoding="async" 
-                                                                          src="https://refexmobility.com/wp-content/uploads/elementor/thumbs/corpotate-img-r8jucgvni2gpbsuyfk3lfw5sh886uge24wkr57tjxo.png" 
+                                                                          src="/wp-content/uploads/elementor/thumbs/corpotate-img-r8jucgvni2gpbsuyfk3lfw5sh886uge24wkr57tjxo.png" 
                                                                           title="corpotate-img" 
                                                                           alt="corpotate-img" 
                                                                           loading="lazy" 
@@ -1021,7 +1030,7 @@ const WebsiteHome = () => {
                                                                           width="430" 
                                                                           height="350" 
                                                                           decoding="async" 
-                                                                          src="https://refexmobility.com/wp-content/uploads/elementor/thumbs/airports-r8lh8mocw6sys37h6icg1dm0u481sua6mq756q8j70.png" 
+                                                                          src="/wp-content/uploads/elementor/thumbs/airports-r8lh8mocw6sys37h6icg1dm0u481sua6mq756q8j70.png" 
                                                                           title="airports" 
                                                                           alt="airports" 
                                                                           loading="lazy" 
@@ -1085,7 +1094,7 @@ const WebsiteHome = () => {
                                                                           width="430" 
                                                                           height="350" 
                                                                           decoding="async" 
-                                                                          src="https://refexmobility.com/wp-content/uploads/elementor/thumbs/hourly_rentals-r8lhafj7zr9r16l9nsdpbf8ttpcdjyfnvn7natkd9o.png" 
+                                                                          src="/wp-content/uploads/elementor/thumbs/hourly_rentals-r8lhafj7zr9r16l9nsdpbf8ttpcdjyfnvn7natkd9o.png" 
                                                                           title="hourly_rentals" 
                                                                           alt="hourly_rentals" 
                                                                           loading="lazy" 
@@ -1149,7 +1158,7 @@ const WebsiteHome = () => {
                                                                           width="430" 
                                                                           height="350" 
                                                                           decoding="async" 
-                                                                          src="https://refexmobility.com/wp-content/uploads/elementor/thumbs/outstanding-img-r97rc31a974htbzyt30e7ra24cs8axu2myh0lsb9kc.png" 
+                                                                          src="/wp-content/uploads/elementor/thumbs/outstanding-img-r97rc31a974htbzyt30e7ra24cs8axu2myh0lsb9kc.png" 
                                                                           title="outstanding-img" 
                                                                           alt="outstanding-img" 
                                                                           loading="lazy" 
@@ -1236,7 +1245,7 @@ const WebsiteHome = () => {
                                                             width="400" 
                                                             height="400" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/banglore-img.png" 
+                                                            src="/wp-content/uploads/2025/07/banglore-img.png" 
                                                             alt="Bangalore"
                                                             loading="lazy"
                                                           />
@@ -1257,7 +1266,7 @@ const WebsiteHome = () => {
                                                             width="400" 
                                                             height="400" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/hydrabad-img.png" 
+                                                            src="/wp-content/uploads/2025/07/hydrabad-img.png" 
                                                             alt="Hyderabad"
                                                             loading="lazy"
                                                           />
@@ -1278,7 +1287,7 @@ const WebsiteHome = () => {
                                                             width="408" 
                                                             height="408" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/delhi-img.png" 
+                                                            src="/wp-content/uploads/2025/07/delhi-img.png" 
                                                             alt="Delhi"
                                                             loading="lazy"
                                                           />
@@ -1299,7 +1308,7 @@ const WebsiteHome = () => {
                                                             width="400" 
                                                             height="400" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/mumbai-img.png" 
+                                                            src="/wp-content/uploads/2025/07/mumbai-img.png" 
                                                             alt="Mumbai"
                                                             loading="lazy"
                                                           />
@@ -1320,7 +1329,7 @@ const WebsiteHome = () => {
                                                             width="408" 
                                                             height="408" 
                                                             decoding="async" 
-                                                            src="https://refexmobility.com/wp-content/uploads/2025/07/channai-img.png" 
+                                                            src="/wp-content/uploads/2025/07/channai-img.png" 
                                                             alt="Chennai"
                                                             loading="lazy"
                                                           />
@@ -1461,7 +1470,7 @@ const WebsiteHome = () => {
                                               decoding="async" 
                                               width="996" 
                                               height="756" 
-                                              src="https://refexmobility.com/wp-content/uploads/2025/07/about-imgss.png" 
+                                              src="/wp-content/uploads/2025/07/about-imgss.png" 
                                               className="attachment-full size-full wp-image-8642" 
                                               alt="About Refex Mobility"
                                               loading="lazy"

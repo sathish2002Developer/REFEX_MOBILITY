@@ -1,0 +1,1299 @@
+<!-- start Simple Custom CSS and JS -->
+<style type="text/css">
+/*main Menu*/
+header .navbar ul li.login-button a{background-color: #4daf40;
+color: #fff;
+padding-left: 10px;
+padding-right: 10px;
+display: block;}
+
+header .navbar-light .navbar-brand img.logo{width:auto!important;}
+
+#our-impact-pointers{
+	max-width: 250px;
+}
+.co2-saved .elementor-counter-number-prefix{
+	background: url('https://eveelz.in/wp-content/uploads/2023/06/co2-saved.png');
+	background-repeat: no-repeat;
+	width: 50px;
+  height: 50px;
+  background-size: contain;
+	max-width: 50px;
+  margin-right: 10px;
+}
+#our-impact-pointers .elementor-counter .elementor-counter-number-wrapper, .elementor-counter .elementor-counter-number-wrapper{
+	-webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+/* .km-covered .elementor-counter-number-prefix{
+	background: url('https://eveelz.in/wp-content/uploads/2023/06/km-covered.png');
+	background-repeat: no-repeat;
+	width: 50px;
+  height: 50px;
+  background-size: contain;
+	max-width: 50px;
+  margin-right: 10px;
+} */
+/* .trees-saved .elementor-counter-number-prefix{
+	background: url('https://eveelz.in/wp-content/uploads/2023/06/trees-saved.png');
+	background-repeat: no-repeat;
+	width: 50px;
+  height: 50px;
+  background-size: contain;
+	max-width: 50px;
+  margin-right: 10px;
+} */
+/* .electricity-used .elementor-counter-number-prefix{
+	background: url('https://eveelz.in/wp-content/uploads/2023/06/electricity-used.png');
+	background-repeat: no-repeat;
+	width: 50px;
+  height: 50px;
+  background-size: contain;
+	max-width: 50px;
+  margin-right: 10px;
+}
+.people-transported .elementor-counter-number-prefix{
+	background: url('https://eveelz.in/wp-content/uploads/2023/06/people-transported.png');
+	background-repeat: no-repeat;
+	width: 50px;
+  height: 50px;
+  background-size: contain;
+	max-width: 50px;
+  margin-right: 10px;
+}
+.fuel-saved .elementor-counter-number-prefix{
+	background: url('https://eveelz.in/wp-content/uploads/2023/06/fuel-saved.png');
+	background-repeat: no-repeat;
+	width: 50px;
+  height: 50px;
+  background-size: contain;
+	max-width: 50px;
+  margin-right: 10px;
+}
+ */
+.animated-image .elementor-widget-container{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+		width: 100%;
+}
+.animated-car video{
+		-o-object-fit: contain !important;
+		object-fit: contain !important;
+		background-color: #ffffff !important;
+}
+.icon-list-custom>div{
+	  background: white;
+    box-shadow: 1px 2px 4px #dfdfdf;
+    padding: 10px 15px;
+		margin-bottom: 15px !important;
+}
+.iq-breadcrumb-one{
+		padding-bottom: 30px !important;
+}
+.iq-breadcrumb-one .title{
+		font-size: 1.7em !important;
+}
+/* .content-area .site-main{
+		padding-top: 20px !important;
+} */
+.wp-forms-submit{
+		color: var(--white-color) !important;
+    background: var(--primary-color) !important;
+    cursor: pointer !important;
+    margin-bottom: 0 !important;
+    height: auto !important;
+    padding: 8px 32px !important;
+    font-size: 1em !important;
+    line-height: 2 !important;
+    border: none !important;
+    position: relative !important;
+    display: inline-block !important;
+    width: auto !important;
+    -webkit-border-radius: 5px !important;
+    -moz-border-radius: 5px !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    transition: all 0.5s ease-in-out !important;
+    transition: all 0.5s ease-in-out !important;
+    -moz-transition: all 0.5s ease-in-out !important;
+    -ms-transition: all 0.5s ease-in-out !important;
+    -o-transition: all 0.5s ease-in-out !important;
+    -webkit-transition: all 0.5s ease-in-out !important;
+}
+.wp-forms-submit-green{
+		background: #4daf40 !important;
+}
+div.wpforms-container-full {
+    margin: 0px auto !important;
+}
+.getintouch-form .wpforms-submit-container{
+	  padding: 0px !important;
+		margin: 0px !important;
+}
+.getintouch-form .wpforms-field-container{
+	  display: initial !important;
+    justify-content: initial !important;
+}
+.getintouch-form .wpforms-field-email{
+		padding: 0px !important;
+}
+.getintouch-form em.wpforms-error{
+		display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+/*Footer Top Bar*/
+.footer-topbar{display:none;}
+
+/*Contact us page*/
+.contact-box .iq-icon{min-width:32px;}
+
+/*Home Page*/
+.impact-counter-box .text-left .elementor-counter-title{text-align:left!important; margin-top:10px;}
+.counter-box .c-value .timer-details .timer {
+    position: relative;
+}
+.counter-box .c-value .timer-details .timer:after {
+    content: "k";
+}
+
+
+@media only screen and (max-width: 600px) {
+		.wpforms-container.inline-fields .wpforms-form {
+			-webkit-box-orient: vertical;
+    	-webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+			gap: 10px;
+		}
+	.getintouch-form .wpforms-field-container, .getintouch-form .wpforms-submit-container{
+		width: auto !important;
+	}
+}
+div.wpforms-container-full button[type=submit]:focus:after{
+	border: none !important;
+}
+
+/*Contact Page*/
+.location-address .contact-box .contact-detail p{display:none;}
+
+
+.booking-cancel ul{
+	display:inline-block;
+}
+.booking-cancel ul li {
+    line-height: 30px;
+    padding-bottom: 15px;
+}
+
+
+.table-tariff th{
+	color:#000;
+	    text-align: left;
+	font-size: 18px;
+}
+.table-tariff td{
+	color:#000;
+	    text-align: left;
+	font-size: 15px;
+}
+
+header .navbar .sub-main .blue-btn.button {
+    padding: 8px 20px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    border-radius: 0px;
+    background-color: #4daf40;
+	    border-radius: 5px;
+	height:50px;
+		
+}
+
+header .navbar ul li a, header .navbar .sub-main ul.shop_list .blue-btn.button a{
+	font-size: 15px;
+}
+
+header .navbar ul li{
+	margin-right: 20px;
+}
+
+header ul.shop_list{
+	    margin-left: 10px;
+}
+
+.dialog-message .elementor-lightbox-prevent-close{
+	background-color: transparent;
+}
+
+
+header.menu-sticky .navbar ul li:last-child a:hover{
+	color:#fff!important;
+}
+
+
+
+header .navbar ul li.login-button a{
+	line-height: 32px;
+    padding: 8px 20px;
+	    border-radius: 5px;	
+}
+
+
+@media (max-width: 992px){
+	.header .navbar .sub-main .blue-btn.button{
+			padding: 21px 20px!important;
+		}
+}
+
+
+body{
+		font-family: 'Poppins !important';
+}
+:root {
+		--primary-color: #f4553b;}
+
+/*main Menu*/
+.admin-bar header{
+		padding:6px 0;
+}
+.main-banner-sec{
+		
+}
+header .navbar ul li.login-button a{background-color: #4daf40;
+color: #fff;
+padding-left: 10px;
+padding-right: 10px;
+display: block;}
+
+header .navbar-light .navbar-brand img.logo{width:auto!important;}
+
+#our-impact-pointers{
+	max-width: 250px;
+}
+.co2-saved .elementor-counter-number-prefix{
+	background: url('https://eveelz.in/wp-content/uploads/2023/06/co2-saved.png');
+	background-repeat: no-repeat;
+	width: 50px;
+  height: 50px;
+  background-size: contain;
+	max-width: 50px;
+  margin-right: 10px;
+}
+#our-impact-pointers .elementor-counter .elementor-counter-number-wrapper, .elementor-counter .elementor-counter-number-wrapper{
+	-webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+ .count-impact .elementor-counter .elementor-counter-number-suffix{
+		    font-size: 30px;
+}
+/* .km-covered .elementor-counter-number-prefix{
+	background: url('https://eveelz.in/wp-content/uploads/2023/06/km-covered.png');
+	background-repeat: no-repeat;
+	width: 50px;
+  height: 50px;
+  background-size: contain;
+	max-width: 50px;
+  margin-right: 10px;
+} */
+/* .trees-saved .elementor-counter-number-prefix{
+	background: url('https://eveelz.in/wp-content/uploads/2023/06/trees-saved.png');
+	background-repeat: no-repeat;
+	width: 50px;
+  height: 50px;
+  background-size: contain;
+	max-width: 50px;
+  margin-right: 10px;
+} */
+/* .electricity-used .elementor-counter-number-prefix{
+	background: url('https://eveelz.in/wp-content/uploads/2023/06/electricity-used.png');
+	background-repeat: no-repeat;
+	width: 50px;
+  height: 50px;
+  background-size: contain;
+	max-width: 50px;
+  margin-right: 10px;
+}
+.people-transported .elementor-counter-number-prefix{
+	background: url('https://eveelz.in/wp-content/uploads/2023/06/people-transported.png');
+	background-repeat: no-repeat;
+	width: 50px;
+  height: 50px;
+  background-size: contain;
+	max-width: 50px;
+  margin-right: 10px;
+}
+.fuel-saved .elementor-counter-number-prefix{
+	background: url('https://eveelz.in/wp-content/uploads/2023/06/fuel-saved.png');
+	background-repeat: no-repeat;
+	width: 50px;
+  height: 50px;
+  background-size: contain;
+	max-width: 50px;
+  margin-right: 10px;
+}
+ */
+.animated-image .elementor-widget-container{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+		width: 100%;
+}
+.animated-car video{
+		-o-object-fit: contain !important;
+		object-fit: contain !important;
+		background-color: #ffffff !important;
+}
+.icon-list-custom>div{
+	  background: white;
+    box-shadow: 1px 2px 4px #dfdfdf;
+    padding: 10px 15px;
+		margin-bottom: 15px !important;
+}
+.iq-breadcrumb-one{
+		display:none;
+		padding-bottom: 0px !important;
+}
+.iq-breadcrumb-one .title{
+		font-size: 1.7em !important;
+}
+/* .content-area .site-main{
+		padding-top: 20px !important;
+} */
+.wp-forms-submit{
+		color: var(--white-color) !important;
+    background:#F4553B!important;
+    cursor: pointer !important;
+    margin-bottom: 0 !important;
+    height: auto !important;
+    padding: 8px 32px !important;
+    font-size: 1em !important;
+    line-height: 2 !important;
+    border: none !important;
+    position: relative !important;
+    display: inline-block !important;
+    width: 100% !important;
+    -webkit-border-radius: 5px !important;
+    -moz-border-radius: 5px !important;
+    border-radius:24px !important;
+    cursor: pointer !important;
+    transition: all 0.5s ease-in-out !important;
+    transition: all 0.5s ease-in-out !important;
+    -moz-transition: all 0.5s ease-in-out !important;
+    -ms-transition: all 0.5s ease-in-out !important;
+    -o-transition: all 0.5s ease-in-out !important;
+    -webkit-transition: all 0.5s ease-in-out !important;
+}
+/* .wp-forms-submit-green{
+		background: #4daf40 !important;
+} */
+#join-form .wpforms-submit:hover {
+		    background: #F4553B!important;
+    color: #fff !important;
+}
+.wp-forms-submit:hover{
+		    background: #F4553B!important;
+    color: #fff !important;
+}
+button#wpforms-submit-4974{
+	   background: #F4553B!important;
+    color: #fff !important;	
+		    width: 446px !important;
+}
+
+.bussiness-form .choices__list--multiple .choices__item {
+		background-color: #f4553b !important;
+    border: 1px solid #f4553b !important;
+}
+select{
+		
+}
+div.wpforms-container-full .wpforms-form .wpforms-field.wpforms-field-select-style-modern .choices .choices__inner:focus{
+				 border: 1px solid #4F4F4F !important;
+		box-shadow:none !important;
+}
+div.wpforms-container-full input:focus ,textarea:focus, select:focus{
+		 border: 1px solid #4F4F4F !important;
+		box-shadow:none !important;
+}
+.bussiness-form .choices__inner {
+    border: 1px solid #E2E2E2 !important;
+    border-radius: 8px !important;
+}
+div.wpforms-container-full {
+    margin: 0px auto !important;
+}
+.getintouch-form .wpforms-submit-container{
+	  padding: 0px !important;
+		margin: 0px !important;
+}
+.getintouch-form .wpforms-field-container{
+	  display: initial !important;
+    justify-content: initial !important;
+}
+.getintouch-form .wpforms-field-email{
+		padding: 0px !important;
+}
+.getintouch-form em.wpforms-error{
+		display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+/*Footer Top Bar*/
+.footer-topbar{display:none;}
+
+/*Contact us page*/
+.contact-box .iq-icon{min-width:32px;}
+
+/*Home Page*/
+.impact-counter-box .text-left .elementor-counter-title{text-align:left!important; margin-top:10px;}
+.counter-box .c-value .timer-details .timer {
+    position: relative;
+}
+.counter-box .c-value .timer-details .timer:after {
+    content: "k";
+}
+.content-area .site-main{
+		    padding: 0px 0;
+}
+
+@media only screen and (max-width: 600px) {
+		.wpforms-container.inline-fields .wpforms-form {
+			-webkit-box-orient: vertical;
+    	-webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+			gap: 10px;
+		}
+	.getintouch-form .wpforms-field-container, .getintouch-form .wpforms-submit-container{
+		width: auto !important;
+	}
+}
+div.wpforms-container-full button[type=submit]:focus:after{
+	border: none !important;
+}
+
+/*Contact Page*/
+.location-address .contact-box .contact-detail p{display:none;}
+
+
+.booking-cancel ul{
+	display:inline-block;
+}
+.booking-cancel ul li {
+    line-height: 30px;
+    padding-bottom: 15px;
+}
+
+
+.table-tariff th{
+	color:#000;
+	    text-align: left;
+	font-size: 18px;
+}
+.table-tariff td{
+	color:#000;
+	    text-align: left;
+	font-size: 15px;
+}
+
+header .navbar .sub-main .blue-btn.button {
+    padding: 8px 20px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    border-radius: 0px;
+    background-color: #4daf40;
+	    border-radius: 5px;
+	height:50px;
+		
+}
+
+header .navbar ul li a, header .navbar .sub-main ul.shop_list .blue-btn.button a{
+	font-size: 16px;
+		font-weight:500;
+		color: #5D3F3A;
+		    font-family: 'Poppins';
+		    padding: 6px 30px;
+}
+
+header .navbar ul li{
+	margin-right: 15px;
+}
+
+header ul.shop_list{
+	    margin-left: 10px;
+}
+
+.dialog-message .elementor-lightbox-prevent-close{
+	background-color: transparent;
+}
+
+
+header.menu-sticky .navbar ul li:last-child a:hover{
+	color:#F4553B!important;
+}
+header.menu-sticky .navbar ul li a:hover {
+    color: #F4553B;
+}
+
+.get-popup .elementor-button-icon svg{
+		    width: 38px;
+}
+
+header .navbar ul li.login-button a{
+	line-height: 32px;
+    padding: 8px 20px;
+	    border-radius: 5px;	
+}
+
+header .navbar ul li.current-menu-item a{
+	    border: 2px solid #F9E2DF;
+    border-radius: 30px;
+    background: #FFF9F8;
+    font-weight: 600;
+    font-size: 16px;
+    color: #F4553B;
+    text-align: center;
+    padding: 6px 30px;
+    line-height: 26px;
+}
+header .navbar ul li a:hover{
+		color:#F4553B;
+		    background: none;
+    text-align: center;
+}
+#back-to-top .top{
+		background: #f4553b;
+}
+footer.footer-one .copyright-footer {
+    position: relative;
+    background: #FFF9F8;
+    color: #5D3F3A;
+}
+footer.footer-one .footer-top{
+		    background: #FFF9F8;
+		border-bottom: 1px solid #FCEBE9;
+		padding:60px 0 45px;
+}
+footer.footer-one .widget h4.footer-title {
+    margin-bottom: 15px;
+    color: #F4553B;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+		   font-family: 'Poppins';
+}
+footer.footer-one .widget .iq-contact li{
+		    margin-bottom: 15px;
+}
+footer.footer-one .widget ul li a {
+    color: #5D3F3A;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+		    padding-left: 0;
+}
+.widget ul li a:before{
+		content:none;
+}
+footer.footer-one ul.iq-contact li i{
+		color: #f4553b;
+}
+footer.footer-one ul.iq-contact li a span {
+		padding-left: 25px;align-content
+}
+footer.footer-one ul.iq-contact li:last-child a span {
+    padding-left: 27px;
+}
+footer.footer-one .copyright {
+    color: #5D3F3A;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+}
+footer.footer-one .widget ul li a:hover, footer.footer-one ul.iq-contact li a:hover i{
+		  color: #F4553B;
+}
+footer .widget ul li{
+		    margin-bottom: 15px;
+}
+.ride-tabs .eael-advance-tabs .eael-tabs-nav>ul {
+    background: #fff;
+    border-radius: 50px;
+		padding: 12px 10px;
+		margin:0 50px;
+		border: 1px solid #F9E2DF;
+}
+.ride-tabs .eael-advance-tabs .eael-tabs-nav>ul li.active{
+		    padding: 10px 0;
+		font-weight: 800 !important;
+}
+.elementor-button:hover{
+    background-color: #f4553b !important;
+    color: #FFFFFF;
+}
+.elementor-button:focus{
+		  background-color: #f4553b !important;
+    color: #FFFFFF;
+}
+#elementor-popup-modal-6218 .dialog-close-button {
+    display: flex
+;
+    background: #f4553b;
+    color: #fff;
+    padding: 5px;
+    border-radius: 25px;
+}
+#elementor-popup-modal-6218 .dialog-message {
+    width: 472px !important;
+    height: auto;
+}
+.elementor-popup-modal .dialog-widget-content {
+    background-color: #fff;
+		border-radius: 15px !important;}
+
+/*review slider*/
+  .testimonial-section {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .testimonial-section h2 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    .testimonial-section h2 span {
+      color: #FE4C2A;
+    }
+
+    .testimonial-section p.subheading {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .testimonial-slider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      overflow: hidden;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border: 1px solid #f5d7cf;
+      border-radius: 18px;
+      padding: 25px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.04);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .testimonial-card.active {
+      border: 1px solid #fe6a35;
+    }
+
+    .testimonial-user {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-user img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+
+    .testimonial-user-name {
+      font-weight: bold;
+      color: #F4553B;
+    }
+
+    .testimonial-location {
+      font-size: 13px;
+      color: #A19C9C;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      color: #5D3F3A;
+      text-align: left;
+    }
+
+    .testimonial-navigation {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-arrow {
+      width: 30px;
+      height: 30px;
+      border: 1.5px solid #fe6a35;
+      border-radius: 50%;
+      color: #fe6a35;
+      font-weight: bold;
+      line-height: 28px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .nav-dots span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #ccc;
+      border-radius: 50%;
+      margin: 0 5px;
+    }
+
+    .nav-dots .active {
+      background-color: #fe6a35;
+    }
+
+.bussiness-form .wpforms-field-label{
+		    font-weight: 400 !important;
+		font-size:14px !important;
+}
+
+
+ .testimonials-reviews .swiper-container {
+            width: 100%;
+            padding: 50px 0;
+        }
+         .testimonials-reviews span.swiper-pagination-bullet {
+              width: 14px;
+              height: 14px;
+          }
+
+        .testimonials-reviews .swiper-slide {
+             background: #fff;
+              border-radius: 35px;
+              border: 2px solid #FFEDEA;
+              max-width: 764px;
+              box-sizing: border-box;
+                  min-height: 380px;
+        }
+        .swiper-main-sec {
+            padding: 50px 47px;
+        }
+        .testimonials-reviews .swiper-wrapper {
+            align-items: center;
+        }
+
+        .testimonials-reviews .testimonial-user {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-user img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .testimonial-user-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #f4553b;
+            font-family: 'Poppins';
+        }
+
+        .testimonial-location {
+            font-size: 16px;
+            font-weight:500;
+              font-family: 'Poppins';
+            color: #A19C9C;
+        }
+
+        .testimonial-text {
+           font-size: 16px;
+
+    text-align: left;
+    font-weight: 400;
+    font-family: 'Poppins';
+        }
+#top-menu {
+    float: left;
+    width: 85%;
+}
+       .testimonials-reviews .swiper-pagination-bullet-active {
+            background: #F4553B;
+        }
+        .swipers-btn-sec{
+              position: relative;
+            width: 400px;
+						top:20px;
+        }
+        /* .testimonials-reviews .swiper-button-next, .swiper-button-prev {
+            color: #f4553b;
+            border: 1px solid #f4553b;
+            border-radius: 50%;
+            padding: 10px;
+            top: 95%;
+            transform: translateY(-50%);
+        }
+
+        .testimonials-reviews .swiper-button-prev {
+            left: 45%;
+        }
+
+        .testimonials-reviews .swiper-button-next {
+            right: 45%;
+        } */
+/* Swiper container */
+.testimonials-reviews .swiper.testimonial-swiper {
+  width: 100%;
+  padding-bottom: 80px; /* Enough space for bottom controls */
+  position: relative;
+}
+
+/* Slide style (example) */
+
+
+
+/* Custom arrows */
+.testimonials-reviews .swiper-button-prev,
+.testimonials-reviews .swiper-button-next {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #F4553B;
+  color: #F4553B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+		z-index:999;
+}
+.testimonials-reviews .swiper-button-prev.custom-arrow::after{
+			    content: "\e87e";
+    font-family: eicons;
+}
+.testimonials-reviews .swiper-button-next.custom-arrow::after{
+		    content: "\e87d";
+    font-family: eicons;	
+}
+.testimonials-reviews .swiper-button-prev.custom-arrow::after,
+.testimonials-reviews .swiper-button-next.custom-arrow::after {
+  font-size: 16px;
+    color: #F4553B;
+	
+}
+
+/* Controls container */
+.swiper-controls {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    z-index: 10;
+}
+.ride-tabs{
+		
+}
+/* Pagination dots */
+.swiper-controls .swiper-pagination {
+      position: relative !important;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+ justify-content: center;
+ margin-top:13px;
+}
+.swiper-button-next.custom-arrow, .swiper-button-prev.custom-arrow {
+    width: 40px;
+    height: 40px;
+		font-weight:700;
+}
+.testimonials-review .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #ddd;
+  opacity: 1;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+.frequently-qus .elementor-toggle .elementor-tab-title[aria-expanded="false"] {
+       border-radius: 15px;
+  border-bottom:0;
+}
+.frequently-qus .elementor-tab-content p{
+		margin-bottom:20px;
+}
+.frequently-qus .elementor-toggle .elementor-tab-title[aria-expanded="true"] {
+    border-radius: 15px 15px 0 0; 
+		border-bottom:0;
+		;/* Example: rounded top only */
+}
+.frequently-qus .elementor-toggle-item{
+		    border: 1px solid #FFEDEA;
+    border-radius: 15px;
+		background:#fff;
+}
+.frequently-qus .elementor-tab-content {
+    background-color: #FFFFFF;
+    font-family: "Inter", Sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 15px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom: #000;
+		padding:0 20px;
+}
+.whychoose-sec .swiper-pagination{
+		display:none;
+}
+
+
+/*Ride Css*/
+.rides-swiper {
+    padding: 40px 20px;
+}
+.swiper-slide {
+    width: 320px; /* Fixed width for centered effect */
+}
+.ride-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 0px;
+    text-align: left;
+    transition: 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+		    min-height: 486px;
+/*     justify-content: space-between; */
+}
+.ride-image img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+.ride-title {
+color: #F4553B;
+    font-size: 20px;
+    font-weight: 600;
+}
+.ride-description {
+       font-size: 14px;
+    color: #5D3F3A;
+    margin: 10px 0 20px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.ride-btn {
+ background: #F4553B;
+    color: #fff !important;
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 800;
+    font-family: Lato ! IMPORTANT;
+    font-size: 16px;
+}
+
+.ride-content {
+    padding: 10px 20px 30px;
+}
+
+        @media (max-width: 768px)
+				{
+		.impact-sec .elementor-image-box-description{
+		  padding: 0 60px;	
+					
+		}
+						.whychoose-sec{
+								
+						}
+						.whychoose-sec .swiper-pagination{
+		display:block;
+}
+						.whychoose-sec i.eicon-chevron-left, i.eicon-chevron-right{
+								display:none;
+						}
+					.count-impact .elementor-counter-number-wrapper {
+               display: grid
+;
+        line-height: 31px !important;
+    }
+						.count-impact .elementor-counter .elementor-counter-number-suffix {
+    font-size: 14px;
+								text-align: center;
+}
+            .testimonials-reviews .swiper-slide {
+                max-width: 90%;
+								min-height: 200px;
+            }
+.swiper-main-sec
+ {
+    padding: 30px 17px 0;
+}
+						
+           .testimonials-reviews .swiper-button-prev, .testimonials-reviews .swiper-button-next {
+                top: 100%;
+                transform: translateY(-30%);
+							 display:none;
+            }
+
+            .testimonials-reviews .swiper-button-prev {
+                left: 35%;
+            }
+
+            .testimonials-reviews .swiper-button-next {
+                right: 35%;
+            }
+						.faq-sec{
+								background: #fff !important;
+    border: none !important;
+						}
+						.testimonials-reviews .swiper-container{
+								    padding: 30px 0 30px;
+						}
+						.testimonial-text{
+								font-size: 14px;
+    color: #5D3F3A;
+    text-align: left;
+    font-weight: 400;
+    font-family: 'Poppins';
+    line-height: 22px;
+						}
+        }
+
+
+
+
+
+
+
+
+
+@media (max-width: 992px){
+		header .navbar ul li a{
+				        margin-bottom: 20px;
+				text-align:center;
+		}
+		header.style-one .sub-header, .admin-bar header.main-header .navbar-collapse{
+				top:92px;
+		}
+		#top-menu {
+    float: left;
+    width: 100%;
+    padding: 20px;
+				        position: absolute;
+        top: 3px;
+				border-radius:0 0 20px 20px;
+}
+	.header .navbar .sub-main .blue-btn.button{
+			padding: 21px 20px!important;
+		}
+		header .navbar-light .navbar-toggler{
+		           background: transparent;
+        color: #f4553b;
+        font-weight: 900;
+        border: none;
+        vertical-align: middle;
+        align-items: center;
+        padding: 20px 0;
+}
+}
+@media (min-width:1550px) and (max-width:1920px){
+	.main-banner-sec{
+				        background-position: bottom 25% center !important;
+      
+		}
+}
+@media (min-width: 1920px){
+
+		.testimonials-reviews .swiper-slide{
+				max-width:1278px;
+		}
+	
+}
+
+
+.rides-swiper .swiper-slide {
+    width: 300px; /* Adjust based on your design */
+}
+@media (max-width: 768px) {
+		.whychoose-sec.drive-us .elementor-main-swiper .swiper-slide{
+				 margin-bottom: 20px;
+		padding: 30px 41px 30px 41px !important;
+		}
+		.every-industry .elementor-widget-testimonial-carousel .swiper-slide{
+				    margin-bottom: 20px;
+		}
+		button#wpforms-submit-4974{
+				width:100%!important;
+		}
+		.whychoose-sec.bussiness .elementor-main-swiper .swiper-slide {
+				padding: 30px 20px 30px 20px !important;
+				margin-bottom:20px;
+		}
+		.whychoose-sec.bussiness .elementor-image-box-title span{
+				display:block;
+		}
+		.col-sm-6:last-child .text-left {
+				    text-align: left !important;
+		}
+		.widget.footer-logo.text-left {
+    text-align: left !important;
+}
+		footer.footer-one .text-left{
+				    text-align: center !important;
+		}
+		.admin-bar header {
+    padding: 0px 0;
+}
+		header .navbar-light .navbar-toggler{
+				        top: -12px;
+		}
+		header .navbar-light .navbar-brand img.logo {
+    width: 100px !important;
+    height: 50px !important;
+}
+    .rides-swiper .swiper-slide {
+        width: 250px;
+    }
+		.whychoose-sec .elementor-main-swiper .swiper-slide{
+				    padding: 20px 40px 20px 40px !important;
+		}
+
+}
+.custom-image-box .elementor-widget-container .elementor-image-box-wrapper{
+		display:flex;
+		flex-direction:row;
+		justify-content:center;
+}
+.custom-image-box .elementor-image-box-title{
+		    text-align: left;
+    padding-left: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+ .every-industry .elementor-widget-container{
+	min-height:200px !important;
+}
+}
+.footer-top .widget{
+	margin-bottom:10px;
+}
+.contact-link a:hover{
+	color:#F4553B;
+}
+header.menu-sticky#main-header .navbar ul li.login-button a{
+	color:#fff;
+}
+.page-id-4231 .iq-breadcrumb-one {
+    padding-bottom: 0px !important;
+    display: none;
+}
+.page-id-4231 .content-area .site-main {
+	padding: 0px 0;
+}
+/* .whychoose-sec h5{
+	 color: #4E4E50;
+font-size:34px;
+	font-weight:600;
+	line-height:48px;
+	font-style:normal;
+	text-transform:capitalize;
+ font-family: 'Roboto' !important;
+	padding-bottom:10px;
+} */
+
+.whychoose-sec .elementor-testimonial__cite{
+	margin-top:10px !important;
+}
+.popmake-close{
+	    display:none;
+}
+.pum-title.popmake-title{
+	display:none !important;
+}
+.pum-content.popmake-content h5 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.pum-content.popmake-content p{font-size: 16px;
+	text-align:center;
+    font-weight: 500;
+    line-height: 24px;
+}
+.every-industry .elementor-widget-container{
+	min-height:400px;
+}
+.close-btn{
+display: block;
+    text-align: center;
+    margin: 0 auto;
+    background: #4eaf3f;
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    width: 256px;
+    height: 42px;
+}
+.page-id-5464 .iq-breadcrumb-one {
+    padding-bottom: 0px !important;
+    display: none;
+}
+.page-id-5464 .content-area .site-main {
+	padding: 0px 0;
+}
+.whychoose-sec i.eicon-chevron-left,i.eicon-chevron-right {
+    border: 2px solid;
+    width: 40px;
+    height: 40px;
+    line-height: 37px;
+    text-align: center;
+    border-radius: 50px;
+	font-size:20px;
+}
+
+.number-sec .elementor-widget-container{
+	border:1px solid #F4553B;
+width:51px;
+	height:51px;
+	line-height:51px;
+	border-radius:50px;
+}
+
+.join-no .elementor-icon-box-wrapper{
+		justify-content:center;
+}
+.join-no .elementor-widget-heading{
+		margin-bottom:0;
+}
+.join-no .elementor-widget-icon-box .elementor-icon-box-content {
+    flex-grow: 0;
+}
+.ready-joins h3{
+		padding-bottom:20px;
+}
+
+</style>
+<!-- end Simple Custom CSS and JS -->

@@ -23,19 +23,19 @@ const DriveForUs = () => {
     const iconFonts = [
       {
         id: 'ionicons-css',
-        href: 'https://refexmobility.com/wp-content/cache/min/1/wp-content/themes/enerzee/assets/css/ionicons.min.css?ver=1759743467',
+        href: '/wp-content/cache/min/1/wp-content/themes/enerzee/assets/css/ionicons.min.css?ver=1759743467',
         fallback: 'https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/css/ionicons.min.css',
         rel: 'stylesheet'
       },
       {
         id: 'font-awesome-css',
-        href: 'https://refexmobility.com/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css?ver=1759743467',
+        href: '/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css?ver=1759743467',
         fallback: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
         rel: 'stylesheet'
       },
       {
         id: 'elementor-icons-css',
-        href: 'https://refexmobility.com/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=1759743467',
+        href: '/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=1759743467',
         rel: 'stylesheet'
       }
     ]
@@ -93,8 +93,8 @@ const DriveForUs = () => {
 
     // Load external scripts
     const scripts = [
-      'https://refexmobility.com/wp-content/themes/enerzee/assets/js/bootstrap.min.js',
-      'https://refexmobility.com/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js'
+      '/wp-content/themes/enerzee/assets/js/bootstrap.min.js',
+      '/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js'
     ]
 
     scripts.forEach(src => {
@@ -209,7 +209,7 @@ const DriveForUs = () => {
                         data-element_type="section"
                         data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
                         style={{
-                          backgroundImage: "url('https://refexmobility.com/wp-content/uploads/2025/07/drive-section-1-scaled.webp')",
+                          backgroundImage: "url('/wp-content/uploads/2025/07/drive-section-1-scaled.webp')",
                           backgroundSize: 'cover',
                           backgroundPosition: 'center center',
                           backgroundRepeat: 'no-repeat',
@@ -341,7 +341,7 @@ const DriveForUs = () => {
                                                   width="196" 
                                                   height="196" 
                                                   decoding="async" 
-                                                  src="https://refexmobility.com/wp-content/uploads/2025/07/zero-ownership.png" 
+                                                  src="/wp-content/uploads/2025/07/zero-ownership.png" 
                                                   alt="Zero Ownership Cost"
                                                   loading="lazy"
                                                 />
@@ -365,7 +365,7 @@ const DriveForUs = () => {
                                                   width="196" 
                                                   height="196" 
                                                   decoding="async" 
-                                                  src="https://refexmobility.com/wp-content/uploads/2025/07/earning-incentive.png" 
+                                                  src="/wp-content/uploads/2025/07/earning-incentive.png" 
                                                   alt="Guaranteed Earnings + Incentives"
                                                   loading="lazy"
                                                 />
@@ -389,7 +389,7 @@ const DriveForUs = () => {
                                                   width="196" 
                                                   height="196" 
                                                   decoding="async" 
-                                                  src="https://refexmobility.com/wp-content/uploads/2025/07/ride-assignmentes.png" 
+                                                  src="/wp-content/uploads/2025/07/ride-assignmentes.png" 
                                                   alt="App-Based Ride Assignments"
                                                   loading="lazy"
                                                 />
@@ -413,7 +413,7 @@ const DriveForUs = () => {
                                                   width="196" 
                                                   height="196" 
                                                   decoding="async" 
-                                                  src="https://refexmobility.com/wp-content/uploads/2025/07/support.png" 
+                                                  src="/wp-content/uploads/2025/07/support.png" 
                                                   alt="Reliable Support. Anytime."
                                                   loading="lazy"
                                                 />
@@ -471,7 +471,7 @@ const DriveForUs = () => {
                                             width="490" 
                                             height="610" 
                                             decoding="async" 
-                                            src="https://refexmobility.com/wp-content/uploads/elementor/thumbs/Happy-Driver-r8qhaxxfltwntgv5ciruby6j2r5o2jhwx8sob46slw.png" 
+                                            src="/wp-content/uploads/elementor/thumbs/Happy-Driver-r8qhaxxfltwntgv5ciruby6j2r5o2jhwx8sob46slw.png" 
                                             title="Happy Driver" 
                                             alt="Happy Driver" 
                                             loading="lazy"
@@ -820,7 +820,7 @@ const DriveForUs = () => {
                                             decoding="async" 
                                             width="1152" 
                                             height="910" 
-                                            src="https://refexmobility.com/wp-content/uploads/2025/07/Driver-key-1.png" 
+                                            src="/wp-content/uploads/2025/07/Driver-key-1.png" 
                                             className="attachment-full size-full wp-image-8417" 
                                             alt="" 
                                             loading="lazy"
@@ -1082,7 +1082,7 @@ const DriveForUs = () => {
                                             width="490" 
                                             height="610" 
                                             decoding="async" 
-                                            src="https://refexmobility.com/wp-content/uploads/elementor/thumbs/Happy-Driver-r8qhaxxfltwntgv5ciruby6j2r5o2jhwx8sob46slw.png" 
+                                            src="/wp-content/uploads/elementor/thumbs/Happy-Driver-r8qhaxxfltwntgv5ciruby6j2r5o2jhwx8sob46slw.png" 
                                             title="Happy Driver" 
                                             alt="Happy Driver" 
                                             loading="lazy"
@@ -1141,7 +1141,7 @@ const DriveForUs = () => {
                                             decoding="async" 
                                             width="1152" 
                                             height="910" 
-                                            src="https://refexmobility.com/wp-content/uploads/2025/07/Driver-key-1.png" 
+                                            src="/wp-content/uploads/2025/07/Driver-key-1.png" 
                                             className="attachment-full size-full wp-image-8417" 
                                             alt="" 
                                             loading="lazy"

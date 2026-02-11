@@ -55,7 +55,7 @@ header .navbar-light .navbar-brand {
 }
 
 .navbar-brand .logo {
-  max-height: 110px;
+  max-height: 90px;
   width: auto;
   height: auto;
 }
@@ -313,6 +313,25 @@ header .navbar-light .navbar-brand {
 }
 
 @media (max-width: 991px) {
+  header {
+    min-height: 70px;
+  }
+
+  .navbar-brand {
+    height: 70px !important;
+    min-height: 70px !important;
+    padding: 10px 0;
+  }
+
+  header .navbar-light .navbar-brand {
+    line-height: 70px !important;
+    height: 70px !important;
+  }
+
+  .navbar-brand .logo {
+    max-height: 50px !important;
+  }
+
   .navbar-toggler {
     display: flex !important;
     align-items: center;
@@ -331,7 +350,7 @@ header .navbar-light .navbar-brand {
     display: none !important;
     padding: 20px 15px;
     z-index: 1000;
-    max-height: calc(100vh - 120px);
+    max-height: calc(100vh - 70px);
     overflow-y: auto;
   }
 
@@ -425,12 +444,14 @@ header .navbar-light .navbar-brand {
   }
 
   .navbar-brand {
-    height: auto;
+    height: 70px !important;
+    min-height: 70px !important;
     order: 1;
   }
 
   header .navbar-light .navbar-brand {
-    line-height: 1.2;
+    line-height: 70px !important;
+    height: 70px !important;
   }
   
   .navbar {
@@ -465,7 +486,64 @@ header .navbar-light .navbar-brand {
   }
 }
 
+@media (max-width: 768px) {
+  header {
+    min-height: 65px;
+  }
+
+  .navbar-brand {
+    height: 65px !important;
+    min-height: 65px !important;
+    padding: 8px 0;
+  }
+
+  header .navbar-light .navbar-brand {
+    line-height: 65px !important;
+    height: 65px !important;
+  }
+
+  .navbar-brand .logo {
+    max-height: 45px !important;
+  }
+
+  .navbar-collapse {
+    max-height: calc(100vh - 65px) !important;
+  }
+
+  .logo-main {
+    font-size: 1.6em !important;
+  }
+
+  .logo-sub {
+    font-size: 0.6em !important;
+  }
+}
+
 @media (max-width: 480px) {
+  header {
+    min-height: 60px;
+  }
+
+  .navbar-brand {
+    height: 60px !important;
+    min-height: 60px !important;
+    padding: 6px 0;
+  }
+
+  header .navbar-light .navbar-brand {
+    line-height: 60px !important;
+    height: 60px !important;
+  }
+
+  .navbar-brand .logo {
+    max-height: 40px !important;
+  }
+
+  .navbar-collapse {
+    max-height: calc(100vh - 60px) !important;
+    padding: 15px 10px;
+  }
+
   .navbar-toggler {
     padding: 6px 10px;
   }
@@ -485,13 +563,17 @@ header .navbar-light .navbar-brand {
     height: 24px !important;
   }
   
-  .navbar-collapse {
-    padding: 15px 10px;
-  }
-  
   #top-menu .menu-item a {
     padding: 10px 12px;
     font-size: 14px;
+  }
+
+  .logo-main {
+    font-size: 1.5em !important;
+  }
+
+  .logo-sub {
+    font-size: 0.55em !important;
   }
 }
 
