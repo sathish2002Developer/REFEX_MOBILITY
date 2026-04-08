@@ -9,8 +9,8 @@ const AdminLogin = () => {
   const navigate = useNavigate()
 
   // Default admin credentials (in production, this should be handled by a backend)
-  const ADMIN_USERNAME = 'admin'
-  const ADMIN_PASSWORD = 'admin123'
+  const ADMIN_USERNAME = 'superadmin'
+  const ADMIN_PASSWORD = 'superadmin2026'
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -61,9 +61,9 @@ const AdminLogin = () => {
             Login
           </button>
         </form>
-        <div className="admin-login-footer">
+        {/* <div className="admin-login-footer">
           <p>Default: admin / admin123</p>
-        </div>
+        </div> */}
       </div>
     </div>
   )
