@@ -8,10 +8,18 @@ const AdminInvestorRelations = () => {
     backgroundImage: 'https://refexmobility.com/wp-content/uploads/2025/07/investor-banner.webp'
   })
 
-  const [menuItems, setMenuItems] = useState([
+  const defaultMenuItems = [
     { id: 'annual-return', label: 'Annual Return', hasSubItems: true },
-    { id: 'notice', label: 'Notice of the General meetings', hasSubItems: false }
-  ])
+    { id: 'notice', label: 'General Meetings', hasSubItems: false },
+    { id: 'policies', label: 'Policies', hasSubItems: false },
+  ]
+  const [menuItems, setMenuItems] = useState(defaultMenuItems)
+  const [newMenuItem, setNewMenuItem] = useState({
+    label: '',
+    slug: '',
+    hasSubItems: false,
+  })
+  const [menuLoading, setMenuLoading] = useState(false)
 
   const [years, setYears] = useState(['2024-25', '2025-26'])
   const [filesData, setFilesData] = useState({
@@ -40,21 +48,63 @@ const AdminInvestorRelations = () => {
   const [loading, setLoading] = useState(false)
   const [expandedYears, setExpandedYears] = useState({}) // Trackwhich years are expanded in admin
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://refexmobility.com'
+  const ACTIVE_SECTION_KEY = 'investorActiveSection'
+
+  const slugifyMenuId = (str) =>
+    String(str || '')
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .slice(0, 80)
+
+  const loadMenuFromApi = async () => {
+    setMenuLoading(true)
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/investor/menu`)
+      if (response.ok) {
+        const result = await response.json()
+        if (result.success && result.data?.items?.length) {
+          const mapped = result.data.items.map((x) => ({
+            id: x.id,
+            label: x.label,
+            hasSubItems: !!x.hasSubItems,
+          }))
+          setMenuItems(mapped)
+          const stored = localStorage.getItem(ACTIVE_SECTION_KEY)
+          setActiveSection((prev) => {
+            const next = stored || prev
+            const resolved = mapped.some((m) => m.id === next) ? next : mapped[0].id
+            localStorage.setItem(ACTIVE_SECTION_KEY, resolved)
+            return resolved
+          })
+          return
+        }
+      }
+    } catch (e) {
+      console.error('Failed to load investor menu from API', e)
+    } finally {
+      setMenuLoading(false)
+    }
+    const savedMenuItems = localStorage.getItem('investorMenuItems')
+    if (savedMenuItems) {
+      try {
+        const parsed = JSON.parse(savedMenuItems)
+        if (Array.isArray(parsed) && parsed.length) {
+          setMenuItems(parsed)
+        }
+      } catch (_) {}
+    }
+  }
 
   // Load data from database and localStorage on mount
   useEffect(() => {
-    // Load hero and menu from localStorage (can be moved to database later)
     const savedHeroData = localStorage.getItem('investorHeroData')
-    const savedMenuItems = localStorage.getItem('investorMenuItems')
-
     if (savedHeroData) {
       setHeroData(JSON.parse(savedHeroData))
     }
-    if (savedMenuItems) {
-      setMenuItems(JSON.parse(savedMenuItems))
-    }
 
-    // Load files from database
+    loadMenuFromApi()
     loadFilesFromDatabase()
   }, [])
 
@@ -73,8 +123,14 @@ const AdminInvestorRelations = () => {
             // For annual return section, extract year-based files
             const annualReturnFiles = result.data.filesBySection['annual-return'] || {}
             setFilesData(annualReturnFiles)
-            // Extract unique years from annual return files
-            const apiYears = Object.keys(annualReturnFiles).sort().reverse()
+            // Union of year keys across all sections (FY dropdown + uploads for any tab)
+            const yearSet = new Set()
+            Object.values(result.data.filesBySection).forEach((byYear) => {
+              if (byYear && typeof byYear === 'object') {
+                Object.keys(byYear).forEach((y) => yearSet.add(y))
+              }
+            })
+            const apiYears = [...yearSet].sort().reverse()
             setYears(apiYears)
             // Set default year if available
             if (apiYears && apiYears.length > 0) {
@@ -127,9 +183,88 @@ const AdminInvestorRelations = () => {
     showSaveMessage('Hero section saved successfully!')
   }
 
-  const handleMenuSave = () => {
-    localStorage.setItem('investorMenuItems', JSON.stringify(menuItems))
-    showSaveMessage('Menu items saved successfully!')
+  const handleMenuSave = async () => {
+    if (!menuItems.length) {
+      showSaveMessage('Add at least one menu tab')
+      return
+    }
+    setMenuLoading(true)
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/investor/menu`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: menuItems.map((m) => ({
+            id: m.id,
+            label: m.label,
+            hasSubItems: m.hasSubItems,
+          })),
+        }),
+      })
+      const result = await response.json().catch(() => ({}))
+      if (!response.ok) {
+        throw new Error(result.message || 'Failed to save menu')
+      }
+      localStorage.setItem('investorMenuItems', JSON.stringify(menuItems))
+      showSaveMessage('Menu tabs saved to server successfully!')
+      await loadMenuFromApi()
+    } catch (err) {
+      console.error(err)
+      localStorage.setItem('investorMenuItems', JSON.stringify(menuItems))
+      showSaveMessage(`Saved locally; server error: ${err.message}`)
+    } finally {
+      setMenuLoading(false)
+    }
+  }
+
+  const moveMenuItem = (index, direction) => {
+    const next = index + direction
+    if (next < 0 || next >= menuItems.length) return
+    const nextItems = [...menuItems]
+    const t = nextItems[index]
+    nextItems[index] = nextItems[next]
+    nextItems[next] = t
+    setMenuItems(nextItems)
+  }
+
+  const deleteMenuItemAt = (index) => {
+    if (menuItems.length <= 1) {
+      showSaveMessage('You must keep at least one tab.')
+      return
+    }
+    if (!window.confirm('Remove this tab from the menu? Uploaded files for this section are not deleted.')) {
+      return
+    }
+    const removed = menuItems[index]
+    const filtered = menuItems.filter((_, i) => i !== index)
+    setMenuItems(filtered)
+    if (activeSection === removed.id && filtered.length) {
+      setActiveSection(filtered[0].id)
+      localStorage.setItem(ACTIVE_SECTION_KEY, filtered[0].id)
+    }
+  }
+
+  const addMenuItemRow = () => {
+    const label = newMenuItem.label.trim()
+    if (!label) {
+      showSaveMessage('Enter a label for the new tab')
+      return
+    }
+    let slug = slugifyMenuId(newMenuItem.slug || label)
+    if (!slug) {
+      showSaveMessage('Could not create a tab ID — use letters or numbers in the label')
+      return
+    }
+    if (menuItems.some((m) => m.id === slug)) {
+      showSaveMessage('That tab ID already exists. Change the manual ID or label.')
+      return
+    }
+    setMenuItems([
+      ...menuItems,
+      { id: slug, label, hasSubItems: !!newMenuItem.hasSubItems },
+    ])
+    setNewMenuItem({ label: '', slug: '', hasSubItems: false })
+    showSaveMessage('Tab added — click "Save menu to server" to publish.')
   }
 
   const handleAddYear = () => {
@@ -140,6 +275,13 @@ const AdminInvestorRelations = () => {
       setNewYear('')
       showSaveMessage('Year added successfully! Note: Years are automatically generated from uploaded files.')
     }
+  }
+
+  const sectionNeedsFinancialYear = (sectionId) => {
+    if (!sectionId || sectionId === 'notice') return false
+    if (sectionId === 'annual-return') return true
+    const m = menuItems.find((x) => x.id === sectionId)
+    return !!(m && m.hasSubItems)
   }
 
   const handleAddFile = async () => {
@@ -153,23 +295,25 @@ const AdminInvestorRelations = () => {
       return
     }
 
+    const sectionToSave = activeSection || newFile.section || 'annual-return'
+    if (sectionNeedsFinancialYear(sectionToSave) && !newFile.year) {
+      showSaveMessage('Please select a financial year for this section')
+      return
+    }
+
     // Upload and save in one step
     setUploading(true)
     try {
       const formData = new FormData()
       formData.append('file', selectedFile)
-      // CRITICAL: Always send section - use activeSection or newFile.section
-      const sectionToSave = activeSection || newFile.section || 'annual-return'
       formData.append('section', sectionToSave)
       formData.append('name', newFile.name)
       formData.append('type', newFile.type)
       formData.append('date', newFile.date || new Date().toISOString().split('T')[0])
-      // Year is optional for notice section
-      if (sectionToSave === 'annual-return' && newFile.year) {
-        formData.append('year', newFile.year)
-      } else if (sectionToSave === 'notice') {
-        // For notice, use date as year identifier or the selected year if provided
+      if (sectionToSave === 'notice') {
         formData.append('year', newFile.year || newFile.date || new Date().toISOString().split('T')[0])
+      } else if (sectionNeedsFinancialYear(sectionToSave) && newFile.year) {
+        formData.append('year', newFile.year)
       }
 
       const response = await fetch(`${API_BASE_URL}/api/investor/files`, {
@@ -188,9 +332,10 @@ const AdminInvestorRelations = () => {
         // Reload files from database to refresh display
         await loadFilesFromDatabase()
         // Reset form but keep the current section
+        const sec = activeSection || newFile.section
         setNewFile({
-          section: activeSection || newFile.section,
-          year: (activeSection || newFile.section) === 'annual-return' && years.length > 0 ? years[0] : '',
+          section: sec,
+          year: sectionNeedsFinancialYear(sec) && years.length > 0 ? years[0] : '',
           name: '',
           url: '',
           type: 'pdf',
@@ -221,6 +366,7 @@ const AdminInvestorRelations = () => {
       date: file.date
     })
     setActiveSection(file.section || 'annual-return')
+    localStorage.setItem(ACTIVE_SECTION_KEY, file.section || 'annual-return')
   }
 
   const handleUpdateFile = async () => {
@@ -236,11 +382,10 @@ const AdminInvestorRelations = () => {
         type: newFile.type,
         date: newFile.date || editingFile.date,
       }
-      // Year is required for annual-return, optional for notice
-      if (newFile.section === 'annual-return' && newFile.year) {
-        updateData.year = newFile.year
-      } else if (newFile.section === 'notice') {
+      if (newFile.section === 'notice') {
         updateData.year = newFile.date || editingFile.date || new Date().toISOString().split('T')[0]
+      } else if (sectionNeedsFinancialYear(newFile.section) && newFile.year) {
+        updateData.year = newFile.year
       }
       if (newFile.size) {
         updateData.size = newFile.size
@@ -267,7 +412,7 @@ const AdminInvestorRelations = () => {
         setEditingFile(null)
         setNewFile({
           section: newFile.section,
-          year: newFile.section === 'annual-return' ? newFile.year : '',
+          year: sectionNeedsFinancialYear(newFile.section) ? newFile.year : '',
           name: '',
           url: '',
           type: 'pdf',
@@ -393,25 +538,107 @@ const AdminInvestorRelations = () => {
         </button>
       </div>
 
-      {/* Menu Items Management */}
+      {/* Menu Items Management — tabs on Investor Relations */}
       <div className="admin-section-card">
-        <h3>Menu Items</h3>
-        {menuItems.map((item, index) => (
-          <div key={item.id} className="admin-menu-item">
-            <input
-              type="text"
-              value={item.label}
-              onChange={(e) => {
-                const updated = [...menuItems]
-                updated[index].label = e.target.value
-                setMenuItems(updated)
-              }}
-              placeholder="Menu Item Label"
-            />
+        <h3>Investor relations sidebar tabs</h3>
+        <p style={{ fontSize: 14, color: '#666', marginBottom: 16 }}>
+          Tab <strong>ID</strong> is used as the file section key (do not change IDs after files are uploaded). Order matches top-to-bottom on the site.
+        </p>
+        {menuLoading && <div className="admin-loading-message">Syncing menu…</div>}
+        <div className="admin-menu-editor">
+          {menuItems.map((item, index) => (
+            <div key={item.id} className="admin-menu-row">
+              <div className="admin-form-group" style={{ flex: '0 0 140px', marginBottom: 0 }}>
+                <label>Tab ID</label>
+                <input type="text" value={item.id} readOnly disabled title="ID is fixed; delete and re-add to change" />
+              </div>
+              <div className="admin-form-group" style={{ flex: 1, marginBottom: 0 }}>
+                <label>Label</label>
+                <input
+                  type="text"
+                  value={item.label}
+                  onChange={(e) => {
+                    const updated = [...menuItems]
+                    updated[index] = { ...updated[index], label: e.target.value }
+                    setMenuItems(updated)
+                  }}
+                  placeholder="Tab label"
+                />
+              </div>
+              <div className="admin-form-group" style={{ flex: '0 0 160px', marginBottom: 0 }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={!!item.hasSubItems}
+                    onChange={(e) => {
+                      const updated = [...menuItems]
+                      updated[index] = { ...updated[index], hasSubItems: e.target.checked }
+                      setMenuItems(updated)
+                    }}
+                  />
+                  Year sub-menu
+                </label>
+                <span style={{ fontSize: 12, color: '#888' }}>Annual Return uses this</span>
+              </div>
+              <div className="admin-menu-row-actions">
+                <button type="button" className="admin-add-button" onClick={() => moveMenuItem(index, -1)} disabled={index === 0}>
+                  ↑
+                </button>
+                <button
+                  type="button"
+                  className="admin-add-button"
+                  onClick={() => moveMenuItem(index, 1)}
+                  disabled={index === menuItems.length - 1}
+                >
+                  ↓
+                </button>
+                <button type="button" className="admin-delete-button" onClick={() => deleteMenuItemAt(index)}>
+                  Remove
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ borderTop: '1px solid #eee', marginTop: 20, paddingTop: 20 }}>
+          <h4 style={{ margin: '0 0 12px 0' }}>Add tab</h4>
+          <div className="admin-menu-row">
+            <div className="admin-form-group" style={{ flex: '0 0 140px', marginBottom: 0 }}>
+              <label>Tab ID (optional)</label>
+              <input
+                type="text"
+                value={newMenuItem.slug}
+                onChange={(e) => setNewMenuItem({ ...newMenuItem, slug: e.target.value })}
+                placeholder="auto from label"
+              />
+            </div>
+            <div className="admin-form-group" style={{ flex: 1, marginBottom: 0 }}>
+              <label>Label</label>
+              <input
+                type="text"
+                value={newMenuItem.label}
+                onChange={(e) => setNewMenuItem({ ...newMenuItem, label: e.target.value })}
+                placeholder="e.g. Corporate announcements"
+              />
+            </div>
+            <div className="admin-form-group" style={{ flex: '0 0 160px', marginBottom: 0 }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={newMenuItem.hasSubItems}
+                  onChange={(e) => setNewMenuItem({ ...newMenuItem, hasSubItems: e.target.checked })}
+                />
+                Year sub-menu
+              </label>
+            </div>
+            <button type="button" className="admin-save-button" onClick={addMenuItemRow} style={{ alignSelf: 'flex-end' }}>
+              Add tab
+            </button>
           </div>
-        ))}
-        <button onClick={handleMenuSave} className="admin-save-button">
-          Save Menu Items
+        </div>
+
+        <button type="button" onClick={handleMenuSave} className="admin-save-button" style={{ marginTop: 16 }} disabled={menuLoading}>
+          Save menu to server
         </button>
       </div>
 
@@ -457,10 +684,11 @@ const AdminInvestorRelations = () => {
                 key={item.id}
                 onClick={() => {
                   setActiveSection(item.id)
+                  localStorage.setItem(ACTIVE_SECTION_KEY, item.id)
                   setNewFile(prev => ({ 
                     ...prev, 
                     section: item.id,
-                    year: item.id === 'annual-return' && years.length > 0 ? years[0] : ''
+                    year: sectionNeedsFinancialYear(item.id) && years.length > 0 ? years[0] : ''
                   }))
                 }}
                 style={{
@@ -493,7 +721,12 @@ const AdminInvestorRelations = () => {
                 onChange={(e) => {
                   const selectedSection = e.target.value
                   setActiveSection(selectedSection)
-                  setNewFile({ ...newFile, section: selectedSection, year: selectedSection === 'annual-return' && years.length > 0 ? years[0] : '' })
+                  localStorage.setItem(ACTIVE_SECTION_KEY, selectedSection)
+                  setNewFile({
+                    ...newFile,
+                    section: selectedSection,
+                    year: sectionNeedsFinancialYear(selectedSection) && years.length > 0 ? years[0] : ''
+                  })
                 }}
               >
                 {menuItems.map(item => (
@@ -501,7 +734,7 @@ const AdminInvestorRelations = () => {
                 ))}
               </select>
             </div>
-            {(activeSection || newFile.section) === 'annual-return' && (
+            {sectionNeedsFinancialYear(activeSection || newFile.section) && (
               <div className="admin-form-group">
                 <label>Year</label>
                 <select
@@ -837,7 +1070,7 @@ const AdminInvestorRelations = () => {
               <p>No years available yet. Add a year to get started.</p>
             </div>
           )
-          ) : (
+          ) : activeSection === 'notice' ? (
             /* Notice Section Files */
             <div className="admin-notice-files" style={{ marginTop: '20px' }}>
               {(() => {
@@ -1033,6 +1266,255 @@ const AdminInvestorRelations = () => {
                     <p style={{ marginTop: '8px', opacity: 0.7 }}>
                       Upload files using the form above.
                     </p>
+                  </div>
+                )
+              })()}
+            </div>
+          ) : sectionNeedsFinancialYear(activeSection) ? (
+            (() => {
+              const sectionBucket = filesBySection[activeSection] || {}
+              const sectionYears = Object.keys(sectionBucket).sort().reverse()
+              if (!sectionYears.length) {
+                return (
+                  <div style={{
+                    padding: '40px 0',
+                    textAlign: 'center',
+                    color: '#888',
+                    fontFamily: '"Poppins", Sans-serif'
+                  }}>
+                    <p>No financial years or files in this tab yet. Add a year under Financial Years, then upload.</p>
+                  </div>
+                )
+              }
+              return (
+                <div className="admin-annual-returns-accordion" style={{ marginTop: '20px' }}>
+                  {sectionYears.map((year) => {
+                    const isExpanded = expandedYears[year] !== undefined ? expandedYears[year] : true
+                    const yearFiles = (sectionBucket[year] || []).filter(
+                      (file) => !file.section || file.section === activeSection
+                    )
+                    return (
+                      <div key={`${activeSection}-${year}`} className="admin-year-dropdown-item" style={{
+                        marginBottom: '15px',
+                        border: '1px solid #e0e0e0',
+                        borderRadius: '12px',
+                        overflow: 'hidden',
+                        backgroundColor: '#FFFFFF',
+                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+                        transition: 'all 0.3s ease'
+                      }}>
+                        <div
+                          className="admin-year-dropdown-header"
+                          onClick={() => setExpandedYears(prev => ({ ...prev, [year]: !prev[year] }))}
+                          style={{
+                            padding: '18px 25px',
+                            backgroundColor: isExpanded ? '#FFF9F8' : '#FFFFFF',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            transition: 'background-color 0.3s ease'
+                          }}
+                        >
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                            <h5 style={{
+                              fontFamily: '"Poppins", Sans-serif',
+                              fontSize: '20px',
+                              fontWeight: 600,
+                              color: '#5D3F3A',
+                              margin: 0
+                            }}>
+                              FY {year}
+                            </h5>
+                            <span style={{
+                              fontSize: '14px',
+                              color: '#888',
+                              fontWeight: 400
+                            }}>
+                              ({yearFiles.length} file{yearFiles.length !== 1 ? 's' : ''})
+                            </span>
+                          </div>
+                          <i
+                            className={`fa fa-chevron-${isExpanded ? 'up' : 'down'}`}
+                            style={{
+                              fontSize: '16px',
+                              color: '#F4553B',
+                              transition: 'transform 0.3s ease'
+                            }}
+                          ></i>
+                        </div>
+                        {isExpanded && (
+                          <div className="admin-year-dropdown-content" style={{
+                            padding: '0 25px 25px 25px',
+                            borderTop: '1px solid #e0e0e0',
+                            backgroundColor: '#FFFFFF'
+                          }}>
+                            {yearFiles.length > 0 ? (
+                              <div style={{ marginTop: '20px', overflowX: 'auto' }}>
+                                <table className="admin-files-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
+                                  <thead>
+                                    <tr style={{ backgroundColor: '#FAFAFA', borderBottom: '2px solid #e0e0e0' }}>
+                                      <th style={{ padding: '12px', textAlign: 'left', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', fontWeight: 600, color: '#5D3F3A' }}>Name</th>
+                                      <th style={{ padding: '12px', textAlign: 'left', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', fontWeight: 600, color: '#5D3F3A' }}>Type</th>
+                                      <th style={{ padding: '12px', textAlign: 'left', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', fontWeight: 600, color: '#5D3F3A' }}>Size</th>
+                                      <th style={{ padding: '12px', textAlign: 'left', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', fontWeight: 600, color: '#5D3F3A' }}>Date</th>
+                                      <th style={{ padding: '12px', textAlign: 'center', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', fontWeight: 600, color: '#5D3F3A' }}>Actions</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {yearFiles.map((file, index) => (
+                                      <tr key={file.id} style={{
+                                        borderBottom: '1px solid #f0f0f0',
+                                        backgroundColor: index % 2 === 0 ? '#FFFFFF' : '#FAFAFA',
+                                        transition: 'background-color 0.2s ease'
+                                      }}
+                                      onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#FFF9F8' }}
+                                      onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = index % 2 === 0 ? '#FFFFFF' : '#FAFAFA' }}
+                                      >
+                                        <td style={{ padding: '15px 12px', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', color: '#5D3F3A' }}>
+                                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                            <i className={`fa fa-file-${file.type === 'pdf' ? 'pdf' : file.type === 'doc' || file.type === 'docx' ? 'word' : 'excel'}`} style={{ color: '#F4553B', fontSize: '18px' }}></i>
+                                            <span style={{ fontWeight: 500 }}>{file.name}</span>
+                                          </div>
+                                        </td>
+                                        <td style={{ padding: '15px 12px', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', color: '#888', textTransform: 'uppercase' }}>{file.type}</td>
+                                        <td style={{ padding: '15px 12px', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', color: '#888' }}>{file.size || 'N/A'}</td>
+                                        <td style={{ padding: '15px 12px', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', color: '#888' }}>{file.date || 'N/A'}</td>
+                                        <td style={{ padding: '15px 12px', textAlign: 'center' }}>
+                                          <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+                                            <button
+                                              type="button"
+                                              onClick={() => handleEditFile({ ...file, year })}
+                                              className="admin-edit-button"
+                                              style={{
+                                                padding: '6px 12px',
+                                                fontSize: '13px',
+                                                backgroundColor: '#F4553B',
+                                                color: '#FFFFFF',
+                                                border: 'none',
+                                                borderRadius: '6px',
+                                                cursor: 'pointer',
+                                                fontFamily: '"Poppins", Sans-serif',
+                                                fontWeight: 500
+                                              }}
+                                            >
+                                              <i className="fa fa-edit"></i> Edit
+                                            </button>
+                                            <button
+                                              type="button"
+                                              onClick={() => handleDeleteFile(year, file.id)}
+                                              className="admin-delete-button"
+                                              style={{
+                                                padding: '6px 12px',
+                                                fontSize: '13px',
+                                                backgroundColor: '#dc3545',
+                                                color: '#FFFFFF',
+                                                border: 'none',
+                                                borderRadius: '6px',
+                                                cursor: 'pointer',
+                                                fontFamily: '"Poppins", Sans-serif',
+                                                fontWeight: 500
+                                              }}
+                                            >
+                                              <i className="fa fa-trash"></i> Delete
+                                            </button>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
+                            ) : (
+                              <div style={{
+                                padding: '30px 0',
+                                textAlign: 'center',
+                                color: '#888',
+                                fontFamily: '"Poppins", Sans-serif',
+                                fontSize: '14px'
+                              }}>
+                                <p>No files for FY {year} yet.</p>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              )
+            })()
+          ) : (
+            <div className="admin-flat-section-files" style={{ marginTop: '20px' }}>
+              {(() => {
+                const raw = filesBySection[activeSection] || {}
+                const flatFiles = Object.values(raw)
+                  .flat()
+                  .filter((f) => !f.section || f.section === activeSection)
+                if (!flatFiles.length) {
+                  return (
+                    <div style={{
+                      padding: '40px 0',
+                      textAlign: 'center',
+                      color: '#888',
+                      fontFamily: '"Poppins", Sans-serif'
+                    }}>
+                      <p>No files in this section yet.</p>
+                      <p style={{ marginTop: '8px', opacity: 0.7 }}>
+                        Upload files using the form above.
+                      </p>
+                    </div>
+                  )
+                }
+                return (
+                  <div style={{ overflowX: 'auto' }}>
+                    <table className="admin-files-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: '#FAFAFA', borderBottom: '2px solid #e0e0e0' }}>
+                          <th style={{ padding: '12px', textAlign: 'left', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', fontWeight: 600, color: '#5D3F3A' }}>Name</th>
+                          <th style={{ padding: '12px', textAlign: 'left', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', fontWeight: 600, color: '#5D3F3A' }}>Type</th>
+                          <th style={{ padding: '12px', textAlign: 'left', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', fontWeight: 600, color: '#5D3F3A' }}>Size</th>
+                          <th style={{ padding: '12px', textAlign: 'left', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', fontWeight: 600, color: '#5D3F3A' }}>Date</th>
+                          <th style={{ padding: '12px', textAlign: 'center', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', fontWeight: 600, color: '#5D3F3A' }}>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {flatFiles.map((file, index) => (
+                          <tr key={file.id} style={{
+                            borderBottom: '1px solid #f0f0f0',
+                            backgroundColor: index % 2 === 0 ? '#FFFFFF' : '#FAFAFA'
+                          }}
+                          >
+                            <td style={{ padding: '15px 12px', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', color: '#5D3F3A' }}>
+                              <span style={{ fontWeight: 500 }}>{file.name}</span>
+                            </td>
+                            <td style={{ padding: '15px 12px', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', color: '#888', textTransform: 'uppercase' }}>{file.type}</td>
+                            <td style={{ padding: '15px 12px', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', color: '#888' }}>{file.size || 'N/A'}</td>
+                            <td style={{ padding: '15px 12px', fontFamily: '"Poppins", Sans-serif', fontSize: '14px', color: '#888' }}>{file.date || 'N/A'}</td>
+                            <td style={{ padding: '15px 12px', textAlign: 'center' }}>
+                              <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+                                <button
+                                  type="button"
+                                  onClick={() => handleEditFile(file)}
+                                  className="admin-edit-button"
+                                  style={{ padding: '6px 12px', fontSize: '13px', backgroundColor: '#F4553B', color: '#FFFFFF', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
+                                >
+                                  <i className="fa fa-edit"></i> Edit
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleDeleteFile(null, file.id)}
+                                  className="admin-delete-button"
+                                  style={{ padding: '6px 12px', fontSize: '13px', backgroundColor: '#dc3545', color: '#FFFFFF', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
+                                >
+                                  <i className="fa fa-trash"></i> Delete
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 )
               })()}

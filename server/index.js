@@ -70,6 +70,9 @@ app.use("/api/investor", require("./routes/investor"));
 // Business commute routes
 app.use("/api/business-commute", require("./routes/businessCommute"));
 
+// Contact form route (email + Kissflow webhook queue)
+app.use("/api", require("./routes/contactForm"));
+
 
 
 
@@ -174,7 +177,7 @@ app.get("*", (req, res) => {
 });
 
 // set port
-const PORT = process.env.APP_PORT || 3007;
+const PORT =  3009;
 
 sequelize
   .sync({ alter: true })

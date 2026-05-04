@@ -1,5 +1,7 @@
 const emailService = require('../services/email_service');
 const { responseStatus } = require('../helpers/response');
+const { getRequestMeta, phoneToDigitsOnly } = require('../helpers/requestMeta');
+const { sendToKissflowWebhook } = require('../helpers/kissflowWebhook');
 
 // Submit business commute form
 const submitBusinessCommuteForm = async (req, res) => {
@@ -16,10 +18,7 @@ const submitBusinessCommuteForm = async (req, res) => {
       recaptchaToken
     } = req.body;
 
-    // Validate required fields
-    if (!name || !email || !companyName || !phone || !department || !regions || !numberOfEmployees) {
-      return responseStatus(res, 400, 'All required fields must be filled');
-    }
+    // Validation is handled in routes/businessCommute.js (express-validator)
 
     // Get client IP address
     const ipAddress = req.ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -37,6 +36,24 @@ const submitBusinessCommuteForm = async (req, res) => {
       recaptchaToken,
       ipAddress
     };
+    console.log(formData);
+
+    const meta = getRequestMeta(req);
+    const phoneDigits = phoneToDigitsOnly(phone);
+
+    const websiteName = 'Refex Mobility';
+    const webhookData = {
+      name,
+      email,
+      phone: phoneDigits,
+      Phone_Number: phoneDigits,
+      company:companyName,
+      message:comment,
+      ...meta,
+    };
+
+    // Queue Kissflow webhook asynchronously (do not await)
+    sendToKissflowWebhook(websiteName, 'Contact form', webhookData);
 
     // Send email
     const result = await emailService.sendBusinessCommuteEmail(formData);
