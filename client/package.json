@@ -9,8 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "libphonenumber-js": "^1.12.42",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-phone-input-2": "^2.15.1",
     "react-phone-number-input": "^3.4.14",
     "react-router-dom": "^6.26.0"
   },

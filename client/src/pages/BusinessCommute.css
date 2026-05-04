@@ -1,5 +1,25 @@
 /* Business Commute Page Styles */
 
+/* Inline API / validation error above connect form */
+.business-commute .business-form-api-error {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #fdecea;
+  color: #611a15;
+  border: 1px solid #f5c6cb;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.business-commute .business-field-error {
+  display: none;
+  color: #c62828;
+  font-size: 13px;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
 /* Hero Section - Full Width Override */
 .business-commute .elementor-element-b485948 {
   width: 100vw !important;
@@ -805,6 +825,55 @@
 
 .business-commute .bussiness-form .PhoneInputCountryIcon--square {
   border-radius: 2px;
+}
+
+/* Phone field with country code - react-phone-input-2 */
+.business-commute .bussiness-form .business-phone-input.react-tel-input {
+  width: 100%;
+  font-family: "Poppins", Sans-serif;
+}
+
+.business-commute .bussiness-form .business-phone-input.react-tel-input .form-control {
+  width: 100% !important;
+  height: 48px !important;
+  min-height: 48px !important;
+  line-height: 1.2;
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400;
+  color: #5D3F3A !important;
+  padding: 12px 16px 12px 56px !important; /* room for flag */
+  border: 1px solid #E2E2E2 !important;
+  border-radius: 8px !important;
+  background-color: #fff !important;
+  box-sizing: border-box;
+}
+
+.business-commute .bussiness-form .business-phone-input.react-tel-input .flag-dropdown {
+  border: 1px solid #E2E2E2 !important;
+  border-right: 0 !important;
+  border-radius: 8px 0 0 8px !important;
+  background: #fff !important;
+  height: 48px !important;
+}
+
+.business-commute .bussiness-form .business-phone-input.react-tel-input .selected-flag {
+  width: 48px !important;
+  padding: 0 0 0 12px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.business-commute .bussiness-form .business-phone-input.react-tel-input:focus-within .form-control {
+  outline: none;
+  border-color: #4F4F4F !important;
+  box-shadow: none !important;
+}
+
+.business-commute .bussiness-form .business-phone-input.react-tel-input .form-control::placeholder {
+  color: #999;
+  opacity: 1;
 }
 
 /* Native select dropdown styling - fallback if Choices.js not loaded */

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import './Home.css'
@@ -10,8 +10,10 @@ const InvestorRelations = () => {
   const [isAnnualReturnExpanded, setIsAnnualReturnExpanded] = useState(false)
   const [expandedYears, setExpandedYears] = useState({}) // Track which years are expanded
   const [loading, setLoading] = useState(true)
+  const ACTIVE_SECTION_KEY = 'investorActiveSection'
+  const ACTIVE_YEAR_KEY = 'investorActiveYear'
   
-  const API_BASE_URL =  'https://refexmobility.com'
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://refexmobility.com'
   
   // Load data from localStorage or use defaults
   const [heroData, setHeroData] = useState({
@@ -22,13 +24,14 @@ const InvestorRelations = () => {
   
   const [menuItems, setMenuItems] = useState([
     { id: 'annual-return', label: 'Annual Return', hasSubItems: true },
-    { id: 'notice', label: 'Notice of the General meetings', hasSubItems: false }
+    { id: 'notice', label: 'General Meetings', hasSubItems: false },
+    { id: 'policies', label: 'Policies', hasSubItems: false },
   ])
   
   const [years, setYears] = useState([])
   const [filesData, setFilesData] = useState({})
   const [filesBySection, setFilesBySection] = useState({}) // Store files by section
-  const [isNoticeExpanded, setIsNoticeExpanded] = useState(false) // Track notice expansion
+  const [subMenuExpanded, setSubMenuExpanded] = useState({}) // FY sub-menus for non–annual-return tabs
 
   // Load files from API
   const loadFilesFromAPI = async () => {
@@ -42,18 +45,18 @@ const InvestorRelations = () => {
           const sectionData = result.data.filesBySection || {}
           setFilesBySection(sectionData)
           
-          // Annual Return files (for backward compatibility)
-          setFilesData(result.data.filesByYear || {})
-          const apiYears = result.data.years || []
+          const annual = sectionData['annual-return'] || {}
+          setFilesData(Object.keys(annual).length ? annual : (result.data.filesByYear || {}))
+          const apiYears =
+            (result.data.years && result.data.years.length > 0)
+              ? result.data.years
+              : Object.keys(annual).sort().reverse()
           setYears(apiYears)
           
           // Set active year to first available year if not set
-          setActiveYear(prevYear => {
+          setActiveYear((prevYear) => {
             if (!prevYear && apiYears.length > 0) {
-              // Also ensure annual-return section is active and expanded
-              setActiveSection('annual-return')
               setIsAnnualReturnExpanded(true)
-              // Expand first year by default
               setExpandedYears({ [apiYears[0]]: true })
               return apiYears[0]
             }
@@ -94,38 +97,68 @@ const InvestorRelations = () => {
     }
   }
 
-  // Load data on mount
-  useEffect(() => {
-    // Load hero and menu from localStorage (can be moved to database later)
-    const savedHeroData = localStorage.getItem('investorHeroData')
-    const savedMenuItems = localStorage.getItem('investorMenuItems')
-
-    // if (savedHeroData) {
-    //   setHeroData(JSON.parse(savedHeroData))
-    // }
-    
-    let itemsToSet = [
-      { id: 'annual-return', label: 'Annual Return', hasSubItems: true },
-      { id: 'notice', label: 'Notice of the General meetings', hasSubItems: false }
-    ]
-    
-    if (savedMenuItems) {
-      itemsToSet = JSON.parse(savedMenuItems)
-      setMenuItems(itemsToSet)
-    } else {
-      setMenuItems(itemsToSet)
-    }
-
-    // Set first menu item as active by default
+  const applyMenuItems = (itemsToSet) => {
+    setMenuItems(itemsToSet)
     if (itemsToSet.length > 0) {
-      const firstMenuItem = itemsToSet[0]
-      setActiveSection(firstMenuItem.id)
-      if (firstMenuItem.id === 'annual-return' && firstMenuItem.hasSubItems) {
+      const storedSection = localStorage.getItem(ACTIVE_SECTION_KEY)
+      const storedYear = localStorage.getItem(ACTIVE_YEAR_KEY) || ''
+      const resolvedSection = itemsToSet.some((m) => m.id === storedSection)
+        ? storedSection
+        : itemsToSet[0].id
+      setActiveSection(resolvedSection)
+      localStorage.setItem(ACTIVE_SECTION_KEY, resolvedSection)
+
+      setActiveYear(storedYear)
+      if (storedYear) {
+        setExpandedYears({ [storedYear]: true })
+      }
+
+      const selected = itemsToSet.find((m) => m.id === resolvedSection)
+      if (selected?.hasSubItems && resolvedSection === 'annual-return') {
         setIsAnnualReturnExpanded(true)
       }
     }
+  }
 
-    // Load files from API
+  // Load data on mount
+  useEffect(() => {
+    const loadMenu = async () => {
+      const fallback = [
+        { id: 'annual-return', label: 'Annual Return', hasSubItems: true },
+        { id: 'notice', label: 'General Meetings', hasSubItems: false },
+        { id: 'policies', label: 'Policies', hasSubItems: false },
+      ]
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/investor/menu`)
+        if (response.ok) {
+          const result = await response.json()
+          if (result.success && result.data?.items?.length) {
+            const mapped = result.data.items.map((x) => ({
+              id: x.id,
+              label: x.label,
+              hasSubItems: !!x.hasSubItems,
+            }))
+            applyMenuItems(mapped)
+            return
+          }
+        }
+      } catch (e) {
+        console.warn('Investor menu API unavailable, using cache', e)
+      }
+      const savedMenuItems = localStorage.getItem('investorMenuItems')
+      if (savedMenuItems) {
+        try {
+          const parsed = JSON.parse(savedMenuItems)
+          if (Array.isArray(parsed) && parsed.length) {
+            applyMenuItems(parsed)
+            return
+          }
+        } catch (_) {}
+      }
+      applyMenuItems(fallback)
+    }
+
+    loadMenu()
     loadFilesFromAPI()
   }, [])
 
@@ -186,35 +219,54 @@ const handleDownload = (file) => {
   }, [])
 
   const handleSectionClick = (section) => {
-    if (section === 'annual-return') {
-      setIsAnnualReturnExpanded(!isAnnualReturnExpanded)
-      setActiveSection('annual-return')
-      // Clear active year when clicking main section
-      setActiveYear('')
-    } else if (section === 'notice') {
+    const menuItem = menuItems.find((m) => m.id === section)
+    if (menuItem?.hasSubItems && section !== 'notice') {
+      if (section === 'annual-return') {
+        setIsAnnualReturnExpanded(!isAnnualReturnExpanded)
+        setActiveSection('annual-return')
+        localStorage.setItem(ACTIVE_SECTION_KEY, 'annual-return')
+        setActiveYear('')
+        localStorage.removeItem(ACTIVE_YEAR_KEY)
+      } else {
+        setSubMenuExpanded((prev) => ({ ...prev, [section]: !prev[section] }))
+        setActiveSection(section)
+        localStorage.setItem(ACTIVE_SECTION_KEY, section)
+        setActiveYear('')
+        localStorage.removeItem(ACTIVE_YEAR_KEY)
+      }
+      return
+    }
+    if (section === 'notice') {
       setActiveSection('notice')
-      // Clear active year when clicking main section
+      localStorage.setItem(ACTIVE_SECTION_KEY, 'notice')
       setActiveYear('')
-      // Auto-expand all notice years when notice section is activated (if no year selected)
+      localStorage.removeItem(ACTIVE_YEAR_KEY)
       if (filesBySection && filesBySection['notice'] && !activeYear) {
         const noticeYears = Object.keys(filesBySection['notice'])
         const expandedNoticeYears = {}
-        noticeYears.forEach(year => {
+        noticeYears.forEach((year) => {
           expandedNoticeYears[year] = true
         })
-        setExpandedYears(prev => ({ ...prev, ...expandedNoticeYears }))
+        setExpandedYears((prev) => ({ ...prev, ...expandedNoticeYears }))
       }
     } else {
       setActiveSection(section)
+      localStorage.setItem(ACTIVE_SECTION_KEY, section)
       setActiveYear('')
+      localStorage.removeItem(ACTIVE_YEAR_KEY)
     }
   }
 
-  const handleYearClick = (year) => {
+  const handleYearClick = (year, sectionId = 'annual-return') => {
     setActiveYear(year)
-    setActiveSection('annual-return')
-    setIsAnnualReturnExpanded(true) // Keep expanded when year is selected
-    // Expand only the selected year, collapse others
+    setActiveSection(sectionId)
+    localStorage.setItem(ACTIVE_SECTION_KEY, sectionId)
+    localStorage.setItem(ACTIVE_YEAR_KEY, year)
+    if (sectionId === 'annual-return') {
+      setIsAnnualReturnExpanded(true)
+    } else {
+      setSubMenuExpanded((prev) => ({ ...prev, [sectionId]: true }))
+    }
     setExpandedYears({ [year]: true })
   }
 
@@ -322,54 +374,72 @@ const handleDownload = (file) => {
                                       <div className="investor-sidebar">
                                         <div className="sidebar-nav">
                                           {menuItems.map((item) => {
-                                            if (item.id === 'annual-return' && item.hasSubItems) {
+                                            if (item.hasSubItems && item.id !== 'notice') {
+                                              let sectionYears
+                                              if (item.id === 'annual-return') {
+                                                sectionYears = years
+                                              } else {
+                                                const sectionBucket = filesBySection[item.id] || {}
+                                                sectionYears = Object.keys(sectionBucket).filter((y) => y !== 'general').sort().reverse()
+                                                if (sectionBucket['general'] && sectionBucket['general'].length) {
+                                                  sectionYears = [...sectionYears, 'general']
+                                                }
+                                              }
+                                              const expanded =
+                                                item.id === 'annual-return'
+                                                  ? isAnnualReturnExpanded
+                                                  : !!subMenuExpanded[item.id]
                                               return (
-                                                <React.Fragment key={item.id}>
-                                                  <button 
-                                                    className={`sidebar-nav-item sidebar-nav-parent ${activeSection === 'annual-return' ? 'active' : ''} ${isAnnualReturnExpanded ? 'expanded' : ''}`}
-                                                    onClick={() => handleSectionClick('annual-return')}
+                                                <Fragment key={item.id}>
+                                                  <button
+                                                    className={`sidebar-nav-item sidebar-nav-parent ${activeSection === item.id ? 'active' : ''} ${expanded ? 'expanded' : ''}`}
+                                                    type="button"
+                                                    onClick={() => handleSectionClick(item.id)}
                                                   >
                                                     <span>{item.label}</span>
-                                                    <i className={`fa fa-chevron-${isAnnualReturnExpanded ? 'down' : 'right'}`}></i>
+                                                    <i className={`fa fa-chevron-${expanded ? 'down' : 'right'}`}></i>
                                                   </button>
-                                                  {isAnnualReturnExpanded && years.length > 0 ? (
-                                                    years.map((year) => (
-                                                      <button 
-                                                        key={year}
-                                                        className={`sidebar-nav-item sidebar-nav-link ${activeSection === 'annual-return' && activeYear === year ? 'active' : ''}`}
-                                                        onClick={() => handleYearClick(year)}
+                                                  {expanded && sectionYears.length > 0 ? (
+                                                    sectionYears.map((year) => (
+                                                      <button
+                                                        key={`${item.id}-${year}`}
+                                                        type="button"
+                                                        className={`sidebar-nav-item sidebar-nav-link ${activeSection === item.id && activeYear === year ? 'active' : ''}`}
+                                                        onClick={() => handleYearClick(year, item.id)}
                                                       >
-                                                        FY {year}
+                                                        {year === 'general' ? 'General' : `FY ${year}`}
                                                       </button>
                                                     ))
-                                                  ) : isAnnualReturnExpanded ? (
+                                                  ) : expanded ? (
                                                     <div className="sidebar-nav-item" style={{ padding: '10px', fontSize: '14px', opacity: 0.7 }}>
                                                       No years available
                                                     </div>
                                                   ) : null}
-                                                </React.Fragment>
+                                                </Fragment>
                                               )
-                                            } else if (item.id === 'notice') {
+                                            }
+                                            if (item.id === 'notice') {
                                               return (
                                                 <button
                                                   key={item.id}
+                                                  type="button"
                                                   className={`sidebar-nav-item ${activeSection === 'notice' ? 'active' : ''}`}
                                                   onClick={() => handleSectionClick('notice')}
                                                 >
                                                   {item.label}
                                                 </button>
                                               )
-                                            } else {
-                                              return (
-                                                <button
-                                                  key={item.id}
-                                                  className={`sidebar-nav-item ${activeSection === item.id ? 'active' : ''}`}
-                                                  onClick={() => handleSectionClick(item.id)}
-                                                >
-                                                  {item.label}
-                                                </button>
-                                              )
                                             }
+                                            return (
+                                              <button
+                                                key={item.id}
+                                                type="button"
+                                                className={`sidebar-nav-item ${activeSection === item.id ? 'active' : ''}`}
+                                                onClick={() => handleSectionClick(item.id)}
+                                              >
+                                                {item.label}
+                                              </button>
+                                            )
                                           })}
                                         </div>
                                       </div>
@@ -590,10 +660,229 @@ const handleDownload = (file) => {
                                             )}
                                           </div>
                                         )}
+                                        {menuItems.find((m) => m.id === activeSection)?.hasSubItems &&
+                                          activeSection !== 'annual-return' &&
+                                          activeSection !== 'notice' && (
+                                          <div className="content-wrapper">
+                                            <h2 className="content-heading">
+                                              {menuItems.find((m) => m.id === activeSection)?.label || 'Documents'}
+                                            </h2>
+                                            {loading ? (
+                                              <div className="content-message">
+                                                <p>Loading files...</p>
+                                              </div>
+                                            ) : (() => {
+                                              const secData = filesBySection[activeSection] || {}
+                                              let listYears = Object.keys(secData)
+                                                .filter((y) => y !== 'general')
+                                                .sort()
+                                                .reverse()
+                                              if (secData['general'] && secData['general'].length) {
+                                                listYears = [...listYears, 'general']
+                                              }
+                                              if (!listYears.length) {
+                                                return (
+                                                  <div className="content-message" style={{ padding: '40px 0', textAlign: 'center' }}>
+                                                    <p>No documents in this section yet.</p>
+                                                  </div>
+                                                )
+                                              }
+                                              return (
+                                                <div className="annual-returns-accordion" style={{ marginTop: '30px' }}>
+                                                  {listYears
+                                                    .filter((y) => (activeYear ? y === activeYear : true))
+                                                    .map((year) => {
+                                                      const isExpanded =
+                                                        expandedYears[year] !== undefined
+                                                          ? expandedYears[year]
+                                                          : activeYear
+                                                            ? year === activeYear
+                                                            : false
+                                                      const yearFiles = secData[year] || []
+                                                      return (
+                                                        <div
+                                                          key={`${activeSection}-${year}`}
+                                                          className="year-dropdown-item"
+                                                          style={{
+                                                            marginBottom: '15px',
+                                                            border: '1px solid #e0e0e0',
+                                                            borderRadius: '12px',
+                                                            overflow: 'hidden',
+                                                            backgroundColor: '#FFFFFF',
+                                                            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+                                                            transition: 'all 0.3s ease',
+                                                          }}
+                                                        >
+                                                          <div
+                                                            className="year-dropdown-header"
+                                                            onClick={() => toggleYearDropdown(year)}
+                                                            style={{
+                                                              padding: '20px 25px',
+                                                              backgroundColor: isExpanded ? '#FFF9F8' : '#FFFFFF',
+                                                              cursor: 'pointer',
+                                                              display: 'flex',
+                                                              justifyContent: 'space-between',
+                                                              alignItems: 'center',
+                                                              transition: 'background-color 0.3s ease',
+                                                            }}
+                                                          >
+                                                            <h3
+                                                              style={{
+                                                                fontFamily: '"Poppins", Sans-serif',
+                                                                fontSize: '22px',
+                                                                fontWeight: 600,
+                                                                color: '#5D3F3A',
+                                                                margin: 0,
+                                                              }}
+                                                            >
+                                                              {year === 'general' ? 'General' : `FY ${year}`}
+                                                            </h3>
+                                                          </div>
+                                                          {isExpanded && (
+                                                            <div
+                                                              className="year-dropdown-content"
+                                                              style={{
+                                                                padding: '0 25px 25px 25px',
+                                                                borderTop: '1px solid #e0e0e0',
+                                                                backgroundColor: '#FFFFFF',
+                                                              }}
+                                                            >
+                                                              {yearFiles.length > 0 ? (
+                                                                <div className="files-list" style={{ marginTop: '20px' }}>
+                                                                  {yearFiles.map((file) => {
+                                                                    let iconClass = 'fa-file-pdf'
+                                                                    if (file.type === 'doc' || file.type === 'docx') {
+                                                                      iconClass = 'fa-file-word'
+                                                                    } else if (file.type === 'xls' || file.type === 'xlsx') {
+                                                                      iconClass = 'fa-file-excel'
+                                                                    }
+                                                                    return (
+                                                                      <div
+                                                                        key={file.id}
+                                                                        className="file-item"
+                                                                        style={{
+                                                                          display: 'flex',
+                                                                          alignItems: 'center',
+                                                                          padding: '15px',
+                                                                          marginBottom: '12px',
+                                                                          backgroundColor: '#FAFAFA',
+                                                                          borderRadius: '8px',
+                                                                          border: '1px solid #f0f0f0',
+                                                                          transition: 'all 0.2s ease',
+                                                                        }}
+                                                                      >
+                                                                        <div
+                                                                          className="file-icon"
+                                                                          style={{
+                                                                            fontSize: '32px',
+                                                                            color: '#F4553B',
+                                                                            marginRight: '15px',
+                                                                          }}
+                                                                        >
+                                                                          <i className={`fa ${iconClass}`}></i>
+                                                                        </div>
+                                                                        <div className="file-info" style={{ flex: 1 }}>
+                                                                          <h4
+                                                                            className="file-name"
+                                                                            style={{
+                                                                              fontFamily: '"Poppins", Sans-serif',
+                                                                              fontSize: '16px',
+                                                                              fontWeight: 600,
+                                                                              color: '#5D3F3A',
+                                                                              margin: '0 0 8px 0',
+                                                                            }}
+                                                                          >
+                                                                            {file.name}
+                                                                          </h4>
+                                                                          <div
+                                                                            className="file-meta"
+                                                                            style={{
+                                                                              display: 'flex',
+                                                                              gap: '15px',
+                                                                              fontSize: '14px',
+                                                                              color: '#888',
+                                                                            }}
+                                                                          >
+                                                                            <span
+                                                                              className="file-type"
+                                                                              style={{ textTransform: 'uppercase', fontWeight: 500 }}
+                                                                            >
+                                                                              {file.type}
+                                                                            </span>
+                                                                            {file.size && <span className="file-size">{file.size}</span>}
+                                                                          </div>
+                                                                        </div>
+                                                                        <div
+                                                                          className="file-actions"
+                                                                          style={{ display: 'flex', gap: '10px', marginLeft: '15px' }}
+                                                                        >
+                                                                          <button
+                                                                            type="button"
+                                                                            className="btn-view"
+                                                                            onClick={() => handleView(file)}
+                                                                            style={{
+                                                                              padding: '8px 16px',
+                                                                              backgroundColor: '#F4553B',
+                                                                              color: '#FFFFFF',
+                                                                              border: 'none',
+                                                                              borderRadius: '6px',
+                                                                              cursor: 'pointer',
+                                                                              fontFamily: '"Poppins", Sans-serif',
+                                                                              fontSize: '14px',
+                                                                              fontWeight: 500,
+                                                                            }}
+                                                                          >
+                                                                            <i className="fa fa-eye"></i>
+                                                                            <span> View</span>
+                                                                          </button>
+                                                                          <button
+                                                                            type="button"
+                                                                            className="btn-download"
+                                                                            onClick={() => handleDownload(file)}
+                                                                            style={{
+                                                                              padding: '8px 16px',
+                                                                              backgroundColor: '#FFFFFF',
+                                                                              color: '#F4553B',
+                                                                              border: '2px solid #F4553B',
+                                                                              borderRadius: '6px',
+                                                                              cursor: 'pointer',
+                                                                              fontFamily: '"Poppins", Sans-serif',
+                                                                              fontSize: '14px',
+                                                                              fontWeight: 500,
+                                                                            }}
+                                                                          >
+                                                                            <i className="fa fa-download"></i>
+                                                                            <span> Download</span>
+                                                                          </button>
+                                                                        </div>
+                                                                      </div>
+                                                                    )
+                                                                  })}
+                                                                </div>
+                                                              ) : (
+                                                                <div
+                                                                  className="content-message"
+                                                                  style={{ padding: '30px 0', textAlign: 'center', color: '#888' }}
+                                                                >
+                                                                  <p>
+                                                                    No files for {year === 'general' ? 'this group' : `FY ${year}`} yet.
+                                                                  </p>
+                                                                </div>
+                                                              )}
+                                                            </div>
+                                                          )}
+                                                        </div>
+                                                      )
+                                                    })}
+                                                </div>
+                                              )
+                                            })()}
+                                          </div>
+                                        )}
                                         {activeSection === 'notice' && (
                                           <div className="content-wrapper">
                                             <h2 className="content-heading">
-                                              Notice of the General meetings
+                                              {menuItems.find((m) => m.id === 'notice')?.label || 'General Meetings'}
                                             </h2>
                                             
                                             {/* Dropdown/Accordion for Notice Years - Filtered by Menu Selection */}
@@ -819,6 +1108,74 @@ const handleDownload = (file) => {
                                                   <p style={{ fontSize: '14px', marginTop: '10px', opacity: 0.7 }}>
                                                     Files will be uploaded soon.
                                                   </p>
+                                                </div>
+                                              )
+                                            })()}
+                                          </div>
+                                        )}
+                                        {activeSection !== 'annual-return' &&
+                                          activeSection !== 'notice' &&
+                                          !menuItems.find((m) => m.id === activeSection)?.hasSubItems && (
+                                          <div className="content-wrapper">
+                                            <h2 className="content-heading">
+                                              {menuItems.find((m) => m.id === activeSection)?.label || 'Documents'}
+                                            </h2>
+                                            {loading ? (
+                                              <div className="content-message">
+                                                <p>Loading files...</p>
+                                              </div>
+                                            ) : (() => {
+                                              const sec = filesBySection?.[activeSection] || {}
+                                              const allFiles = Object.keys(sec).length
+                                                ? Object.values(sec).flat()
+                                                : []
+                                              if (!allFiles.length) {
+                                                return (
+                                                  <div className="content-message" style={{ padding: '40px 0', textAlign: 'center' }}>
+                                                    <p>No documents in this section yet.</p>
+                                                  </div>
+                                                )
+                                              }
+                                              return (
+                                                <div className="files-list" style={{ marginTop: '24px' }}>
+                                                  {allFiles.map((file) => (
+                                                    <div
+                                                      key={file.id}
+                                                      className="file-item"
+                                                      style={{
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        padding: '15px',
+                                                        marginBottom: '12px',
+                                                        backgroundColor: '#FAFAFA',
+                                                        borderRadius: '8px',
+                                                        border: '1px solid #f0f0f0',
+                                                      }}
+                                                    >
+                                                      <div className="file-info" style={{ flex: 1 }}>
+                                                        <h4
+                                                          className="file-name"
+                                                          style={{
+                                                            fontFamily: '"Poppins", Sans-serif',
+                                                            fontSize: '16px',
+                                                            fontWeight: 600,
+                                                            color: '#5D3F3A',
+                                                            margin: '0 0 8px 0',
+                                                          }}
+                                                        >
+                                                          {file.name}
+                                                        </h4>
+                                                      </div>
+                                                      <div className="file-actions" style={{ display: 'flex', gap: '10px' }}>
+                                                        <button className="btn-view" type="button" onClick={() => handleView(file)}>
+                                                          View
+                                                        </button>
+                                                        <button className="btn-download" type="button" onClick={() => handleDownload(file)}>
+                                                          Download
+                                                        </button>
+                                                      </div>
+                                                    </div>
+                                                  ))}
                                                 </div>
                                               )
                                             })()}
