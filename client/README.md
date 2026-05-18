@@ -87,3 +87,27 @@ To complete the conversion, you may want to add:
 - All CSS variables and styling are preserved
 - Components are modular and reusable
 - Ready for further customization
+
+## Business enquiry form (local)
+
+**Terminal 1 — API** (`server/`):
+
+```bash
+cp .env.example .env
+# Set SKIP_DB_SYNC=true for local testing without MySQL
+npm install
+npm run dev
+```
+
+**Terminal 2 — frontend** (`client/`):
+
+```bash
+cp .env.example .env
+# VITE_API_BASE_URL=http://localhost:3009
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173/business-commute](http://localhost:5173/business-commute), scroll to the form, submit a test enquiry. You should see the themed success message; the API log should show `[Kissflow] Webhook sent: refexmobility-...` when the webhook URL is configured.
+
+reCAPTCHA is skipped on `localhost` / `127.0.0.1`. In production, set `VITE_RECAPTCHA_SITE_KEY` (client) and `RECAPTCHA_SECRET_KEY` (server).

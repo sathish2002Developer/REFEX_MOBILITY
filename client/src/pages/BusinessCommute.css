@@ -20,6 +20,92 @@
   line-height: 1.4;
 }
 
+/* Success state after enquiry submit */
+.business-commute .business-form-success-panel {
+  text-align: center;
+  padding: 48px 32px;
+  background: #fff;
+  border-radius: 15px;
+  border: 1px solid #e2e2e2;
+  animation: businessFormFadeIn 0.45s ease-out;
+}
+
+@keyframes businessFormFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.business-commute .business-form-success-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #f4553b;
+  color: #fff;
+  font-size: 28px;
+  line-height: 56px;
+  font-weight: 600;
+}
+
+.business-commute .business-form-success-title {
+  font-family: Poppins, sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #5d3f3a;
+  margin: 0 0 12px;
+}
+
+.business-commute .business-form-success-body {
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  color: #5d3f3a;
+  line-height: 1.6;
+  margin: 0 0 28px;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.business-commute .business-form-success-cta {
+  display: inline-block;
+  min-width: 200px;
+}
+
+/* Submit spinner */
+.business-commute .wpforms-submit-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.business-commute .wpforms-submit-spinner {
+  display: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(244, 85, 59, 0.25);
+  border-top-color: #f4553b;
+  border-radius: 50%;
+  animation: businessFormSpin 0.7s linear infinite;
+}
+
+.business-commute .wpforms-submit-spinner.is-visible {
+  display: inline-block;
+}
+
+@keyframes businessFormSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Hero Section - Full Width Override */
 .business-commute .elementor-element-b485948 {
   width: 100vw !important;

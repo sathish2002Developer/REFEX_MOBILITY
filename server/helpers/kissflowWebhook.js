@@ -1,5 +1,7 @@
-const KISSFLOW_WEBHOOK_URL =
-  'https://refexgroup.kissflow.com/integration/2/AcCMptlq60zH/webhook/4e9yNyjAD6uxENJXAhNbtXzEGuOVQbDukBaeyWoG0kkqoeCkhIaxbK8FF4sWPWtcuQema2TcT-gLfVu3ot6g';
+const { WEBSITE_SLUG, KISSFLOW_CONTACT_WEBHOOK_URL } = require('../config/siteConfig');
+
+const QUEUE_DELAY_MS = Number(process.env.KISSFLOW_QUEUE_DELAY_MS || 3500);
+const REQUEST_TIMEOUT_MS = Number(process.env.KISSFLOW_TIMEOUT_MS || 15000);
 
 const queue = [];
 let isProcessing = false;
@@ -9,11 +11,13 @@ function sleep(ms) {
 }
 
 function slugifyWebsiteName(name) {
-  return String(name ?? '')
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '') || 'website';
+  return (
+    String(name ?? '')
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || WEBSITE_SLUG
+  );
 }
 
 function randomString() {
@@ -21,19 +25,26 @@ function randomString() {
 }
 
 async function postJson(url, payload) {
-  // Prefer native fetch when available; fallback to node-fetch (transitive dep).
   const fetchFn =
     typeof fetch === 'function'
       ? fetch
       : (await import('node-fetch')).default;
 
-  return fetchFn(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-    },
-    body: JSON.stringify(payload),
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+  try {
+    return await fetchFn(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 async function processQueue() {
@@ -45,7 +56,8 @@ async function processQueue() {
       const item = queue.shift();
       if (!item) continue;
 
-      const { websiteName, formName, formData } = item;
+      const { websiteName, formName, formData, webhookUrl } = item;
+      const targetUrl = webhookUrl || KISSFLOW_CONTACT_WEBHOOK_URL;
       const websiteSlug = slugifyWebsiteName(websiteName);
       const submissionId = `${websiteSlug}-${Date.now()}-${randomString()}`;
       const websiteAndForm = `${websiteName} - ${formName}`;
@@ -55,47 +67,53 @@ async function processQueue() {
         submissionId,
         websiteName,
         formName,
-        'Website and form': websiteAndForm,
         Website_and_form: websiteAndForm,
       };
 
       try {
-        const res = await postJson(KISSFLOW_WEBHOOK_URL, payload);
-        // Do not throw even on non-2xx. Log for visibility.
-        if (!res || !('ok' in res) || res.ok !== true) {
+        const res = await postJson(targetUrl, payload);
+        if (res && res.ok) {
+          console.log(`[Kissflow] Webhook sent: ${submissionId}`);
+        } else {
           const status = res?.status;
-          console.error('Kissflow webhook non-2xx response', { status, submissionId });
+          console.warn('[Kissflow] Webhook non-2xx', { status, submissionId });
         }
       } catch (err) {
-        console.error('Kissflow webhook failed', { message: err?.message, submissionId });
+        console.warn('[Kissflow] Webhook failed', {
+          submissionId,
+          message: err?.message,
+        });
       }
 
-      // Delay 3–4 seconds between requests
-      await sleep(3500);
+      await sleep(QUEUE_DELAY_MS);
     }
   } finally {
     isProcessing = false;
   }
 }
 
-function sendToKissflowWebhook(websiteName, formName, formData) {
+/**
+ * Queue a Kissflow webhook (fire-and-forget).
+ * @param {string} websiteName
+ * @param {string} formName
+ * @param {object} formData - field payload (name, email, phone, etc.)
+ * @param {string} [webhookUrl] - defaults to KISSFLOW_CONTACT_WEBHOOK_URL
+ */
+function sendToKissflowWebhook(websiteName, formName, formData, webhookUrl) {
   try {
     queue.push({
       websiteName,
       formName,
-      formData,
+      formData: formData || {},
+      webhookUrl: webhookUrl || KISSFLOW_CONTACT_WEBHOOK_URL,
     });
-
-    // Fire-and-forget worker; never block caller
     processQueue();
   } catch (err) {
-    // Do not throw errors to the route
-    console.error('Failed to enqueue Kissflow webhook', { message: err?.message });
+    console.error('[Kissflow] Failed to enqueue webhook', { message: err?.message });
   }
 }
 
 module.exports = {
   sendToKissflowWebhook,
-  KISSFLOW_WEBHOOK_URL,
+  KISSFLOW_CONTACT_WEBHOOK_URL,
 };
-

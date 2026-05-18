@@ -2,10 +2,14 @@ const express = require('express');
 const { body, validationResult } = require('express-validator');
 const businessCommuteController = require('../controllers/businessCommute');
 const { isValidInternationalPhone } = require('../helpers/phoneValidation');
+const rateLimitBusinessCommute = require('../middlewares/rateLimitBusinessCommute');
+const {
+  ALLOWED_BUSINESS_SERVICES,
+  ALLOWED_REGIONS,
+} = require('../config/siteConfig');
 
 const router = express.Router();
 
-// Same practical email pattern as contact form
 const EMAIL_REGEX =
   /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
 
@@ -26,6 +30,7 @@ const formatValidationErrorResponse = (req, res) => {
 
 router.post(
   '/submit',
+  rateLimitBusinessCommute,
   [
     body('name')
       .trim()
@@ -62,6 +67,17 @@ router.post(
         }
         return true;
       }),
+    body('service')
+      .trim()
+      .notEmpty()
+      .withMessage('service is required')
+      .bail()
+      .custom((value) => {
+        if (!ALLOWED_BUSINESS_SERVICES.includes(value)) {
+          throw new Error('service is invalid');
+        }
+        return true;
+      }),
     body('department')
       .trim()
       .notEmpty()
@@ -75,6 +91,10 @@ router.post(
       if (cleaned.length === 0) {
         throw new Error('regions is required');
       }
+      const invalid = cleaned.filter((r) => !ALLOWED_REGIONS.includes(r));
+      if (invalid.length > 0) {
+        throw new Error('regions is invalid');
+      }
       return true;
     }),
     body('numberOfEmployees').custom((value) => {
@@ -84,6 +104,7 @@ router.post(
       }
       return true;
     }),
+    body('comment').optional().isString().isLength({ max: 5000 }),
   ],
   (req, res, next) => {
     if (formatValidationErrorResponse(req, res) !== true) {

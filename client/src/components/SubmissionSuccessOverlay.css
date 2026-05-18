@@ -1,0 +1,16 @@
+/* Fallback if Tailwind utilities are overridden by legacy WP CSS */
+#submission-success-overlay-root {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1rem !important;
+  background-color: rgba(6, 18, 31, 0.9) !important;
+  box-sizing: border-box !important;
+}
+
+#submission-success-overlay-root * {
+  box-sizing: border-box;
+}

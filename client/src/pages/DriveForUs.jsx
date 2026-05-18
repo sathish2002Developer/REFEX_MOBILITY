@@ -816,7 +816,7 @@ const DriveForUs = () => {
                                       <div className="elementor-element elementor-element-a525162 elementor-widget elementor-widget-image" data-id="a525162" data-element_type="widget" data-widget_type="image.default">
                                         <div className="elementor-widget-container">
                                           <img 
-                                            fetchPriority="high" 
+                                            fetchpriority="high" 
                                             decoding="async" 
                                             width="1152" 
                                             height="910" 
@@ -1137,7 +1137,7 @@ const DriveForUs = () => {
                                       <div className="elementor-element elementor-element-5f5dc5e elementor-widget elementor-widget-image" data-id="5f5dc5e" data-element_type="widget" data-widget_type="image.default">
                                         <div className="elementor-widget-container">
                                           <img 
-                                            fetchPriority="high" 
+                                            fetchpriority="high" 
                                             decoding="async" 
                                             width="1152" 
                                             height="910" 

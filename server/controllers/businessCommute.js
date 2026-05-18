@@ -1,85 +1,82 @@
 const emailService = require('../services/email_service');
 const { responseStatus } = require('../helpers/response');
-const { getRequestMeta, phoneToDigitsOnly } = require('../helpers/requestMeta');
 const { sendToKissflowWebhook } = require('../helpers/kissflowWebhook');
+const { buildBusinessCommuteKissflowPayload } = require('../helpers/kissflowPayloadBuilder');
+const { assertRecaptchaForSubmit } = require('../helpers/recaptcha');
+const {
+  WEBSITE_NAME,
+  BUSINESS_FORM_NAME,
+  KISSFLOW_CONTACT_WEBHOOK_URL,
+} = require('../config/siteConfig');
 
-// Submit business commute form
 const submitBusinessCommuteForm = async (req, res) => {
   try {
+    const captcha = await assertRecaptchaForSubmit(req);
+    if (!captcha.ok) {
+      return res.status(400).json({
+        success: false,
+        message: captcha.message,
+        errorMessages: [captcha.message],
+        errors: [{ path: 'recaptcha', msg: captcha.message }],
+      });
+    }
+
     const {
       name,
       companyName,
       email,
       phone,
+      service,
       department,
       regions,
       numberOfEmployees,
       comment,
-      recaptchaToken
     } = req.body;
 
-    // Validation is handled in routes/businessCommute.js (express-validator)
+    const ipAddress =
+      req.headers['x-forwarded-for']?.split?.(',')[0]?.trim() ||
+      req.ip ||
+      req.socket?.remoteAddress ||
+      '';
 
-    // Get client IP address
-    const ipAddress = req.ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
-    // Prepare form data
     const formData = {
       name,
       companyName,
       email,
       phone,
+      service,
       department,
-      regions: Array.isArray(regions) ? regions : (regions ? [regions] : []),
+      regions: Array.isArray(regions) ? regions : regions ? [regions] : [],
       numberOfEmployees,
       comment: comment || '',
-      recaptchaToken,
-      ipAddress
-    };
-    console.log(formData);
-
-    const meta = getRequestMeta(req);
-    const phoneDigits = phoneToDigitsOnly(phone);
-
-    const websiteName = 'Refex Mobility';
-    const webhookData = {
-      name,
-      email,
-      phone: phoneDigits,
-      Phone_Number: phoneDigits,
-      company:companyName,
-      message:comment,
-      ...meta,
+      ipAddress,
     };
 
-    // Queue Kissflow webhook asynchronously (do not await)
-    sendToKissflowWebhook(websiteName, 'Contact form', webhookData);
+    const webhookData = buildBusinessCommuteKissflowPayload(req, formData);
+    sendToKissflowWebhook(
+      WEBSITE_NAME,
+      BUSINESS_FORM_NAME,
+      webhookData,
+      KISSFLOW_CONTACT_WEBHOOK_URL
+    );
 
-    // Send email
-    const result = await emailService.sendBusinessCommuteEmail(formData);
-
-    return responseStatus(res, 200, 'Form submitted successfully. We will contact you soon.', {
-      messageId: result.messageId
-    });
-
-  } catch (error) {
-    console.error('Error in submitBusinessCommuteForm:', error);
-    
-    // Provide user-friendly error message
-    let errorMessage = 'Failed to submit form. Please try again later.';
-    
-    if (error.message && !error.message.includes('Email configuration error')) {
-      errorMessage = error.message;
-    } else if (error.message) {
-      // For email configuration errors, use generic message for users
-      errorMessage = 'Form submission received, but there was an issue sending the email. Our team has been notified.';
+    let emailSent = false;
+    try {
+      const result = await emailService.sendBusinessCommuteEmail(formData);
+      emailSent = Boolean(result?.success);
+    } catch (emailErr) {
+      console.error('[BusinessCommute] Staff email failed', { message: emailErr?.message });
     }
-    
-    return responseStatus(res, 500, errorMessage);
+
+    return responseStatus(res, 200, 'Thank you! Our team will reach out shortly.', {
+      emailSent,
+    });
+  } catch (error) {
+    console.error('[BusinessCommute] submit error', { message: error?.message });
+    return responseStatus(res, 500, 'Failed to submit form. Please try again later.');
   }
 };
 
 module.exports = {
-  submitBusinessCommuteForm
+  submitBusinessCommuteForm,
 };
-

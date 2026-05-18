@@ -43,18 +43,24 @@ function getRequestMeta(req) {
     '';
 
   const referer = req.get('referer') || '';
-  let source = 'direct';
-  try {
-    if (referer) source = new URL(referer).hostname || 'referer';
-  } catch (_) {
-    source = referer ? 'referer' : 'direct';
-  }
+  // Kissflow expects full page URL as source when available (see reference payload)
+  const source = referer || 'direct';
+
+  const istDate = new Date();
+  const date = istDate.toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
+  const time = istDate.toLocaleTimeString('en-GB', {
+    timeZone: 'Asia/Kolkata',
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  });
 
   return {
     timestamp,
     dateTime: now.toISOString(),
-    date: now.format('YYYY-MM-DD'),
-    time: now.format('HH:mm:ss'),
+    date,
+    time,
     ipAddress,
     userAgent,
     deviceType,

@@ -14,36 +14,63 @@ const { Strategy } = require("passport-openidconnect");
 
 const app = express();
 
-// CORS must be applied before any other middleware
-// More permissive CORS for development
+app.set('trust proxy', 1);
+
+const CORS_ORIGINS = (
+  process.env.CORS_ORIGINS ||
+  'http://localhost:5173,http://127.0.0.1:5173,https://refexmobility.com,https://www.refexmobility.com'
+)
+  .split(',')
+  .map((o) => o.trim())
+  .filter(Boolean);
+
+function isAllowedOrigin(origin) {
+  if (!origin) return true;
+  return CORS_ORIGINS.includes(origin);
+}
+
 app.use((req, res, next) => {
-  // Log all incoming requests for debugging
-  console.log(`${new Date().toISOString()} - ${req.method} ${req.url} from origin: ${req.headers.origin || 'no-origin'}`);
-  
-  // Set CORS headers for all requests
-  res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+  const origin = req.headers.origin;
+  if (isAllowedOrigin(origin)) {
+    res.header('Access-Control-Allow-Origin', origin || CORS_ORIGINS[0]);
+    res.header('Access-Control-Allow-Credentials', 'true');
+  }
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin, Cache-Control, Pragma');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Max-Age', '86400'); // 24 hours
-  
-  // Handle preflight requests
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, X-Requested-With, Accept, Origin, Cache-Control, Pragma'
+  );
+  res.header('Access-Control-Max-Age', '86400');
+
   if (req.method === 'OPTIONS') {
-    console.log('Handling preflight request for:', req.url);
     return res.status(200).end();
   }
-  
   next();
 });
 
-// Additional CORS middleware as backup
-app.use(cors({
-  origin: true, // Allow all origins in development
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Cache-Control', 'Pragma'],
-  optionsSuccessStatus: 200
-}));
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || isAllowedOrigin(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'X-Requested-With',
+      'Accept',
+      'Origin',
+      'Cache-Control',
+      'Pragma',
+    ],
+    optionsSuccessStatus: 200,
+  })
+);
 
 // Middleware to parse incoming JSON data ==================================
 app.use(express.json({  }));
@@ -176,17 +203,29 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./dist", "index.html"));
 });
 
-// set port
-const PORT =  3009;
+const PORT = Number(process.env.APP_PORT || 3009);
 
-sequelize
-  .sync({ alter: true })
-  .then(() => {
-    console.log("Database synced successfully");
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}.`);
-    });
-  })
-  .catch((err) => {
-    console.error("Error syncing database:", err);
+function startServer() {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
   });
+}
+
+if (process.env.SKIP_DB_SYNC === 'true') {
+  console.warn('SKIP_DB_SYNC=true — starting API without database sync');
+  startServer();
+} else {
+  sequelize
+    .sync({ alter: true })
+    .then(() => {
+      console.log('Database synced successfully');
+      startServer();
+    })
+    .catch((err) => {
+      console.error('Error syncing database:', err);
+      if (process.env.START_WITHOUT_DB === 'true') {
+        console.warn('START_WITHOUT_DB=true — starting API despite DB error');
+        startServer();
+      }
+    });
+}

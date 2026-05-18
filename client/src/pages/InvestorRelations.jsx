@@ -299,7 +299,7 @@ const handleDownload = (file) => {
                           data-id="investor-hero"
                           data-element_type="section"
                           data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
-                          fetchPriority="high"
+                          fetchpriority="high"
                           style={{
                             backgroundImage: `url('${heroData.backgroundImage}')`,
                             backgroundSize: 'cover',

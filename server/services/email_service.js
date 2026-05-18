@@ -2,19 +2,26 @@ const nodemailer = require('nodemailer');
 
 class EmailService {
   constructor() {
-    // Create transporter using SMTP configuration
+    const port = Number(process.env.SMTP_PORT || 587);
+    const auth =
+      process.env.SMTP_USER && process.env.SMTP_PASS
+        ? { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+        : undefined;
+
     this.transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: process.env.SMTP_PORT || 587,
-      secure: false, // true for 465, false for other ports
-      auth: {
-        user: process.env.SMTP_USER || 'refexmobility@refex.co.in',
-        pass: process.env.SMTP_PASS ||'xxgi abgr kywt lhqg'
-      },
+      port,
+      secure: port === 465,
+      auth,
       tls: {
-        rejectUnauthorized: false
-      }
+        rejectUnauthorized: process.env.SMTP_REJECT_UNAUTHORIZED !== 'false',
+      },
     });
+
+    this.staffTo = process.env.STAFF_EMAIL_TO || 'refexmobility@refex.co.in';
+    this.mailFrom =
+      process.env.MAIL_FROM || `"Refex Mobility" <noreply@refex.co.in>`;
+    this.brandName = process.env.WEBSITE_NAME || 'Refex Mobility';
   }
 
   // Send contact form email
@@ -203,48 +210,73 @@ class EmailService {
 
   // Send business commute form email
   async sendBusinessCommuteEmail(formData) {
-    try {
-      const {
-        name,
-        companyName,
-        email,
-        phone,
-        department,
-        regions,
-        numberOfEmployees,
-        comment,
-        ipAddress
-      } = formData;
+    const {
+      name,
+      companyName,
+      email,
+      phone,
+      service,
+      department,
+      regions,
+      numberOfEmployees,
+      comment,
+      ipAddress,
+    } = formData;
 
-      const regionsText = Array.isArray(regions) ? regions.join(', ') : regions;
-
-      const mailOptions = {
-        from: `"Refex Mobility" <refexmobility@refex.co.in>`,
-        to: 'refexmobility@refex.co.in',
-        replyTo: email,
-        subject: `Business Commute Enquiry - ${name}`,
-        html: `
-          <h2>Business Commute Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Company:</strong> ${companyName || 'Not provided'}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-          <p><strong>Department:</strong> ${department || 'Not provided'}</p>
-          <p><strong>Regions:</strong> ${regionsText || 'Not provided'}</p>
-          <p><strong>No. of Employees:</strong> ${numberOfEmployees || 'Not provided'}</p>
-          <p><strong>Comment:</strong> ${comment || 'N/A'}</p>
-          <hr>
-          <p><strong>IP Address:</strong> ${ipAddress || 'N/A'}</p>
-          <p><strong>Submitted:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
-        `
-      };
-
-      await this.transporter.sendMail(mailOptions);
-      return { success: true };
-    } catch (error) {
-      console.error('Business commute email error:', error);
-      throw new Error('Failed to send business commute email');
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.warn('[Email] SMTP not configured; skipping staff notification');
+      return { success: false, skipped: true };
     }
+
+    const regionsText = Array.isArray(regions) ? regions.join(', ') : regions;
+    const submittedIst = new Date().toLocaleString('en-IN', {
+      timeZone: 'Asia/Kolkata',
+    });
+
+    const mailOptions = {
+      from: this.mailFrom,
+      to: this.staffTo,
+      replyTo: email,
+      subject: `Business Commute Enquiry - ${name}`,
+      html: `
+        <div style="font-family: Poppins, Arial, sans-serif; max-width: 640px; margin: 0 auto;">
+          <div style="background: #F4553B; color: #fff; padding: 20px 24px; border-radius: 8px 8px 0 0;">
+            <h2 style="margin: 0; font-size: 20px;">${this.brandName} — Business enquiry</h2>
+          </div>
+          <div style="padding: 24px; background: #FFF9F8; border: 1px solid #E2E2E2; border-top: none; border-radius: 0 0 8px 8px;">
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Company:</strong> ${companyName || '—'}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone || '—'}</p>
+            <p><strong>Service:</strong> ${service || '—'}</p>
+            <p><strong>Department:</strong> ${department || '—'}</p>
+            <p><strong>Regions:</strong> ${regionsText || '—'}</p>
+            <p><strong>No. of Employees:</strong> ${numberOfEmployees || '—'}</p>
+            <p><strong>Comment:</strong> ${comment || '—'}</p>
+            <hr style="border: none; border-top: 1px solid #E2E2E2; margin: 20px 0;" />
+            <p style="color: #5D3F3A; font-size: 13px;"><strong>IP:</strong> ${ipAddress || 'N/A'}</p>
+            <p style="color: #5D3F3A; font-size: 13px;"><strong>Submitted (IST):</strong> ${submittedIst}</p>
+          </div>
+        </div>
+      `,
+      text: [
+        `${this.brandName} — Business enquiry`,
+        `Name: ${name}`,
+        `Company: ${companyName}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        `Service: ${service}`,
+        `Department: ${department}`,
+        `Regions: ${regionsText}`,
+        `Employees: ${numberOfEmployees}`,
+        `Comment: ${comment || '—'}`,
+        `IP: ${ipAddress || 'N/A'}`,
+        `Submitted (IST): ${submittedIst}`,
+      ].join('\n'),
+    };
+
+    const result = await this.transporter.sendMail(mailOptions);
+    return { success: true, messageId: result.messageId };
   }
 
   // Test email configuration

@@ -41,7 +41,7 @@ const TermsAndConditions = () => {
                           data-id="terms-hero"
                           data-element_type="section"
                           data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
-                          fetchPriority="high"
+                          fetchpriority="high"
                           style={{
                             backgroundImage: "url('https://refexmobility.com/wp-content/uploads/2025/07/drive-section-1-scaled.webp')",
                             backgroundSize: 'cover',

@@ -3,7 +3,12 @@ const { body, validationResult } = require('express-validator');
 
 const emailService = require('../services/email_service');
 const { sendToKissflowWebhook } = require('../helpers/kissflowWebhook');
-const { getRequestMeta, phoneToDigitsOnly } = require('../helpers/requestMeta');
+const { buildContactFormKissflowPayload } = require('../helpers/kissflowPayloadBuilder');
+const {
+  WEBSITE_NAME,
+  CONTACT_FORM_NAME,
+  KISSFLOW_CONTACT_WEBHOOK_URL,
+} = require('../config/siteConfig');
 const { isValidInternationalPhone } = require('../helpers/phoneValidation');
 
 const router = express.Router();
@@ -67,22 +72,20 @@ router.post(
 
     const { name, email, phone, company, message } = req.body || {};
 
-    const meta = getRequestMeta(req);
-    const phoneDigits = phoneToDigitsOnly(phone);
-
-    const websiteName = 'Refex Mobility';
-    const webhookData = {
+    const webhookData = buildContactFormKissflowPayload(req, {
       name,
       email,
-      phone: phoneDigits,
-      Phone_Number: phoneDigits,
+      phone,
       company,
       message,
-      ...meta,
-    };
+    });
 
-    // Queue Kissflow webhook asynchronously (do not await)
-    sendToKissflowWebhook(websiteName, 'Contact form', webhookData);
+    sendToKissflowWebhook(
+      WEBSITE_NAME,
+      CONTACT_FORM_NAME,
+      webhookData,
+      KISSFLOW_CONTACT_WEBHOOK_URL
+    );
 
     // let emailSent = false;
     // try {

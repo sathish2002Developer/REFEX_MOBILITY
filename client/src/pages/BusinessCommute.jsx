@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import PhoneInput from 'react-phone-input-2'
@@ -6,6 +6,14 @@ import 'react-phone-input-2/lib/style.css'
 import { parsePhoneNumberFromString } from 'libphonenumber-js'
 import './Home.css'
 import './BusinessCommute.css'
+import {
+  API_BASE_URL,
+  BUSINESS_REGIONS,
+  BUSINESS_SERVICES,
+  RECAPTCHA_SITE_KEY,
+  isLocalhost as isLocalhostHost,
+} from '../constants/businessForm'
+import SubmissionSuccessOverlay from '../components/SubmissionSuccessOverlay'
 
 // Import all client logos from refexclients folder
 import Amazon from '../assets/refexclients/amazon.png'
@@ -151,8 +159,15 @@ const BusinessCommute = () => {
   const phoneNumberRef = useRef('')
   phoneNumberRef.current = phoneNumber
   const [submitting, setSubmitting] = useState(false)
+  const [submitSuccess, setSubmitSuccess] = useState(false)
   const [formApiError, setFormApiError] = useState('')
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3009'
+
+  const handleSubmissionSuccessDone = useCallback(() => {
+    setSubmitSuccess(false)
+    setFormApiError('')
+  }, [])
+
+  const formSubmitHandlerRef = useRef(null)
 
   const setInlineFieldError = (errorElementId, message) => {
     const el = document.getElementById(errorElementId)
@@ -402,19 +417,27 @@ const BusinessCommute = () => {
     choicesCSS.href = 'https://cdn.jsdelivr.net/npm/choices.js@10.2.0/public/assets/styles/choices.min.css'
     document.head.appendChild(choicesCSS)
 
-    // Load external scripts
-    const scripts = [
-      '/wp-content/themes/enerzee/assets/js/bootstrap.min.js',
-      '/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js',
-      'https://cdn.jsdelivr.net/npm/choices.js@10.2.0/public/assets/scripts/choices.min.js'
-    ]
+    const loadScript = (src, { defer = true } = {}) =>
+      new Promise((resolve, reject) => {
+        if (document.querySelector(`script[src="${src}"]`)) {
+          resolve()
+          return
+        }
+        const script = document.createElement('script')
+        script.src = src
+        if (defer) script.defer = true
+        script.onload = () => resolve()
+        script.onerror = () => reject(new Error(`Failed to load ${src}`))
+        document.body.appendChild(script)
+      })
 
-    scripts.forEach(src => {
-      const script = document.createElement('script')
-      script.src = src
-      script.defer = true
-      document.body.appendChild(script)
-    })
+    loadScript('https://code.jquery.com/jquery-3.7.1.min.js', { defer: false })
+      .then(() => loadScript('/wp-content/themes/enerzee/assets/js/bootstrap.min.js'))
+      .then(() => loadScript('/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js'))
+      .then(() =>
+        loadScript('https://cdn.jsdelivr.net/npm/choices.js@10.2.0/public/assets/scripts/choices.min.js')
+      )
+      .catch((err) => console.warn('Legacy script load:', err.message))
 
     // Initialize Swiper carousels
     const initSwipers = () => {
@@ -550,9 +573,7 @@ const BusinessCommute = () => {
 
     const initializeRecaptcha = () => {
       // Check if running on localhost - skip reCAPTCHA initialization
-      const isLocalhost = window.location.hostname === 'localhost' || 
-                         window.location.hostname === '127.0.0.1' ||
-                         window.location.hostname.includes('localhost')
+      const isLocalhost = isLocalhostHost()
       
       if (isLocalhost) {
         console.log('Running on localhost - reCAPTCHA validation will be skipped')
@@ -574,7 +595,7 @@ const BusinessCommute = () => {
           }
           try {
             const recaptchaId = window.grecaptcha.render(recaptchaContainer, {
-              'sitekey': '6Lcu4JIrAAAAAI6_Qg8PfbukWRTSwDH6tD9MWyTy',
+              sitekey: RECAPTCHA_SITE_KEY,
               'theme': 'light',
               'callback': () => {
                 console.log('reCAPTCHA verified')
@@ -606,6 +627,7 @@ const BusinessCommute = () => {
       companyName: 'wpforms-4974-field_7-error',
       email: 'wpforms-4974-field_8-error',
       phone: 'wpforms-4974-field_16-error',
+      service: 'wpforms-4974-field_service-error',
       department: 'wpforms-4974-field_10-error',
       regions: 'wpforms-4974-field_13-error',
       numberOfEmployees: 'wpforms-4974-field_11-error',
@@ -644,9 +666,7 @@ const BusinessCommute = () => {
         clearBusinessFieldErrors()
         
         // Check if running on localhost (development mode)
-        const isLocalhost = window.location.hostname === 'localhost' || 
-                           window.location.hostname === '127.0.0.1' ||
-                           window.location.hostname.includes('localhost')
+        const isLocalhost = isLocalhostHost()
         
         // Check reCAPTCHA - get widget ID from container or use stored ID
         const recaptchaContainer = document.querySelector('.g-recaptcha')
@@ -679,6 +699,7 @@ const BusinessCommute = () => {
         const name = (formData.get('wpforms[fields][6]') || '').trim()
         const companyName = (formData.get('wpforms[fields][7]') || '').trim()
         const email = (formData.get('wpforms[fields][8]') || '').trim()
+        const service = (formData.get('wpforms[fields][service]') || '').trim()
         const department = (formData.get('wpforms[fields][10]') || '').trim()
         const numberOfEmployees = (formData.get('wpforms[fields][11]') || '').trim()
         const comment = (formData.get('wpforms[fields][12]') || '').trim()
@@ -713,6 +734,11 @@ const BusinessCommute = () => {
         const phoneErr = validateBusinessPhone(currentPhoneNumber)
         if (phoneErr) clientErrors.push({ path: 'phone', msg: phoneErr })
         if (!companyName) clientErrors.push({ path: 'companyName', msg: 'company name is required' })
+        if (!service) {
+          clientErrors.push({ path: 'service', msg: 'service is required' })
+        } else if (!BUSINESS_SERVICES.includes(service)) {
+          clientErrors.push({ path: 'service', msg: 'service is invalid' })
+        }
         if (!department) clientErrors.push({ path: 'department', msg: 'department is required' })
         if (!regions || regions.length === 0) clientErrors.push({ path: 'regions', msg: 'regions is required' })
         if (!String(numberOfEmployees ?? '').trim()) {
@@ -727,13 +753,15 @@ const BusinessCommute = () => {
         }
 
         setFormApiError('')
+        setSubmitting(true)
 
-        // Disable submit button and show loading
         const submitButton = document.getElementById('wpforms-submit-4974')
         const spinner = form.querySelector('.wpforms-submit-spinner')
-        const originalText = submitButton.textContent
-        submitButton.disabled = true
-        submitButton.textContent = 'Sending...'
+        const originalText = submitButton?.textContent || 'Submit Details'
+        if (submitButton) {
+          submitButton.disabled = true
+          submitButton.textContent = 'Sending...'
+        }
         if (spinner) spinner.style.display = 'inline-block'
 
         try {
@@ -748,12 +776,13 @@ const BusinessCommute = () => {
               companyName,
               email,
               phone: currentPhoneNumber,
+              service,
               department,
               regions,
               numberOfEmployees,
               comment,
-              recaptchaToken: recaptchaResponse || (isLocalhost ? 'localhost-development' : null)
-            })
+              recaptchaToken: recaptchaResponse || (isLocalhost ? 'localhost-development' : null),
+            }),
           })
 
           let result = {}
@@ -776,20 +805,18 @@ const BusinessCommute = () => {
             return result.message || `Something went wrong (${response.status}). Please try again.`
           }
 
-          if (response.ok && result.success) {
+          const apiSucceeded =
+            response.ok && (result.success === true || result.success === undefined)
+
+          if (apiSucceeded) {
             clearBusinessFieldErrors()
             setFormApiError('')
-            alert('Thank you! Your form has been submitted successfully. We will contact you soon.')
             form.reset()
             setPhoneNumber('')
-            setPhoneCountry(PHONE_DEFAULT_COUNTRY)
-            // Reset reCAPTCHA (only if not localhost and widget is initialized)
+            setSubmitSuccess(true)
             const recaptchaContainerReset = document.querySelector('.g-recaptcha')
             const widgetIdReset = recaptchaContainerReset?.dataset.recaptchaId || recaptchaWidgetId
-            const isLocalhostReset = window.location.hostname === 'localhost' || 
-                                    window.location.hostname === '127.0.0.1' ||
-                                    window.location.hostname.includes('localhost')
-            if (!isLocalhostReset && window.grecaptcha && widgetIdReset !== null && widgetIdReset !== undefined) {
+            if (!isLocalhostHost() && window.grecaptcha && widgetIdReset != null) {
               try {
                 window.grecaptcha.reset(widgetIdReset)
               } catch (error) {
@@ -808,17 +835,16 @@ const BusinessCommute = () => {
           setFormApiError('An error occurred while submitting the form. Please try again.')
           scrollToFormError()
         } finally {
-          // Re-enable submit button
-          submitButton.disabled = false
-          submitButton.textContent = originalText
+          setSubmitting(false)
+          if (submitButton) {
+            submitButton.disabled = false
+            submitButton.textContent = originalText
+          }
           if (spinner) spinner.style.display = 'none'
         }
       }
       
-      form.addEventListener('submit', handleSubmit)
-      
-      // Store handleSubmit on form for cleanup
-      form.handleSubmit = handleSubmit
+      formSubmitHandlerRef.current = handleSubmit
     }
 
     // Load reCAPTCHA after a short delay to ensure DOM is ready
@@ -872,13 +898,8 @@ const BusinessCommute = () => {
       if (inlineStyle) inlineStyle.remove()
       if (heroBgStyle) heroBgStyle.remove()
       
-      // Cleanup form event listener
-      const form = document.getElementById('wpforms-form-4974')
-      if (form && form.handleSubmit) {
-        form.removeEventListener('submit', form.handleSubmit)
-        form.handleSubmit = null
-      }
-      
+      formSubmitHandlerRef.current = null
+
       // Cleanup Choices.js instance
       const selectElement = document.querySelector('#wpforms-4974-field_13')
       if (selectElement && selectElement.choicesjs) {
@@ -932,7 +953,7 @@ const BusinessCommute = () => {
                           data-id="b485948"
                           data-element_type="section"
                           data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
-                          fetchPriority="high"
+                          fetchpriority="high"
                           style={{
                             backgroundImage: "url('/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp')",
                             backgroundSize: 'cover',
@@ -1864,7 +1885,20 @@ const BusinessCommute = () => {
                                     ) : null}
                                     <div className="eael-contact-form eael-wpforms eael-wpforms-align-default">
                                       <div className="wpforms-container wpforms-container-full wpforms-render-modern" id="wpforms-4974">
-                                        <form id="wpforms-form-4974" className="wpforms-validate wpforms-form wpforms-ajax-form" data-formid="4974" method="post" enctype="multipart/form-data" action="/business-commute/" data-token="dcc23f4a61bd9109aa78a7a8c7764255" data-token-time="1767334861" noValidate>
+                                        <form
+                                          id="wpforms-form-4974"
+                                          className="wpforms-validate wpforms-form wpforms-ajax-form"
+                                          data-formid="4974"
+                                          method="post"
+                                          encType="multipart/form-data"
+                                          action="/business-commute/"
+                                          noValidate
+                                          onSubmit={(e) => {
+                                            e.preventDefault()
+                                            e.stopPropagation()
+                                            formSubmitHandlerRef.current?.(e)
+                                          }}
+                                        >
                                           {/* <noscript className="wpforms-error-noscript">Please enable JavaScript in your browser to complete this form.</noscript> */}
                                           {/* <div className="wpforms-hidden" id="wpforms-error-noscript">Please enable JavaScript in your browser to complete this form.</div> */}
                                           <div className="wpforms-field-container">
@@ -1926,6 +1960,24 @@ const BusinessCommute = () => {
                                               <input type="hidden" name="wpforms[fields][16]" value={phoneNumber} />
                                               <div id="wpforms-4974-field_16-error" className="business-field-error" role="alert" />
                                             </div>
+                                            {/* Service — full width */}
+                                            <div id="wpforms-4974-field_service-container" className="wpforms-field wpforms-field-select wpforms-field-select-style-modern" data-field-id="service">
+                                              <label className="wpforms-field-label" htmlFor="wpforms-4974-field_service">Service <span className="wpforms-required-label" aria-hidden="true">*</span></label>
+                                              <select
+                                                id="wpforms-4974-field_service"
+                                                className="wpforms-field-large wpforms-field-required"
+                                                name="wpforms[fields][service]"
+                                                defaultValue=""
+                                                required
+                                                aria-errormessage="wpforms-4974-field_service-error"
+                                              >
+                                                <option value="" disabled>Select a service</option>
+                                                {BUSINESS_SERVICES.map((s) => (
+                                                  <option key={s} value={s}>{s}</option>
+                                                ))}
+                                              </select>
+                                              <div id="wpforms-4974-field_service-error" className="business-field-error" role="alert" />
+                                            </div>
                                             {/* Row 3: Department (left) + Regions (right) */}
                                             <div id="wpforms-4974-field_10-container" className="wpforms-field wpforms-field-text wpforms-one-half wpforms-first wpforms-mobile-full" data-field-id="10">
                                               <label className="wpforms-field-label" htmlFor="wpforms-4974-field_10">Department <span className="wpforms-required-label" aria-hidden="true">*</span></label>
@@ -1935,12 +1987,10 @@ const BusinessCommute = () => {
                                             <div id="wpforms-4974-field_13-container" className="wpforms-field wpforms-field-select wpforms-one-half wpforms-last wpforms-mobile-full wpforms-field-select-style-modern" data-field-id="13">
                                               <label className="wpforms-field-label" htmlFor="wpforms-4974-field_13">Regions <span className="wpforms-required-label" aria-hidden="true">*</span></label>
                                               <select id="wpforms-4974-field_13" className="wpforms-field-large wpforms-field-required choicesjs-select" data-size-class="wpforms-field-row wpforms-field-large" name="wpforms[fields][13][]" multiple required aria-errormessage="wpforms-4974-field_13-error">
-                                                <option value="" className="placeholder" disabled>Chennai</option>
-                                                <option value="Chennai">Chennai</option>
-                                                <option value="Bengaluru">Bengaluru</option>
-                                                <option value="Mumbai">Mumbai</option>
-                                                <option value="Hyderabad">Hyderabad</option>
-                                                <option value="Delhi NCR">Delhi NCR</option>
+                                                <option value="" className="placeholder" disabled>Select regions</option>
+                                                {BUSINESS_REGIONS.map((r) => (
+                                                  <option key={r} value={r}>{r}</option>
+                                                ))}
                                               </select>
                                               <div id="wpforms-4974-field_13-error" className="business-field-error" role="alert" />
                                             </div>
@@ -1965,7 +2015,7 @@ const BusinessCommute = () => {
                 >
                   <div 
                     className="g-recaptcha" 
-                    data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                    data-sitekey={RECAPTCHA_SITE_KEY}
                     data-callback="onRecaptchaSuccess"
                   ></div>
                 </div>
@@ -1976,8 +2026,10 @@ const BusinessCommute = () => {
                                             <input type="hidden" name="page_url" value="/business-commute/" />
                                             <input type="hidden" name="page_id" value="5464" />
                                             <input type="hidden" name="wpforms[post_id]" value="5464" />
-                                            <button type="submit" name="wpforms[submit]" id="wpforms-submit-4974" className="wpforms-submit wp-forms-submit" data-alt-text="Sending..." data-submit-text="Submit Details" aria-live="assertive" value="wpforms-submit">Submit Details</button>
-                                            <img decoding="async" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2026%2026'%3E%3C/svg%3E" className="wpforms-submit-spinner" style={{display: 'none'}} width="26" height="26" alt="Loading" />
+                                            <button type="submit" name="wpforms[submit]" id="wpforms-submit-4974" className="wpforms-submit wp-forms-submit" disabled={submitting} aria-live="assertive" value="wpforms-submit">
+                                              {submitting ? 'Sending...' : 'Submit Details'}
+                                            </button>
+                                            <span className={`wpforms-submit-spinner${submitting ? ' is-visible' : ''}`} aria-hidden="true" />
                                           </div>
                                         </form>
                                       </div>
@@ -2268,6 +2320,9 @@ const BusinessCommute = () => {
           </div>
         </div>
       </div>
+      {submitSuccess ? (
+        <SubmissionSuccessOverlay key="submission-success" onDone={handleSubmissionSuccessDone} />
+      ) : null}
       <Footer />
     </div>
   )

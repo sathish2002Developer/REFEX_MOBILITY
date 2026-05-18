@@ -88,7 +88,7 @@ const Footer = () => {
                   </p>
                   <p className="email-info">
                     <i className="fa fa-envelope" aria-hidden="true"></i>
-                    <a href="mailto:refexmobility@refex.co.in">refexmobility@refex.co.in</a>
+                    <a href="mailto: mobility@refex.co.in">mobility@refex.co.in</a>
                   </p>
                   <p className="email-info">
                     <i className="fa fa-envelope" aria-hidden="true"></i>

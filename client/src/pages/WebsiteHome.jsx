@@ -211,17 +211,24 @@ const WebsiteHome = () => {
     document.head.appendChild(heroBgStyle)
 
     // Load external scripts
-    const scripts = [
-      '/wp-content/themes/enerzee/assets/js/bootstrap.min.js',
-      '/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js'
-    ]
+    const loadScript = (src, { defer = true } = {}) =>
+      new Promise((resolve, reject) => {
+        if (document.querySelector(`script[src="${src}"]`)) {
+          resolve()
+          return
+        }
+        const script = document.createElement('script')
+        script.src = src
+        if (defer) script.defer = true
+        script.onload = () => resolve()
+        script.onerror = () => reject(new Error(`Failed to load ${src}`))
+        document.body.appendChild(script)
+      })
 
-    scripts.forEach(src => {
-      const script = document.createElement('script')
-      script.src = src
-      script.defer = true
-      document.body.appendChild(script)
-    })
+    loadScript('https://code.jquery.com/jquery-3.7.1.min.js', { defer: false })
+      .then(() => loadScript('/wp-content/themes/enerzee/assets/js/bootstrap.min.js'))
+      .then(() => loadScript('/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js'))
+      .catch((err) => console.warn('Legacy script load:', err.message))
 
     // Initialize Swiper carousels after scripts load
     const initSwipers = () => {
@@ -517,7 +524,7 @@ const WebsiteHome = () => {
                           data-id="b485948"
                           data-element_type="section"
                           data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
-                          fetchPriority="high"
+                          fetchpriority="high"
                           style={{
                             backgroundImage: "url('/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp')",
                             backgroundSize: 'cover',
