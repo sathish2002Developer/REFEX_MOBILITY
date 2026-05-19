@@ -1851,195 +1851,195 @@ const BusinessCommute = () => {
                         {/* Connect with us Section */}
                 
                         {/* Contact Form Section */}
-                        <section 
-                          data-particle_enable="false" 
-                          data-particle-mobile-disabled="false" 
-                          className="elementor-section elementor-top-section elementor-element elementor-element-74f52db bussiness-form elementor-section-boxed elementor-section-height-default elementor-section-height-default"
-                          data-id="74f52db"
-                          data-element_type="section"
-                          id="business-forms"
-                        >
-                          <div className="elementor-container elementor-column-gap-no">
-                            <div className="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-818293e" data-id="818293e" data-element_type="column">
-                              <div className="elementor-widget-wrap elementor-element-populated">
-                                <div className="elementor-element elementor-element-924c6f3 elementor-widget elementor-widget-text-editor" data-id="924c6f3" data-element_type="widget" id="connect-form" data-widget_type="text-editor.default">
-                                  <div className="elementor-widget-container">
-                                    <p>Fill out the form below and our team will be in touch within 24 hours.</p>
+                          <section 
+                            data-particle_enable="false" 
+                            data-particle-mobile-disabled="false" 
+                            className="elementor-section elementor-top-section elementor-element elementor-element-74f52db bussiness-form elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                            data-id="74f52db"
+                            data-element_type="section"
+                            id="business-forms"
+                          >
+                            <div className="elementor-container elementor-column-gap-no">
+                              <div className="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-818293e" data-id="818293e" data-element_type="column">
+                                <div className="elementor-widget-wrap elementor-element-populated">
+                                  <div className="elementor-element elementor-element-924c6f3 elementor-widget elementor-widget-text-editor" data-id="924c6f3" data-element_type="widget" id="connect-form" data-widget_type="text-editor.default">
+                                    <div className="elementor-widget-container">
+                                      <p>Fill out the form below and our team will be in touch within 24 hours.</p>
+                                    </div>
                                   </div>
-                                </div>
-                                <div className="elementor-element elementor-element-4bbfda8 eael-wpforms-labels-yes eael-wpforms-form-button-custom elementor-widget elementor-widget-eael-wpforms" data-id="4bbfda8" data-element_type="widget" data-widget_type="eael-wpforms.default">
-                                  <div className="elementor-widget-container">
-                                    {formApiError ? (
-                                      <div
-                                        id="business-form-api-error"
-                                        className="business-form-api-error"
-                                        role="alert"
-                                      >
-                                        {formApiError.split('\n').map((line, i) => (
-                                          <span key={i}>
-                                            {i > 0 ? <br /> : null}
-                                            {line}
-                                          </span>
-                                        ))}
-                                      </div>
-                                    ) : null}
-                                    <div className="eael-contact-form eael-wpforms eael-wpforms-align-default">
-                                      <div className="wpforms-container wpforms-container-full wpforms-render-modern" id="wpforms-4974">
-                                        <form
-                                          id="wpforms-form-4974"
-                                          className="wpforms-validate wpforms-form wpforms-ajax-form"
-                                          data-formid="4974"
-                                          method="post"
-                                          encType="multipart/form-data"
-                                          action="/business-commute/"
-                                          noValidate
-                                          onSubmit={(e) => {
-                                            e.preventDefault()
-                                            e.stopPropagation()
-                                            formSubmitHandlerRef.current?.(e)
-                                          }}
+                                  <div className="elementor-element elementor-element-4bbfda8 eael-wpforms-labels-yes eael-wpforms-form-button-custom elementor-widget elementor-widget-eael-wpforms" data-id="4bbfda8" data-element_type="widget" data-widget_type="eael-wpforms.default">
+                                    <div className="elementor-widget-container">
+                                      {formApiError ? (
+                                        <div
+                                          id="business-form-api-error"
+                                          className="business-form-api-error"
+                                          role="alert"
                                         >
-                                          {/* <noscript className="wpforms-error-noscript">Please enable JavaScript in your browser to complete this form.</noscript> */}
-                                          {/* <div className="wpforms-hidden" id="wpforms-error-noscript">Please enable JavaScript in your browser to complete this form.</div> */}
-                                          <div className="wpforms-field-container">
-                                            {/* Row 1: Name (left) + Company Name (right) */}
-                                            <div id="wpforms-4974-field_6-container" className="wpforms-field wpforms-field-name wpforms-one-half wpforms-first wpforms-mobile-full wpf-alpha-limit" data-field-id="6">
-                                              <label className="wpforms-field-label" htmlFor="wpforms-4974-field_6">Name <span className="wpforms-required-label" aria-hidden="true">*</span></label>
-                                              <input
-                                                type="text"
-                                                id="wpforms-4974-field_6"
-                                                className="wpforms-field-large wpforms-field-required"
-                                                name="wpforms[fields][6]"
-                                                placeholder="Enter your name"
-                                                aria-errormessage="wpforms-4974-field_6-error"
-                                                required
-                                                onBlur={(e) => setInlineFieldError('wpforms-4974-field_6-error', validateBusinessName(e.target.value))}
-                                              />
-                                              <div id="wpforms-4974-field_6-error" className="business-field-error" role="alert" />
+                                          {formApiError.split('\n').map((line, i) => (
+                                            <span key={i}>
+                                              {i > 0 ? <br /> : null}
+                                              {line}
+                                            </span>
+                                          ))}
+                                        </div>
+                                      ) : null}
+                                      <div className="eael-contact-form eael-wpforms eael-wpforms-align-default">
+                                        <div className="wpforms-container wpforms-container-full wpforms-render-modern" id="wpforms-4974">
+                                          <form
+                                            id="wpforms-form-4974"
+                                            className="wpforms-validate wpforms-form wpforms-ajax-form"
+                                            data-formid="4974"
+                                            method="post"
+                                            encType="multipart/form-data"
+                                            action="/business-commute/"
+                                            noValidate
+                                            onSubmit={(e) => {
+                                              e.preventDefault()
+                                              e.stopPropagation()
+                                              formSubmitHandlerRef.current?.(e)
+                                            }}
+                                          >
+                                            {/* <noscript className="wpforms-error-noscript">Please enable JavaScript in your browser to complete this form.</noscript> */}
+                                            {/* <div className="wpforms-hidden" id="wpforms-error-noscript">Please enable JavaScript in your browser to complete this form.</div> */}
+                                            <div className="wpforms-field-container">
+                                              {/* Row 1: Name (left) + Company Name (right) */}
+                                              <div id="wpforms-4974-field_6-container" className="wpforms-field wpforms-field-name wpforms-one-half wpforms-first wpforms-mobile-full wpf-alpha-limit" data-field-id="6">
+                                                <label className="wpforms-field-label" htmlFor="wpforms-4974-field_6">Name <span className="wpforms-required-label" aria-hidden="true">*</span></label>
+                                                <input
+                                                  type="text"
+                                                  id="wpforms-4974-field_6"
+                                                  className="wpforms-field-large wpforms-field-required"
+                                                  name="wpforms[fields][6]"
+                                                  placeholder="Enter your name"
+                                                  aria-errormessage="wpforms-4974-field_6-error"
+                                                  required
+                                                  onBlur={(e) => setInlineFieldError('wpforms-4974-field_6-error', validateBusinessName(e.target.value))}
+                                                />
+                                                <div id="wpforms-4974-field_6-error" className="business-field-error" role="alert" />
+                                              </div>
+                                              <div id="wpforms-4974-field_7-container" className="wpforms-field wpforms-field-text wpforms-one-half wpforms-last wpforms-mobile-full" data-field-id="7">
+                                                <label className="wpforms-field-label" htmlFor="wpforms-4974-field_7">Company Name <span className="wpforms-required-label" aria-hidden="true">*</span></label>
+                                                <input type="text" id="wpforms-4974-field_7" className="wpforms-field-large wpforms-field-required" name="wpforms[fields][7]" placeholder="Enter your company name" aria-errormessage="wpforms-4974-field_7-error" required />
+                                                <div id="wpforms-4974-field_7-error" className="business-field-error" role="alert" />
+                                              </div>
+                                              {/* Row 2: Company Email (left) + Phone no. (right) */}
+                                              <div id="wpforms-4974-field_8-container" className="wpforms-field wpforms-field-email wpforms-one-half wpforms-first wpforms-mobile-full" data-field-id="8">
+                                                <label className="wpforms-field-label" htmlFor="wpforms-4974-field_8">Company Email <span className="wpforms-required-label" aria-hidden="true">*</span></label>
+                                                <input
+                                                  type="email"
+                                                  id="wpforms-4974-field_8"
+                                                  className="wpforms-field-large wpforms-field-required"
+                                                  name="wpforms[fields][8]"
+                                                  placeholder="Enter your company email"
+                                                  spellCheck="false"
+                                                  aria-errormessage="wpforms-4974-field_8-error"
+                                                  required
+                                                  onBlur={(e) => setInlineFieldError('wpforms-4974-field_8-error', validateBusinessEmail(e.target.value))}
+                                                />
+                                                <div id="wpforms-4974-field_8-error" className="business-field-error" role="alert" />
+                                              </div>
+                                              <div id="wpforms-4974-field_16-container" className="wpforms-field wpforms-field-phone wpforms-one-half wpforms-last wpforms-mobile-full" data-field-id="16">
+                                                <label className="wpforms-field-label" htmlFor="wpforms-4974-field_16">Phone no. <span className="wpforms-required-label" aria-hidden="true">*</span></label>
+                                                <PhoneInput
+                                                  country="in"
+                                                  value={phoneNumber.startsWith('+') ? phoneNumber.slice(1) : phoneNumber}
+                                                  onChange={(val) => {
+                                                    const next = val ? `+${String(val).replace(/[^\d]/g, '')}` : ''
+                                                    setPhoneNumber(next)
+                                                  }}
+                                                  onBlur={() => {
+                                                    setInlineFieldError('wpforms-4974-field_16-error', validateBusinessPhone(phoneNumberRef.current))
+                                                  }}
+                                                  placeholder="Enter your phone no."
+                                                  className="business-phone-input"
+                                                  id="wpforms-4974-field_16"
+                                                  name="wpforms[fields][16]"
+                                                  inputProps={{ type: 'tel', inputMode: 'tel' }}
+                                                  required
+                                                />
+                                                <input type="hidden" name="wpforms[fields][16]" value={phoneNumber} />
+                                                <div id="wpforms-4974-field_16-error" className="business-field-error" role="alert" />
+                                              </div>
+                                              {/* Service — full width */}
+                                              <div id="wpforms-4974-field_service-container" className="wpforms-field wpforms-field-select wpforms-field-select-style-modern" data-field-id="service">
+                                                <label className="wpforms-field-label" htmlFor="wpforms-4974-field_service">Service <span className="wpforms-required-label" aria-hidden="true">*</span></label>
+                                                <select
+                                                  id="wpforms-4974-field_service"
+                                                  className="wpforms-field-large wpforms-field-required"
+                                                  name="wpforms[fields][service]"
+                                                  defaultValue=""
+                                                  required
+                                                  aria-errormessage="wpforms-4974-field_service-error"
+                                                >
+                                                  <option value="" disabled>Select a service</option>
+                                                  {BUSINESS_SERVICES.map((s) => (
+                                                    <option key={s} value={s}>{s}</option>
+                                                  ))}
+                                                </select>
+                                                <div id="wpforms-4974-field_service-error" className="business-field-error" role="alert" />
+                                              </div>
+                                              {/* Row 3: Department (left) + Regions (right) */}
+                                              <div id="wpforms-4974-field_10-container" className="wpforms-field wpforms-field-text wpforms-one-half wpforms-first wpforms-mobile-full" data-field-id="10">
+                                                <label className="wpforms-field-label" htmlFor="wpforms-4974-field_10">Department <span className="wpforms-required-label" aria-hidden="true">*</span></label>
+                                                <input type="text" id="wpforms-4974-field_10" className="wpforms-field-large wpforms-field-required" name="wpforms[fields][10]" placeholder="Enter your department" aria-errormessage="wpforms-4974-field_10-error" required />
+                                                <div id="wpforms-4974-field_10-error" className="business-field-error" role="alert" />
+                                              </div>
+                                              <div id="wpforms-4974-field_13-container" className="wpforms-field wpforms-field-select wpforms-one-half wpforms-last wpforms-mobile-full wpforms-field-select-style-modern" data-field-id="13">
+                                                <label className="wpforms-field-label" htmlFor="wpforms-4974-field_13">Regions <span className="wpforms-required-label" aria-hidden="true">*</span></label>
+                                                <select id="wpforms-4974-field_13" className="wpforms-field-large wpforms-field-required choicesjs-select" data-size-class="wpforms-field-row wpforms-field-large" name="wpforms[fields][13][]" multiple required aria-errormessage="wpforms-4974-field_13-error">
+                                                  <option value="" className="placeholder" disabled>Select regions</option>
+                                                  {BUSINESS_REGIONS.map((r) => (
+                                                    <option key={r} value={r}>{r}</option>
+                                                  ))}
+                                                </select>
+                                                <div id="wpforms-4974-field_13-error" className="business-field-error" role="alert" />
+                                              </div>
+                                              {/* Row 4: No. of Employees (left) + empty (right) */}
+                                              <div id="wpforms-4974-field_11-container" className="wpforms-field wpforms-field-number wpforms-one-half wpforms-first wpforms-mobile-full" data-field-id="11">
+                                                <label className="wpforms-field-label" htmlFor="wpforms-4974-field_11">No. of Employees <span className="wpforms-required-label" aria-hidden="true">*</span></label>
+                                                <input type="number" id="wpforms-4974-field_11" className="wpforms-field-large wpforms-field-required" name="wpforms[fields][11]" placeholder="Enter no. of employees" aria-errormessage="wpforms-4974-field_11-error" required />
+                                                <div id="wpforms-4974-field_11-error" className="business-field-error" role="alert" />
+                                              </div>
+                                              <div className="wpforms-one-half wpforms-last wpforms-mobile-full" style={{visibility: 'hidden', height: 0, margin: 0, padding: 0}}></div>
+                                              {/* Comment field - full width */}
+                                              <div id="wpforms-4974-field_12-container" className="wpforms-field wpforms-field-textarea" data-field-id="12">
+                                                <label className="wpforms-field-label" htmlFor="wpforms-4974-field_12">Comment (optional)</label>
+                                                <textarea id="wpforms-4974-field_12" className="wpforms-field-medium" name="wpforms[fields][12]" placeholder="Write comment" aria-errormessage="wpforms-4974-field_12-error"></textarea>
+                                              </div>
                                             </div>
-                                            <div id="wpforms-4974-field_7-container" className="wpforms-field wpforms-field-text wpforms-one-half wpforms-last wpforms-mobile-full" data-field-id="7">
-                                              <label className="wpforms-field-label" htmlFor="wpforms-4974-field_7">Company Name <span className="wpforms-required-label" aria-hidden="true">*</span></label>
-                                              <input type="text" id="wpforms-4974-field_7" className="wpforms-field-large wpforms-field-required" name="wpforms[fields][7]" placeholder="Enter your company name" aria-errormessage="wpforms-4974-field_7-error" required />
-                                              <div id="wpforms-4974-field_7-error" className="business-field-error" role="alert" />
-                                            </div>
-                                            {/* Row 2: Company Email (left) + Phone no. (right) */}
-                                            <div id="wpforms-4974-field_8-container" className="wpforms-field wpforms-field-email wpforms-one-half wpforms-first wpforms-mobile-full" data-field-id="8">
-                                              <label className="wpforms-field-label" htmlFor="wpforms-4974-field_8">Company Email <span className="wpforms-required-label" aria-hidden="true">*</span></label>
-                                              <input
-                                                type="email"
-                                                id="wpforms-4974-field_8"
-                                                className="wpforms-field-large wpforms-field-required"
-                                                name="wpforms[fields][8]"
-                                                placeholder="Enter your company email"
-                                                spellCheck="false"
-                                                aria-errormessage="wpforms-4974-field_8-error"
-                                                required
-                                                onBlur={(e) => setInlineFieldError('wpforms-4974-field_8-error', validateBusinessEmail(e.target.value))}
-                                              />
-                                              <div id="wpforms-4974-field_8-error" className="business-field-error" role="alert" />
-                                            </div>
-                                            <div id="wpforms-4974-field_16-container" className="wpforms-field wpforms-field-phone wpforms-one-half wpforms-last wpforms-mobile-full" data-field-id="16">
-                                              <label className="wpforms-field-label" htmlFor="wpforms-4974-field_16">Phone no. <span className="wpforms-required-label" aria-hidden="true">*</span></label>
-                                              <PhoneInput
-                                                country="in"
-                                                value={phoneNumber.startsWith('+') ? phoneNumber.slice(1) : phoneNumber}
-                                                onChange={(val) => {
-                                                  const next = val ? `+${String(val).replace(/[^\d]/g, '')}` : ''
-                                                  setPhoneNumber(next)
-                                                }}
-                                                onBlur={() => {
-                                                  setInlineFieldError('wpforms-4974-field_16-error', validateBusinessPhone(phoneNumberRef.current))
-                                                }}
-                                                placeholder="Enter your phone no."
-                                                className="business-phone-input"
-                                                id="wpforms-4974-field_16"
-                                                name="wpforms[fields][16]"
-                                                inputProps={{ type: 'tel', inputMode: 'tel' }}
-                                                required
-                                              />
-                                              <input type="hidden" name="wpforms[fields][16]" value={phoneNumber} />
-                                              <div id="wpforms-4974-field_16-error" className="business-field-error" role="alert" />
-                                            </div>
-                                            {/* Service — full width */}
-                                            <div id="wpforms-4974-field_service-container" className="wpforms-field wpforms-field-select wpforms-field-select-style-modern" data-field-id="service">
-                                              <label className="wpforms-field-label" htmlFor="wpforms-4974-field_service">Service <span className="wpforms-required-label" aria-hidden="true">*</span></label>
-                                              <select
-                                                id="wpforms-4974-field_service"
-                                                className="wpforms-field-large wpforms-field-required"
-                                                name="wpforms[fields][service]"
-                                                defaultValue=""
-                                                required
-                                                aria-errormessage="wpforms-4974-field_service-error"
-                                              >
-                                                <option value="" disabled>Select a service</option>
-                                                {BUSINESS_SERVICES.map((s) => (
-                                                  <option key={s} value={s}>{s}</option>
-                                                ))}
-                                              </select>
-                                              <div id="wpforms-4974-field_service-error" className="business-field-error" role="alert" />
-                                            </div>
-                                            {/* Row 3: Department (left) + Regions (right) */}
-                                            <div id="wpforms-4974-field_10-container" className="wpforms-field wpforms-field-text wpforms-one-half wpforms-first wpforms-mobile-full" data-field-id="10">
-                                              <label className="wpforms-field-label" htmlFor="wpforms-4974-field_10">Department <span className="wpforms-required-label" aria-hidden="true">*</span></label>
-                                              <input type="text" id="wpforms-4974-field_10" className="wpforms-field-large wpforms-field-required" name="wpforms[fields][10]" placeholder="Enter your department" aria-errormessage="wpforms-4974-field_10-error" required />
-                                              <div id="wpforms-4974-field_10-error" className="business-field-error" role="alert" />
-                                            </div>
-                                            <div id="wpforms-4974-field_13-container" className="wpforms-field wpforms-field-select wpforms-one-half wpforms-last wpforms-mobile-full wpforms-field-select-style-modern" data-field-id="13">
-                                              <label className="wpforms-field-label" htmlFor="wpforms-4974-field_13">Regions <span className="wpforms-required-label" aria-hidden="true">*</span></label>
-                                              <select id="wpforms-4974-field_13" className="wpforms-field-large wpforms-field-required choicesjs-select" data-size-class="wpforms-field-row wpforms-field-large" name="wpforms[fields][13][]" multiple required aria-errormessage="wpforms-4974-field_13-error">
-                                                <option value="" className="placeholder" disabled>Select regions</option>
-                                                {BUSINESS_REGIONS.map((r) => (
-                                                  <option key={r} value={r}>{r}</option>
-                                                ))}
-                                              </select>
-                                              <div id="wpforms-4974-field_13-error" className="business-field-error" role="alert" />
-                                            </div>
-                                            {/* Row 4: No. of Employees (left) + empty (right) */}
-                                            <div id="wpforms-4974-field_11-container" className="wpforms-field wpforms-field-number wpforms-one-half wpforms-first wpforms-mobile-full" data-field-id="11">
-                                              <label className="wpforms-field-label" htmlFor="wpforms-4974-field_11">No. of Employees <span className="wpforms-required-label" aria-hidden="true">*</span></label>
-                                              <input type="number" id="wpforms-4974-field_11" className="wpforms-field-large wpforms-field-required" name="wpforms[fields][11]" placeholder="Enter no. of employees" aria-errormessage="wpforms-4974-field_11-error" required />
-                                              <div id="wpforms-4974-field_11-error" className="business-field-error" role="alert" />
-                                            </div>
-                                            <div className="wpforms-one-half wpforms-last wpforms-mobile-full" style={{visibility: 'hidden', height: 0, margin: 0, padding: 0}}></div>
-                                            {/* Comment field - full width */}
-                                            <div id="wpforms-4974-field_12-container" className="wpforms-field wpforms-field-textarea" data-field-id="12">
-                                              <label className="wpforms-field-label" htmlFor="wpforms-4974-field_12">Comment (optional)</label>
-                                              <textarea id="wpforms-4974-field_12" className="wpforms-field-medium" name="wpforms[fields][12]" placeholder="Write comment" aria-errormessage="wpforms-4974-field_12-error"></textarea>
-                                            </div>
-                                          </div>
-                                          <div 
-                  className="flex justify-center"
-                  data-aos="fade-left"
-                  data-aos-duration="800"
-                  data-aos-delay="350"
-                >
-                  <div 
-                    className="g-recaptcha" 
-                    data-sitekey={RECAPTCHA_SITE_KEY}
-                    data-callback="onRecaptchaSuccess"
-                  ></div>
-                </div>
+                                            <div 
+                    className="flex justify-center"
+                    data-aos="fade-left"
+                    data-aos-duration="800"
+                    data-aos-delay="350"
+                  >
+                    <div 
+                      className="g-recaptcha" 
+                      data-sitekey={RECAPTCHA_SITE_KEY}
+                      data-callback="onRecaptchaSuccess"
+                    ></div>
+                  </div>
 
-                                          <div className="wpforms-submit-container">
-                                            <input type="hidden" name="wpforms[id]" value="4974" />
-                                            <input type="hidden" name="page_title" value="Business Commute" />
-                                            <input type="hidden" name="page_url" value="/business-commute/" />
-                                            <input type="hidden" name="page_id" value="5464" />
-                                            <input type="hidden" name="wpforms[post_id]" value="5464" />
-                                            <button type="submit" name="wpforms[submit]" id="wpforms-submit-4974" className="wpforms-submit wp-forms-submit" disabled={submitting} aria-live="assertive" value="wpforms-submit">
-                                              {submitting ? 'Sending...' : 'Submit Details'}
-                                            </button>
-                                            <span className={`wpforms-submit-spinner${submitting ? ' is-visible' : ''}`} aria-hidden="true" />
-                                          </div>
-                                        </form>
+                                            <div className="wpforms-submit-container">
+                                              <input type="hidden" name="wpforms[id]" value="4974" />
+                                              <input type="hidden" name="page_title" value="Business Commute" />
+                                              <input type="hidden" name="page_url" value="/business-commute/" />
+                                              <input type="hidden" name="page_id" value="5464" />
+                                              <input type="hidden" name="wpforms[post_id]" value="5464" />
+                                              <button type="submit" name="wpforms[submit]" id="wpforms-submit-4974" className="wpforms-submit wp-forms-submit" disabled={submitting} aria-live="assertive" value="wpforms-submit">
+                                                {submitting ? 'Sending...' : 'Submit Details'}
+                                              </button>
+                                              <span className={`wpforms-submit-spinner${submitting ? ' is-visible' : ''}`} aria-hidden="true" />
+                                            </div>
+                                          </form>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </section>
+                          </section>
 
                         {/* FAQ Section */}
                         <section 
