@@ -8,6 +8,11 @@ function normalizeRegions(regions) {
   return list.map((v) => String(v).trim()).filter(Boolean);
 }
 
+function normalizeServices(service) {
+  const list = Array.isArray(service) ? service : service ? [service] : [];
+  return list.map((v) => String(v).trim()).filter(Boolean);
+}
+
 function splitCityFields(regionsJoined) {
   const city = regionsJoined || '';
   const commaIdx = city.indexOf(',');
@@ -53,6 +58,8 @@ function buildBusinessCommuteKissflowPayload(req, form) {
   const regionList = normalizeRegions(regions);
   const city = regionList.join(', ');
   const { cityname, statename } = splitCityFields(city);
+  const serviceList = normalizeServices(service);
+  const serviceJoined = serviceList.join(', ');
 
   return {
     name,
@@ -63,8 +70,8 @@ function buildBusinessCommuteKissflowPayload(req, form) {
     city,
     cityname,
     statename,
-    service,
-    Product: service,
+    service: serviceJoined,
+    Product: serviceJoined,
     message: buildMessage(comment, department),
     companySize: String(numberOfEmployees ?? ''),
     timestamp: meta.timestamp,

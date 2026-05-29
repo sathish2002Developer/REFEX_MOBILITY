@@ -31,8 +31,6 @@ const InvestorRelations = () => {
   const [years, setYears] = useState([])
   const [filesData, setFilesData] = useState({})
   const [filesBySection, setFilesBySection] = useState({}) // Store files by section
-  const [subMenuExpanded, setSubMenuExpanded] = useState({}) // FY sub-menus for non–annual-return tabs
-
   // Load files from API
   const loadFilesFromAPI = async () => {
     setLoading(true)
@@ -219,55 +217,32 @@ const handleDownload = (file) => {
   }, [])
 
   const handleSectionClick = (section) => {
-    const menuItem = menuItems.find((m) => m.id === section)
-    if (menuItem?.hasSubItems && section !== 'notice') {
-      if (section === 'annual-return') {
-        setIsAnnualReturnExpanded(!isAnnualReturnExpanded)
-        setActiveSection('annual-return')
-        localStorage.setItem(ACTIVE_SECTION_KEY, 'annual-return')
-        setActiveYear('')
-        localStorage.removeItem(ACTIVE_YEAR_KEY)
-      } else {
-        setSubMenuExpanded((prev) => ({ ...prev, [section]: !prev[section] }))
-        setActiveSection(section)
-        localStorage.setItem(ACTIVE_SECTION_KEY, section)
-        setActiveYear('')
-        localStorage.removeItem(ACTIVE_YEAR_KEY)
-      }
+    if (section === 'annual-return') {
+      setIsAnnualReturnExpanded(!isAnnualReturnExpanded)
+      setActiveSection('annual-return')
+      localStorage.setItem(ACTIVE_SECTION_KEY, 'annual-return')
+      setActiveYear('')
+      localStorage.removeItem(ACTIVE_YEAR_KEY)
       return
     }
-    if (section === 'notice') {
-      setActiveSection('notice')
-      localStorage.setItem(ACTIVE_SECTION_KEY, 'notice')
-      setActiveYear('')
-      localStorage.removeItem(ACTIVE_YEAR_KEY)
-      if (filesBySection && filesBySection['notice'] && !activeYear) {
-        const noticeYears = Object.keys(filesBySection['notice'])
-        const expandedNoticeYears = {}
-        noticeYears.forEach((year) => {
-          expandedNoticeYears[year] = true
-        })
-        setExpandedYears((prev) => ({ ...prev, ...expandedNoticeYears }))
-      }
-    } else {
-      setActiveSection(section)
-      localStorage.setItem(ACTIVE_SECTION_KEY, section)
-      setActiveYear('')
-      localStorage.removeItem(ACTIVE_YEAR_KEY)
-    }
+    setActiveSection(section)
+    localStorage.setItem(ACTIVE_SECTION_KEY, section)
+    setActiveYear('')
+    localStorage.removeItem(ACTIVE_YEAR_KEY)
   }
 
-  const handleYearClick = (year, sectionId = 'annual-return') => {
+  const handleYearClick = (year) => {
     setActiveYear(year)
-    setActiveSection(sectionId)
-    localStorage.setItem(ACTIVE_SECTION_KEY, sectionId)
+    setActiveSection('annual-return')
+    localStorage.setItem(ACTIVE_SECTION_KEY, 'annual-return')
     localStorage.setItem(ACTIVE_YEAR_KEY, year)
-    if (sectionId === 'annual-return') {
-      setIsAnnualReturnExpanded(true)
-    } else {
-      setSubMenuExpanded((prev) => ({ ...prev, [sectionId]: true }))
-    }
+    setIsAnnualReturnExpanded(true)
     setExpandedYears({ [year]: true })
+  }
+
+  const getAllFilesForSection = (sectionId) => {
+    const sec = filesBySection?.[sectionId] || {}
+    return Object.keys(sec).length ? Object.values(sec).flat() : []
   }
 
   const toggleYearDropdown = (year) => {
@@ -374,21 +349,9 @@ const handleDownload = (file) => {
                                       <div className="investor-sidebar">
                                         <div className="sidebar-nav">
                                           {menuItems.map((item) => {
-                                            if (item.hasSubItems && item.id !== 'notice') {
-                                              let sectionYears
-                                              if (item.id === 'annual-return') {
-                                                sectionYears = years
-                                              } else {
-                                                const sectionBucket = filesBySection[item.id] || {}
-                                                sectionYears = Object.keys(sectionBucket).filter((y) => y !== 'general').sort().reverse()
-                                                if (sectionBucket['general'] && sectionBucket['general'].length) {
-                                                  sectionYears = [...sectionYears, 'general']
-                                                }
-                                              }
-                                              const expanded =
-                                                item.id === 'annual-return'
-                                                  ? isAnnualReturnExpanded
-                                                  : !!subMenuExpanded[item.id]
+                                            if (item.id === 'annual-return' && item.hasSubItems) {
+                                              const sectionYears = years
+                                              const expanded = isAnnualReturnExpanded
                                               return (
                                                 <Fragment key={item.id}>
                                                   <button
@@ -405,7 +368,7 @@ const handleDownload = (file) => {
                                                         key={`${item.id}-${year}`}
                                                         type="button"
                                                         className={`sidebar-nav-item sidebar-nav-link ${activeSection === item.id && activeYear === year ? 'active' : ''}`}
-                                                        onClick={() => handleYearClick(year, item.id)}
+                                                        onClick={() => handleYearClick(year)}
                                                       >
                                                         {year === 'general' ? 'General' : `FY ${year}`}
                                                       </button>
@@ -660,9 +623,7 @@ const handleDownload = (file) => {
                                             )}
                                           </div>
                                         )}
-                                        {menuItems.find((m) => m.id === activeSection)?.hasSubItems &&
-                                          activeSection !== 'annual-return' &&
-                                          activeSection !== 'notice' && (
+                                        {activeSection !== 'annual-return' && (
                                           <div className="content-wrapper">
                                             <h2 className="content-heading">
                                               {menuItems.find((m) => m.id === activeSection)?.label || 'Documents'}
@@ -672,501 +633,22 @@ const handleDownload = (file) => {
                                                 <p>Loading files...</p>
                                               </div>
                                             ) : (() => {
-                                              const secData = filesBySection[activeSection] || {}
-                                              let listYears = Object.keys(secData)
-                                                .filter((y) => y !== 'general')
-                                                .sort()
-                                                .reverse()
-                                              if (secData['general'] && secData['general'].length) {
-                                                listYears = [...listYears, 'general']
-                                              }
-                                              if (!listYears.length) {
-                                                return (
-                                                  <div className="content-message" style={{ padding: '40px 0', textAlign: 'center' }}>
-                                                    <p>No documents in this section yet.</p>
-                                                  </div>
-                                                )
-                                              }
-                                              return (
-                                                <div className="annual-returns-accordion" style={{ marginTop: '30px' }}>
-                                                  {listYears
-                                                    .filter((y) => (activeYear ? y === activeYear : true))
-                                                    .map((year) => {
-                                                      const isExpanded =
-                                                        expandedYears[year] !== undefined
-                                                          ? expandedYears[year]
-                                                          : activeYear
-                                                            ? year === activeYear
-                                                            : false
-                                                      const yearFiles = secData[year] || []
-                                                      return (
-                                                        <div
-                                                          key={`${activeSection}-${year}`}
-                                                          className="year-dropdown-item"
-                                                          style={{
-                                                            marginBottom: '15px',
-                                                            border: '1px solid #e0e0e0',
-                                                            borderRadius: '12px',
-                                                            overflow: 'hidden',
-                                                            backgroundColor: '#FFFFFF',
-                                                            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
-                                                            transition: 'all 0.3s ease',
-                                                          }}
-                                                        >
-                                                          <div
-                                                            className="year-dropdown-header"
-                                                            onClick={() => toggleYearDropdown(year)}
-                                                            style={{
-                                                              padding: '20px 25px',
-                                                              backgroundColor: isExpanded ? '#FFF9F8' : '#FFFFFF',
-                                                              cursor: 'pointer',
-                                                              display: 'flex',
-                                                              justifyContent: 'space-between',
-                                                              alignItems: 'center',
-                                                              transition: 'background-color 0.3s ease',
-                                                            }}
-                                                          >
-                                                            <h3
-                                                              style={{
-                                                                fontFamily: '"Poppins", Sans-serif',
-                                                                fontSize: '22px',
-                                                                fontWeight: 600,
-                                                                color: '#5D3F3A',
-                                                                margin: 0,
-                                                              }}
-                                                            >
-                                                              {year === 'general' ? 'General' : `FY ${year}`}
-                                                            </h3>
-                                                          </div>
-                                                          {isExpanded && (
-                                                            <div
-                                                              className="year-dropdown-content"
-                                                              style={{
-                                                                padding: '0 25px 25px 25px',
-                                                                borderTop: '1px solid #e0e0e0',
-                                                                backgroundColor: '#FFFFFF',
-                                                              }}
-                                                            >
-                                                              {yearFiles.length > 0 ? (
-                                                                <div className="files-list" style={{ marginTop: '20px' }}>
-                                                                  {yearFiles.map((file) => {
-                                                                    let iconClass = 'fa-file-pdf'
-                                                                    if (file.type === 'doc' || file.type === 'docx') {
-                                                                      iconClass = 'fa-file-word'
-                                                                    } else if (file.type === 'xls' || file.type === 'xlsx') {
-                                                                      iconClass = 'fa-file-excel'
-                                                                    }
-                                                                    return (
-                                                                      <div
-                                                                        key={file.id}
-                                                                        className="file-item"
-                                                                        style={{
-                                                                          display: 'flex',
-                                                                          alignItems: 'center',
-                                                                          padding: '15px',
-                                                                          marginBottom: '12px',
-                                                                          backgroundColor: '#FAFAFA',
-                                                                          borderRadius: '8px',
-                                                                          border: '1px solid #f0f0f0',
-                                                                          transition: 'all 0.2s ease',
-                                                                        }}
-                                                                      >
-                                                                        <div
-                                                                          className="file-icon"
-                                                                          style={{
-                                                                            fontSize: '32px',
-                                                                            color: '#F4553B',
-                                                                            marginRight: '15px',
-                                                                          }}
-                                                                        >
-                                                                          <i className={`fa ${iconClass}`}></i>
-                                                                        </div>
-                                                                        <div className="file-info" style={{ flex: 1 }}>
-                                                                          <h4
-                                                                            className="file-name"
-                                                                            style={{
-                                                                              fontFamily: '"Poppins", Sans-serif',
-                                                                              fontSize: '16px',
-                                                                              fontWeight: 600,
-                                                                              color: '#5D3F3A',
-                                                                              margin: '0 0 8px 0',
-                                                                            }}
-                                                                          >
-                                                                            {file.name}
-                                                                          </h4>
-                                                                          <div
-                                                                            className="file-meta"
-                                                                            style={{
-                                                                              display: 'flex',
-                                                                              gap: '15px',
-                                                                              fontSize: '14px',
-                                                                              color: '#888',
-                                                                            }}
-                                                                          >
-                                                                            <span
-                                                                              className="file-type"
-                                                                              style={{ textTransform: 'uppercase', fontWeight: 500 }}
-                                                                            >
-                                                                              {file.type}
-                                                                            </span>
-                                                                            {file.size && <span className="file-size">{file.size}</span>}
-                                                                          </div>
-                                                                        </div>
-                                                                        <div
-                                                                          className="file-actions"
-                                                                          style={{ display: 'flex', gap: '10px', marginLeft: '15px' }}
-                                                                        >
-                                                                          <button
-                                                                            type="button"
-                                                                            className="btn-view"
-                                                                            onClick={() => handleView(file)}
-                                                                            style={{
-                                                                              padding: '8px 16px',
-                                                                              backgroundColor: '#F4553B',
-                                                                              color: '#FFFFFF',
-                                                                              border: 'none',
-                                                                              borderRadius: '6px',
-                                                                              cursor: 'pointer',
-                                                                              fontFamily: '"Poppins", Sans-serif',
-                                                                              fontSize: '14px',
-                                                                              fontWeight: 500,
-                                                                            }}
-                                                                          >
-                                                                            <i className="fa fa-eye"></i>
-                                                                            <span> View</span>
-                                                                          </button>
-                                                                          <button
-                                                                            type="button"
-                                                                            className="btn-download"
-                                                                            onClick={() => handleDownload(file)}
-                                                                            style={{
-                                                                              padding: '8px 16px',
-                                                                              backgroundColor: '#FFFFFF',
-                                                                              color: '#F4553B',
-                                                                              border: '2px solid #F4553B',
-                                                                              borderRadius: '6px',
-                                                                              cursor: 'pointer',
-                                                                              fontFamily: '"Poppins", Sans-serif',
-                                                                              fontSize: '14px',
-                                                                              fontWeight: 500,
-                                                                            }}
-                                                                          >
-                                                                            <i className="fa fa-download"></i>
-                                                                            <span> Download</span>
-                                                                          </button>
-                                                                        </div>
-                                                                      </div>
-                                                                    )
-                                                                  })}
-                                                                </div>
-                                                              ) : (
-                                                                <div
-                                                                  className="content-message"
-                                                                  style={{ padding: '30px 0', textAlign: 'center', color: '#888' }}
-                                                                >
-                                                                  <p>
-                                                                    No files for {year === 'general' ? 'this group' : `FY ${year}`} yet.
-                                                                  </p>
-                                                                </div>
-                                                              )}
-                                                            </div>
-                                                          )}
-                                                        </div>
-                                                      )
-                                                    })}
-                                                </div>
-                                              )
-                                            })()}
-                                          </div>
-                                        )}
-                                        {activeSection === 'notice' && (
-                                          <div className="content-wrapper">
-                                            <h2 className="content-heading">
-                                              {menuItems.find((m) => m.id === 'notice')?.label || 'General Meetings'}
-                                            </h2>
-                                            
-                                            {/* Dropdown/Accordion for Notice Years - Filtered by Menu Selection */}
-                                            {loading ? (
-                                              <div className="content-message">
-                                                <p>Loading files...</p>
-                                              </div>
-                                            ) : (() => {
-                                              // Get notice years
-                                              const noticeSection = filesBySection && filesBySection['notice'] ? filesBySection['notice'] : {}
-                                              let noticeYearsList = Object.keys(noticeSection).filter(y => y !== 'general').sort().reverse()
-                                              if (noticeSection['general']) {
-                                                noticeYearsList.push('general')
-                                              }
-                                              
-                                              // Filter by activeYear if set (from menu click)
-                                              if (activeYear && noticeYearsList.includes(activeYear)) {
-                                                noticeYearsList = [activeYear]
-                                              }
-                                              
-                                              return noticeYearsList.length > 0 ? (
-                                                <div className="annual-returns-accordion" style={{ marginTop: '30px' }}>
-                                                  {noticeYearsList.map((year) => {
-                                                    // Auto-expand selected year or all if none selected
-                                                    const isExpanded = expandedYears[year] !== undefined ? expandedYears[year] : (activeYear ? year === activeYear : true)
-                                                    // Get notice files for this year from filesBySection
-                                                    const yearFiles = noticeSection[year] || []
-                                                    
-                                                    return (
-                                                      <div key={year} className="year-dropdown-item" style={{
-                                                        marginBottom: '15px',
-                                                        border: '1px solid #e0e0e0',
-                                                        borderRadius: '12px',
-                                                        overflow: 'hidden',
-                                                        backgroundColor: '#FFFFFF',
-                                                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
-                                                        transition: 'all 0.3s ease'
-                                                      }}>
-                                                        {/* Year Header - Clickable */}
-                                                        <div
-                                                          className="year-dropdown-header"
-                                                          onClick={() => toggleYearDropdown(year)}
-                                                          style={{
-                                                            padding: '20px 25px',
-                                                            backgroundColor: isExpanded ? '#FFF9F8' : '#FFFFFF',
-                                                            cursor: 'pointer',
-                                                            display: 'flex',
-                                                            justifyContent: 'space-between',
-                                                            alignItems: 'center',
-                                                            transition: 'background-color 0.3s ease'
-                                                          }}
-                                                        >
-                                                          <h3 style={{
-                                                            fontFamily: '"Poppins", Sans-serif',
-                                                            fontSize: '22px',
-                                                            fontWeight: 600,
-                                                            color: '#5D3F3A',
-                                                            margin: 0
-                                                          }}>
-                                                            {year !== 'general' ? `FY ${year}` : 'General Notices'}
-                                                          </h3>
-                                                         
-                                                        </div>
-
-                                                        {/* Year Content - Files List - Auto Expanded */}
-                                                        {isExpanded && (
-                                                          <div className="year-dropdown-content" style={{
-                                                            padding: '0 25px 25px 25px',
-                                                            borderTop: '1px solid #e0e0e0',
-                                                            backgroundColor: '#FFFFFF'
-                                                          }}>
-                                                            {yearFiles.length > 0 ? (
-                                                              <div className="files-list" style={{ marginTop: '20px' }}>
-                                                                {yearFiles.map((file) => {
-                                                                  // Determine icon based on file type
-                                                                  let iconClass = 'fa-file-pdf'
-                                                                  if (file.type === 'doc' || file.type === 'docx') {
-                                                                    iconClass = 'fa-file-word'
-                                                                  } else if (file.type === 'xls' || file.type === 'xlsx') {
-                                                                    iconClass = 'fa-file-excel'
-                                                                  }
-
-                                                                  return (
-                                                                    <div key={file.id} className="file-item" style={{
-                                                                      display: 'flex',
-                                                                      alignItems: 'center',
-                                                                      padding: '15px',
-                                                                      marginBottom: '12px',
-                                                                      backgroundColor: '#FAFAFA',
-                                                                      borderRadius: '8px',
-                                                                      border: '1px solid #f0f0f0',
-                                                                      transition: 'all 0.2s ease'
-                                                                    }}>
-                                                                      <div className="file-icon" style={{
-                                                                        fontSize: '32px',
-                                                                        color: '#F4553B',
-                                                                        marginRight: '15px'
-                                                                      }}>
-                                                                        <i className={`fa ${iconClass}`}></i>
-                                                                      </div>
-                                                                      <div className="file-info" style={{ flex: 1 }}>
-                                                                        <h4 className="file-name" style={{
-                                                                          fontFamily: '"Poppins", Sans-serif',
-                                                                          fontSize: '16px',
-                                                                          fontWeight: 600,
-                                                                          color: '#5D3F3A',
-                                                                          margin: '0 0 8px 0'
-                                                                        }}>{file.name}</h4>
-                                                                        <div className="file-meta" style={{
-                                                                          display: 'flex',
-                                                                          gap: '15px',
-                                                                          fontSize: '14px',
-                                                                          color: '#888'
-                                                                        }}>
-                                                                          <span className="file-type" style={{
-                                                                            textTransform: 'uppercase',
-                                                                            fontWeight: 500
-                                                                          }}>{file.type}</span>
-                                                                          {file.size && <span className="file-size">{file.size}</span>}
-                                                                        
-                                                                        </div>
-                                                                      </div>
-                                                                    <div className="file-actions" style={{
-                                                                      display: 'flex',
-                                                                      gap: '10px',
-                                                                      marginLeft: '15px',
-                                                                      visibility: 'visible',
-                                                                      opacity: 1,
-                                                                      minWidth: 'fit-content',
-                                                                      flexShrink: 0
-                                                                    }}>
-                                                                        <button 
-                                                                          className="btn-view" 
-                                                                          onClick={() => handleView(file)}
-                                                                          title="View File"
-                                                                          style={{
-                                                                            padding: '8px 16px',
-                                                                            backgroundColor: '#F4553B',
-                                                                            color: '#FFFFFF',
-                                                                            border: 'none',
-                                                                            borderRadius: '6px',
-                                                                            cursor: 'pointer',
-                                                                            fontFamily: '"Poppins", Sans-serif',
-                                                                            fontSize: '14px',
-                                                                            fontWeight: 500,
-                                                                            transition: 'background-color 0.2s ease',
-                                                                            display: 'flex',
-                                                                            alignItems: 'center',
-                                                                            gap: '6px',
-                                                                            visibility: 'visible',
-                                                                            opacity: 1
-                                                                          }}
-                                                                          onMouseEnter={(e) => e.target.style.backgroundColor = '#e0452b'}
-                                                                          onMouseLeave={(e) => e.target.style.backgroundColor = '#F4553B'}
-                                                                        >
-                                                                          <i className="fa fa-eye"></i>
-                                                                          <span>View</span>
-                                                                        </button>
-                                                                        <button 
-                                                                          className="btn-download" 
-                                                                          onClick={() => handleDownload(file)}
-                                                                          title="Download File"
-                                                                          style={{
-                                                                            padding: '8px 16px',
-                                                                            backgroundColor: '#FFFFFF',
-                                                                            color: '#F4553B',
-                                                                            border: '2px solid #F4553B',
-                                                                            borderRadius: '6px',
-                                                                            cursor: 'pointer',
-                                                                            fontFamily: '"Poppins", Sans-serif',
-                                                                            fontSize: '14px',
-                                                                            fontWeight: 500,
-                                                                            transition: 'all 0.2s ease',
-                                                                            display: 'flex',
-                                                                            alignItems: 'center',
-                                                                            gap: '6px',
-                                                                            visibility: 'visible',
-                                                                            opacity: 1,
-                                                                            position: 'relative',
-                                                                            zIndex: 1
-                                                                          }}
-                                                                          onMouseEnter={(e) => {
-                                                                            e.target.style.backgroundColor = '#F4553B'
-                                                                            e.target.style.color = '#FFFFFF'
-                                                                          }}
-                                                                          onMouseLeave={(e) => {
-                                                                            e.target.style.backgroundColor = '#FFFFFF'
-                                                                            e.target.style.color = '#F4553B'
-                                                                          }}
-                                                                        >
-                                                                          <i className="fa fa-download"></i>
-                                                                          <span>Download</span>
-                                                                        </button>
-                                                                      </div>
-                                                                    </div>
-                                                                  )
-                                                                })}
-                                                              </div>
-                                                            ) : (
-                                                              <div className="content-message" style={{
-                                                                padding: '30px 0',
-                                                                textAlign: 'center',
-                                                                color: '#888'
-                                                              }}>
-                                                                <p>No files available for {year !== 'general' ? `FY ${year}` : 'General'} yet.</p>
-                                                                <p style={{ fontSize: '14px', marginTop: '10px', opacity: 0.7 }}>
-                                                                  Files will be uploaded soon.
-                                                                </p>
-                                                              </div>
-                                                            )}
-                                                          </div>
-                                                        )}
-                                                      </div>
-                                                    )
-                                                  })}
-                                                </div>
-                                              ) : (
-                                                <div className="content-message" style={{
-                                                  padding: '40px 0',
-                                                  textAlign: 'center'
-                                                }}>
-                                                  <p>No notices available yet.</p>
-                                                  <p style={{ fontSize: '14px', marginTop: '10px', opacity: 0.7 }}>
-                                                    Files will be uploaded soon.
-                                                  </p>
-                                                </div>
-                                              )
-                                            })()}
-                                          </div>
-                                        )}
-                                        {activeSection !== 'annual-return' &&
-                                          activeSection !== 'notice' &&
-                                          !menuItems.find((m) => m.id === activeSection)?.hasSubItems && (
-                                          <div className="content-wrapper">
-                                            <h2 className="content-heading">
-                                              {menuItems.find((m) => m.id === activeSection)?.label || 'Documents'}
-                                            </h2>
-                                            {loading ? (
-                                              <div className="content-message">
-                                                <p>Loading files...</p>
-                                              </div>
-                                            ) : (() => {
-                                              const sec = filesBySection?.[activeSection] || {}
-                                              const allFiles = Object.keys(sec).length
-                                                ? Object.values(sec).flat()
-                                                : []
+                                              const allFiles = getAllFilesForSection(activeSection)
                                               if (!allFiles.length) {
                                                 return (
-                                                  <div className="content-message" style={{ padding: '40px 0', textAlign: 'center' }}>
+                                                  <div className="content-message">
                                                     <p>No documents in this section yet.</p>
                                                   </div>
                                                 )
                                               }
                                               return (
-                                                <div className="files-list" style={{ marginTop: '24px' }}>
+                                                <div className="files-list">
                                                   {allFiles.map((file) => (
-                                                    <div
-                                                      key={file.id}
-                                                      className="file-item"
-                                                      style={{
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        padding: '15px',
-                                                        marginBottom: '12px',
-                                                        backgroundColor: '#FAFAFA',
-                                                        borderRadius: '8px',
-                                                        border: '1px solid #f0f0f0',
-                                                      }}
-                                                    >
-                                                      <div className="file-info" style={{ flex: 1 }}>
-                                                        <h4
-                                                          className="file-name"
-                                                          style={{
-                                                            fontFamily: '"Poppins", Sans-serif',
-                                                            fontSize: '16px',
-                                                            fontWeight: 600,
-                                                            color: '#5D3F3A',
-                                                            margin: '0 0 8px 0',
-                                                          }}
-                                                        >
-                                                          {file.name}
-                                                        </h4>
+                                                    <div key={file.id} className="file-item">
+                                                      <div className="file-info">
+                                                        <h4 className="file-name">{file.name}</h4>
                                                       </div>
-                                                      <div className="file-actions" style={{ display: 'flex', gap: '10px' }}>
+                                                      <div className="file-actions">
                                                         <button className="btn-view" type="button" onClick={() => handleView(file)}>
                                                           View
                                                         </button>

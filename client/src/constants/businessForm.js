@@ -1,10 +1,12 @@
 /** Business enquiry form — keep in sync with server/config/siteConfig.js */
 
 export const BUSINESS_SERVICES = [
-  'Corporate Commute',
+  'Employee Transfers',
   'Airport Transfers',
-  'Hourly Rentals',
+  'Spot Rental',
   'Outstation Rides',
+  'Business Travel',
+  "All Services",
 ]
 
 export const BUSINESS_REGIONS = [
@@ -13,6 +15,7 @@ export const BUSINESS_REGIONS = [
   'Mumbai',
   'Hyderabad',
   'Delhi NCR',
+  "All Regions",
 ]
 
 // Dev: same origin → Vite proxies /api to localhost:3009

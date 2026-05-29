@@ -44,7 +44,7 @@ const submitBusinessCommuteForm = async (req, res) => {
       companyName,
       email,
       phone,
-      service,
+      service: Array.isArray(service) ? service : service ? [service] : [],
       department,
       regions: Array.isArray(regions) ? regions : regions ? [regions] : [],
       numberOfEmployees,

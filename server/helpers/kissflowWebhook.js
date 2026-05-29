@@ -101,6 +101,7 @@ async function processQueue() {
  */
 function sendToKissflowWebhook(websiteName, formName, formData, webhookUrl) {
   try {
+    console.log('Sending to Kissflow webhook', { websiteName, formName, formData, webhookUrl });
     queue.push({
       websiteName,
       formName,

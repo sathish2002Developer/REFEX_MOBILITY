@@ -229,6 +229,7 @@ class EmailService {
     }
 
     const regionsText = Array.isArray(regions) ? regions.join(', ') : regions;
+    const serviceText = Array.isArray(service) ? service.join(', ') : service;
     const submittedIst = new Date().toLocaleString('en-IN', {
       timeZone: 'Asia/Kolkata',
     });
@@ -248,7 +249,7 @@ class EmailService {
             <p><strong>Company:</strong> ${companyName || '—'}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone:</strong> ${phone || '—'}</p>
-            <p><strong>Service:</strong> ${service || '—'}</p>
+            <p><strong>Services:</strong> ${serviceText || '—'}</p>
             <p><strong>Department:</strong> ${department || '—'}</p>
             <p><strong>Regions:</strong> ${regionsText || '—'}</p>
             <p><strong>No. of Employees:</strong> ${numberOfEmployees || '—'}</p>
@@ -265,7 +266,7 @@ class EmailService {
         `Company: ${companyName}`,
         `Email: ${email}`,
         `Phone: ${phone}`,
-        `Service: ${service}`,
+        `Services: ${serviceText}`,
         `Department: ${department}`,
         `Regions: ${regionsText}`,
         `Employees: ${numberOfEmployees}`,

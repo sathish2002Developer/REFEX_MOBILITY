@@ -699,31 +699,27 @@ const BusinessCommute = () => {
         const name = (formData.get('wpforms[fields][6]') || '').trim()
         const companyName = (formData.get('wpforms[fields][7]') || '').trim()
         const email = (formData.get('wpforms[fields][8]') || '').trim()
-        const service = (formData.get('wpforms[fields][service]') || '').trim()
         const department = (formData.get('wpforms[fields][10]') || '').trim()
         const numberOfEmployees = (formData.get('wpforms[fields][11]') || '').trim()
         const comment = (formData.get('wpforms[fields][12]') || '').trim()
         
         // Phone is stored in state as E.164 (+...)
         const currentPhoneNumber = String(phoneNumberRef.current || '').trim()
-        
-        // Get regions - handle both Choices.js and native select
-        const regionsSelect = document.getElementById('wpforms-4974-field_13')
-        let regions = []
-        
-        if (regionsSelect) {
-          // Check if Choices.js is initialized
-          if (regionsSelect.choicesjs) {
-            // Get values from Choices.js instance
-            const choicesValue = regionsSelect.choicesjs.getValue(true) // true returns array
-            regions = Array.isArray(choicesValue) ? choicesValue.filter(val => val && val.trim()) : []
-          } else {
-            // Fallback to native select
-            regions = Array.from(regionsSelect.selectedOptions)
-              .map(option => option.value)
-              .filter(val => val && val.trim())
+
+        const getMultiSelectValues = (selectId) => {
+          const selectEl = document.getElementById(selectId)
+          if (!selectEl) return []
+          if (selectEl.choicesjs) {
+            const choicesValue = selectEl.choicesjs.getValue(true)
+            return Array.isArray(choicesValue) ? choicesValue.filter((val) => val && String(val).trim()) : []
           }
+          return Array.from(selectEl.selectedOptions)
+            .map((option) => option.value)
+            .filter((val) => val && String(val).trim())
         }
+
+        const service = getMultiSelectValues('wpforms-4974-field_service')
+        const regions = getMultiSelectValues('wpforms-4974-field_13')
 
         // Client validation (name, email, phone + other required fields) — messages under inputs
         const clientErrors = []
@@ -734,9 +730,9 @@ const BusinessCommute = () => {
         const phoneErr = validateBusinessPhone(currentPhoneNumber)
         if (phoneErr) clientErrors.push({ path: 'phone', msg: phoneErr })
         if (!companyName) clientErrors.push({ path: 'companyName', msg: 'company name is required' })
-        if (!service) {
+        if (!service || service.length === 0) {
           clientErrors.push({ path: 'service', msg: 'service is required' })
-        } else if (!BUSINESS_SERVICES.includes(service)) {
+        } else if (service.some((s) => !BUSINESS_SERVICES.includes(s))) {
           clientErrors.push({ path: 'service', msg: 'service is invalid' })
         }
         if (!department) clientErrors.push({ path: 'department', msg: 'department is required' })
@@ -813,6 +809,14 @@ const BusinessCommute = () => {
             setFormApiError('')
             form.reset()
             setPhoneNumber('')
+            ;['wpforms-4974-field_service', 'wpforms-4974-field_13'].forEach((id) => {
+              const el = document.getElementById(id)
+              if (el?.choicesjs) {
+                try {
+                  el.choicesjs.removeActiveItems()
+                } catch (_) {}
+              }
+            })
             setSubmitSuccess(true)
             const recaptchaContainerReset = document.querySelector('.g-recaptcha')
             const widgetIdReset = recaptchaContainerReset?.dataset.recaptchaId || recaptchaWidgetId
@@ -850,18 +854,36 @@ const BusinessCommute = () => {
     // Load reCAPTCHA after a short delay to ensure DOM is ready
     setTimeout(loadRecaptcha, 1000)
 
-    // Initialize Choices.js for Regions dropdown
+    // Initialize Choices.js for Services and Regions multi-selects
+    const choicesMultiSelects = [
+      {
+        selector: '#wpforms-4974-field_service',
+        placeholderValue: 'Select services',
+        searchPlaceholderValue: 'Search services',
+      },
+      {
+        selector: '#wpforms-4974-field_13',
+        placeholderValue: 'Select regions',
+        searchPlaceholderValue: 'Search regions',
+      },
+    ]
     let choicesAttempts = 0
     const initChoicesJS = () => {
       choicesAttempts++
-      const selectElement = document.querySelector('#wpforms-4974-field_13')
-      
-      if (typeof window.Choices !== 'undefined' && selectElement) {
-        // Check if already initialized
+      if (typeof window.Choices === 'undefined') {
+        if (choicesAttempts < 100) setTimeout(initChoicesJS, 100)
+        return
+      }
+      let pending = false
+      choicesMultiSelects.forEach(({ selector, placeholderValue, searchPlaceholderValue }) => {
+        const selectElement = document.querySelector(selector)
+        if (!selectElement) {
+          pending = true
+          return
+        }
         if (selectElement.choicesjs || selectElement.closest('.choices')) {
           return
         }
-        
         try {
           const choicesInstance = new window.Choices(selectElement, {
             searchEnabled: true,
@@ -870,23 +892,20 @@ const BusinessCommute = () => {
             itemSelectText: '',
             shouldSort: false,
             placeholder: true,
-            placeholderValue: 'Select regions',
-            searchPlaceholderValue: 'Search regions'
+            placeholderValue,
+            searchPlaceholderValue,
           })
           selectElement.choicesjs = choicesInstance
         } catch (error) {
-          console.error('Error initializing Choices.js:', error)
-          if (choicesAttempts < 50) {
-            setTimeout(initChoicesJS, 200)
-          }
+          console.error(`Error initializing Choices.js for ${selector}:`, error)
+          pending = true
         }
-      } else if (choicesAttempts < 100) {
-        // Retry if Choices.js not loaded or element not found
-        setTimeout(initChoicesJS, 100)
+      })
+      if (pending && choicesAttempts < 50) {
+        setTimeout(initChoicesJS, 200)
       }
     }
 
-    // Try to initialize Choices.js after a delay to ensure library is loaded
     setTimeout(initChoicesJS, 1500)
 
     return () => {
@@ -900,16 +919,18 @@ const BusinessCommute = () => {
       
       formSubmitHandlerRef.current = null
 
-      // Cleanup Choices.js instance
-      const selectElement = document.querySelector('#wpforms-4974-field_13')
-      if (selectElement && selectElement.choicesjs) {
-        try {
-          selectElement.choicesjs.destroy()
-        } catch (e) {
-          console.error('Error destroying Choices.js:', e)
+      // Cleanup Choices.js instances
+      ;['#wpforms-4974-field_service', '#wpforms-4974-field_13'].forEach((selector) => {
+        const selectElement = document.querySelector(selector)
+        if (selectElement?.choicesjs) {
+          try {
+            selectElement.choicesjs.destroy()
+          } catch (e) {
+            console.error('Error destroying Choices.js:', e)
+          }
+          selectElement.choicesjs = null
         }
-        selectElement.choicesjs = null
-      }
+      })
 
       // Cleanup reCAPTCHA
       const recaptchaContainer = document.querySelector('.g-recaptcha')
@@ -1962,16 +1983,16 @@ const BusinessCommute = () => {
                                               </div>
                                               {/* Service — full width */}
                                               <div id="wpforms-4974-field_service-container" className="wpforms-field wpforms-field-select wpforms-field-select-style-modern" data-field-id="service">
-                                                <label className="wpforms-field-label" htmlFor="wpforms-4974-field_service">Service <span className="wpforms-required-label" aria-hidden="true">*</span></label>
+                                                <label className="wpforms-field-label" htmlFor="wpforms-4974-field_service">Services <span className="wpforms-required-label" aria-hidden="true">*</span></label>
                                                 <select
                                                   id="wpforms-4974-field_service"
-                                                  className="wpforms-field-large wpforms-field-required"
-                                                  name="wpforms[fields][service]"
-                                                  defaultValue=""
+                                                  className="wpforms-field-large wpforms-field-required choicesjs-select"
+                                                  name="wpforms[fields][service][]"
+                                                  multiple
                                                   required
                                                   aria-errormessage="wpforms-4974-field_service-error"
                                                 >
-                                                  <option value="" disabled>Select a service</option>
+                                                  <option value="" className="placeholder" disabled>Select services</option>
                                                   {BUSINESS_SERVICES.map((s) => (
                                                     <option key={s} value={s}>{s}</option>
                                                   ))}

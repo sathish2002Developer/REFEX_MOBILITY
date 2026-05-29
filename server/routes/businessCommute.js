@@ -67,17 +67,21 @@ router.post(
         }
         return true;
       }),
-    body('service')
-      .trim()
-      .notEmpty()
-      .withMessage('service is required')
-      .bail()
-      .custom((value) => {
-        if (!ALLOWED_BUSINESS_SERVICES.includes(value)) {
-          throw new Error('service is invalid');
-        }
-        return true;
-      }),
+    body('service').custom((value) => {
+      if (value === undefined || value === null) {
+        throw new Error('service is required');
+      }
+      const list = Array.isArray(value) ? value : value ? [value] : [];
+      const cleaned = list.map((v) => String(v).trim()).filter(Boolean);
+      if (cleaned.length === 0) {
+        throw new Error('service is required');
+      }
+      const invalid = cleaned.filter((s) => !ALLOWED_BUSINESS_SERVICES.includes(s));
+      if (invalid.length > 0) {
+        throw new Error('service is invalid');
+      }
+      return true;
+    }),
     body('department')
       .trim()
       .notEmpty()
