@@ -21,10 +21,12 @@ const KISSFLOW_BUSINESS_WEBHOOK_URL =
   KISSFLOW_CONTACT_WEBHOOK_URL;
 
 const ALLOWED_BUSINESS_SERVICES = [
-  'Corporate Commute',
+  'Employee Transfers',
   'Airport Transfers',
-  'Hourly Rentals',
+  'Spot Rental',
   'Outstation Rides',
+  'Business Travel',
+  'All Services',
 ];
 
 const ALLOWED_REGIONS = [
@@ -33,6 +35,7 @@ const ALLOWED_REGIONS = [
   'Mumbai',
   'Hyderabad',
   'Delhi NCR',
+  'All Regions',
 ];
 
 module.exports = {
