@@ -13,18 +13,6 @@ function normalizeServices(service) {
   return list.map((v) => String(v).trim()).filter(Boolean);
 }
 
-function splitCityFields(regionsJoined) {
-  const city = regionsJoined || '';
-  const commaIdx = city.indexOf(',');
-  if (commaIdx === -1) {
-    return { cityname: city.trim(), statename: '' };
-  }
-  return {
-    cityname: city.slice(0, commaIdx).trim(),
-    statename: city.slice(commaIdx + 1).trim(),
-  };
-}
-
 function buildMessage(comment, department) {
   const parts = [];
   if (department) {
@@ -57,7 +45,6 @@ function buildBusinessCommuteKissflowPayload(req, form) {
   const phoneDigits = phoneToDigitsOnly(phone);
   const regionList = normalizeRegions(regions);
   const city = regionList.join(', ');
-  const { cityname, statename } = splitCityFields(city);
   const serviceList = normalizeServices(service);
   const serviceJoined = serviceList.join(', ');
 
@@ -68,12 +55,13 @@ function buildBusinessCommuteKissflowPayload(req, form) {
     agentid: WEBSITE_AGENT_ID || KISSFLOW_DEFAULT_AGENT_ID,
     company: companyName,
     city,
-    cityname,
-    statename,
+    cityname: city,
+    statename: '',
     service: serviceJoined,
     Product: serviceJoined,
     message: buildMessage(comment, department),
     companySize: String(numberOfEmployees ?? ''),
+    no_of_employees: String(numberOfEmployees ?? ''),
     timestamp: meta.timestamp,
     dateTime: meta.dateTime,
     date: meta.date,
