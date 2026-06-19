@@ -26,6 +26,7 @@
     "seed:about-vision-mission": "node scripts/seed_about_vision_mission.js",
     "seed:sustainability-heart": "node scripts/seed_sustainability_heart.js",
     "seed:product-hero": "node scripts/seed_product_hero.js",
+    "seed:cms-pages": "node scripts/seed_cms_pages.js",
     "seed:all": "npm run seed:research-innovations && npm run seed:digital-solutions && npm run seed:innovation-transformation && npm run seed:social-section && npm run seed:footer-section && npm run seed:vision-mission"
   },
   "author": "Sathish",

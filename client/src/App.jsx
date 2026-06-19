@@ -11,6 +11,7 @@ import AdminLogin from './pages/admin/AdminLogin'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminHome from './pages/admin/AdminHome'
 import AdminInvestorRelations from './pages/admin/AdminInvestorRelations'
+import AdminWebsiteHome from './pages/admin/AdminWebsiteHome'
 import './App.css'
 
 // ScrollToTop component to scroll to top on route change
@@ -59,6 +60,7 @@ function App() {
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />}>
           <Route index element={<AdminHome />} />
+          <Route path="website-home" element={<AdminWebsiteHome />} />
           <Route path="investor-relations" element={<AdminInvestorRelations />} />
         </Route>
       </Routes>

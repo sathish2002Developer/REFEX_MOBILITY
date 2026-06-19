@@ -85,8 +85,8 @@ app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
 // Routes
 app.use("/auth", require("./routes/auth"));
 
-// Home CMS routes - public endpoints for home client and protected endpoints for admin
-
+// CMS routes (home page content — public read/write for admin panel)
+app.use("/api/cms", require("./routes/cms"));
 
 // Admin routes - protected endpoints for admin panel
 app.use("/api/admin", require("./routes/admin"));

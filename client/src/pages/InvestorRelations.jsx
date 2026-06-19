@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Fragment } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { STATIC_PAGE_META, applyPageMeta } from '../constants/pageMeta'
 import './Home.css'
 import './InvestorRelations.css'
 
@@ -117,6 +118,11 @@ const InvestorRelations = () => {
       }
     }
   }
+
+  // Page meta for SEO
+  useEffect(() => {
+    applyPageMeta(STATIC_PAGE_META.investorRelations)
+  }, [])
 
   // Load data on mount
   useEffect(() => {

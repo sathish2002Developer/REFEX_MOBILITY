@@ -40,6 +40,9 @@ const AdminDashboard = () => {
             <Link to="/admin/dashboard" className={`admin-nav-item ${isActive('/admin/dashboard') ? 'active' : ''}`}>
               <i className="fa fa-home"></i> Dashboard
             </Link>
+            <Link to="/admin/dashboard/website-home" className={`admin-nav-item ${isActive('/admin/dashboard/website-home') ? 'active' : ''}`}>
+              <i className="fa fa-globe"></i> Website CMS
+            </Link>
             <Link to="/admin/dashboard/investor-relations" className={`admin-nav-item ${isActive('/admin/dashboard/investor-relations') ? 'active' : ''}`}>
               <i className="fa fa-file-alt"></i> Investor Relations
             </Link>

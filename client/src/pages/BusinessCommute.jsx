@@ -14,6 +14,8 @@ import {
   isLocalhost as isLocalhostHost,
 } from '../constants/businessForm'
 import SubmissionSuccessOverlay from '../components/SubmissionSuccessOverlay'
+import { useCmsPage } from '../hooks/useCmsPage'
+import { renderCardTitle, renderTextWithBreaks } from '../utils/renderCmsText'
 
 // Import all client logos from refexclients folder
 import Amazon from '../assets/refexclients/amazon.png'
@@ -154,6 +156,8 @@ function validateBusinessPhone(e164Phone) {
 }
 
 const BusinessCommute = () => {
+  const cms = useCmsPage('business-commute')
+  const { hero, whyChooseRefex, industries, faq } = cms.sections
   const [openFaqs, setOpenFaqs] = useState({})
   const [phoneNumber, setPhoneNumber] = useState('') // stored as E.164 (+...)
   const phoneNumberRef = useRef('')
@@ -976,7 +980,7 @@ const BusinessCommute = () => {
                           data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
                           fetchpriority="high"
                           style={{
-                            backgroundImage: "url('/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp')",
+                            backgroundImage: `url('${hero?.backgroundImage || '/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp'}')`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center center',
                             backgroundRepeat: 'no-repeat',
@@ -1009,7 +1013,7 @@ const BusinessCommute = () => {
                                       marginBottom: '20px',
                                       textAlign: 'left'
                                     }}>
-                                      Reliable, Sustainable Mobility for Your Business
+                                      {hero?.title}
                                     </h2>
                                   </div>
                                 </div>
@@ -1023,13 +1027,13 @@ const BusinessCommute = () => {
                                       lineHeight: '1.6em',
                                       marginBottom: '30px',
                                       textAlign: 'left'
-                                    }}>Redefining corporate commutes with tailored mobility <br /> solutions for modern enterprises that truly care.</p>
+                                    }}>{renderTextWithBreaks(hero?.subtitle)}</p>
                                   </div>
                                 </div>
                                 <div className="elementor-element elementor-element-bc8f999 elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="bc8f999" data-element_type="widget" data-widget_type="button.default">
                                   <div className="elementor-widget-container" style={{textAlign: 'left'}}>
                                     <div className="elementor-button-wrapper">
-                                      <a className="elementor-button elementor-button-link elementor-size-sm" href="#connect-form" onClick={scrollToForm} style={{
+                                      <a className="elementor-button elementor-button-link elementor-size-sm" href={hero?.ctaLink || '#connect-form'} onClick={scrollToForm} style={{
                                         backgroundColor: '#F4553B',
                                         fontFamily: '"Poppins", Sans-serif',
                                         fontSize: '18px',
@@ -1042,7 +1046,7 @@ const BusinessCommute = () => {
                                         transition: 'all 0.3s ease'
                                       }}>
                                         <span className="elementor-button-content-wrapper">
-                                          <span className="elementor-button-text">Get Started</span>
+                                          <span className="elementor-button-text">{hero?.ctaText || 'Get Started'}</span>
                                         </span>
                                       </a>
                                     </div>
@@ -1108,10 +1112,10 @@ const BusinessCommute = () => {
                                     <div className="elementor-image-box-wrapper">
                                       <div className="elementor-image-box-content">
                                         <h3 className="elementor-image-box-title">
-                                          Why Choose <span style={{color: '#F4553B'}}>Refex For Business</span>
+                                          {whyChooseRefex?.titlePrefix} <span style={{color: '#F4553B'}}>{whyChooseRefex?.titleHighlight}</span>
                                         </h3>
                                         <p className="elementor-image-box-description">
-                                          Elevate your business travel experience with our service, offering transparent pricing, an easy booking experience, clean cabs, superior payment and invoicing.
+                                          {whyChooseRefex?.description}
                                         </p>
                                       </div>
                                     </div>
@@ -1138,174 +1142,32 @@ const BusinessCommute = () => {
                                             <div className="elementor-swiper">
                                               <div className="elementor-main-swiper swiper why-choose-refex-swiper" role="region" aria-roledescription="carousel" aria-label="Slides">
                                                 <div className="swiper-wrapper">
-                                                  <div className="swiper-slide" role="group" aria-roledescription="slide">
-                                                    <div className="elementor-testimonial">
-                                                      <div className="elementor-testimonial__content">
-                                                        <div className="elementor-testimonial__text">
-                                                          Seamless User Management
+                                                  {(whyChooseRefex?.cards || []).map((card, cardIndex) => (
+                                                    <div className="swiper-slide" key={cardIndex} role="group" aria-roledescription="slide">
+                                                      <div className="elementor-testimonial">
+                                                        <div className="elementor-testimonial__content">
+                                                          <div className="elementor-testimonial__text">
+                                                            {renderCardTitle(card)}
+                                                          </div>
+                                                          <cite className="elementor-testimonial__cite">
+                                                            <span className="elementor-testimonial__title">{card.description}</span>
+                                                          </cite>
                                                         </div>
-                                                        <cite className="elementor-testimonial__cite">
-                                                          <span className="elementor-testimonial__title">Effortless user onboarding including verified onboarding</span>
-                                                        </cite>
-                                                      </div>
-                                                      <div className="elementor-testimonial__footer">
-                                                        <div className="elementor-testimonial__image">
-                                                          <img 
-                                                            width="196" 
-                                                            height="196" 
-                                                            decoding="async" 
-                                                            src="/wp-content/uploads/2025/07/seamless-icon.png" 
-                                                            alt="Seamless user management"
-                                                            loading="lazy"
-                                                          />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                  <div className="swiper-slide" role="group" aria-roledescription="slide">
-                                                    <div className="elementor-testimonial">
-                                                      <div className="elementor-testimonial__content">
-                                                        <div className="elementor-testimonial__text">
-                                                          Create Guest Booking
-                                                        </div>
-                                                        <cite className="elementor-testimonial__cite">
-                                                          <span className="elementor-testimonial__title">Effortlessly book and manage guest reservations</span>
-                                                        </cite>
-                                                      </div>
-                                                      <div className="elementor-testimonial__footer">
-                                                        <div className="elementor-testimonial__image">
-                                                          <img 
-                                                            width="196" 
-                                                            height="197" 
-                                                            decoding="async" 
-                                                            src="/wp-content/uploads/2025/07/booking-icon.png" 
-                                                            alt="Create Guest Booking"
-                                                            loading="lazy"
-                                                          />
+                                                        <div className="elementor-testimonial__footer">
+                                                          <div className="elementor-testimonial__image">
+                                                            <img
+                                                              width="196"
+                                                              height="196"
+                                                              decoding="async"
+                                                              src={card.image}
+                                                              alt={card.alt}
+                                                              loading="lazy"
+                                                            />
+                                                          </div>
                                                         </div>
                                                       </div>
                                                     </div>
-                                                  </div>
-                                                  <div className="swiper-slide" role="group" aria-roledescription="slide">
-                                                    <div className="elementor-testimonial">
-                                                      <div className="elementor-testimonial__content">
-                                                        <div className="elementor-testimonial__text">
-                                                          Get 24/7 Assistance
-                                                        </div>
-                                                        <cite className="elementor-testimonial__cite">
-                                                          <span className="elementor-testimonial__title">Round the clock assistance available for all your needs</span>
-                                                        </cite>
-                                                      </div>
-                                                      <div className="elementor-testimonial__footer">
-                                                        <div className="elementor-testimonial__image">
-                                                          <img 
-                                                            width="196" 
-                                                            height="197" 
-                                                            decoding="async" 
-                                                            src="/wp-content/uploads/2025/07/headphn.png" 
-                                                            alt="24/7 Assistance"
-                                                            loading="lazy"
-                                                          />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                  <div className="swiper-slide" role="group" aria-roledescription="slide">
-                                                    <div className="elementor-testimonial">
-                                                      <div className="elementor-testimonial__content">
-                                                        <div className="elementor-testimonial__text">
-                                                          Dedicated Enterprise Dashboard
-                                                        </div>
-                                                        <cite className="elementor-testimonial__cite">
-                                                          <span className="elementor-testimonial__title">Centralised business control hub for optimized operations.</span>
-                                                        </cite>
-                                                      </div>
-                                                      <div className="elementor-testimonial__footer">
-                                                        <div className="elementor-testimonial__image">
-                                                          <img 
-                                                            width="196" 
-                                                            height="197" 
-                                                            decoding="async" 
-                                                            src="/wp-content/uploads/2025/07/dashboard-icon.png" 
-                                                            alt="Dedicated Enterprise Dashboard"
-                                                            loading="lazy"
-                                                          />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                  <div className="swiper-slide" role="group" aria-roledescription="slide">
-                                                    <div className="elementor-testimonial">
-                                                      <div className="elementor-testimonial__content">
-                                                        <div className="elementor-testimonial__text">
-                                                          Flexible Payment Options
-                                                        </div>
-                                                        <cite className="elementor-testimonial__cite">
-                                                          <span className="elementor-testimonial__title">Adaptable payment solutions for your convenience</span>
-                                                        </cite>
-                                                      </div>
-                                                      <div className="elementor-testimonial__footer">
-                                                        <div className="elementor-testimonial__image">
-                                                          <img 
-                                                            width="197" 
-                                                            height="197" 
-                                                            decoding="async" 
-                                                            src="/wp-content/uploads/2025/07/payment-icon.png" 
-                                                            alt="Flexible payment options"
-                                                            loading="lazy"
-                                                          />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                  <div className="swiper-slide" role="group" aria-roledescription="slide">
-                                                    <div className="elementor-testimonial">
-                                                      <div className="elementor-testimonial__content">
-                                                        <div className="elementor-testimonial__text">
-                                                          Monthly MIS<br />Report
-                                                        </div>
-                                                        <cite className="elementor-testimonial__cite">
-                                                          <span className="elementor-testimonial__title">Monthly insights report to track progress.</span>
-                                                        </cite>
-                                                      </div>
-                                                      <div className="elementor-testimonial__footer">
-                                                        <div className="elementor-testimonial__image">
-                                                          <img 
-                                                            width="197" 
-                                                            height="197" 
-                                                            decoding="async" 
-                                                            src="/wp-content/uploads/2025/07/monthly-report.png" 
-                                                            alt="Monthly MIS Report"
-                                                            loading="lazy"
-                                                          />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                  <div className="swiper-slide" role="group" aria-roledescription="slide">
-                                                    <div className="elementor-testimonial">
-                                                      <div className="elementor-testimonial__content">
-                                                        <div className="elementor-testimonial__text">
-                                                          Luxuries &<br /> Amenities
-                                                        </div>
-                                                        <cite className="elementor-testimonial__cite">
-                                                          <span className="elementor-testimonial__title">Premium comfort features for enhanced travel experience.</span>
-                                                        </cite>
-                                                      </div>
-                                                      <div className="elementor-testimonial__footer">
-                                                        <div className="elementor-testimonial__image">
-                                                          <img 
-                                                            width="197" 
-                                                            height="197" 
-                                                            decoding="async" 
-                                                            src="/wp-content/uploads/2025/07/luxuries-icon.png" 
-                                                            alt="Luxuries & Amenities"
-                                                            loading="lazy"
-                                                          />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
+                                                  ))}
                                                 </div>
                                                 <div className="elementor-swiper-button elementor-swiper-button-prev" role="button" tabIndex="0" aria-label="Previous">
                                                   <i aria-hidden="true" className="eicon-chevron-left fa fa-chevron-left">
@@ -1363,10 +1225,10 @@ const BusinessCommute = () => {
                                     <div className="elementor-image-box-wrapper">
                                       <div className="elementor-image-box-content">
                                         <h3 className="elementor-image-box-title">
-                                          Reliable Solution <span style={{color: '#F4553B'}}>for every Industry</span>
+                                          {industries?.titlePrefix} <span style={{color: '#F4553B'}}>{industries?.titleHighlight}</span>
                                         </h3>
                                         <p className="elementor-image-box-description">
-                                          Whether it's getting employees to work, patients to care, students to campus, or guests to their destination—timely, reliable transportation makes all the difference. That's why top organisations across healthcare, education, hospitality, and more trust us to power seamless mobility for the people who matter most to their business.
+                                          {industries?.description}
                                         </p>
                                       </div>
                                     </div>
@@ -1390,16 +1252,16 @@ const BusinessCommute = () => {
                                                   width="144" 
                                                   height="145" 
                                                   decoding="async" 
-                                                  src="/wp-content/uploads/2025/07/user-m.png" 
+                                                  src={industries?.items?.[0]?.image || '/wp-content/uploads/2025/07/user-m.png'} 
                                                   className="attachment-full size-full wp-image-5926" 
-                                                  alt="Corporates"
+                                                  alt={industries?.items?.[0]?.alt || 'Corporates'}
                                                   loading="lazy"
                                                 />
                                               </figure>
                                               <div className="elementor-image-box-content">
-                                                <h3 className="elementor-image-box-title">Corporates</h3>
+                                                <h3 className="elementor-image-box-title">{industries?.items?.[0]?.title || 'Corporates'}</h3>
                                                 <p className="elementor-image-box-description">
-                                                  Ensure your teams get to and from the office <b>seamlessly, safely,</b> and on <br />time—every time.
+                                                  {industries?.items?.[0]?.description}
                                                 </p>
                                               </div>
                                             </div>
@@ -1417,16 +1279,16 @@ const BusinessCommute = () => {
                                                   width="150" 
                                                   height="150" 
                                                   decoding="async" 
-                                                  src="/wp-content/uploads/2025/07/heart-img.png" 
+                                                  src={industries?.items?.[1]?.image || '/wp-content/uploads/2025/07/heart-img.png'} 
                                                   className="attachment-full size-full wp-image-6709" 
-                                                  alt="Healthcare & Pharmaceuticals"
+                                                  alt={industries?.items?.[1]?.alt || 'Healthcare & Pharmaceuticals'}
                                                   loading="lazy"
                                                 />
                                               </figure>
                                               <div className="elementor-image-box-content">
-                                                <h3 className="elementor-image-box-title">Healthcare & Pharmaceuticals</h3>
+                                                <h3 className="elementor-image-box-title">{industries?.items?.[1]?.title || 'Healthcare & Pharmaceuticals'}</h3>
                                                 <p className="elementor-image-box-description">
-                                                  Provide reliable transportation for<b> patients and caregivers</b>—because timely care starts with timely rides.
+                                                  {industries?.items?.[1]?.description}
                                                 </p>
                                               </div>
                                             </div>
@@ -1454,16 +1316,16 @@ const BusinessCommute = () => {
                                                   width="144" 
                                                   height="144" 
                                                   decoding="async" 
-                                                  src="/wp-content/uploads/2025/07/graduation-icon.png" 
+                                                  src={industries?.items?.[2]?.image || '/wp-content/uploads/2025/07/graduation-icon.png'} 
                                                   className="attachment-full size-full wp-image-5924" 
-                                                  alt="Education & Ed-Tech"
+                                                  alt={industries?.items?.[2]?.alt || 'Education & Ed-Tech'}
                                                   loading="lazy"
                                                 />
                                               </figure>
                                               <div className="elementor-image-box-content">
-                                                <h3 className="elementor-image-box-title">Education & <br />Ed-Tech</h3>
+                                                <h3 className="elementor-image-box-title">{renderCardTitle(industries?.items?.[2]) || 'Education & Ed-Tech'}</h3>
                                                 <p className="elementor-image-box-description">
-                                                  Empower students and staff with <b>safe, efficient rides </b>that support learning beyond the classroom.
+                                                  {industries?.items?.[2]?.description}
                                                 </p>
                                               </div>
                                             </div>
@@ -1481,16 +1343,16 @@ const BusinessCommute = () => {
                                                   width="144" 
                                                   height="144" 
                                                   decoding="async" 
-                                                  src="/wp-content/uploads/2025/07/cap-icon.png" 
+                                                  src={industries?.items?.[3]?.image || '/wp-content/uploads/2025/07/cap-icon.png'} 
                                                   className="attachment-full size-full wp-image-5925" 
-                                                  alt="Hospitality"
+                                                  alt={industries?.items?.[3]?.alt || 'Hospitality'}
                                                   loading="lazy"
                                                 />
                                               </figure>
                                               <div className="elementor-image-box-content">
-                                                <h3 className="elementor-image-box-title">Hospitality</h3>
+                                                <h3 className="elementor-image-box-title">{industries?.items?.[3]?.title || 'Hospitality'}</h3>
                                                 <p className="elementor-image-box-description">
-                                                  Delight your guests with <b>dependable rides</b>—enhancing every step of their journey.
+                                                  {industries?.items?.[3]?.description}
                                                 </p>
                                               </div>
                                             </div>
@@ -2079,7 +1941,7 @@ const BusinessCommute = () => {
                                     <div className="elementor-image-box-wrapper">
                                       <div className="elementor-image-box-content">
                                         <h3 className="elementor-image-box-title">
-                                          Frequently Asked <span style={{color: '#F4553B'}}>Questions</span>
+                                          {faq?.titlePrefix} <span style={{color: '#F4553B'}}>{faq?.titleHighlight}</span>
                                         </h3>
                                       </div>
                                     </div>
@@ -2098,228 +1960,43 @@ const BusinessCommute = () => {
                                         <div className="elementor-element elementor-element-29e2157 elementor-widget elementor-widget-toggle" data-id="29e2157" data-element_type="widget" data-widget_type="toggle.default">
                                           <div className="elementor-widget-container">
                                             <div className="elementor-toggle">
-                                              {/* FAQ Item 1 */}
-                                              <div className="elementor-toggle-item">
-                                                <div 
-                                                  id="elementor-tab-title-4391" 
-                                                  className={`elementor-tab-title ${openFaqs[1] ? 'active' : ''}`}
-                                                  data-tab="1" 
-                                                  role="button" 
-                                                  aria-controls="elementor-tab-content-4391" 
-                                                  aria-expanded={openFaqs[1] ? 'true' : 'false'}
-                                                  onClick={() => toggleFaq(1)}
-                                                  style={{cursor: 'pointer'}}
-                                                >
-                                                  <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
-                                                    <span className="elementor-toggle-icon-closed">
-                                                      <i className="ion ion-plus"></i>
-                                                    </span>
-                                                    <span className="elementor-toggle-icon-opened">
-                                                      <i className="elementor-toggle-icon-opened ion ion-minus"></i>
-                                                    </span>
-                                                  </span>
-                                                  <a className="elementor-toggle-title" tabIndex="0">
-                                                    What are the benefits of onboarding refex as a mobility partner for our organisation?
-                                                  </a>
-                                                </div>
-                                                <div 
-                                                  id="elementor-tab-content-4391" 
-                                                  className={`elementor-tab-content elementor-clearfix ${openFaqs[1] ? 'active' : ''}`}
-                                                  data-tab="1" 
-                                                  role="region" 
-                                                  aria-labelledby="elementor-tab-title-4391"
-                                                  style={{display: openFaqs[1] ? 'block' : 'none'}}
-                                                >
-                                                  <p><span style={{fontWeight: 400}}>As a Refex customer, you get several perks which include.</span></p>
-                                                  <ul>
-                                                    <li><span style={{fontWeight: 400}}> Dedicated enterprise dashboard for onboarding/off-boarding users</span></li>
-                                                    <li><span style={{fontWeight: 400}}> Create, modify and track all your rides</span></li>
-                                                    <li><span style={{fontWeight: 400}}> Detailed monthly ride and payment reports</span></li>
-                                                    <li><span style={{fontWeight: 400}}> Payments and invoicing (e-invoices)</span></li>
-                                                    <li><span style={{fontWeight: 400}}> and all this can also be done using end to end encrypted secure API integrations.</span></li>
-                                                  </ul>
-                                                </div>
-                                              </div>
-
-                                              {/* FAQ Item 2 */}
-                                              <div className="elementor-toggle-item">
-                                                <div 
-                                                  id="elementor-tab-title-4392" 
-                                                  className={`elementor-tab-title ${openFaqs[2] ? 'active' : ''}`}
-                                                  data-tab="2" 
-                                                  role="button" 
-                                                  aria-controls="elementor-tab-content-4392" 
-                                                  aria-expanded={openFaqs[2] ? 'true' : 'false'}
-                                                  onClick={() => toggleFaq(2)}
-                                                  style={{cursor: 'pointer'}}
-                                                >
-                                                  <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
-                                                    <span className="elementor-toggle-icon-closed">
-                                                      <i className="ion ion-plus"></i>
-                                                    </span>
-                                                    <span className="elementor-toggle-icon-opened">
-                                                      <i className="elementor-toggle-icon-opened ion ion-minus"></i>
-                                                    </span>
-                                                  </span>
-                                                  <a className="elementor-toggle-title" tabIndex="0">
-                                                    Do I get any carbon savings certificate?
-                                                  </a>
-                                                </div>
-                                                <div 
-                                                  id="elementor-tab-content-4392" 
-                                                  className={`elementor-tab-content elementor-clearfix ${openFaqs[2] ? 'active' : ''}`}
-                                                  data-tab="2" 
-                                                  role="region" 
-                                                  aria-labelledby="elementor-tab-title-4392"
-                                                  style={{display: openFaqs[2] ? 'block' : 'none'}}
-                                                >
-                                                  <p><span style={{fontWeight: 400}}>Yes, Refex Mobility provides carbon savings certificates to our business clients, recognizing your contributions to sustainable and eco-friendly transportation.</span></p>
-                                                </div>
-                                              </div>
-
-                                              {/* FAQ Item 3 */}
-                                              <div className="elementor-toggle-item">
-                                                <div 
-                                                  id="elementor-tab-title-4393" 
-                                                  className={`elementor-tab-title ${openFaqs[3] ? 'active' : ''}`}
-                                                  data-tab="3" 
-                                                  role="button" 
-                                                  aria-controls="elementor-tab-content-4393" 
-                                                  aria-expanded={openFaqs[3] ? 'true' : 'false'}
-                                                  onClick={() => toggleFaq(3)}
-                                                  style={{cursor: 'pointer'}}
-                                                >
-                                                  <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
-                                                    <span className="elementor-toggle-icon-closed">
-                                                      <i className="ion ion-plus"></i>
-                                                    </span>
-                                                    <span className="elementor-toggle-icon-opened">
-                                                      <i className="elementor-toggle-icon-opened ion ion-minus"></i>
-                                                    </span>
-                                                  </span>
-                                                  <a className="elementor-toggle-title" tabIndex="0">
-                                                    Who is responsible for ownership and maintains the fleet and drivers?
-                                                  </a>
-                                                </div>
-                                                <div 
-                                                  id="elementor-tab-content-4393" 
-                                                  className={`elementor-tab-content elementor-clearfix ${openFaqs[3] ? 'active' : ''}`}
-                                                  data-tab="3" 
-                                                  role="region" 
-                                                  aria-labelledby="elementor-tab-title-4393"
-                                                  style={{display: openFaqs[3] ? 'block' : 'none'}}
-                                                >
-                                                  <p><span style={{fontWeight: 400}}>We at Refex ensure all fleet maintenance and driver training, maintaining high standards of safety, cleanliness, and reliability for every ride.</span></p>
-                                                </div>
-                                              </div>
-
-                                              {/* FAQ Item 4 */}
-                                              <div className="elementor-toggle-item">
-                                                <div 
-                                                  id="elementor-tab-title-4394" 
-                                                  className={`elementor-tab-title ${openFaqs[4] ? 'active' : ''}`}
-                                                  data-tab="4" 
-                                                  role="button" 
-                                                  aria-controls="elementor-tab-content-4394" 
-                                                  aria-expanded={openFaqs[4] ? 'true' : 'false'}
-                                                  onClick={() => toggleFaq(4)}
-                                                  style={{cursor: 'pointer'}}
-                                                >
-                                                  <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
-                                                    <span className="elementor-toggle-icon-closed">
-                                                      <i className="ion ion-plus"></i>
-                                                    </span>
-                                                    <span className="elementor-toggle-icon-opened">
-                                                      <i className="elementor-toggle-icon-opened ion ion-minus"></i>
-                                                    </span>
-                                                  </span>
-                                                  <a className="elementor-toggle-title" tabIndex="0">
-                                                    Can I book my travel in advance?
-                                                  </a>
-                                                </div>
-                                                <div 
-                                                  id="elementor-tab-content-4394" 
-                                                  className={`elementor-tab-content elementor-clearfix ${openFaqs[4] ? 'active' : ''}`}
-                                                  data-tab="4" 
-                                                  role="region" 
-                                                  aria-labelledby="elementor-tab-title-4394"
-                                                  style={{display: openFaqs[4] ? 'block' : 'none'}}
-                                                >
-                                                  <p>Yes. Refex allows you to book travel within City, Airport &amp; Rentals 30 days in advance from our application and admin dashboard.</p>
-                                                </div>
-                                              </div>
-
-                                              {/* FAQ Item 5 */}
-                                              <div className="elementor-toggle-item">
-                                                <div 
-                                                  id="elementor-tab-title-4395" 
-                                                  className={`elementor-tab-title ${openFaqs[5] ? 'active' : ''}`}
-                                                  data-tab="5" 
-                                                  role="button" 
-                                                  aria-controls="elementor-tab-content-4395" 
-                                                  aria-expanded={openFaqs[5] ? 'true' : 'false'}
-                                                  onClick={() => toggleFaq(5)}
-                                                  style={{cursor: 'pointer'}}
-                                                >
-                                                  <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
-                                                    <span className="elementor-toggle-icon-closed">
-                                                      <i className="ion ion-plus"></i>
-                                                    </span>
-                                                    <span className="elementor-toggle-icon-opened">
-                                                      <i className="elementor-toggle-icon-opened ion ion-minus"></i>
-                                                    </span>
-                                                  </span>
-                                                  <a className="elementor-toggle-title" tabIndex="0">
-                                                    What happens if I do not board the cab from my scheduled time?
-                                                  </a>
-                                                </div>
-                                                <div 
-                                                  id="elementor-tab-content-4395" 
-                                                  className={`elementor-tab-content elementor-clearfix ${openFaqs[5] ? 'active' : ''}`}
-                                                  data-tab="5" 
-                                                  role="region" 
-                                                  aria-labelledby="elementor-tab-title-4395"
-                                                  style={{display: openFaqs[5] ? 'block' : 'none'}}
-                                                >
-                                                  <p>Refex waits for 30 min. If you do not board the cab during this time, the driver partners will cancel the pickup and a NO SHOW charge as per your company policy. Employees then need to rebook the Refex Cab.</p>
-                                                </div>
-                                              </div>
-
-                                              {/* FAQ Item 6 */}
-                                              <div className="elementor-toggle-item">
-                                                <div 
-                                                  id="elementor-tab-title-4396" 
-                                                  className={`elementor-tab-title ${openFaqs[6] ? 'active' : ''}`}
-                                                  data-tab="6" 
-                                                  role="button" 
-                                                  aria-controls="elementor-tab-content-4396" 
-                                                  aria-expanded={openFaqs[6] ? 'true' : 'false'}
-                                                  onClick={() => toggleFaq(6)}
-                                                  style={{cursor: 'pointer'}}
-                                                >
-                                                  <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
-                                                    <span className="elementor-toggle-icon-closed">
-                                                      <i className="ion ion-plus"></i>
-                                                    </span>
-                                                    <span className="elementor-toggle-icon-opened">
-                                                      <i className="elementor-toggle-icon-opened ion ion-minus"></i>
-                                                    </span>
-                                                  </span>
-                                                  <a className="elementor-toggle-title" tabIndex="0">
-                                                    What to do in case of emergency?
-                                                  </a>
-                                                </div>
-                                                <div 
-                                                  id="elementor-tab-content-4396" 
-                                                  className={`elementor-tab-content elementor-clearfix ${openFaqs[6] ? 'active' : ''}`}
-                                                  data-tab="6" 
-                                                  role="region" 
-                                                  aria-labelledby="elementor-tab-title-4396"
-                                                  style={{display: openFaqs[6] ? 'block' : 'none'}}
-                                                >
-                                                  <p>Press Panic button installed at the Left and right side of the car near the front seat belt. Refex representative will immediately call back for support. You can also contact them through 24*7 contact number on your Refex app too.</p>
-                                                </div>
-                                              </div>
+                                              {(faq?.items || []).map((item) => {
+                                                const tabId = item.order ?? 0
+                                                return (
+                                                  <div className="elementor-toggle-item" key={tabId}>
+                                                    <div
+                                                      id={`elementor-tab-title-439${tabId}`}
+                                                      className={`elementor-tab-title ${openFaqs[tabId] ? 'active' : ''}`}
+                                                      data-tab={String(tabId)}
+                                                      role="button"
+                                                      aria-controls={`elementor-tab-content-439${tabId}`}
+                                                      aria-expanded={openFaqs[tabId] ? 'true' : 'false'}
+                                                      onClick={() => toggleFaq(tabId)}
+                                                      style={{ cursor: 'pointer' }}
+                                                    >
+                                                      <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
+                                                        <span className="elementor-toggle-icon-closed">
+                                                          <i className="ion ion-plus"></i>
+                                                        </span>
+                                                        <span className="elementor-toggle-icon-opened">
+                                                          <i className="elementor-toggle-icon-opened ion ion-minus"></i>
+                                                        </span>
+                                                      </span>
+                                                      <a className="elementor-toggle-title" tabIndex="0">{item.question}</a>
+                                                    </div>
+                                                    <div
+                                                      id={`elementor-tab-content-439${tabId}`}
+                                                      className={`elementor-tab-content elementor-clearfix ${openFaqs[tabId] ? 'active' : ''}`}
+                                                      data-tab={String(tabId)}
+                                                      role="region"
+                                                      aria-labelledby={`elementor-tab-title-439${tabId}`}
+                                                      style={{ display: openFaqs[tabId] ? 'block' : 'none' }}
+                                                    >
+                                                      <p><span style={{ fontWeight: 400 }}>{item.answer}</span></p>
+                                                    </div>
+                                                  </div>
+                                                )
+                                              })}
                                             </div>
                                           </div>
                                         </div>

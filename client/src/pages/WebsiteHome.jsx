@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import './Home.css'
+import { useHomeCms } from '../hooks/useHomeCms'
+import { renderTextWithBreaks } from '../utils/renderCmsText'
 import MgzsImg from '../assets/feet/mgzs.png'
 import CitroenImg from '../assets/feet/Citroen.png'
 import Dzire from '../assets/feet/Dzire.png'
@@ -67,6 +68,13 @@ import Ertiga from '../assets/feet/Ertiga.png'
 
 const WebsiteHome = () => {
   const [activeTab, setActiveTab] = useState(1)
+  const cms = useHomeCms()
+  const { hero, sustainabilityImpact, whyChooseUs, rideOptions, expandingNetwork, fleet, aboutUs } = cms.sections
+  const counters = sustainabilityImpact.counters || []
+  const cards = whyChooseUs.cards || []
+  const rideTabs = rideOptions.tabs || []
+  const cities = expandingNetwork.cities || []
+  const vehicleAlts = fleet.vehicles || []
 
   const handleTabClick = (e, tabNumber) => {
     e.preventDefault()
@@ -526,7 +534,7 @@ const WebsiteHome = () => {
                           data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
                           fetchpriority="high"
                           style={{
-                            backgroundImage: "url('/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp')",
+                            backgroundImage: `url('${hero.backgroundImage}')`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center center',
                             backgroundRepeat: 'no-repeat',
@@ -543,21 +551,23 @@ const WebsiteHome = () => {
                                 <div className="elementor-element elementor-element-c00bf29 elementor-widget__width-initial elementor-widget-tablet__width-inherit elementor-widget-mobile__width-inherit elementor-widget elementor-widget-heading" data-id="c00bf29" data-element_type="widget" data-widget_type="heading.default">
                                   <div className="elementor-widget-container">
                                     <h2 className="elementor-heading-title elementor-size-default">
-                                      Where <span style={{color:'#F4553B'}}>Reliability</span> Meets Responsibility.
+                                      {hero.titlePrefix}{' '}
+                                      <span style={{color:'#F4553B'}}>{hero.titleHighlight}</span>{' '}
+                                      {hero.titleSuffix}
                                     </h2>
                                   </div>
                                 </div>
                                 <div className="elementor-element elementor-element-a11fdc0 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="a11fdc0" data-element_type="widget" data-widget_type="text-editor.default">
                                   <div className="elementor-widget-container">
-                                    Rides that keep your business moving – on time, every time.
+                                    {hero.subtitle}
                                   </div>
                                 </div>
                                 <div className="elementor-element elementor-element-22ac16d elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="22ac16d" data-element_type="widget" data-widget_type="button.default">
                                   <div className="elementor-widget-container">
                                     <div className="elementor-button-wrapper">
-                                      <a className="elementor-button elementor-button-link elementor-size-sm" href="/business-commute/#connect-form">
+                                      <a className="elementor-button elementor-button-link elementor-size-sm" href={hero.ctaLink}>
                                         <span className="elementor-button-content-wrapper">
-                                          <span className="elementor-button-text">Get Started</span>
+                                          <span className="elementor-button-text">{hero.ctaText}</span>
                                         </span>
                                       </a>
                                     </div>
@@ -588,9 +598,10 @@ const WebsiteHome = () => {
                                     <div className="elementor-image-box-wrapper">
                                       <div className="elementor-image-box-content">
                                         <h3 className="elementor-image-box-title">
-                                          Sustainability <span style={{color: '#F4553B'}}>Impact</span>
+                                          {sustainabilityImpact.titlePrefix}{' '}
+                                          <span style={{color: '#F4553B'}}>{sustainabilityImpact.titleHighlight}</span>
                                         </h3>
-                                        <p className="elementor-image-box-description">Every ride counts toward a cleaner planet.</p>
+                                        <p className="elementor-image-box-description">{sustainabilityImpact.description}</p>
                                       </div>
                                     </div>
                                   </div>
@@ -609,11 +620,11 @@ const WebsiteHome = () => {
                                         <div className="elementor-element elementor-element-bd6824b km-covered text-left elementor-widget elementor-widget-counter" data-id="bd6824b" data-element_type="widget" data-widget_type="counter.default">
                                           <div className="elementor-widget-container">
                                             <div className="elementor-counter">
-                                              <div className="elementor-counter-title">Happy Riders</div>
+                                              <div className="elementor-counter-title">{counters[0]?.title}</div>
                                               <div className="elementor-counter-number-wrapper">
                                                 <span className="elementor-counter-number-prefix"></span>
-                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="60000" data-from-value="0">60000</span>
-                                                <span className="elementor-counter-number-suffix">+</span>
+                                                <span className="elementor-counter-number" data-duration="2000" data-to-value={counters[0]?.value} data-from-value="0">{counters[0]?.value}</span>
+                                                <span className="elementor-counter-number-suffix">{counters[0]?.suffix}</span>
                                               </div>
                                             </div>
                                           </div>
@@ -625,11 +636,11 @@ const WebsiteHome = () => {
                                         <div className="elementor-element elementor-element-93af9ec km-covered text-left elementor-widget elementor-widget-counter" data-id="93af9ec" data-element_type="widget" data-widget_type="counter.default">
                                           <div className="elementor-widget-container">
                                             <div className="elementor-counter">
-                                              <div className="elementor-counter-title">CO₂  Saved</div>
+                                              <div className="elementor-counter-title">{counters[1]?.title}</div>
                                               <div className="elementor-counter-number-wrapper">
                                                 <span className="elementor-counter-number-prefix"></span>
-                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="6600" data-from-value="0"> 6600 </span>
-                                                <span className="elementor-counter-number-suffix"> Tonnes+</span>
+                                                <span className="elementor-counter-number" data-duration="2000" data-to-value={counters[1]?.value} data-from-value="0"> {counters[1]?.value} </span>
+                                                <span className="elementor-counter-number-suffix">{counters[1]?.suffix}</span>
                                               </div>
                                             </div>
                                           </div>
@@ -641,11 +652,11 @@ const WebsiteHome = () => {
                                         <div className="elementor-element elementor-element-a61b893 km-covered text-left elementor-widget elementor-widget-counter" data-id="a61b893" data-element_type="widget" data-widget_type="counter.default">
                                           <div className="elementor-widget-container">
                                             <div className="elementor-counter">
-                                              <div className="elementor-counter-title">Kms Covered</div>
+                                              <div className="elementor-counter-title">{counters[2]?.title}</div>
                                               <div className="elementor-counter-number-wrapper">
                                                 <span className="elementor-counter-number-prefix"></span>
-                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="10.2" data-from-value="0">10.2</span>
-                                                <span className="elementor-counter-number-suffix"> Crore+</span>
+                                                <span className="elementor-counter-number" data-duration="2000" data-to-value={counters[2]?.value} data-from-value="0">{counters[2]?.value}</span>
+                                                <span className="elementor-counter-number-suffix">{counters[2]?.suffix}</span>
                                               </div>
                                             </div>
                                           </div>
@@ -657,11 +668,11 @@ const WebsiteHome = () => {
                                         <div className="elementor-element elementor-element-e30c7b3 km-covered text-center elementor-widget elementor-widget-counter" data-id="e30c7b3" data-element_type="widget" data-widget_type="counter.default">
                                           <div className="elementor-widget-container">
                                             <div className="elementor-counter">
-                                              <div className="elementor-counter-title">Ltrs Of Fuel Saved</div>
+                                              <div className="elementor-counter-title">{counters[3]?.title}</div>
                                               <div className="elementor-counter-number-wrapper">
                                                 <span className="elementor-counter-number-prefix"></span>
-                                                <span className="elementor-counter-number" data-duration="2000" data-to-value="8.13" data-from-value="0">8.13 </span>
-                                                <span className="elementor-counter-number-suffix"> Million+</span>
+                                                <span className="elementor-counter-number" data-duration="2000" data-to-value={counters[3]?.value} data-from-value="0">{counters[3]?.value} </span>
+                                                <span className="elementor-counter-number-suffix">{counters[3]?.suffix}</span>
                                               </div>
                                             </div>
                                           </div>
@@ -693,7 +704,8 @@ const WebsiteHome = () => {
                                     <div className="elementor-image-box-wrapper">
                                       <div className="elementor-image-box-content">
                                         <h3 className="elementor-image-box-title">
-                                          why <span style={{color: '#F4553B'}}>Choose Us ?</span>
+                                          {whyChooseUs.titlePrefix}{' '}
+                                          <span style={{color: '#F4553B'}}>{whyChooseUs.titleHighlight}</span>
                                         </h3>
                                       </div>
                                     </div>
@@ -714,10 +726,10 @@ const WebsiteHome = () => {
                                             <div className="elementor-testimonial">
                                               <div className="elementor-testimonial__content">
                                                 <div className="elementor-testimonial__text">
-                                                  Eco-Friendly <br /> Rides
+                                                  {cards[0]?.titleLine1} <br /> {cards[0]?.titleLine2}
                                                 </div>
                                                 <cite className="elementor-testimonial__cite">
-                                                  <span className="elementor-testimonial__title">Go electric and travel cleaner - for you and the environment.</span>
+                                                  <span className="elementor-testimonial__title">{cards[0]?.description}</span>
                                                 </cite>
                                               </div>
                                               <div className="elementor-testimonial__footer">
@@ -726,8 +738,8 @@ const WebsiteHome = () => {
                                                     width="196" 
                                                     height="196" 
                                                     decoding="async" 
-                                                    src="/wp-content/uploads/2025/07/car-icons.png" 
-                                                    alt="Eco-Friendly Rides"
+                                                    src={cards[0]?.image} 
+                                                    alt={cards[0]?.alt}
                                                   />
                                                 </div>
                                               </div>
@@ -737,10 +749,10 @@ const WebsiteHome = () => {
                                             <div className="elementor-testimonial">
                                               <div className="elementor-testimonial__content">
                                                 <div className="elementor-testimonial__text">
-                                                  Corporate Ride <br /> Solutions
+                                                  {cards[1]?.titleLine1} <br /> {cards[1]?.titleLine2}
                                                 </div>
                                                 <cite className="elementor-testimonial__cite">
-                                                  <span className="elementor-testimonial__title">Custom packages and dashboards for business and employee transport.</span>
+                                                  <span className="elementor-testimonial__title">{cards[1]?.description}</span>
                                                 </cite>
                                               </div>
                                               <div className="elementor-testimonial__footer">
@@ -749,8 +761,8 @@ const WebsiteHome = () => {
                                                     width="196" 
                                                     height="196" 
                                                     decoding="async" 
-                                                    src="/wp-content/uploads/2025/07/corporate-icon.png" 
-                                                    alt="Corporate Ride Solutions"
+                                                    src={cards[1]?.image} 
+                                                    alt={cards[1]?.alt}
                                                   />
                                                 </div>
                                               </div>
@@ -760,10 +772,10 @@ const WebsiteHome = () => {
                                             <div className="elementor-testimonial">
                                               <div className="elementor-testimonial__content">
                                                 <div className="elementor-testimonial__text">
-                                                  Verified and Trained <br /> Drivers
+                                                  {cards[2]?.titleLine1} <br /> {cards[2]?.titleLine2}
                                                 </div>
                                                 <cite className="elementor-testimonial__cite">
-                                                  <span className="elementor-testimonial__title">All drivers are background-checked and professionally trained.</span>
+                                                  <span className="elementor-testimonial__title">{cards[2]?.description}</span>
                                                 </cite>
                                               </div>
                                               <div className="elementor-testimonial__footer">
@@ -772,8 +784,8 @@ const WebsiteHome = () => {
                                                     width="196" 
                                                     height="196" 
                                                     decoding="async" 
-                                                    src="/wp-content/uploads/2025/07/verified-icon.png" 
-                                                    alt="Verified and Trained Drivers"
+                                                    src={cards[2]?.image} 
+                                                    alt={cards[2]?.alt}
                                                   />
                                                 </div>
                                               </div>
@@ -783,10 +795,10 @@ const WebsiteHome = () => {
                                             <div className="elementor-testimonial">
                                               <div className="elementor-testimonial__content">
                                                 <div className="elementor-testimonial__text">
-                                                  Safety and Hygiene <br /> Protocols
+                                                  {cards[3]?.titleLine1} <br /> {cards[3]?.titleLine2}
                                                 </div>
                                                 <cite className="elementor-testimonial__cite">
-                                                  <span className="elementor-testimonial__title">Sanitized vehicles with strict hygiene standards for a worry-free ride.</span>
+                                                  <span className="elementor-testimonial__title">{cards[3]?.description}</span>
                                                 </cite>
                                               </div>
                                               <div className="elementor-testimonial__footer">
@@ -795,8 +807,8 @@ const WebsiteHome = () => {
                                                     width="196" 
                                                     height="196" 
                                                     decoding="async" 
-                                                    src="/wp-content/uploads/2025/07/safty-icon.png" 
-                                                    alt="Safety and Hygiene Protocols"
+                                                    src={cards[3]?.image} 
+                                                    alt={cards[3]?.alt}
                                                   />
                                                 </div>
                                               </div>
@@ -844,7 +856,8 @@ const WebsiteHome = () => {
                                     <div className="elementor-image-box-wrapper">
                                       <div className="elementor-image-box-content">
                                         <h3 className="elementor-image-box-title">
-                                          Ride <span style={{color: '#F4553B'}}>Options</span>
+                                          {rideOptions.titlePrefix}{' '}
+                                          <span style={{color: '#F4553B'}}>{rideOptions.titleHighlight}</span>
                                         </h3>
                                       </div>
                                     </div>
@@ -882,7 +895,7 @@ const WebsiteHome = () => {
                                                     aria-expanded="true"
                                                     onClick={(e) => handleTabClick(e, 1)}
                                                   >
-                                                    <span className="eael-tab-title title-after-icon">Corporate Commute</span>
+                                                    <span className="eael-tab-title title-after-icon">{rideTabs[0]?.label}</span>
                                                   </li>
                                                   <li 
                                                     id="airport-transfers" 
@@ -895,7 +908,7 @@ const WebsiteHome = () => {
                                                     aria-expanded="false"
                                                     onClick={(e) => handleTabClick(e, 2)}
                                                   >
-                                                    <span className="eael-tab-title title-after-icon">Airport Transfers</span>
+                                                    <span className="eael-tab-title title-after-icon">{rideTabs[1]?.label}</span>
                                                   </li>
                                                   <li 
                                                     id="hourly-rentals" 
@@ -908,7 +921,7 @@ const WebsiteHome = () => {
                                                     aria-expanded="false"
                                                     onClick={(e) => handleTabClick(e, 3)}
                                                   >
-                                                    <span className="eael-tab-title title-after-icon">Hourly Rentals</span>
+                                                    <span className="eael-tab-title title-after-icon">{rideTabs[2]?.label}</span>
                                                   </li>
                                                   <li 
                                                     id="outstation-rides" 
@@ -921,7 +934,7 @@ const WebsiteHome = () => {
                                                     aria-expanded="false"
                                                     onClick={(e) => handleTabClick(e, 4)}
                                                   >
-                                                    <span className="eael-tab-title title-after-icon">Outstation Rides</span>
+                                                    <span className="eael-tab-title title-after-icon">{rideTabs[3]?.label}</span>
                                                   </li>
                                                 </ul>
                                               </div>
@@ -944,20 +957,20 @@ const WebsiteHome = () => {
                                                                   <div className="elementor-widget-wrap elementor-element-populated">
                                                                     <div className="elementor-element elementor-element-63c2c49 elementor-widget elementor-widget-heading" data-id="63c2c49" data-element_type="widget" data-widget_type="heading.default">
                                                                       <div className="elementor-widget-container">
-                                                                        <h2 className="elementor-heading-title elementor-size-default">Corporate commute packages</h2>
+                                                                        <h2 className="elementor-heading-title elementor-size-default">{rideTabs[0]?.heading}</h2>
                                                                       </div>
                                                                     </div>
                                                                     <div className="elementor-element elementor-element-dfb185e elementor-widget elementor-widget-text-editor" data-id="dfb185e" data-element_type="widget" data-widget_type="text-editor.default">
                                                                       <div className="elementor-widget-container">
-                                                                        <p>Reliable daily transport for your employees<br />using 100% electric vehicles. Safe, punctual, and<br />sustainable rides tailored for modern<br />workplaces.</p>
+                                                                        <p>{renderTextWithBreaks(rideTabs[0]?.description)}</p>
                                                                       </div>
                                                                     </div>
                                                                     <div className="elementor-element elementor-element-cf79e17 elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="cf79e17" data-element_type="widget" data-widget_type="button.default">
                                                                       <div className="elementor-widget-container">
                                                                         <div className="elementor-button-wrapper">
-                                                                          <a className="elementor-button elementor-button-link elementor-size-sm" href="/business-commute/#connect-form">
+                                                                          <a className="elementor-button elementor-button-link elementor-size-sm" href={rideTabs[0]?.ctaLink}>
                                                                             <span className="elementor-button-content-wrapper">
-                                                                              <span className="elementor-button-text">Get Started</span>
+                                                                              <span className="elementor-button-text">{rideTabs[0]?.ctaText}</span>
                                                                             </span>
                                                                           </a>
                                                                         </div>
@@ -973,7 +986,7 @@ const WebsiteHome = () => {
                                                                           width="430" 
                                                                           height="350" 
                                                                           decoding="async" 
-                                                                          src="/wp-content/uploads/elementor/thumbs/corpotate-img-r8jucgvni2gpbsuyfk3lfw5sh886uge24wkr57tjxo.png" 
+                                                                          src={rideTabs[0]?.image} 
                                                                           title="corpotate-img" 
                                                                           alt="corpotate-img" 
                                                                           loading="lazy" 
@@ -1008,20 +1021,20 @@ const WebsiteHome = () => {
                                                                   <div className="elementor-widget-wrap elementor-element-populated">
                                                                     <div className="elementor-element elementor-element-1848659 elementor-widget elementor-widget-heading" data-id="1848659" data-element_type="widget" data-widget_type="heading.default">
                                                                       <div className="elementor-widget-container">
-                                                                        <h2 className="elementor-heading-title elementor-size-default">Airport Transfers</h2>
+                                                                        <h2 className="elementor-heading-title elementor-size-default">{rideTabs[1]?.heading}</h2>
                                                                       </div>
                                                                     </div>
                                                                     <div className="elementor-element elementor-element-7bcfefc elementor-widget elementor-widget-text-editor" data-id="7bcfefc" data-element_type="widget" data-widget_type="text-editor.default">
                                                                       <div className="elementor-widget-container">
-                                                                        <p>Enjoy stress-free airport pickups and drop-offs with professional drivers and on-time service. Travel in comfort, whether you're arriving or departing.</p>
+                                                                        <p>{renderTextWithBreaks(rideTabs[1]?.description)}</p>
                                                                       </div>
                                                                     </div>
                                                                     <div className="elementor-element elementor-element-5932aa7 elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="5932aa7" data-element_type="widget" data-widget_type="button.default">
                                                                       <div className="elementor-widget-container">
                                                                         <div className="elementor-button-wrapper">
-                                                                          <a className="elementor-button elementor-button-link elementor-size-sm" href="/business-commute/#connect-form">
+                                                                          <a className="elementor-button elementor-button-link elementor-size-sm" href={rideTabs[1]?.ctaLink}>
                                                                             <span className="elementor-button-content-wrapper">
-                                                                              <span className="elementor-button-text">Get Started</span>
+                                                                              <span className="elementor-button-text">{rideTabs[1]?.ctaText}</span>
                                                                             </span>
                                                                           </a>
                                                                         </div>
@@ -1037,7 +1050,7 @@ const WebsiteHome = () => {
                                                                           width="430" 
                                                                           height="350" 
                                                                           decoding="async" 
-                                                                          src="/wp-content/uploads/elementor/thumbs/airports-r8lh8mocw6sys37h6icg1dm0u481sua6mq756q8j70.png" 
+                                                                          src={rideTabs[1]?.image} 
                                                                           title="airports" 
                                                                           alt="airports" 
                                                                           loading="lazy" 
@@ -1072,20 +1085,20 @@ const WebsiteHome = () => {
                                                                   <div className="elementor-widget-wrap elementor-element-populated">
                                                                     <div className="elementor-element elementor-element-228d283 elementor-widget elementor-widget-heading" data-id="228d283" data-element_type="widget" data-widget_type="heading.default">
                                                                       <div className="elementor-widget-container">
-                                                                        <h2 className="elementor-heading-title elementor-size-default">Hourly Rentals</h2>
+                                                                        <h2 className="elementor-heading-title elementor-size-default">{rideTabs[2]?.heading}</h2>
                                                                       </div>
                                                                     </div>
                                                                     <div className="elementor-element elementor-element-2ab750d elementor-widget elementor-widget-text-editor" data-id="2ab750d" data-element_type="widget" data-widget_type="text-editor.default">
                                                                       <div className="elementor-widget-container">
-                                                                        <p>Hourly Rentals offers customers the convenience of booking a car with a professional driver for a fixed number of hours. Whether it's a business meeting, city tour, shopping spree, users can choose the duration and travel comfortably.</p>
+                                                                        <p>{renderTextWithBreaks(rideTabs[2]?.description)}</p>
                                                                       </div>
                                                                     </div>
                                                                     <div className="elementor-element elementor-element-f91d4fe elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="f91d4fe" data-element_type="widget" data-widget_type="button.default">
                                                                       <div className="elementor-widget-container">
                                                                         <div className="elementor-button-wrapper">
-                                                                          <a className="elementor-button elementor-button-link elementor-size-sm" href="/business-commute/#connect-form">
+                                                                          <a className="elementor-button elementor-button-link elementor-size-sm" href={rideTabs[2]?.ctaLink}>
                                                                             <span className="elementor-button-content-wrapper">
-                                                                              <span className="elementor-button-text">Get Started</span>
+                                                                              <span className="elementor-button-text">{rideTabs[2]?.ctaText}</span>
                                                                             </span>
                                                                           </a>
                                                                         </div>
@@ -1101,7 +1114,7 @@ const WebsiteHome = () => {
                                                                           width="430" 
                                                                           height="350" 
                                                                           decoding="async" 
-                                                                          src="/wp-content/uploads/elementor/thumbs/hourly_rentals-r8lhafj7zr9r16l9nsdpbf8ttpcdjyfnvn7natkd9o.png" 
+                                                                          src={rideTabs[2]?.image} 
                                                                           title="hourly_rentals" 
                                                                           alt="hourly_rentals" 
                                                                           loading="lazy" 
@@ -1136,20 +1149,20 @@ const WebsiteHome = () => {
                                                                   <div className="elementor-widget-wrap elementor-element-populated">
                                                                     <div className="elementor-element elementor-element-ede0b73 elementor-widget elementor-widget-heading" data-id="ede0b73" data-element_type="widget" data-widget_type="heading.default">
                                                                       <div className="elementor-widget-container">
-                                                                        <h2 className="elementor-heading-title elementor-size-default">Outstation Rides</h2>
+                                                                        <h2 className="elementor-heading-title elementor-size-default">{rideTabs[3]?.heading}</h2>
                                                                       </div>
                                                                     </div>
                                                                     <div className="elementor-element elementor-element-e193830 elementor-widget elementor-widget-text-editor" data-id="e193830" data-element_type="widget" data-widget_type="text-editor.default">
                                                                       <div className="elementor-widget-container">
-                                                                        <p>Whether it's a weekend escape, a business trip, or a visit home, our outstation rides offer safe, comfortable travel beyond city limits, so you can focus on the journey, not the hassle.</p>
+                                                                        <p>{renderTextWithBreaks(rideTabs[3]?.description)}</p>
                                                                       </div>
                                                                     </div>
                                                                     <div className="elementor-element elementor-element-57c714b elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="57c714b" data-element_type="widget" data-widget_type="button.default">
                                                                       <div className="elementor-widget-container">
                                                                         <div className="elementor-button-wrapper">
-                                                                          <a className="elementor-button elementor-button-link elementor-size-sm" href="/business-commute/#connect-form">
+                                                                          <a className="elementor-button elementor-button-link elementor-size-sm" href={rideTabs[3]?.ctaLink}>
                                                                             <span className="elementor-button-content-wrapper">
-                                                                              <span className="elementor-button-text">Get Started</span>
+                                                                              <span className="elementor-button-text">{rideTabs[3]?.ctaText}</span>
                                                                             </span>
                                                                           </a>
                                                                         </div>
@@ -1165,7 +1178,7 @@ const WebsiteHome = () => {
                                                                           width="430" 
                                                                           height="350" 
                                                                           decoding="async" 
-                                                                          src="/wp-content/uploads/elementor/thumbs/outstanding-img-r97rc31a974htbzyt30e7ra24cs8axu2myh0lsb9kc.png" 
+                                                                          src={rideTabs[3]?.image} 
                                                                           title="outstanding-img" 
                                                                           alt="outstanding-img" 
                                                                           loading="lazy" 
@@ -1211,9 +1224,10 @@ const WebsiteHome = () => {
                                     <div className="elementor-image-box-wrapper">
                                       <div className="elementor-image-box-content">
                                         <h3 className="elementor-image-box-title">
-                                          Our Expanding <span style={{color: '#F4553B'}}>Network</span>
+                                          {expandingNetwork.titlePrefix}{' '}
+                                          <span style={{color: '#F4553B'}}>{expandingNetwork.titleHighlight}</span>
                                         </h3>
-                                        <p className="elementor-image-box-description">Growing reach to meet your travel needs.</p>
+                                        <p className="elementor-image-box-description">{expandingNetwork.description}</p>
                                       </div>
                                     </div>
                                   </div>
@@ -1243,7 +1257,7 @@ const WebsiteHome = () => {
                                                     <div className="elementor-testimonial">
                                                       <div className="elementor-testimonial__content">
                                                         <div className="elementor-testimonial__text">
-                                                          Bangalore
+                                                          {cities[0]?.name}
                                                         </div>
                                                       </div>
                                                       <div className="elementor-testimonial__footer">
@@ -1252,8 +1266,8 @@ const WebsiteHome = () => {
                                                             width="400" 
                                                             height="400" 
                                                             decoding="async" 
-                                                            src="/wp-content/uploads/2025/07/banglore-img.png" 
-                                                            alt="Bangalore"
+                                                            src={cities[0]?.image} 
+                                                            alt={cities[0]?.name}
                                                             loading="lazy"
                                                           />
                                                         </div>
@@ -1264,7 +1278,7 @@ const WebsiteHome = () => {
                                                     <div className="elementor-testimonial">
                                                       <div className="elementor-testimonial__content">
                                                         <div className="elementor-testimonial__text">
-                                                          Hyderabad
+                                                          {cities[1]?.name}
                                                         </div>
                                                       </div>
                                                       <div className="elementor-testimonial__footer">
@@ -1273,8 +1287,8 @@ const WebsiteHome = () => {
                                                             width="400" 
                                                             height="400" 
                                                             decoding="async" 
-                                                            src="/wp-content/uploads/2025/07/hydrabad-img.png" 
-                                                            alt="Hyderabad"
+                                                            src={cities[1]?.image} 
+                                                            alt={cities[1]?.name}
                                                             loading="lazy"
                                                           />
                                                         </div>
@@ -1285,7 +1299,7 @@ const WebsiteHome = () => {
                                                     <div className="elementor-testimonial">
                                                       <div className="elementor-testimonial__content">
                                                         <div className="elementor-testimonial__text">
-                                                          Delhi NCR
+                                                          {cities[2]?.name}
                                                         </div>
                                                       </div>
                                                       <div className="elementor-testimonial__footer">
@@ -1294,8 +1308,8 @@ const WebsiteHome = () => {
                                                             width="408" 
                                                             height="408" 
                                                             decoding="async" 
-                                                            src="/wp-content/uploads/2025/07/delhi-img.png" 
-                                                            alt="Delhi"
+                                                            src={cities[2]?.image} 
+                                                            alt={cities[2]?.name}
                                                             loading="lazy"
                                                           />
                                                         </div>
@@ -1306,7 +1320,7 @@ const WebsiteHome = () => {
                                                     <div className="elementor-testimonial">
                                                       <div className="elementor-testimonial__content">
                                                         <div className="elementor-testimonial__text">
-                                                          Mumbai
+                                                          {cities[3]?.name}
                                                         </div>
                                                       </div>
                                                       <div className="elementor-testimonial__footer">
@@ -1315,8 +1329,8 @@ const WebsiteHome = () => {
                                                             width="400" 
                                                             height="400" 
                                                             decoding="async" 
-                                                            src="/wp-content/uploads/2025/07/mumbai-img.png" 
-                                                            alt="Mumbai"
+                                                            src={cities[3]?.image} 
+                                                            alt={cities[3]?.name}
                                                             loading="lazy"
                                                           />
                                                         </div>
@@ -1327,7 +1341,7 @@ const WebsiteHome = () => {
                                                     <div className="elementor-testimonial">
                                                       <div className="elementor-testimonial__content">
                                                         <div className="elementor-testimonial__text">
-                                                          Chennai
+                                                          {cities[4]?.name}
                                                         </div>
                                                       </div>
                                                       <div className="elementor-testimonial__footer">
@@ -1336,8 +1350,8 @@ const WebsiteHome = () => {
                                                             width="408" 
                                                             height="408" 
                                                             decoding="async" 
-                                                            src="/wp-content/uploads/2025/07/channai-img.png" 
-                                                            alt="Chennai"
+                                                            src={cities[4]?.image} 
+                                                            alt={cities[4]?.name}
                                                             loading="lazy"
                                                           />
                                                         </div>
@@ -1375,10 +1389,11 @@ const WebsiteHome = () => {
                                     <div className="elementor-image-box-wrapper">
                                       <div className="elementor-image-box-content">
                                         <h3 className="elementor-image-box-title">
-                                          Driven by Choice, <span style={{color: '#F4553B'}}>Powered by Reliability</span>
+                                          {fleet.titlePrefix}{' '}
+                                          <span style={{color: '#F4553B'}}>{fleet.titleHighlight}</span>
                                         </h3>
                                         <p className="elementor-image-box-description">
-                                          Whether it's for daily commutes or corporate bookings, <br />we have the right vehicle for every journey.
+                                          {fleet.descriptionPart1} <br />{fleet.descriptionPart2}
                                         </p>
                                       </div>
                                     </div>
@@ -1405,7 +1420,7 @@ const WebsiteHome = () => {
                                             <div className="elementor-image-carousel-wrapper swiper vehicle-carousel" role="region" aria-roledescription="carousel" aria-label="Image Carousel" dir="ltr">
                                               <div className="elementor-image-carousel swiper-wrapper" aria-live="polite">
                                                 {
-                                                  feetimages.map((image) => (
+                                                  feetimages.map((image, index) => (
                                                     <div className="swiper-slide" role="group" aria-roledescription="slide" aria-label="1 of 5">
                                                       <figure className="swiper-slide-inner">
                                                         <img 
@@ -1414,7 +1429,7 @@ const WebsiteHome = () => {
                                                           decoding="async" 
                                                           className="swiper-slide-image" 
                                                           src={image.image} 
-                                                          alt={image.alt}
+                                                          alt={vehicleAlts[index]?.alt || image.alt}
                                                           loading="lazy"
                                                         />
                                                       </figure>
@@ -1477,7 +1492,7 @@ const WebsiteHome = () => {
                                               decoding="async" 
                                               width="996" 
                                               height="756" 
-                                              src="/wp-content/uploads/2025/07/about-imgss.png" 
+                                              src={aboutUs.image} 
                                               className="attachment-full size-full wp-image-8642" 
                                               alt="About Refex Mobility"
                                               loading="lazy"
@@ -1493,7 +1508,8 @@ const WebsiteHome = () => {
                                             <div className="elementor-image-box-wrapper">
                                               <div className="elementor-image-box-content">
                                                 <h3 className="elementor-image-box-title">
-                                                  About <span style={{color: '#F4553B'}}>Us</span>
+                                                  {aboutUs.titlePrefix}{' '}
+                                                  <span style={{color: '#F4553B'}}>{aboutUs.titleHighlight}</span>
                                                 </h3>
                                               </div>
                                             </div>
@@ -1501,17 +1517,17 @@ const WebsiteHome = () => {
                                         </div>
                                         <div className="elementor-element elementor-element-9159ae5 elementor-widget elementor-widget-text-editor" data-id="9159ae5" data-element_type="widget" data-widget_type="text-editor.default">
                                           <div className="elementor-widget-container">
-                                            Refex Green Mobility Limited (RGML) is a wholly-owned subsidiary of Refex Group's flagship listed entity, Refex Industries Limited. RGML underscores the group's commitment to sustainability and delivers clean mobility services for corporate transportation needs and B2B2C use cases with 1400+ company-owned vehicles. It leverages technology and aims to transform the mobility sector.
+                                            {aboutUs.paragraphs?.[0]}
                                           </div>
                                         </div>
                                         <div className="elementor-element elementor-element-b52014e elementor-widget elementor-widget-text-editor" data-id="b52014e" data-element_type="widget" data-widget_type="text-editor.default">
                                           <div className="elementor-widget-container">
-                                            Operating under the brand name "Refex Mobility", RGML runs 100% cleaner-fueled vehicles. At Refex Mobility, we go beyond transportation, and we invite you to be part of a movement redefining sustainable mobility.
+                                            {aboutUs.paragraphs?.[1]}
                                           </div>
                                         </div>
                                         <div className="elementor-element elementor-element-d2eb3a8 elementor-widget elementor-widget-text-editor" data-id="d2eb3a8" data-element_type="widget" data-widget_type="text-editor.default">
                                           <div className="elementor-widget-container">
-                                            <p>Enhance your journey with us and step into a future where sustainability meets innovation.</p>
+                                            <p>{aboutUs.paragraphs?.[2]}</p>
                                           </div>
                                         </div>
                                       </div>

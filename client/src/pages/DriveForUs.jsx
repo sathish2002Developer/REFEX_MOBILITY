@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { useCmsPage } from '../hooks/useCmsPage'
+import { renderCardTitle } from '../utils/renderCmsText'
 import './Home.css'
 
 const DriveForUs = () => {
+  const cms = useCmsPage('drive-for-us')
+  const { hero, whyChooseUs, faq } = cms.sections
   const [openFaqs, setOpenFaqs] = useState({})
 
   const toggleFaq = (index) => {
@@ -209,7 +213,7 @@ const DriveForUs = () => {
                         data-element_type="section"
                         data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
                         style={{
-                          backgroundImage: "url('/wp-content/uploads/2025/07/drive-section-1-scaled.webp')",
+                          backgroundImage: `url('${hero?.backgroundImage || '/wp-content/uploads/2025/07/drive-section-1-scaled.webp'}')`,
                           backgroundSize: 'cover',
                           backgroundPosition: 'center center',
                           backgroundRepeat: 'no-repeat',
@@ -234,19 +238,19 @@ const DriveForUs = () => {
                               <div className="elementor-element elementor-element-c00bf29 elementor-widget__width-initial elementor-widget-tablet__width-inherit elementor-widget-mobile__width-inherit elementor-widget elementor-widget-heading" data-id="c00bf29" data-element_type="widget" data-widget_type="heading.default">
                                 <div className="elementor-widget-container">
                                   <h2 className="elementor-heading-title elementor-size-default" style={{ color: '#FFFFFF', fontFamily: '"Poppins", Sans-serif', fontSize: '56px', fontWeight: 700, lineHeight: '1.2em' }}>
-                                    Power Your Earnings - Drive Smart
+                                    {hero?.title}
                                   </h2>
                                 </div>
                               </div>
                               <div className="elementor-element elementor-element-a11fdc0 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="a11fdc0" data-element_type="widget" data-widget_type="text-editor.default">
                                 <div className="elementor-widget-container" style={{ color: '#FFFFFF', fontFamily: '"Poppins", Sans-serif', fontSize: '20px', fontWeight: 400, lineHeight: '1.6em' }}>
-                                  <p style={{ color: '#FFFFFF' }}>We provide the car. You bring the skill. Join us as a professional driver and start earning with our all-electric fleet.</p>
+                                  <p style={{ color: '#FFFFFF' }}>{hero?.subtitle}</p>
                                 </div>
                               </div>
                               <div className="elementor-element elementor-element-ed3826a elementor-mobile-align-left elementor-hidden-mobile elementor-widget elementor-widget-button" data-id="ed3826a" data-element_type="widget" data-widget_type="button.default">
                                 <div className="elementor-widget-container">
                                   <div className="elementor-button-wrapper">
-                                    <a className="elementor-button elementor-button-link elementor-size-sm" href="#join-form" style={{
+                                    <a className="elementor-button elementor-button-link elementor-size-sm" href={hero?.ctaLink || '#join-form'} style={{
                                       backgroundColor: '#F4553B',
                                       fontFamily: '"Poppins", Sans-serif',
                                       fontSize: '18px',
@@ -259,7 +263,7 @@ const DriveForUs = () => {
                                       transition: 'all 0.3s ease'
                                     }}>
                                       <span className="elementor-button-content-wrapper">
-                                        <span className="elementor-button-text">Get Started</span>
+                                        <span className="elementor-button-text">{hero?.ctaText || 'Get Started'}</span>
                                       </span>
                                     </a>
                                   </div>
@@ -281,7 +285,7 @@ const DriveForUs = () => {
                                       transition: 'all 0.3s ease'
                                     }}>
                                       <span className="elementor-button-content-wrapper">
-                                        <span className="elementor-button-text">Get Started</span>
+                                        <span className="elementor-button-text">{hero?.ctaText || 'Get Started'}</span>
                                       </span>
                                     </a>
                                   </div>
@@ -308,7 +312,7 @@ const DriveForUs = () => {
                                   <div className="elementor-image-box-wrapper">
                                     <div className="elementor-image-box-content">
                                       <h3 className="elementor-image-box-title">
-                                        Why <span style={{color: '#F4553B'}}>Drive For Us ?</span>
+                                        {whyChooseUs?.titlePrefix} <span style={{color: '#F4553B'}}>{whyChooseUs?.titleHighlight}</span>
                                       </h3>
                                     </div>
                                   </div>
@@ -325,102 +329,32 @@ const DriveForUs = () => {
                                   <div className="elementor-swiper">
                                     <div className="elementor-main-swiper swiper" role="region" aria-roledescription="carousel" aria-label="Slides">
                                       <div className="swiper-wrapper">
-                                        <div className="swiper-slide" role="group" aria-roledescription="slide">
-                                          <div className="elementor-testimonial">
-                                            <div className="elementor-testimonial__content">
-                                              <div className="elementor-testimonial__text">
-                                                Zero Ownership<br />Cost
+                                        {(whyChooseUs?.cards || []).map((card, cardIndex) => (
+                                          <div className="swiper-slide" key={cardIndex} role="group" aria-roledescription="slide">
+                                            <div className="elementor-testimonial">
+                                              <div className="elementor-testimonial__content">
+                                                <div className="elementor-testimonial__text">
+                                                  {renderCardTitle(card)}
+                                                </div>
+                                                <cite className="elementor-testimonial__cite">
+                                                  <span className="elementor-testimonial__title">{card.description}</span>
+                                                </cite>
                                               </div>
-                                              <cite className="elementor-testimonial__cite">
-                                                <span className="elementor-testimonial__title">No need to buy or rent. Drive our fully maintained electric vehicles.</span>
-                                              </cite>
-                                            </div>
-                                            <div className="elementor-testimonial__footer">
-                                              <div className="elementor-testimonial__image">
-                                                <img 
-                                                  width="196" 
-                                                  height="196" 
-                                                  decoding="async" 
-                                                  src="/wp-content/uploads/2025/07/zero-ownership.png" 
-                                                  alt="Zero Ownership Cost"
-                                                  loading="lazy"
-                                                />
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div className="swiper-slide" role="group" aria-roledescription="slide">
-                                          <div className="elementor-testimonial">
-                                            <div className="elementor-testimonial__content">
-                                              <div className="elementor-testimonial__text">
-                                                Guaranteed Earnings + <span style={{color: '#F4553B'}}>Incentivest</span>
-                                              </div>
-                                              <cite className="elementor-testimonial__cite">
-                                                <span className="elementor-testimonial__title">Earn weekly or monthly payouts with performance bonuses and rewards.</span>
-                                              </cite>
-                                            </div>
-                                            <div className="elementor-testimonial__footer">
-                                              <div className="elementor-testimonial__image">
-                                                <img 
-                                                  width="196" 
-                                                  height="196" 
-                                                  decoding="async" 
-                                                  src="/wp-content/uploads/2025/07/earning-incentive.png" 
-                                                  alt="Guaranteed Earnings + Incentives"
-                                                  loading="lazy"
-                                                />
+                                              <div className="elementor-testimonial__footer">
+                                                <div className="elementor-testimonial__image">
+                                                  <img
+                                                    width="196"
+                                                    height="196"
+                                                    decoding="async"
+                                                    src={card.image}
+                                                    alt={card.alt}
+                                                    loading="lazy"
+                                                  />
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>
-                                        <div className="swiper-slide" role="group" aria-roledescription="slide">
-                                          <div className="elementor-testimonial">
-                                            <div className="elementor-testimonial__content">
-                                              <div className="elementor-testimonial__text">
-                                                App-Based Ride Assignments
-                                              </div>
-                                              <cite className="elementor-testimonial__cite">
-                                                <span className="elementor-testimonial__title">Easy-to-use driver app with trip details, navigation, and payments.</span>
-                                              </cite>
-                                            </div>
-                                            <div className="elementor-testimonial__footer">
-                                              <div className="elementor-testimonial__image">
-                                                <img 
-                                                  width="196" 
-                                                  height="196" 
-                                                  decoding="async" 
-                                                  src="/wp-content/uploads/2025/07/ride-assignmentes.png" 
-                                                  alt="App-Based Ride Assignments"
-                                                  loading="lazy"
-                                                />
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div className="swiper-slide" role="group" aria-roledescription="slide">
-                                          <div className="elementor-testimonial">
-                                            <div className="elementor-testimonial__content">
-                                              <div className="elementor-testimonial__text">
-                                                Reliable Support. Anytime.
-                                              </div>
-                                              <cite className="elementor-testimonial__cite">
-                                                <span className="elementor-testimonial__title">We handle the vehicle upkeep. You focus on driving.</span>
-                                              </cite>
-                                            </div>
-                                            <div className="elementor-testimonial__footer">
-                                              <div className="elementor-testimonial__image">
-                                                <img 
-                                                  width="196" 
-                                                  height="196" 
-                                                  decoding="async" 
-                                                  src="/wp-content/uploads/2025/07/support.png" 
-                                                  alt="Reliable Support. Anytime."
-                                                  loading="lazy"
-                                                />
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
+                                        ))}
                                       </div>
                                       <div className="elementor-swiper-button elementor-swiper-button-prev" role="button" tabIndex="0" aria-label="Previous">
                                         <i aria-hidden="true" className="eicon-chevron-left"></i>
@@ -1256,7 +1190,7 @@ const DriveForUs = () => {
                                   <div className="elementor-image-box-wrapper">
                                     <div className="elementor-image-box-content">
                                       <h3 className="elementor-image-box-title">
-                                        Frequently Asked <span style={{color: '#F4553B'}}>Questions</span>
+                                        {faq?.titlePrefix} <span style={{color: '#F4553B'}}>{faq?.titleHighlight}</span>
                                       </h3>
                                     </div>
                                   </div>
@@ -1275,174 +1209,39 @@ const DriveForUs = () => {
                                       <div className="elementor-element elementor-element-531ab1a elementor-widget elementor-widget-toggle" data-id="531ab1a" data-element_type="widget" data-widget_type="toggle.default">
                                         <div className="elementor-widget-container">
                                           <div className="elementor-toggle">
-                                            <div className="elementor-toggle-item">
-                                              <div 
-                                                id="elementor-tab-title-8711" 
-                                                className={`elementor-tab-title ${openFaqs[1] ? 'active' : ''}`}
-                                                onClick={() => toggleFaq(1)}
-                                                role="button"
-                                                tabIndex="0"
-                                                style={{ cursor: 'pointer' }}
-                                                aria-expanded={openFaqs[1] ? 'true' : 'false'}
-                                              >
-                                                <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
-                                                  <span className="elementor-toggle-icon-closed">
-                                                    <i className="ion ion-plus"></i>
-                                                  </span>
-                                                  <span className="elementor-toggle-icon-opened">
-                                                    <i className="elementor-toggle-icon-opened ion ion-minus"></i>
-                                                  </span>
-                                                </span>
-                                                <a className="elementor-toggle-title" tabIndex="0">Who owns the vehicle in this partnership model?</a>
-                                              </div>
-                                              <div 
-                                                id="elementor-tab-content-8711" 
-                                                className={`elementor-tab-content elementor-clearfix ${openFaqs[1] ? '' : 'elementor-tab-content-hidden'}`}
-                                                style={{ display: openFaqs[1] ? 'block' : 'none' }}
-                                              >
-                                                <p><span style={{fontWeight: 400}}>Refex Mobility owns and maintains the fleet of vehicles. As a driver partner, you do not need to invest in purchasing a vehicle. You simply drive and earn — we handle the rest, including vehicle maintenance, insurance, and compliance.</span></p>
-                                              </div>
-                                            </div>
-                                            <div className="elementor-toggle-item">
-                                              <div 
-                                                id="elementor-tab-title-8712" 
-                                                className={`elementor-tab-title ${openFaqs[2] ? 'active' : ''}`}
-                                                onClick={() => toggleFaq(2)}
-                                                role="button"
-                                                tabIndex="0"
-                                                style={{ cursor: 'pointer' }}
-                                                aria-expanded={openFaqs[2] ? 'true' : 'false'}
-                                              >
-                                                <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
-                                                  <span className="elementor-toggle-icon-closed">
-                                                    <i className="ion ion-plus"></i>
-                                                  </span>
-                                                  <span className="elementor-toggle-icon-opened">
-                                                    <i className="elementor-toggle-icon-opened ion ion-minus"></i>
-                                                  </span>
-                                                </span>
-                                                <a className="elementor-toggle-title" tabIndex="0">Is there consistent demand or do I have to find my own rides?</a>
-                                              </div>
-                                              <div 
-                                                id="elementor-tab-content-8712" 
-                                                className={`elementor-tab-content elementor-clearfix ${openFaqs[2] ? '' : 'elementor-tab-content-hidden'}`}
-                                                style={{ display: openFaqs[2] ? 'block' : 'none' }}
-                                              >
-                                                <p><span style={{fontWeight: 400}}>No need to worry about finding rides.</span> <span style={{fontWeight: 400}}>Refex Mobility takes full responsibility for generating ride demand across all our operating cities, ensuring that our driver partners stay productive.</span></p>
-                                              </div>
-                                            </div>
-                                            <div className="elementor-toggle-item">
-                                              <div 
-                                                id="elementor-tab-title-8713" 
-                                                className={`elementor-tab-title ${openFaqs[3] ? 'active' : ''}`}
-                                                onClick={() => toggleFaq(3)}
-                                                role="button"
-                                                tabIndex="0"
-                                                style={{ cursor: 'pointer' }}
-                                                aria-expanded={openFaqs[3] ? 'true' : 'false'}
-                                              >
-                                                <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
-                                                  <span className="elementor-toggle-icon-closed">
-                                                    <i className="ion ion-plus"></i>
-                                                  </span>
-                                                  <span className="elementor-toggle-icon-opened">
-                                                    <i className="elementor-toggle-icon-opened ion ion-minus"></i>
-                                                  </span>
-                                                </span>
-                                                <a className="elementor-toggle-title" tabIndex="0">When and how do I receive my payouts?</a>
-                                              </div>
-                                              <div 
-                                                id="elementor-tab-content-8713" 
-                                                className={`elementor-tab-content elementor-clearfix ${openFaqs[3] ? '' : 'elementor-tab-content-hidden'}`}
-                                                style={{ display: openFaqs[3] ? 'block' : 'none' }}
-                                              >
-                                                <p><span style={{fontWeight: 400}}>Payouts are made on time, every time</span><b>. </b><span style={{fontWeight: 400}}>We follow a fixed payout cycle and deposit earnings directly into your registered bank account.</span></p>
-                                              </div>
-                                            </div>
-                                            <div className="elementor-toggle-item">
-                                              <div 
-                                                id="elementor-tab-title-8714" 
-                                                className={`elementor-tab-title ${openFaqs[4] ? 'active' : ''}`}
-                                                onClick={() => toggleFaq(4)}
-                                                role="button"
-                                                tabIndex="0"
-                                                style={{ cursor: 'pointer' }}
-                                                aria-expanded={openFaqs[4] ? 'true' : 'false'}
-                                              >
-                                                <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
-                                                  <span className="elementor-toggle-icon-closed">
-                                                    <i className="ion ion-plus"></i>
-                                                  </span>
-                                                  <span className="elementor-toggle-icon-opened">
-                                                    <i className="elementor-toggle-icon-opened ion ion-minus"></i>
-                                                  </span>
-                                                </span>
-                                                <a className="elementor-toggle-title" tabIndex="0">What kind of support do I get on-road and off-road?</a>
-                                              </div>
-                                              <div 
-                                                id="elementor-tab-content-8714" 
-                                                className={`elementor-tab-content elementor-clearfix ${openFaqs[4] ? '' : 'elementor-tab-content-hidden'}`}
-                                                style={{ display: openFaqs[4] ? 'block' : 'none' }}
-                                              >
-                                                <p><span style={{fontWeight: 400}}>We provide 24×7 Command Center support</span><b>,</b><span style={{fontWeight: 400}}> including emergency assistance, route optimization, vehicle service coordination, and app guidance — so you're never alone on the road.</span></p>
-                                              </div>
-                                            </div>
-                                            <div className="elementor-toggle-item">
-                                              <div 
-                                                id="elementor-tab-title-8715" 
-                                                className={`elementor-tab-title ${openFaqs[5] ? 'active' : ''}`}
-                                                onClick={() => toggleFaq(5)}
-                                                role="button"
-                                                tabIndex="0"
-                                                style={{ cursor: 'pointer' }}
-                                                aria-expanded={openFaqs[5] ? 'true' : 'false'}
-                                              >
-                                                <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
-                                                  <span className="elementor-toggle-icon-closed">
-                                                    <i className="ion ion-plus"></i>
-                                                  </span>
-                                                  <span className="elementor-toggle-icon-opened">
-                                                    <i className="elementor-toggle-icon-opened ion ion-minus"></i>
-                                                  </span>
-                                                </span>
-                                                <a className="elementor-toggle-title" tabIndex="0">Are there different models for driver partnerships?</a>
-                                              </div>
-                                              <div 
-                                                id="elementor-tab-content-8715" 
-                                                className={`elementor-tab-content elementor-clearfix ${openFaqs[5] ? '' : 'elementor-tab-content-hidden'}`}
-                                                style={{ display: openFaqs[5] ? 'block' : 'none' }}
-                                              >
-                                                <p><span style={{fontWeight: 400}}>Yes. We offer flexible models and shifts</span> <span style={{fontWeight: 400}}>based on your preference</span></p>
-                                              </div>
-                                            </div>
-                                            <div className="elementor-toggle-item">
-                                              <div 
-                                                id="elementor-tab-title-8716" 
-                                                className={`elementor-tab-title ${openFaqs[6] ? 'active' : ''}`}
-                                                onClick={() => toggleFaq(6)}
-                                                role="button"
-                                                tabIndex="0"
-                                                style={{ cursor: 'pointer' }}
-                                                aria-expanded={openFaqs[6] ? 'true' : 'false'}
-                                              >
-                                                <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
-                                                  <span className="elementor-toggle-icon-closed">
-                                                    <i className="ion ion-plus"></i>
-                                                  </span>
-                                                  <span className="elementor-toggle-icon-opened">
-                                                    <i className="elementor-toggle-icon-opened ion ion-minus"></i>
-                                                  </span>
-                                                </span>
-                                                <a className="elementor-toggle-title" tabIndex="0"> How do I get started as a driver partner with Refex Mobility?</a>
-                                              </div>
-                                              <div 
-                                                id="elementor-tab-content-8716" 
-                                                className={`elementor-tab-content elementor-clearfix ${openFaqs[6] ? '' : 'elementor-tab-content-hidden'}`}
-                                                style={{ display: openFaqs[6] ? 'block' : 'none' }}
-                                              >
-                                                <p><span style={{fontWeight: 400}}>Getting started is simple. Just reach out to the mobile number listed on our website. Our team will guide you to the nearest onboarding center, verify your documents, explain the onboarding process, and get you started.</span></p>
-                                              </div>
-                                            </div>
+                                            {(faq?.items || []).map((item) => {
+                                              const tabId = item.order ?? 0
+                                              return (
+                                                <div className="elementor-toggle-item" key={tabId}>
+                                                  <div
+                                                    id={`elementor-tab-title-871${tabId}`}
+                                                    className={`elementor-tab-title ${openFaqs[tabId] ? 'active' : ''}`}
+                                                    onClick={() => toggleFaq(tabId)}
+                                                    role="button"
+                                                    tabIndex="0"
+                                                    style={{ cursor: 'pointer' }}
+                                                    aria-expanded={openFaqs[tabId] ? 'true' : 'false'}
+                                                  >
+                                                    <span className="elementor-toggle-icon elementor-toggle-icon-right" aria-hidden="true">
+                                                      <span className="elementor-toggle-icon-closed">
+                                                        <i className="ion ion-plus"></i>
+                                                      </span>
+                                                      <span className="elementor-toggle-icon-opened">
+                                                        <i className="elementor-toggle-icon-opened ion ion-minus"></i>
+                                                      </span>
+                                                    </span>
+                                                    <a className="elementor-toggle-title" tabIndex="0">{item.question}</a>
+                                                  </div>
+                                                  <div
+                                                    id={`elementor-tab-content-871${tabId}`}
+                                                    className={`elementor-tab-content elementor-clearfix ${openFaqs[tabId] ? '' : 'elementor-tab-content-hidden'}`}
+                                                    style={{ display: openFaqs[tabId] ? 'block' : 'none' }}
+                                                  >
+                                                    <p><span style={{ fontWeight: 400 }}>{item.answer}</span></p>
+                                                  </div>
+                                                </div>
+                                              )
+                                            })}
                                           </div>
                                         </div>
                                       </div>

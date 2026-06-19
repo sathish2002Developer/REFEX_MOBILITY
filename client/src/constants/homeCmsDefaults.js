@@ -1,0 +1,190 @@
+/** Default home page CMS data — matches current live WebsiteHome content. */
+export const DEFAULT_HOME_CMS = {
+  pageTitle: 'Refex Mobility | Reliable, Sustainable Mobility Partner',
+  metaDescription:
+    "India's safest, most reliable and on-time mobility service for corporates and premium travel. Trusted by businesses, driving sustainability goals.",
+  sections: {
+    hero: {
+      titlePrefix: 'Where',
+      titleHighlight: 'Reliability',
+      titleSuffix: 'Meets Responsibility.',
+      subtitle: 'Rides that keep your business moving – on time, every time.',
+      ctaText: 'Get Started',
+      ctaLink: '/business-commute/#connect-form',
+      backgroundImage: '/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp',
+    },
+    sustainabilityImpact: {
+      titlePrefix: 'Sustainability',
+      titleHighlight: 'Impact',
+      description: 'Every ride counts toward a cleaner planet.',
+      counters: [
+        { order: 1, title: 'Happy Riders', value: 60000, suffix: '+' },
+        { order: 2, title: 'CO₂  Saved', value: 6600, suffix: ' Tonnes+' },
+        { order: 3, title: 'Kms Covered', value: 10.2, suffix: ' Crore+' },
+        { order: 4, title: 'Ltrs Of Fuel Saved', value: 8.13, suffix: ' Million+' },
+      ],
+    },
+    whyChooseUs: {
+      titlePrefix: 'why',
+      titleHighlight: 'Choose Us ?',
+      cards: [
+        {
+          order: 1,
+          titleLine1: 'Eco-Friendly',
+          titleLine2: 'Rides',
+          description: 'Go electric and travel cleaner - for you and the environment.',
+          image: '/wp-content/uploads/2025/07/car-icons.png',
+          alt: 'Eco-Friendly Rides',
+        },
+        {
+          order: 2,
+          titleLine1: 'Corporate Ride',
+          titleLine2: 'Solutions',
+          description: 'Custom packages and dashboards for business and employee transport.',
+          image: '/wp-content/uploads/2025/07/corporate-icon.png',
+          alt: 'Corporate Ride Solutions',
+        },
+        {
+          order: 3,
+          titleLine1: 'Verified and Trained',
+          titleLine2: 'Drivers',
+          description: 'All drivers are background-checked and professionally trained.',
+          image: '/wp-content/uploads/2025/07/verified-icon.png',
+          alt: 'Verified and Trained Drivers',
+        },
+        {
+          order: 4,
+          titleLine1: 'Safety and Hygiene',
+          titleLine2: 'Protocols',
+          description: 'Sanitized vehicles with strict hygiene standards for a worry-free ride.',
+          image: '/wp-content/uploads/2025/07/safty-icon.png',
+          alt: 'Safety and Hygiene Protocols',
+        },
+      ],
+    },
+    rideOptions: {
+      titlePrefix: 'Ride',
+      titleHighlight: 'Options',
+      tabs: [
+        {
+          order: 1,
+          slug: 'corporate-commute',
+          label: 'Corporate Commute',
+          heading: 'Corporate commute packages',
+          description:
+            'Reliable daily transport for your employees\nusing 100% electric vehicles. Safe, punctual, and\nsustainable rides tailored for modern\nworkplaces.',
+          image:
+            '/wp-content/uploads/elementor/thumbs/corpotate-img-r8jucgvni2gpbsuyfk3lfw5sh886uge24wkr57tjxo.png',
+          ctaText: 'Get Started',
+          ctaLink: '/business-commute/#connect-form',
+        },
+        {
+          order: 2,
+          slug: 'airport-transfers',
+          label: 'Airport Transfers',
+          heading: 'Airport Transfers',
+          description:
+            "Enjoy stress-free airport pickups and drop-offs with professional drivers and on-time service. Travel in comfort, whether you're arriving or departing.",
+          image:
+            '/wp-content/uploads/elementor/thumbs/airports-r8lh8mocw6sys37h6icg1dm0u481sua6mq756q8j70.png',
+          ctaText: 'Get Started',
+          ctaLink: '/business-commute/#connect-form',
+        },
+        {
+          order: 3,
+          slug: 'hourly-rentals',
+          label: 'Hourly Rentals',
+          heading: 'Hourly Rentals',
+          description:
+            "Hourly Rentals offers customers the convenience of booking a car with a professional driver for a fixed number of hours. Whether it's a business meeting, city tour, shopping spree, users can choose the duration and travel comfortably.",
+          image:
+            '/wp-content/uploads/elementor/thumbs/hourly_rentals-r8lhafj7zr9r16l9nsdpbf8ttpcdjyfnvn7natkd9o.png',
+          ctaText: 'Get Started',
+          ctaLink: '/business-commute/#connect-form',
+        },
+        {
+          order: 4,
+          slug: 'outstation-rides',
+          label: 'Outstation Rides',
+          heading: 'Outstation Rides',
+          description:
+            "Whether it's a weekend escape, a business trip, or a visit home, our outstation rides offer safe, comfortable travel beyond city limits, so you can focus on the journey, not the hassle.",
+          image:
+            '/wp-content/uploads/elementor/thumbs/outstanding-img-r97rc31a974htbzyt30e7ra24cs8axu2myh0lsb9k.png',
+          ctaText: 'Get Started',
+          ctaLink: '/business-commute/#connect-form',
+        },
+      ],
+    },
+    expandingNetwork: {
+      titlePrefix: 'Our Expanding',
+      titleHighlight: 'Network',
+      description: 'Growing reach to meet your travel needs.',
+      cities: [
+        { order: 1, name: 'Bangalore', image: '/wp-content/uploads/2025/07/banglore-img.png' },
+        { order: 2, name: 'Hyderabad', image: '/wp-content/uploads/2025/07/hydrabad-img.png' },
+        { order: 3, name: 'Delhi NCR', image: '/wp-content/uploads/2025/07/delhi-img.png' },
+        { order: 4, name: 'Mumbai', image: '/wp-content/uploads/2025/07/mumbai-img.png' },
+        { order: 5, name: 'Chennai', image: '/wp-content/uploads/2025/07/channai-img.png' },
+      ],
+    },
+    fleet: {
+      titlePrefix: 'Driven by Choice,',
+      titleHighlight: 'Powered by Reliability',
+      descriptionPart1: "Whether it's for daily commutes or corporate bookings,",
+      descriptionPart2: 'we have the right vehicle for every journey.',
+      vehicles: [
+        { order: 1, alt: 'MG ZS' },
+        { order: 2, alt: 'Nexon' },
+        { order: 3, alt: 'Citroen' },
+        { order: 4, alt: 'Tiogor' },
+        { order: 5, alt: 'XUV 400' },
+        { order: 6, alt: 'Dzire' },
+        { order: 7, alt: 'KIA' },
+        { order: 8, alt: 'BYDE' },
+        { order: 9, alt: 'Ertiga' },
+      ],
+    },
+    aboutUs: {
+      titlePrefix: 'About',
+      titleHighlight: 'Us',
+      image: '/wp-content/uploads/2025/07/about-imgss.png',
+      paragraphs: [
+        "Refex Green Mobility Limited (RGML) is a wholly-owned subsidiary of Refex Group's flagship listed entity, Refex Industries Limited. RGML underscores the group's commitment to sustainability and delivers clean mobility services for corporate transportation needs and B2B2C use cases with 1400+ company-owned vehicles. It leverages technology and aims to transform the mobility sector.",
+        'Operating under the brand name "Refex Mobility", RGML runs 100% cleaner-fueled vehicles. At Refex Mobility, we go beyond transportation, and we invite you to be part of a movement redefining sustainable mobility.',
+        'Enhance your journey with us and step into a future where sustainability meets innovation.',
+      ],
+    },
+  },
+}
+
+export function mergeHomeCms(apiData) {
+  if (!apiData) return DEFAULT_HOME_CMS
+  return {
+    pageTitle: apiData.pageTitle || DEFAULT_HOME_CMS.pageTitle,
+    metaDescription: apiData.metaDescription || DEFAULT_HOME_CMS.metaDescription,
+    sections: {
+      ...DEFAULT_HOME_CMS.sections,
+      ...(apiData.sections || {}),
+      hero: { ...DEFAULT_HOME_CMS.sections.hero, ...(apiData.sections?.hero || {}) },
+      sustainabilityImpact: {
+        ...DEFAULT_HOME_CMS.sections.sustainabilityImpact,
+        ...(apiData.sections?.sustainabilityImpact || {}),
+      },
+      whyChooseUs: {
+        ...DEFAULT_HOME_CMS.sections.whyChooseUs,
+        ...(apiData.sections?.whyChooseUs || {}),
+      },
+      rideOptions: {
+        ...DEFAULT_HOME_CMS.sections.rideOptions,
+        ...(apiData.sections?.rideOptions || {}),
+      },
+      expandingNetwork: {
+        ...DEFAULT_HOME_CMS.sections.expandingNetwork,
+        ...(apiData.sections?.expandingNetwork || {}),
+      },
+      fleet: { ...DEFAULT_HOME_CMS.sections.fleet, ...(apiData.sections?.fleet || {}) },
+      aboutUs: { ...DEFAULT_HOME_CMS.sections.aboutUs, ...(apiData.sections?.aboutUs || {}) },
+    },
+  }
+}

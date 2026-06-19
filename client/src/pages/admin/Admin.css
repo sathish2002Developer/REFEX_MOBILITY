@@ -672,3 +672,14 @@
   }
 }
 
+.admin-cms-layout { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: start; }
+.admin-cms-nav { display: flex; flex-direction: column; gap: 8px; position: sticky; top: 20px; }
+.admin-cms-nav-item {
+  font-family: "Poppins", Sans-serif; font-size: 14px; text-align: left; padding: 10px 14px;
+  border: 1px solid #E0E0E0; border-radius: 8px; background: #fff; cursor: pointer;
+}
+.admin-cms-nav-item.active, .admin-cms-nav-item:hover { background: #FFF5F4; border-color: #F4553B; color: #F4553B; }
+.admin-cms-content { display: flex; flex-direction: column; gap: 16px; }
+.admin-item-card { background: #FAFAFA; border: 1px solid #E8E8E8; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
+.admin-item-card h4 { margin: 0 0 12px; font-size: 15px; color: #5D3F3A; }
+
