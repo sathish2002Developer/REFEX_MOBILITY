@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { CMS_PAGES, getCmsDefaults } from '../../constants/cmsPageRegistry'
+import { API_BASE_URL } from '../../constants/api'
 import './Admin.css'
 
 const HOME_SECTIONS = [
@@ -44,7 +45,6 @@ const PAGE_SECTIONS = {
 }
 
 const AdminWebsiteHome = () => {
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://refexmobility.com'
   const [activePageSlug, setActivePageSlug] = useState('home')
   const [activeSection, setActiveSection] = useState('meta')
   const [pageTitle, setPageTitle] = useState(() => getCmsDefaults('home').pageTitle)
@@ -82,7 +82,7 @@ const AdminWebsiteHome = () => {
       })
       .catch(console.error)
       .finally(() => setLoading(false))
-  }, [API_BASE_URL, activePageSlug])
+  }, [activePageSlug])
 
   function mergeSections(baseSections, apiSections) {
     const base = JSON.parse(JSON.stringify(baseSections))

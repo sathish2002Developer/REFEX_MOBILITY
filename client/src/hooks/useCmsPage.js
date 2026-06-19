@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getCmsDefaults, mergeCmsPage } from '../constants/cmsPageRegistry'
 import { setPageMetaDescription } from '../utils/pageMeta'
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ''
+import { API_BASE_URL } from '../constants/api'
 
 export function useCmsPage(slug, { setTitle = true, setMeta = true, heroStyleId = null } = {}) {
   const [cms, setCms] = useState(() => getCmsDefaults(slug))
@@ -10,8 +9,7 @@ export function useCmsPage(slug, { setTitle = true, setMeta = true, heroStyleId 
   useEffect(() => {
     const load = async () => {
       try {
-        const base = API_BASE_URL || window.location.origin
-        const res = await fetch(`${base}/api/cms/pages/${slug}`)
+        const res = await fetch(`${API_BASE_URL}/api/cms/pages/${slug}`)
         if (res.ok) {
           const result = await res.json()
           if (result.success && result.data) {

@@ -2,6 +2,7 @@ import React, { useEffect, useState, Fragment } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { STATIC_PAGE_META, applyPageMeta } from '../constants/pageMeta'
+import { API_BASE_URL } from '../constants/api'
 import './Home.css'
 import './InvestorRelations.css'
 
@@ -13,8 +14,6 @@ const InvestorRelations = () => {
   const [loading, setLoading] = useState(true)
   const ACTIVE_SECTION_KEY = 'investorActiveSection'
   const ACTIVE_YEAR_KEY = 'investorActiveYear'
-  
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://refexmobility.com'
   
   // Load data from localStorage or use defaults
   const [heroData, setHeroData] = useState({

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { API_BASE_URL } from '../../constants/api'
 import './Admin.css'
 
 const AdminInvestorRelations = () => {
@@ -47,7 +48,6 @@ const AdminInvestorRelations = () => {
   const [selectedFile, setSelectedFile] = useState(null)
   const [loading, setLoading] = useState(false)
   const [expandedYears, setExpandedYears] = useState({}) // Trackwhich years are expanded in admin
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://refexmobility.com'
   const ACTIVE_SECTION_KEY = 'investorActiveSection'
 
   const slugifyMenuId = (str) =>
