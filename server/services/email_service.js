@@ -9,19 +9,27 @@ class EmailService {
         : undefined;
 
     this.transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com',
+      host: process.env.SMTP_HOST || 'smtppro.zoho.in',
       port,
       secure: port === 465,
+      requireTLS: port === 587,
       auth,
       tls: {
         rejectUnauthorized: process.env.SMTP_REJECT_UNAUTHORIZED !== 'false',
+        minVersion: 'TLSv1.2',
       },
     });
 
     this.staffTo = process.env.STAFF_EMAIL_TO || 'refexmobility@refex.co.in';
-    this.mailFrom =
-      process.env.MAIL_FROM || `"Refex Mobility" <noreply@refex.co.in>`;
     this.brandName = process.env.WEBSITE_NAME || 'Refex Mobility';
+  }
+
+  getMailFrom() {
+    if (process.env.MAIL_FROM) return process.env.MAIL_FROM;
+    if (process.env.SMTP_USER) {
+      return `"${this.brandName}" <${process.env.SMTP_USER}>`;
+    }
+    return `"${this.brandName}" <refexmobility@refex.co.in>`;
   }
 
   // Send contact form email
@@ -32,8 +40,9 @@ class EmailService {
       // Email content
       const mailOptions = {
         from: process.env.SMTP_USER || 'sathishkumar.r@refex.co.in',
-        to: 'sathku007@gmail.com',
+        to: 'mobility@refex.co.in',
         subject: `New Contact Form Submission from ${name}`,
+      
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
             <div style="background: linear-gradient(135deg, #2879b6, #7dc244); color: white; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;">
@@ -235,7 +244,7 @@ class EmailService {
     });
 
     const mailOptions = {
-      from: this.mailFrom,
+      from: this.getMailFrom(),
       to: this.staffTo,
       replyTo: email,
       subject: `Business Commute Enquiry - ${name}`,
@@ -277,6 +286,7 @@ class EmailService {
     };
 
     const result = await this.transporter.sendMail(mailOptions);
+    console.log('[Email] Business commute notification sent:', result.messageId);
     return { success: true, messageId: result.messageId };
   }
 
