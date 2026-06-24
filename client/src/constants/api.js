@@ -1,3 +1,3 @@
 /** Website + admin API base URL */
 export const API_BASE_URL =
-   'https://refexmobility.com'
+   'http://localhost:3008'

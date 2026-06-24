@@ -1,11 +1,16 @@
 const nodemailer = require('nodemailer');
 
 class EmailService {
+  getSmtpPass() {
+    return process.env.SMTP_PASS || process.env.SMTP_PASSWORD || '';
+  }
+
   constructor() {
     const port = Number(process.env.SMTP_PORT || 587);
+    const smtpPass = this.getSmtpPass();
     const auth =
-      process.env.SMTP_USER && process.env.SMTP_PASS
-        ? { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+      process.env.SMTP_USER && smtpPass
+        ? { user: process.env.SMTP_USER, pass: smtpPass }
         : undefined;
 
     this.transporter = nodemailer.createTransport({
@@ -20,16 +25,15 @@ class EmailService {
       },
     });
 
-    this.staffTo = process.env.STAFF_EMAIL_TO || 'refexmobility@refex.co.in';
+    this.staffTo = process.env.STAFF_EMAIL_TO || 'mobility@refex.co.in';
     this.brandName = process.env.WEBSITE_NAME || 'Refex Mobility';
   }
 
   getMailFrom() {
     if (process.env.MAIL_FROM) return process.env.MAIL_FROM;
-    if (process.env.SMTP_USER) {
-      return `"${this.brandName}" <${process.env.SMTP_USER}>`;
-    }
-    return `"${this.brandName}" <refexmobility@refex.co.in>`;
+    const fromEmail =
+      process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'refexmobility@refex.co.in';
+    return `"${this.brandName}" <${fromEmail}>`;
   }
 
   // Send contact form email
@@ -39,8 +43,8 @@ class EmailService {
 
       // Email content
       const mailOptions = {
-        from: process.env.SMTP_USER || 'sathishkumar.r@refex.co.in',
-        to: 'mobility@refex.co.in',
+        from: process.env.SMTP_USER || '',
+        to: 'sathishkumar.r@refex.co.in',
         subject: `New Contact Form Submission from ${name}`,
       
         html: `
@@ -232,7 +236,7 @@ class EmailService {
       ipAddress,
     } = formData;
 
-    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    if (!process.env.SMTP_USER || !this.getSmtpPass()) {
       console.warn('[Email] SMTP not configured; skipping staff notification');
       return { success: false, skipped: true };
     }
