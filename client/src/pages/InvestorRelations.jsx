@@ -23,6 +23,7 @@ const InvestorRelations = () => {
   })
   
   const [menuItems, setMenuItems] = useState([
+    { id: 'scheme', label: 'Scheme of Amalgamation / Arrangement', hasSubItems: false },
     { id: 'annual-return', label: 'Annual Return', hasSubItems: true },
     { id: 'notice', label: 'General Meetings', hasSubItems: false },
     { id: 'policies', label: 'Policies', hasSubItems: false },
@@ -127,6 +128,7 @@ const InvestorRelations = () => {
   useEffect(() => {
     const loadMenu = async () => {
       const fallback = [
+        { id: 'scheme', label: 'Scheme of Amalgamation / Arrangement', hasSubItems: false },
         { id: 'annual-return', label: 'Annual Return', hasSubItems: true },
         { id: 'notice', label: 'General Meetings', hasSubItems: false },
         { id: 'policies', label: 'Policies', hasSubItems: false },
@@ -140,8 +142,11 @@ const InvestorRelations = () => {
               id: x.id,
               label: x.label,
               hasSubItems: !!x.hasSubItems,
+              sortOrder: typeof x.sortOrder === 'number' ? x.sortOrder : undefined,
             }))
-            applyMenuItems(mapped)
+            // Show "last sortOrder" first (DESC) when provided by API
+            const sorted = [...mapped].sort((a, b) => (b.sortOrder ?? 0) - (a.sortOrder ?? 0))
+            applyMenuItems(sorted)
             return
           }
         }

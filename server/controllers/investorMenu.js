@@ -2,6 +2,7 @@ const { InvestorMenuItem, sequelize } = require("../models");
 const status = require("../helpers/response");
 
 const DEFAULT_MENU = [
+  { id: "scheme", label: "Scheme of Amalgamation / Arrangement", hasSubItems: false },
   { id: "annual-return", label: "Annual Return", hasSubItems: true },
   { id: "notice", label: "General Meetings", hasSubItems: false },
   { id: "policies", label: "Policies", hasSubItems: false },
@@ -25,6 +26,26 @@ function rowsToItems(rows) {
   }));
 }
 
+function applyPreferredOrder(items) {
+  const priority = {
+    scheme: 0,
+    "scheme-of-amalgamation-arrangement": 0,
+    "annual-return": 10,
+    policies: 20,
+    notice: 30,
+  };
+
+  return [...items].sort((a, b) => {
+    const pa = priority[a.id] ?? 1000;
+    const pb = priority[b.id] ?? 1000;
+    if (pa !== pb) return pa - pb;
+    const sa = typeof a.sortOrder === "number" ? a.sortOrder : 0;
+    const sb = typeof b.sortOrder === "number" ? b.sortOrder : 0;
+    if (sa !== sb) return sa - sb;
+    return String(a.label || "").localeCompare(String(b.label || ""));
+  });
+}
+
 exports.getInvestorMenu = async (req, res) => {
   try {
     const rows = await InvestorMenuItem.findAll({
@@ -32,12 +53,12 @@ exports.getInvestorMenu = async (req, res) => {
     });
     if (!rows.length) {
       return status.responseStatus(res, 200, "Investor menu retrieved successfully", {
-        items: DEFAULT_MENU,
+        items: applyPreferredOrder(DEFAULT_MENU),
         fromDefaults: true,
       });
     }
     return status.responseStatus(res, 200, "Investor menu retrieved successfully", {
-      items: rowsToItems(rows),
+      items: applyPreferredOrder(rowsToItems(rows)),
       fromDefaults: false,
     });
   } catch (error) {
