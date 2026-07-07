@@ -4,6 +4,9 @@ import Footer from '../components/Footer'
 import './Home.css'
 import { useHomeCms } from '../hooks/useHomeCms'
 import { renderTextWithBreaks } from '../utils/renderCmsText'
+import { parseVideoUrl } from '../utils/videoEmbed'
+
+const DEFAULT_HERO_VIDEO_URL = 'https://refexmobility.com/uploads/RGML%20Investor%20video.mp4'
 import MgzsImg from '../assets/feet/mgzs.png'
 import CitroenImg from '../assets/feet/Citroen.png'
 import Dzire from '../assets/feet/Dzire.png'
@@ -68,8 +71,11 @@ import Ertiga from '../assets/feet/Ertiga.png'
 
 const WebsiteHome = () => {
   const [activeTab, setActiveTab] = useState(1)
+  const [isVideoOpen, setIsVideoOpen] = useState(false)
   const cms = useHomeCms()
   const { hero, sustainabilityImpact, whyChooseUs, rideOptions, expandingNetwork, fleet, aboutUs } = cms.sections
+  const heroVideoUrl = String(hero.highlightCard?.videoLink || DEFAULT_HERO_VIDEO_URL).trim()
+  const heroVideo = parseVideoUrl(heroVideoUrl)
   const counters = sustainabilityImpact.counters || []
   const cards = whyChooseUs.cards || []
   const rideTabs = rideOptions.tabs || []
@@ -110,6 +116,31 @@ const WebsiteHome = () => {
       }
     })
   }
+
+  const openHeroVideo = (e) => {
+    e?.stopPropagation?.()
+    e?.preventDefault?.()
+    setIsVideoOpen(true)
+  }
+
+  const closeHeroVideo = () => setIsVideoOpen(false)
+
+  useEffect(() => {
+    if (!isVideoOpen) return undefined
+
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') closeHeroVideo()
+    }
+
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [isVideoOpen])
+
   useEffect(() => {
     // Add body classes from original HTML
     document.body.className = 'home page-template-default page page-id-5677 enerzee-front-page page-two-column colors-light page-home elementor-default elementor-kit-6330 elementor-page elementor-page-5677'
@@ -573,6 +604,37 @@ const WebsiteHome = () => {
                                     </div>
                                   </div>
                                 </div>
+
+                                {hero.highlightCard?.enabled !== false && (
+                                  <div className="hero-video-card">
+                                    <div className="hero-video-play-wrap">
+                                      <button
+                                        type="button"
+                                        className="hero-video-play-btn hero-video-play-btn--active"
+                                        onClick={openHeroVideo}
+                                        aria-label="Play video"
+                                      >
+                                        <svg
+                                          className="hero-video-play-icon"
+                                          width="22"
+                                          height="22"
+                                          viewBox="0 0 24 24"
+                                          aria-hidden="true"
+                                        >
+                                          <path d="M8 5v14l11-7L8 5z" fill="currentColor" />
+                                        </svg>
+                                      </button>
+                                    </div>
+                                    <div className="hero-video-text">
+                                      <span className="hero-video-line1">
+                                        {hero.highlightCard?.line1 || 'Reliable Fleet'}
+                                      </span>
+                                      <span className="hero-video-line2">
+                                        {hero.highlightCard?.line2 || 'Exceptional Experience'}
+                                      </span>
+                                    </div>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           </div>
@@ -1551,6 +1613,49 @@ const WebsiteHome = () => {
           </div>
         </div>
       </div>
+
+      {isVideoOpen && (
+        <div
+          className="video-modal-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Video player"
+          onClick={closeHeroVideo}
+        >
+          <button
+            type="button"
+            className="video-modal-close"
+            onClick={closeHeroVideo}
+            aria-label="Close video"
+          >
+            <i className="fa fa-times" aria-hidden="true"></i>
+          </button>
+          <div className="video-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="video-modal-player">
+              {heroVideo.type === 'file' ? (
+                <video
+                  key={heroVideo.embedUrl}
+                  src={heroVideo.embedUrl}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="video-modal-video"
+                >
+                  <track kind="captions" />
+                </video>
+              ) : (
+                <iframe
+                  key={heroVideo.embedUrl}
+                  src={heroVideo.embedUrl}
+                  title="Refex Mobility video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                  allowFullScreen
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      )}
       
       {/* Footer */}
       <Footer />
@@ -1559,4 +1664,3 @@ const WebsiteHome = () => {
 }
 
 export default WebsiteHome
-

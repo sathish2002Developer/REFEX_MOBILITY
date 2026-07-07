@@ -168,6 +168,45 @@ const AdminWebsiteHome = () => {
                 <div className="admin-form-group"><label>Button Link</label><input value={hero.ctaLink || ''} onChange={(e) => patch('hero', 'ctaLink', e.target.value)} /></div>
               </div>
               <div className="admin-form-group"><label>Background Image URL</label><input value={hero.backgroundImage || ''} onChange={(e) => patch('hero', 'backgroundImage', e.target.value)} /></div>
+              {activePageSlug === 'home' && (
+                <div style={{ borderTop: '1px solid #eee', marginTop: 20, paddingTop: 20 }}>
+                  <h4 style={{ margin: '0 0 12px 0' }}>Hero highlight card</h4>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12, cursor: 'pointer' }}>
+                    <input
+                      type="checkbox"
+                      checked={hero.highlightCard?.enabled !== false}
+                      onChange={(e) => patch('hero', 'highlightCard', { ...(hero.highlightCard || {}), enabled: e.target.checked })}
+                    />
+                    Show highlight card in hero
+                  </label>
+                  <div className="admin-form-row">
+                    <div className="admin-form-group">
+                      <label>Card line 1</label>
+                      <input
+                        value={hero.highlightCard?.line1 || ''}
+                        onChange={(e) => patch('hero', 'highlightCard', { ...(hero.highlightCard || {}), line1: e.target.value })}
+                        placeholder="Reliable Fleet"
+                      />
+                    </div>
+                    <div className="admin-form-group">
+                      <label>Card line 2</label>
+                      <input
+                        value={hero.highlightCard?.line2 || ''}
+                        onChange={(e) => patch('hero', 'highlightCard', { ...(hero.highlightCard || {}), line2: e.target.value })}
+                        placeholder="Exceptional Experience"
+                      />
+                    </div>
+                  </div>
+                  <div className="admin-form-group">
+                    <label>Video link (YouTube, Vimeo, or .mp4 — opens full-page popup on card click)</label>
+                    <input
+                      value={hero.highlightCard?.videoLink || ''}
+                      onChange={(e) => patch('hero', 'highlightCard', { ...(hero.highlightCard || {}), videoLink: e.target.value })}
+                      placeholder="https://youtube.com/..."
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           )}
           {activePageSlug === 'home' && activeSection === 'sustainabilityImpact' && (

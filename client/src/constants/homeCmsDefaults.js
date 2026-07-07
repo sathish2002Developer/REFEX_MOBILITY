@@ -12,6 +12,12 @@ export const DEFAULT_HOME_CMS = {
       ctaText: 'Get Started',
       ctaLink: '/business-commute/#connect-form',
       backgroundImage: '/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp',
+      highlightCard: {
+        enabled: true,
+        line1: 'Reliable Fleet',
+        line2: 'Exceptional Experience',
+        videoLink: 'https://refexmobility.com/uploads/RGML%20Investor%20video.mp4',
+      },
     },
     sustainabilityImpact: {
       titlePrefix: 'Sustainability',
@@ -166,7 +172,14 @@ export function mergeHomeCms(apiData) {
     sections: {
       ...DEFAULT_HOME_CMS.sections,
       ...(apiData.sections || {}),
-      hero: { ...DEFAULT_HOME_CMS.sections.hero, ...(apiData.sections?.hero || {}) },
+      hero: {
+        ...DEFAULT_HOME_CMS.sections.hero,
+        ...(apiData.sections?.hero || {}),
+        highlightCard: {
+          ...DEFAULT_HOME_CMS.sections.hero.highlightCard,
+          ...(apiData.sections?.hero?.highlightCard || {}),
+        },
+      },
       sustainabilityImpact: {
         ...DEFAULT_HOME_CMS.sections.sustainabilityImpact,
         ...(apiData.sections?.sustainabilityImpact || {}),
