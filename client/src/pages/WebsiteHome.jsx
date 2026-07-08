@@ -78,7 +78,7 @@ const WebsiteHome = () => {
   const heroVideo = parseVideoUrl(heroVideoUrl)
   const counters = sustainabilityImpact.counters || []
   const cards = whyChooseUs.cards || []
-  const rideTabs = rideOptions.tabs || []
+  const rideTabs = [...(rideOptions?.tabs || [])].sort((a, b) => (a.order || 0) - (b.order || 0))
   const cities = expandingNetwork.cities || []
   const vehicleAlts = fleet.vehicles || []
 

@@ -164,40 +164,89 @@ export const DEFAULT_HOME_CMS = {
   },
 }
 
+function mergeListBySlug(defaultList = [], apiList, slugKey = 'slug') {
+  if (!Array.isArray(apiList) || apiList.length === 0) return defaultList
+  return defaultList.map((def, index) => {
+    const match =
+      apiList.find((item) => item?.[slugKey] && def?.[slugKey] && item[slugKey] === def[slugKey]) ||
+      apiList[index]
+    return { ...def, ...(match || {}) }
+  })
+}
+
+function mergeListByIndex(defaultList = [], apiList) {
+  if (!Array.isArray(apiList) || apiList.length === 0) return defaultList
+  const maxLen = Math.max(defaultList.length, apiList.length)
+  const merged = []
+  for (let i = 0; i < maxLen; i++) {
+    merged.push({ ...(defaultList[i] || {}), ...(apiList[i] || {}) })
+  }
+  return merged
+}
+
 export function mergeHomeCms(apiData) {
   if (!apiData) return DEFAULT_HOME_CMS
+  const apiSections = apiData.sections || {}
   return {
     pageTitle: apiData.pageTitle || DEFAULT_HOME_CMS.pageTitle,
     metaDescription: apiData.metaDescription || DEFAULT_HOME_CMS.metaDescription,
     sections: {
-      ...DEFAULT_HOME_CMS.sections,
-      ...(apiData.sections || {}),
       hero: {
         ...DEFAULT_HOME_CMS.sections.hero,
-        ...(apiData.sections?.hero || {}),
+        ...(apiSections.hero || {}),
         highlightCard: {
           ...DEFAULT_HOME_CMS.sections.hero.highlightCard,
-          ...(apiData.sections?.hero?.highlightCard || {}),
+          ...(apiSections.hero?.highlightCard || {}),
         },
       },
       sustainabilityImpact: {
         ...DEFAULT_HOME_CMS.sections.sustainabilityImpact,
-        ...(apiData.sections?.sustainabilityImpact || {}),
+        ...(apiSections.sustainabilityImpact || {}),
+        counters: mergeListByIndex(
+          DEFAULT_HOME_CMS.sections.sustainabilityImpact.counters,
+          apiSections.sustainabilityImpact?.counters
+        ),
       },
       whyChooseUs: {
         ...DEFAULT_HOME_CMS.sections.whyChooseUs,
-        ...(apiData.sections?.whyChooseUs || {}),
+        ...(apiSections.whyChooseUs || {}),
+        cards: mergeListByIndex(
+          DEFAULT_HOME_CMS.sections.whyChooseUs.cards,
+          apiSections.whyChooseUs?.cards
+        ),
       },
       rideOptions: {
         ...DEFAULT_HOME_CMS.sections.rideOptions,
-        ...(apiData.sections?.rideOptions || {}),
+        ...(apiSections.rideOptions || {}),
+        tabs: mergeListBySlug(
+          DEFAULT_HOME_CMS.sections.rideOptions.tabs,
+          apiSections.rideOptions?.tabs,
+          'slug'
+        ),
       },
       expandingNetwork: {
         ...DEFAULT_HOME_CMS.sections.expandingNetwork,
-        ...(apiData.sections?.expandingNetwork || {}),
+        ...(apiSections.expandingNetwork || {}),
+        cities: mergeListByIndex(
+          DEFAULT_HOME_CMS.sections.expandingNetwork.cities,
+          apiSections.expandingNetwork?.cities
+        ),
       },
-      fleet: { ...DEFAULT_HOME_CMS.sections.fleet, ...(apiData.sections?.fleet || {}) },
-      aboutUs: { ...DEFAULT_HOME_CMS.sections.aboutUs, ...(apiData.sections?.aboutUs || {}) },
+      fleet: {
+        ...DEFAULT_HOME_CMS.sections.fleet,
+        ...(apiSections.fleet || {}),
+        vehicles: mergeListByIndex(
+          DEFAULT_HOME_CMS.sections.fleet.vehicles,
+          apiSections.fleet?.vehicles
+        ),
+      },
+      aboutUs: {
+        ...DEFAULT_HOME_CMS.sections.aboutUs,
+        ...(apiSections.aboutUs || {}),
+        paragraphs: Array.isArray(apiSections.aboutUs?.paragraphs) && apiSections.aboutUs.paragraphs.length
+          ? apiSections.aboutUs.paragraphs
+          : DEFAULT_HOME_CMS.sections.aboutUs.paragraphs,
+      },
     },
   }
 }

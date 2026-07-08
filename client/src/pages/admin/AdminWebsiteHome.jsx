@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { CMS_PAGES, getCmsDefaults } from '../../constants/cmsPageRegistry'
+import { CMS_PAGES, getCmsDefaults, mergeCmsPage } from '../../constants/cmsPageRegistry'
 import { API_BASE_URL } from '../../constants/api'
 import './Admin.css'
 
@@ -75,20 +75,15 @@ const AdminWebsiteHome = () => {
       .then((r) => r.json())
       .then((result) => {
         if (result.success && result.data) {
-          setPageTitle(result.data.pageTitle || defaults.pageTitle)
-          setMetaDescription(result.data.metaDescription || defaults.metaDescription)
-          setSections(mergeSections(defaults.sections, result.data.sections))
+          const merged = mergeCmsPage(activePageSlug, result.data)
+          setPageTitle(merged.pageTitle)
+          setMetaDescription(merged.metaDescription)
+          setSections(merged.sections)
         }
       })
       .catch(console.error)
       .finally(() => setLoading(false))
   }, [activePageSlug])
-
-  function mergeSections(baseSections, apiSections) {
-    const base = JSON.parse(JSON.stringify(baseSections))
-    if (!apiSections) return base
-    return { ...base, ...apiSections }
-  }
 
   const handleSave = async () => {
     setSaving(true)
@@ -251,7 +246,8 @@ const AdminWebsiteHome = () => {
               ))}
             </div>
           )}
-          {activePageSlug === 'home' && activeSection === 'rideOptions' && (            <div className="admin-section-card">
+          {activePageSlug === 'home' && activeSection === 'rideOptions' && rideOptions && (
+            <div className="admin-section-card">
               <h3>Ride Options</h3>
               <p style={{ fontSize: 13, color: '#666', marginBottom: 16 }}>Use Enter for line breaks in descriptions (same as website layout).</p>
               <div className="admin-form-row">
