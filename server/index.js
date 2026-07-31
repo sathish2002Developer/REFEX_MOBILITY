@@ -199,8 +199,16 @@ app.all("/api/*", (req, res) => {
 app.use(express.static(path.join(__dirname, "./dist")));
 app.use(history());
 
+const { getLandingPageMetaByPath, injectMetaIntoHtml } = require("./helpers/landingPageMeta");
+
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./dist", "index.html"));
+  const indexPath = path.join(__dirname, "./dist", "index.html");
+  let html = fs.readFileSync(indexPath, "utf8");
+  const meta = getLandingPageMetaByPath(req.path);
+  if (meta) {
+    html = injectMetaIntoHtml(html, meta);
+  }
+  res.send(html);
 });
 
 const PORT = Number(process.env.APP_PORT || 3009);

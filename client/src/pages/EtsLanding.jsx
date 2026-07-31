@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useInViewOnce } from '../hooks/useInViewOnce'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { parsePhoneNumberFromString } from 'libphonenumber-js'
@@ -296,6 +297,7 @@ const EtsLanding = () => {
   const [showSuccess, setShowSuccess] = useState(false)
   const [activeTestimonial, setActiveTestimonial] = useState(0)
   const [isTestimonialPaused, setIsTestimonialPaused] = useState(false)
+  const [finalSectionRef, finalInView] = useInViewOnce(0.2)
 
   useEffect(() => {
     document.body.className =
@@ -352,7 +354,6 @@ const EtsLanding = () => {
                 <br />
                 <span>{hero.titleHighlight}</span>
               </h1>
-              {hero.servicesLine ? <p className="ets-hero-services">{hero.servicesLine}</p> : null}
               <p className="ets-lead">{hero.lead}</p>
               <ul className="ets-highlights">
                 {(hero.highlights ?? []).map((item) => (
@@ -401,14 +402,14 @@ const EtsLanding = () => {
         <section className="ets-section ets-problems-section">
           <div className="ets-container">
             <div className="ets-problems__intro">
-              <h2 className="ets-h2">
-                {problems.title ? (
-                  problems.title
-                ) : (
+              <h2 className="ets-h2 ets-problems__title">
+                {problems.titlePrefix || problems.titleHighlight ? (
                   <>
-                    {problems.titlePrefix}
+                    {problems.titlePrefix}{' '}
                     {problems.titleHighlight ? <span>{problems.titleHighlight}</span> : null}
                   </>
+                ) : (
+                  problems.title
                 )}
               </h2>
               <p className="ets-lead">{problems.lead}</p>
@@ -580,7 +581,12 @@ const EtsLanding = () => {
           </div>
         </section>
 
-        <section className="ets-final rac-final" id="ets-lead-section" style={getFinalBackgroundStyle(form.backgroundImage)}>
+        <section
+          ref={finalSectionRef}
+          className={`ets-final rac-final${finalInView ? ' is-in-view' : ''}`}
+          id="ets-lead-section"
+          style={getFinalBackgroundStyle(form.backgroundImage)}
+        >
           <div className="ets-container rac-final__grid">
             <div className="rac-final__form-wrap">
               <EtsLeadForm

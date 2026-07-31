@@ -9,7 +9,7 @@ export const DEFAULT_ETS_LANDING_CMS = {
     hero: {
       titleLine1: 'Reliable Employee Transportation Services',
       titleHighlight: 'Built for Every Enterprise.',
-      servicesLine: 'AI-Powered ETMS for Enterprises • Employee Transportation Services',
+      servicesLine: '',
       lead: 'Safe, on-time, reliable transport for your workforce — across vehicle types, cities, and shift patterns.',
       backgroundImage: '/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp',
       highlights: [
@@ -32,9 +32,9 @@ export const DEFAULT_ETS_LANDING_CMS = {
       items: DEFAULT_LANDING_CLIENT_LOGOS,
     },
     problems: {
-      title: 'Transform Your Employee Transportation Experience',
-      titlePrefix: '',
-      titleHighlight: '',
+      title: '',
+      titlePrefix: 'Transform Your',
+      titleHighlight: 'Employee Transportation Experience',
       lead: 'One Partner for All Your Employee Transportation Needs',
       blocks: [
         {

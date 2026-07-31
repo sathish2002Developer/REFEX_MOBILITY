@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-31T06:20:29.751Z",
+  "updatedAt": "2026-07-31T09:02:05.468Z",
   "data": {
     "business-commute": {
       "slug": "business-commute",
@@ -236,8 +236,8 @@
     },
     "employee-transportation": {
       "slug": "employee-transportation",
-      "pageTitle": "AI-Powered Employee Transport Solutions | Refex Mobility",
-      "metaDescription": "Manage commute operations end-to-end with AI-powered routing, real-time tracking & automated billing across 5 cities. Audit-ready reporting. Get a quote.",
+      "pageTitle": "Employee Transportation Services | Refex Mobility",
+      "metaDescription": "Reliable employee transportation for enterprises. Safe, on-time corporate mobility with live tracking, automated billing, and 24/7 support across major Indian cities.",
       "sections": {
         "faq": {
           "items": [
@@ -309,7 +309,8 @@
           "note": "Fill out the form, our experts will call back within 24 hours.",
           "title": "Let’s Build Your Enterprise Mobility Solution",
           "buttonText": "Get a Custom Transport Plan",
-          "submittingText": "Submitting…"
+          "submittingText": "Submitting…",
+          "backgroundImage": "/uploads/images/image-1785488523819-878522644.jpg"
         },
         "hero": {
           "lead": "Safe, on-time, reliable transport for your workforce — across vehicle types, cities, and shift patterns.",
@@ -357,11 +358,113 @@
               "value": "5"
             }
           ],
-          "servicesLine": "AI-Powered ETMS for Enterprises • Employee Transportation Services",
+          "servicesLine": "",
           "titleHighlight": "Built for Every Enterprise.",
           "backgroundImage": "/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp"
         },
         "logos": {
+          "items": [
+            {
+              "name": "Amazon",
+              "image": "/src/assets/refexclients/amazon.png",
+              "order": 1
+            },
+            {
+              "name": "Ather",
+              "image": "/src/assets/refexclients/Ather-logo.svg.png",
+              "order": 2
+            },
+            {
+              "name": "Fairfield by Marriott",
+              "image": "/src/assets/refexclients/Fairfield_by_Marriott_logo.png",
+              "order": 3
+            },
+            {
+              "name": "Flipkart",
+              "image": "/src/assets/refexclients/flipkart-logo-png-transparent.png",
+              "order": 4
+            },
+            {
+              "name": "Four Points",
+              "image": "/src/assets/refexclients/Four_Points_Logo_neu.svg.png",
+              "order": 5
+            },
+            {
+              "name": "Grant Thornton",
+              "image": "/src/assets/refexclients/grant-thornton.png",
+              "order": 6
+            },
+            {
+              "name": "Hexaware",
+              "image": "/src/assets/refexclients/Hexa%20ware.png",
+              "order": 7
+            },
+            {
+              "name": "J.P. Morgan",
+              "image": "/src/assets/refexclients/JP%20Morgan.png",
+              "order": 8
+            },
+            {
+              "name": "Lemon Tree Hotels",
+              "image": "/src/assets/refexclients/lemon-tree-hotels.png",
+              "order": 9
+            },
+            {
+              "name": "London Stock Exchange",
+              "image": "/src/assets/refexclients/london-stock-exchange-1-logo-black-and-white.png",
+              "order": 10
+            },
+            {
+              "name": "MindSprint",
+              "image": "/src/assets/refexclients/Mindsprint_Logo.png",
+              "order": 11
+            },
+            {
+              "name": "Nestlé",
+              "image": "/src/assets/refexclients/Nestle.png",
+              "order": 12
+            },
+            {
+              "name": "PwC",
+              "image": "/src/assets/refexclients/pwc.png",
+              "order": 13
+            },
+            {
+              "name": "Raintree Hotels",
+              "image": "/src/assets/refexclients/raintree.jpeg",
+              "order": 14
+            },
+            {
+              "name": "Samsung",
+              "image": "/src/assets/refexclients/Samsung.png",
+              "order": 15
+            },
+            {
+              "name": "Sopra Steria",
+              "image": "/src/assets/refexclients/sopra_steria.png",
+              "order": 16
+            },
+            {
+              "name": "Taj Hotels",
+              "image": "/src/assets/refexclients/Taj_Hotels_logo.svg.png",
+              "order": 17
+            },
+            {
+              "name": "TCS",
+              "image": "/src/assets/refexclients/Tata_Consultancy_Services_old_logo.svg.png",
+              "order": 18
+            },
+            {
+              "name": "Titan",
+              "image": "/src/assets/refexclients/titan-logo-hd.webp",
+              "order": 19
+            },
+            {
+              "name": "Wipro",
+              "image": "/src/assets/refexclients/Wipro_Primary_Logo_Color_RGB.svg.png",
+              "order": 20
+            }
+          ],
           "titlePrefix": "Trusted by",
           "titleHighlight": "leading enterprises"
         },
@@ -410,7 +513,9 @@
         },
         "problems": {
           "lead": "One Partner for All Your Employee Transportation Needs",
-          "title": "Transform Your Employee Transportation Experience",
+          "title": "",
+          "titlePrefix": "Transform Your",
+          "titleHighlight": "Employee Transportation Experience",
           "blocks": [
             {
               "fix": "Real-time tracking with live GPS and ETA alerts, zero guesswork.",
@@ -448,6 +553,7 @@
               "order": 1,
               "quote": "We are delighted with the services provided by Refex Mobility for employee transportation. Their tech-enabled vehicles ensure transparency and safety, which are our organization’s top priorities. The partnership has been both successful and fulfilling, significantly enhancing employee satisfaction.",
               "company": "Invenco by GVR",
+              "logoImage": "",
               "logoPrimary": "Invenco",
               "logoSecondary": "by GVR"
             },
@@ -457,6 +563,7 @@
               "order": 2,
               "quote": "We are happy with the employee transportation service provided by Refex Mobility Ltd. The seamless transition to sustainable mobility enabled by technology has been both satisfying and successful, and it has definitely improved our team’s daily travel experience. The service has been reliable, punctual, safe, and comfortable.",
               "company": "Brady Company India Pvt. Ltd",
+              "logoImage": "",
               "logoPrimary": "Brady",
               "logoSecondary": "COMPANY"
             },
@@ -466,6 +573,7 @@
               "order": 3,
               "quote": "Refex Mobility sets a golden standard for airport transfers. We are happy with consistently reliable, professional drivers and impeccable service every time.",
               "company": "Transferz",
+              "logoImage": "",
               "logoPrimary": "Transferz",
               "logoSecondary": ""
             },
@@ -475,6 +583,7 @@
               "order": 4,
               "quote": "Sincerely appreciate the excellent cab service provided for our airport pick-up and drop requirements. The vehicles were well-maintained, punctual, and the drivers were courteous and professional, ensuring a safe and comfortable journey. Your team’s reliability and commitment to service quality have made our travel experience hassle-free.",
               "company": "Nous",
+              "logoImage": "",
               "logoPrimary": "Nous",
               "logoSecondary": ""
             }
@@ -485,7 +594,7 @@
         }
       },
       "isActive": true,
-      "updatedAt": "2026-07-31T06:20:29.000Z"
+      "updatedAt": "2026-07-31T09:02:05.000Z"
     },
     "home": {
       "slug": "home",
@@ -727,12 +836,257 @@
       "pageTitle": "Corporate Cab Rentals & Airport Transfers | Refex Mobility",
       "metaDescription": "Book reliable cabs for business travel, daily rentals, outstation & airport transfers across 5 cities. EV & CNG fleet, verified drivers. Get a quote.",
       "sections": {
+        "faq": {
+          "items": [
+            {
+              "list": [],
+              "order": 1,
+              "answer": "Refex Mobility offers comprehensive corporate mobility solutions, including Employee Transportation Services (ETS), Airport Transfers, Chauffeured Car Rentals, Long-Term Rentals, Intercity Travel, Event Transportation, and Executive Mobility across major Indian cities.",
+              "question": "What services does Refex Mobility provide?"
+            },
+            {
+              "list": [],
+              "order": 2,
+              "answer": "We currently operate in Chennai, Bangalore, Delhi NCR, Mumbai, and Hyderabad, with the capability to support pan-India requirements through our trusted partner network.",
+              "question": "Which cities do you currently operate in?"
+            },
+            {
+              "list": [],
+              "order": 3,
+              "answer": "Yes. We offer a wide range of Electric Vehicles (EVs) as well as premium ICE vehicles, enabling customers to choose the fleet best suited to their operational and sustainability requirements.",
+              "question": "Do you provide both Electric Vehicles (EVs) and ICE vehicles?"
+            },
+            {
+              "list": [
+                "Sedan EVs",
+                "Premium EV SUVs",
+                "Sedans",
+                "SUVs",
+                "MPVs (6/7 Seaters)",
+                "Premium Executive Vehicles"
+              ],
+              "order": 4,
+              "answer": "",
+              "question": "What types of vehicles are available?"
+            },
+            {
+              "list": [],
+              "order": 5,
+              "answer": "Yes. We provide 24×7 airport transfers with professional chauffeurs, flight tracking, and timely pickups for corporate travelers.",
+              "question": "Do you offer airport transfers?"
+            },
+            {
+              "list": [],
+              "order": 6,
+              "answer": "Yes. We specialize in managing employee transportation programs for enterprises, including shift-based transportation, roster management, and technology-enabled trip monitoring.",
+              "question": "Can you support employee transportation for large organizations?"
+            },
+            {
+              "list": [],
+              "order": 7,
+              "answer": "Yes. We offer flexible long-term rental solutions for organizations requiring dedicated vehicles with chauffeurs.",
+              "question": "Do you provide long-term vehicle rentals?"
+            },
+            {
+              "list": [
+                "Per-trip CO₂ reports",
+                "Composition disclosure",
+                "Scope 3 emission tracking",
+                "Monthly sustainability MIS"
+              ],
+              "order": 8,
+              "answer": "",
+              "question": "What does your ESG team get?"
+            }
+          ],
+          "titlePrefix": "Frequently Asked",
+          "titleHighlight": "Questions"
+        },
+        "form": {
+          "note": "Fill out the form, our experts will call back within 24 hours.",
+          "title": "Let’s Build Your Enterprise Mobility Solution",
+          "buttonText": "Get a Custom Transport Plan",
+          "submittingText": "Submitting…"
+        },
         "hero": {
-          "titleLine1": "CMS TEST LINE"
+          "lead": "Safe, reliable rides for corporate car rentals and airport transfers — trusted by 100+ companies.",
+          "highlights": [
+            {
+              "text": "Zero cancellation promise",
+              "order": 1
+            },
+            {
+              "text": "On-time, every time",
+              "order": 2
+            },
+            {
+              "text": "Background verified driver-partners",
+              "order": 3
+            },
+            {
+              "text": "Dedicated enterprise dashboard",
+              "order": 4
+            },
+            {
+              "text": "Mobile App available on iOS & Android",
+              "order": 5
+            },
+            {
+              "text": "Live tracking & SOS integrated in app",
+              "order": 6
+            }
+          ],
+          "titleLine1": "One Corporate Mobility Partner.",
+          "trustStats": [
+            {
+              "label": "Companies Trust Us",
+              "order": 1,
+              "value": "100+"
+            },
+            {
+              "label": "Company Owned Vehicles",
+              "order": 2,
+              "value": "2000+"
+            },
+            {
+              "label": "Cities",
+              "order": 3,
+              "value": "5"
+            },
+            {
+              "label": "Availability",
+              "order": 4,
+              "value": "24/7"
+            }
+          ],
+          "servicesLine": "Corporate Car Rental – Safe and Reliable • Airport Transfer Services for Corporate travels",
+          "titleHighlight": "Every Business Journey.",
+          "backgroundImage": "/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp"
+        },
+        "logos": {
+          "titlePrefix": "Trusted by",
+          "titleHighlight": "leading enterprises"
+        },
+        "midCta": {
+          "title": "Zero hassle for your travellers, zero worry for you.",
+          "buttonText": "Talk to Our Team",
+          "description": "See how Refex Mobility simplifies corporate transportation for teams like yours."
+        },
+        "features": {
+          "image": "/wp-content/uploads/elementor/thumbs/outstanding-img-r97rc31a974htbzyt30e7ra24cs8axu2myh0lsb9kc.png",
+          "items": [
+            {
+              "icon": "plane",
+              "label": "Flight-tracked airport transfers",
+              "order": 1
+            },
+            {
+              "icon": "clock",
+              "label": "Spot & hourly rentals",
+              "order": 2
+            },
+            {
+              "icon": "car",
+              "label": "Corporate car rental & hire, daily to long-term",
+              "order": 3
+            },
+            {
+              "icon": "road",
+              "label": "Intercity & outstation travel",
+              "order": 4
+            },
+            {
+              "icon": "users",
+              "label": "Event Mobility",
+              "order": 5
+            },
+            {
+              "icon": "file-invoice",
+              "label": "Automated billing",
+              "order": 6
+            }
+          ],
+          "imageAlt": "Corporate mobility services",
+          "titlePrefix": "Built for How Corporate Travel",
+          "titleHighlight": "Actually Works"
+        },
+        "problems": {
+          "lead": "Airport run or outstation trip, one booking or a standing corporate account: every ride held to the same standard.",
+          "blocks": [
+            {
+              "fix": "Zero Cancellation Promise on every booking, so your schedule stays yours.",
+              "order": 1,
+              "problem": "A cancelled cab before a client meeting is a bad impression you didn’t sign up for.",
+              "fixTitle": "Fix — Zero Cancellation"
+            },
+            {
+              "fix": "Flight-tracked transfers with chauffeurs who arrive ahead of time, not just on time.",
+              "order": 2,
+              "problem": "Missed flights because a driver showed up late, or didn’t show at all.",
+              "fixTitle": "Fix — Flight-tracked transfers"
+            },
+            {
+              "fix": "Real-time tracking and SOS escalation for local and outstation trips.",
+              "order": 3,
+              "problem": "Outstation travel means losing visibility the moment the vehicle leaves the city.",
+              "fixTitle": "Fix — Live tracking & SOS"
+            },
+            {
+              "fix": "One consolidated dashboard, transparent billing, zero back-and-forth.",
+              "order": 4,
+              "problem": "Approving and reconciling scattered travel invoices eats up finance team hours.",
+              "fixTitle": "Fix — Consolidated billing"
+            }
+          ],
+          "titlePrefix": "Reliability Isn't a Feature.",
+          "titleHighlight": "It's the Whole Point."
+        },
+        "testimonials": {
+          "items": [
+            {
+              "name": "Varun Keswani",
+              "role": "Head of Supply - Asia & Middle East",
+              "order": 1,
+              "quote": "Refex Mobility sets a golden standard for airport transfers. We are happy with consistently reliable, professional drivers and impeccable service every time.",
+              "company": "Transferz",
+              "logoPrimary": "Transferz",
+              "logoSecondary": ""
+            },
+            {
+              "name": "Priya Balan",
+              "role": "Asst Manager- Facility",
+              "order": 2,
+              "quote": "Sincerely appreciate the excellent cab service provided for our airport pick-up and drop requirements. The vehicles were well-maintained, punctual, and the drivers were courteous and professional, ensuring a safe and comfortable journey. Your team’s reliability and commitment to service quality have made our travel experience hassle-free.",
+              "company": "Nous",
+              "logoPrimary": "Nous",
+              "logoSecondary": ""
+            },
+            {
+              "name": "Sailas Nulaka",
+              "role": "Admin and Facilities",
+              "order": 3,
+              "quote": "We are delighted with the services provided by Refex Mobility for employee transportation. Their tech-enabled vehicles ensure transparency and safety, which are our organization’s top priorities. The partnership has been both successful and fulfilling, significantly enhancing employee satisfaction.",
+              "company": "Invenco by GVR",
+              "logoPrimary": "Invenco",
+              "logoSecondary": "by GVR"
+            },
+            {
+              "name": "Kondanda Ram",
+              "role": "Sr Manager Finance and Admin",
+              "order": 4,
+              "quote": "We are happy with the employee transportation service provided by Refex Mobility Ltd. The seamless transition to sustainable mobility enabled by technology has been both satisfying and successful, and it has definitely improved our team’s daily travel experience. The service has been reliable, punctual, safe, and comfortable.",
+              "company": "Brady Company India Pvt. Ltd",
+              "logoPrimary": "Brady",
+              "logoSecondary": "COMPANY"
+            }
+          ],
+          "subtitle": "Client Testimonials",
+          "titlePrefix": "Results,",
+          "titleHighlight": "Not Just Promises"
         }
       },
       "isActive": true,
-      "updatedAt": "2026-07-31T06:19:08.000Z"
+      "updatedAt": "2026-07-31T07:27:13.000Z"
     },
     "refunds-and-cancellation-policy": {
       "slug": "refunds-and-cancellation-policy",

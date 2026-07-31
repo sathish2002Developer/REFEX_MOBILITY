@@ -1,10 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { getCmsDefaults, mergeCmsPage } from '../constants/cmsPageRegistry'
-import { setPageMetaDescription } from '../utils/pageMeta'
+import { applyPageMeta } from '../constants/pageMeta'
 import { API_BASE_URL } from '../constants/api'
 
 export function useCmsPage(slug, { setTitle = true, setMeta = true, heroStyleId = null } = {}) {
   const [cms, setCms] = useState(() => getCmsDefaults(slug))
+
+  useLayoutEffect(() => {
+    const defaults = getCmsDefaults(slug)
+    applyPageMeta({
+      pageTitle: setTitle ? defaults.pageTitle : undefined,
+      metaDescription: setMeta ? defaults.metaDescription : undefined,
+    })
+  }, [slug, setMeta, setTitle])
 
   useEffect(() => {
     const load = async () => {
@@ -23,10 +31,12 @@ export function useCmsPage(slug, { setTitle = true, setMeta = true, heroStyleId 
     load()
   }, [slug])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!setMeta && !setTitle) return
-    if (setMeta) setPageMetaDescription(cms.metaDescription)
-    if (setTitle && cms.pageTitle) document.title = cms.pageTitle
+    applyPageMeta({
+      pageTitle: setTitle ? cms.pageTitle : undefined,
+      metaDescription: setMeta ? cms.metaDescription : undefined,
+    })
   }, [cms.metaDescription, cms.pageTitle, setMeta, setTitle])
 
   useEffect(() => {

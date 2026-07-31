@@ -53,6 +53,54 @@ function readCmsJsonSnapshot() {
   }
 }
 
+function deepMergeObjects(base = {}, override = {}) {
+  const merged = { ...base }
+  Object.keys(override).forEach((key) => {
+    const baseVal = base[key]
+    const overrideVal = override[key]
+    if (
+      baseVal &&
+      overrideVal &&
+      typeof baseVal === 'object' &&
+      typeof overrideVal === 'object' &&
+      !Array.isArray(baseVal) &&
+      !Array.isArray(overrideVal)
+    ) {
+      merged[key] = deepMergeObjects(baseVal, overrideVal)
+    } else if (overrideVal !== undefined) {
+      merged[key] = overrideVal
+    }
+  })
+  return merged
+}
+
+function shouldUseSnapshotMeta(dbPage, snapshot) {
+  if (!snapshot?.pageTitle) return false
+  const title = String(dbPage.pageTitle || '').trim()
+  const desc = String(dbPage.metaDescription || '').trim()
+  if (!title || /test/i.test(title)) return true
+  if (!desc || /^test$/i.test(desc) || desc.length < 30) return true
+  return false
+}
+
+function mergePageWithSnapshot(dbPage, slug) {
+  const snapshot = getPageFromSnapshot(slug)
+  if (!snapshot) return dbPage
+
+  const merged = {
+    ...snapshot,
+    ...dbPage,
+    sections: deepMergeObjects(snapshot.sections || {}, dbPage.sections || {}),
+  }
+
+  if (shouldUseSnapshotMeta(dbPage, snapshot)) {
+    merged.pageTitle = snapshot.pageTitle
+    merged.metaDescription = snapshot.metaDescription
+  }
+
+  return merged
+}
+
 function getPageFromSnapshot(slug) {
   const data = readCmsJsonSnapshot();
   if (data?.[slug]) return data[slug];
@@ -140,7 +188,12 @@ exports.getPageBySlug = async (req, res) => {
     }
 
     if (row) {
-      return status.responseStatus(res, 200, "CMS page retrieved successfully", formatPage(row));
+      return status.responseStatus(
+        res,
+        200,
+        "CMS page retrieved successfully",
+        mergePageWithSnapshot(formatPage(row), slug)
+      );
     }
 
     const snapshotPage = getPageFromSnapshot(slug);

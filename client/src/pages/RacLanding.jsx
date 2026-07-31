@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useInViewOnce } from '../hooks/useInViewOnce'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { parsePhoneNumberFromString } from 'libphonenumber-js'
@@ -295,6 +296,7 @@ const RacLanding = () => {
   const [showSuccess, setShowSuccess] = useState(false)
   const [activeTestimonial, setActiveTestimonial] = useState(0)
   const [isTestimonialPaused, setIsTestimonialPaused] = useState(false)
+  const [finalSectionRef, finalInView] = useInViewOnce(0.2)
 
   useEffect(() => {
     document.body.className =
@@ -356,7 +358,24 @@ const RacLanding = () => {
                 <br />
                 <span>{hero.titleHighlight}</span>
               </h1>
-              <p className="ets-hero-services">{hero.servicesLine}</p>
+              <div className="rac-hero-service-buttons" role="group" aria-label="Services">
+                {(hero.serviceButtons?.length
+                  ? hero.serviceButtons
+                  : String(hero.servicesLine || '')
+                      .split('•')
+                      .map((label, i) => ({ order: i + 1, label: label.trim() }))
+                      .filter((item) => item.label)
+                ).map((item) => (
+                  <button
+                    key={item.label}
+                    type="button"
+                    className="rac-hero-service-btn"
+                    onClick={scrollToHeroForm}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
               <p className="ets-lead">{hero.lead}</p>
               <ul className="ets-highlights">
                 {hero.highlights?.map((item) => (
@@ -578,7 +597,12 @@ const RacLanding = () => {
           </div>
         </section>
 
-        <section className="ets-final rac-final" id="rac-lead-section" style={getFinalBackgroundStyle(form.backgroundImage)}>
+        <section
+          ref={finalSectionRef}
+          className={`ets-final rac-final${finalInView ? ' is-in-view' : ''}`}
+          id="rac-lead-section"
+          style={getFinalBackgroundStyle(form.backgroundImage)}
+        >
           <div className="ets-container rac-final__grid">
             <div className="rac-final__form-wrap">
               <RacLeadForm
