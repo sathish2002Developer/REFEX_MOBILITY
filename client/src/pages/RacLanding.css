@@ -341,11 +341,11 @@
 }
 
 .rac-page .rac-final.is-in-view .rac-final__form-wrap {
-  animation: racFinalCardSlideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: racFinalCardSlideUp 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .rac-page .rac-final.is-in-view .rac-final-form-card {
-  animation: racFinalCardFloat 1.4s ease-in-out 0.4s infinite;
+  animation: racFinalCardFloat 0.9s ease-in-out 0.25s infinite;
 }
 
 @keyframes racFinalCardSlideUp {
