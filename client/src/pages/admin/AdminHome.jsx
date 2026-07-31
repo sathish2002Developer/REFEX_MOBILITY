@@ -12,6 +12,11 @@ const AdminHome = () => {
           <h3>Website CMS</h3>
           <p>Edit Website Home, Drive For Us, Business Commute, Terms, Privacy Policy, and Refunds content (design unchanged)</p>
         </Link>
+        <Link to="/admin/dashboard/landing-pages" className="admin-card">
+          <div className="admin-card-icon"><i className="fa fa-car"></i></div>
+          <h3>Landing Pages CMS</h3>
+          <p>Edit Employee Transportation and Corporate Car Rental (RAC) landing page sections</p>
+        </Link>
         <Link to="/admin/dashboard/investor-relations" className="admin-card">
           <div className="admin-card-icon">
             <i className="fa fa-file-alt"></i>

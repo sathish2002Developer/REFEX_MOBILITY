@@ -577,3 +577,49 @@ header .navbar-light .navbar-brand {
   }
 }
 
+/* RAC landing — logo-only transparent header (scrolls with page) */
+header.header-rac-minimal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: transparent !important;
+  box-shadow: none !important;
+  z-index: 100;
+}
+
+header.header-rac-minimal.menu-sticky#main-header {
+  position: absolute;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+header.header-rac-minimal .navbar-brand {
+  height: auto;
+  min-height: auto;
+  line-height: 1;
+  padding: 12px 0;
+  margin: 0;
+}
+
+header.header-rac-minimal .navbar-brand .logo {
+  max-height: 46px;
+}
+
+@media (max-width: 991px) {
+  header.header-rac-minimal .navbar-brand {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 12px 0;
+  }
+
+  header.header-rac-minimal .navbar-brand .logo {
+    max-height: 38px;
+  }
+
+  .rac-page {
+    --rac-header-height: 62px;
+  }
+}
+

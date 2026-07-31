@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import WebsiteHome from './pages/WebsiteHome'
 import BusinessCommute from './pages/BusinessCommute'
+import EtsLanding from './pages/EtsLanding'
+import RacLanding from './pages/RacLanding'
 import DriveForUs from './pages/DriveForUs'
 import InvestorRelations from './pages/InvestorRelations'
 import PrivacyPolicy from './pages/PrivacyPolicy'
@@ -12,6 +14,7 @@ import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminHome from './pages/admin/AdminHome'
 import AdminInvestorRelations from './pages/admin/AdminInvestorRelations'
 import AdminWebsiteHome from './pages/admin/AdminWebsiteHome'
+import AdminLandingPages from './pages/admin/AdminLandingPages'
 import './App.css'
 
 // ScrollToTop component to scroll to top on route change
@@ -52,6 +55,10 @@ function App() {
       <Routes>
         <Route path="/" element={<WebsiteHome />} />
         <Route path="/business-commute" element={<BusinessCommute />} />
+        <Route path="/employee-transportation" element={<EtsLanding />} />
+        <Route path="/ets" element={<EtsLanding />} />
+        <Route path="/rac" element={<RacLanding />} />
+        <Route path="/corporate-car-rental" element={<RacLanding />} />
         <Route path="/drive-for-us" element={<DriveForUs />} />
         <Route path="/investor-relations" element={<InvestorRelations />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -61,13 +68,14 @@ function App() {
         <Route path="/admin/dashboard" element={<AdminDashboard />}>
           <Route index element={<AdminHome />} />
           <Route path="website-home" element={<AdminWebsiteHome />} />
+          <Route path="landing-pages" element={<AdminLandingPages />} />
           <Route path="investor-relations" element={<AdminInvestorRelations />} />
         </Route>
       </Routes>
       {showBackToTop && (
         <div id="back-to-top">
           <a className="top" id="top" href="#top" onClick={scrollToTop}>
-            <i className="fa fa-arrow-up"></i>
+            <i className="fas fa-arrow-up"></i>
           </a>
         </div>
       )}

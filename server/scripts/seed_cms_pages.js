@@ -8,6 +8,8 @@ const SEED_FILES = [
   path.join(__dirname, "../seeds/home_page.json"),
   path.join(__dirname, "../seeds/drive_for_us.json"),
   path.join(__dirname, "../seeds/business_commute_page.json"),
+  path.join(__dirname, "../seeds/employee_transportation_page.json"),
+  path.join(__dirname, "../seeds/rac_landing_page.json"),
   path.join(__dirname, "../seeds/terms_and_conditions.json"),
   path.join(__dirname, "../seeds/privacy_policy.json"),
   path.join(__dirname, "../seeds/refunds_and_cancellation.json"),
