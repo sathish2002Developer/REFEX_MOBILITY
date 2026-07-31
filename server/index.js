@@ -203,7 +203,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./dist", "index.html"));
 });
 
-const PORT = Number(process.env.APP_PORT || 3009);
+const PORT = Number(process.env.APP_PORT || 3007);
 
 function startServer() {
   app.listen(PORT, () => {

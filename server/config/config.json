@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "RefexAdmin@",
-    "database": "refex_contacts",
-    "host": "localhost",
+    "password": "MysqlREfex098756oihkjvr6t8oijl",
+    "database": "refex_mobility",
+    "host": "mysql",
     "port": 3306,
     "dialect": "mysql",
     "logging": false,
@@ -13,18 +13,19 @@
   },
   "test": {
     "username": "root",
-    "password": "RefexAdmin@",
-    "database": "refex_contacts",
-    "host": "localhost",
+    "password": "MysqlREfex098756oihkjvr6t8oijl",
+    "database": "refex_mobility",
+    "host": "mysql",
     "port": 3306,
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "RefexAdmin@",
-    "database": "refex_contacts",
-    "host": "localhost",
+    "password": "MysqlREfex098756oihkjvr6t8oijl",
+    "database": "refex_mobility",
+    "host": "mysql",
     "port": 3306,
     "dialect": "mysql"
   }
 }
+

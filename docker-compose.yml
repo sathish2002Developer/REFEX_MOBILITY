@@ -1,0 +1,20 @@
+services:
+  refexmobility-uat:
+    image: node:21
+    container_name: refexmobility-uat
+    working_dir: /app/server
+    volumes:
+      - ./server:/app/server
+      - ./client:/app/client
+    command: npm start
+    env_file:
+      - ./server/.env
+    expose:
+      - "3007"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
+
