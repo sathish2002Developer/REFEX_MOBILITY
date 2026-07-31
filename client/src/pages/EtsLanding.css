@@ -222,6 +222,39 @@ header.header-rac-minimal .col-sm-12 {
   line-height: 1.35;
 }
 
+.rac-page .rac-hero-service-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 12px;
+  max-width: 520px;
+}
+
+.rac-page .rac-hero-service-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  font-family: var(--ets-font);
+  font-size: var(--rac-fs-small);
+  font-weight: 600;
+  color: var(--ets-primary);
+  background: #fff;
+  border: 1px solid var(--ets-border, rgba(93, 63, 58, 0.12));
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(93, 63, 58, 0.08);
+  line-height: 1.35;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rac-page .rac-hero-service-btn:hover {
+  background: var(--ets-primary);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(244, 85, 59, 0.25);
+}
+
 .rac-page .ets-hero .ets-lead {
   font-size: var(--rac-fs-body);
   line-height: 1.55;
@@ -423,15 +456,34 @@ header.header-rac-minimal .col-sm-12 {
   text-align: left;
 }
 
+.rac-page .ets-problems-section .ets-container,
+.rac-page .ets-mid-cta .ets-container {
+  max-width: var(--rac-layout-max);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--rac-layout-gutter);
+  padding-right: var(--rac-layout-gutter);
+  box-sizing: border-box;
+}
+
 .rac-page .ets-mid-cta__inner {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 32px;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+}
+
+.rac-page .ets-mid-cta p {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
 }
 
 .rac-page .ets-mid-cta__copy {
-  flex: 0 1 auto;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
@@ -783,6 +835,10 @@ header.header-rac-minimal .col-sm-12 {
   text-align: center;
   max-width: 760px;
   margin: 0 auto 40px;
+}
+
+.ets-problems__intro .ets-problems__title {
+  white-space: nowrap;
 }
 
 .ets-problems__intro .ets-lead {
@@ -1210,7 +1266,7 @@ header.header-rac-minimal .col-sm-12 {
 @media (max-width: 768px) {
   .rac-page .ets-mid-cta__inner {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 16px;
   }
 
@@ -1305,6 +1361,12 @@ header.header-rac-minimal .col-sm-12 {
   margin-bottom: 10px;
 }
 
+.page-ets-landing .ets-problems__intro .ets-problems__title {
+  font-size: clamp(18px, 2.2vw, 26px);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
 .rac-page .rac-hero-stats--ets {
   grid-template-columns:
     minmax(0, 1.05fr)
@@ -1313,6 +1375,10 @@ header.header-rac-minimal .col-sm-12 {
 }
 
 @media (max-width: 768px) {
+  .ets-problems__intro .ets-problems__title {
+    white-space: normal;
+  }
+
   .rac-page .rac-hero-stats--ets {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

@@ -189,18 +189,30 @@ const AdminLandingPages = () => {
                   <input value={hero.titleHighlight || ''} onChange={(e) => patch('hero', 'titleHighlight', e.target.value)} />
                 </div>
               </div>
-              <div className="admin-form-group">
-                <label>Menu / services line (badge text)</label>
-                <input
-                  value={hero.servicesLine || ''}
-                  onChange={(e) => patch('hero', 'servicesLine', e.target.value)}
-                  placeholder={
-                    isRac
-                      ? 'Corporate Car Rental – Safe and Reliable • Airport Transfer Services for Corporate travels'
-                      : 'AI-Powered ETMS for Enterprises • Employee Transportation Services'
-                  }
-                />
-              </div>
+              {isRac ? (
+                <>
+                  <h4 style={{ marginTop: 12 }}>Service buttons (hero)</h4>
+                  {(hero.serviceButtons || []).map((item, i) => (
+                    <div key={i} className="admin-form-group">
+                      <label>Button {i + 1}</label>
+                      <input
+                        value={item.label || ''}
+                        onChange={(e) => patchList('hero', 'serviceButtons', i, 'label', e.target.value)}
+                        placeholder={['Airport Transfers', 'Chauffeured Rentals', 'Intercity Travel'][i]}
+                      />
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className="admin-form-group">
+                  <label>Menu / services line (badge text)</label>
+                  <input
+                    value={hero.servicesLine || ''}
+                    onChange={(e) => patch('hero', 'servicesLine', e.target.value)}
+                    placeholder="AI-Powered ETMS for Enterprises • Employee Transportation Services"
+                  />
+                </div>
+              )}
               <div className="admin-form-group">
                 <label>Lead paragraph</label>
                 <textarea rows={2} value={hero.lead || ''} onChange={(e) => patch('hero', 'lead', e.target.value)} />
@@ -289,9 +301,15 @@ const AdminLandingPages = () => {
             <div className="admin-section-card">
               <h3>Problems & Fixes</h3>
               {!isRac && (
-                <div className="admin-form-group">
-                  <label>Section title (single line)</label>
-                  <input value={problems.title || ''} onChange={(e) => patch('problems', 'title', e.target.value)} />
+                <div className="admin-form-row">
+                  <div className="admin-form-group">
+                    <label>Title (before highlight)</label>
+                    <input value={problems.titlePrefix || ''} onChange={(e) => patch('problems', 'titlePrefix', e.target.value)} />
+                  </div>
+                  <div className="admin-form-group">
+                    <label>Title highlight</label>
+                    <input value={problems.titleHighlight || ''} onChange={(e) => patch('problems', 'titleHighlight', e.target.value)} />
+                  </div>
                 </div>
               )}
               {isRac && (

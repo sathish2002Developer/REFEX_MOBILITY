@@ -9,7 +9,12 @@ export const DEFAULT_RAC_LANDING_CMS = {
     hero: {
       titleLine1: 'One Corporate Mobility Partner.',
       titleHighlight: 'Every Business Journey.',
-      servicesLine: 'Corporate Car Rental – Safe and Reliable • Airport Transfer Services for Corporate travels',
+      servicesLine: '',
+      serviceButtons: [
+        { order: 1, label: 'Airport Transfers' },
+        { order: 2, label: 'Chauffeured Rentals' },
+        { order: 3, label: 'Intercity Travel' },
+      ],
       lead: 'Safe, reliable rides for corporate car rentals and airport transfers — trusted by 100+ companies.',
       backgroundImage: '/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp',
       highlights: [
@@ -205,7 +210,7 @@ export const DEFAULT_RAC_LANDING_CMS = {
 
 export function mergeRacLandingCms(apiData) {
   return mergeLandingPageCms(DEFAULT_RAC_LANDING_CMS, apiData, {
-    hero: ['highlights', 'trustStats'],
+    hero: ['highlights', 'trustStats', 'serviceButtons'],
     logos: 'items',
     problems: 'blocks',
     features: 'items',

@@ -17,9 +17,16 @@ export function getHeroBackgroundStyle(imageUrl) {
 }
 
 export function getFinalBackgroundStyle(imageUrl) {
-  if (!imageUrl) return undefined
+  const gradient =
+    'linear-gradient(105deg, rgba(255, 249, 248, 0.88) 0%, rgba(255, 255, 255, 0.5) 40%, rgba(255, 255, 255, 0.15) 55%, rgba(255, 255, 255, 0) 70%)'
+  if (!imageUrl) {
+    return { background: gradient }
+  }
   const url = resolveCmsAssetUrl(imageUrl)
   return {
-    background: `linear-gradient(105deg, rgba(255, 249, 248, 0.75) 0%, rgba(255, 255, 255, 0.35) 42%, rgba(255, 255, 255, 0.05) 68%, rgba(255, 255, 255, 0) 100%), url('${url}') center / cover no-repeat`,
+    backgroundImage: `${gradient}, url('${url}')`,
+    backgroundPosition: 'center, right center',
+    backgroundSize: '100% 100%, auto 100%',
+    backgroundRepeat: 'no-repeat',
   }
 }
