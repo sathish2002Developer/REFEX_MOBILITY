@@ -1,5 +1,9 @@
 {
-  "updatedAt": "2026-08-07T11:47:00.079Z",
+
+ 
+  
+  "updatedAt": "2026-08-07T11:24:50.999Z",
+
   "data": {
     "business-commute": {
       "slug": "business-commute",
@@ -239,27 +243,305 @@
       "pageTitle": "Employee Transportation Services | Refex Mobility",
       "metaDescription": "Reliable employee transportation for enterprises. Safe, on-time corporate mobility with live tracking, automated billing, and 24/7 support across major Indian cities.",
       "sections": {
-        "faq": {
+        "hero": {
+          "titleLine1": "Reliable Employee Transportation Services",
+          "titleHighlight": "Built for Every Enterprise.",
+          "servicesLine": "",
+          "lead": "Safe, on-time, reliable transport for your workforce across vehicle types, cities, and shift patterns.",
+          "backgroundImage": "/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp",
+          "highlights": [
+            {
+              "order": 1,
+              "text": "Seamless migration"
+            },
+            {
+              "order": 2,
+              "text": "Automated billing"
+            },
+            {
+              "order": 3,
+              "text": "Cost-effective fleet options"
+            },
+            {
+              "order": 4,
+              "text": "24/7 support team"
+            },
+            {
+              "order": 5,
+              "text": "On-time rides"
+            },
+            {
+              "order": 6,
+              "text": "Zero cancellation guaranteed"
+            }
+          ],
+          "trustStats": [
+            {
+              "order": 1,
+              "value": "100+",
+              "label": "Companies Trust Us"
+            },
+            {
+              "order": 2,
+              "value": "2000+",
+              "label": "Company Owned Vehicles"
+            },
+            {
+              "order": 3,
+              "value": "5",
+              "label": "Cities"
+            }
+          ]
+        },
+        "logos": {
+          "titlePrefix": "Trusted by",
+          "titleHighlight": "leading enterprises",
           "items": [
             {
-              "list": [],
               "order": 1,
-              "answer": "Refex Mobility offers comprehensive corporate mobility solutions, including Employee Transportation Services (ETS), Airport Transfers, Chauffeured Car Rentals, Long-Term Rentals, Intercity Travel, Event Transportation, and Executive Mobility across major Indian cities.",
-              "question": "What services does Refex Mobility provide?"
+              "name": "Amazon",
+              "image": "/uploads/images/image-1786101846355-593237746.png"
             },
             {
-              "list": [],
               "order": 2,
-              "answer": "We currently operate in Chennai, Bangalore, Delhi NCR, Mumbai, and Hyderabad, with the capability to support pan-India requirements through our trusted partner network.",
-              "question": "Which cities do you currently operate in?"
+              "name": "Ather",
+              "image": "/assets/Ather-logo.svg-c-v-sIrx.png"
             },
             {
-              "list": [],
+              "order": 6,
+              "name": "Grant Thornton",
+              "image": "/uploads/images/image-1786101857197-154977508.png"
+            },
+            {
+              "order": 7,
+              "name": "Hexaware",
+              "image": "/assets/Hexa%20ware-TOy2jbUJ.png"
+            },
+            {
+              "order": 8,
+              "name": "J.P. Morgan",
+              "image": "/assets/JP%20Morgan-4VwzywyW.png"
+            },
+            {
+              "order": 10,
+              "name": "London Stock Exchange",
+              "image": "/assets/london-stock-exchange-1-logo-black-and-white-BLzhHteY.png"
+            },
+            {
+              "order": 11,
+              "name": "MindSprint",
+              "image": "/assets/Mindsprint_Logo-qwXUMgdD.png"
+            },
+            {
+              "order": 12,
+              "name": "Nestlé",
+              "image": "/assets/Nestle-Cbi2S3lT.png"
+            },
+            {
+              "order": 15,
+              "name": "Samsung",
+              "image": "/assets/Samsung-BWvm8yHf.png"
+            },
+            {
+              "order": 16,
+              "name": "Sopra Steria",
+              "image": "/assets/sopra_steria-DuKnnHtI.png"
+            },
+            {
+              "order": 20,
+              "name": "Wipro",
+              "image": "/assets/Wipro_Primary_Logo_Color_RGB.svg-C1EhNplL.png"
+            },
+            {
+              "order": 13,
+              "name": "BRADY",
+              "image": "/uploads/images/image-1786078414655-227836700.png"
+            },
+            {
+              "order": 14,
+              "name": "LTI Mindtree",
+              "image": "/uploads/images/image-1786078592819-87334130.png"
+            },
+            {
+              "order": 15,
+              "name": "GILABRCO - GVR",
+              "image": "/uploads/images/image-1786078646788-143141393.png"
+            },
+            {
+              "order": 16,
+              "name": "Grant Thornton",
+              "image": "/uploads/images/image-1786078751493-306274591.png"
+            },
+            {
+              "order": 17,
+              "name": "AstraZeneca",
+              "image": "/uploads/images/image-1786078875712-249099175.png"
+            },
+            {
+              "order": 18,
+              "name": "TCS",
+              "image": "/assets/Tata_Consultancy_Services_old_logo.svg-De-_qW_U.png"
+            },
+            {
+              "order": 19,
+              "name": "Titan",
+              "image": "data:image/webp;base64,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OtiRl1syds92AV7xBlOYSZVhHZclLN9DNZgtuuG2gTPUksIS/k5MyvCvAW06ZrwAs+hJWW5hJD/vTPpE3iUr1r8qvqiDLfSM5GfFZErknTHrBahlJ0qOkvzMebhU3hkLL2cThexKCQMj+Xnl0YbdE7J881pmAkuswVrBSH4+eYypvCtmvwCDqNNzpjAykp8ZhaTeIavX7kZa+ZlTFl6MNj+NyO9rSlbPfgHKWIM5zJyKsIrFFJbtn7JfVMODVM0JY/jLORTh3wPM6ZizXoBR1JDCwqkOuxOQ3+ekjB7BAuAtPzNSP3PCEtRwmIMaUKdjvfGiGy5azpoj1YfPiQDK8L2mZfQoFkB2Jy30nIqwBwEMYdn+qfDSwC6TqGJVcMIY/jJ7Lvx7gDsZe9kvQB9nIACMnF5hd3s/h50Ss3nh5WLoJTuzKjlhCursLUFPkCdjE8ECF2eggImQfC7W6vA9p2byWBZgjjQ4AjUnzEGVtSmoAnsSRrLoBtrCzKkOn7OtMq2bMJYFqGUnWi2jDSe+9G7CwktuqpDdaLmF0IZj4ZXYrRjFohqetNAzEk8TnXpvwJ+ChZeHsUHU8XKM5HMxkuKN2JtjAdo4g6OAgRMmxQEMzEFPJJCIjRSLbrjSFkpSZfh8Z+Xn8M1TtHjBpYN1FtGDF0ZOGMJfbqMI/+5IIEfDSpYFGCMMPF6k3BJU2RiDuixJgxderube8jPnhZkTfg6fi4U6fC9IIMcRMKYFKGUXYjUpzEFdFp9bgiqkkYYtNAsg0A1EsJAqw6cCENkUvnmi9o5rASZRw+xnSvK//h7bL+Hfd0gkCWtpFt2QKTgajhWm8PdtXN+HfxVSyf6FlxOB1/aBqdCzKsL8OaZX+NflSCX7R7bAye7MClb4Pqw7xVMuYRckk4IV6/u0pxoqZhhZYfLhfB3Lv/lwnkgn88e2AP3mgUtJyy3C900c3wu/JkvY4g1MC1DLzswwsUIp8P8Vw6/Cr8uRUOYvuHjYRzfcqNW08PL6hGzKGSll/fgWYN46kMFMCz/b+hZJJWD12o3EIB+Zo9Lywmjp70gr68e3AK3sRF1u4YXJToX0cjrfvbhPYjIrn+RsNa90IEkhu2p1/0sBnz59+gTSOO0XQYX//+TTpwy/f9nwbffEURT9t83R9AOg+jY5oH7Ar7H9K46n/BDXNziiUi7xNCccU3FTLFWGwyo/RNH9FUdWit+2+9cMB1f+Yd6mOeEAy7+v/tD4n7/gIMufflLp/iXHgRb3jz8tYd1//QUHW76Y/iMDgOKf/5Lh8Msf/uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//vuvHw=="
+            },
+            {
+              "order": 20,
+              "name": "Wipro",
+              "image": "/assets/Wipro_Primary_Logo_Color_RGB.svg-C1EhNplL.png"
+            }
+          ]
+        },
+        "problems": {
+          "title": "",
+          "titlePrefix": "One Partner for All Your ",
+          "titleHighlight": "Employee Transportation Needs",
+          "lead": " Transform Your Employee Transportation Experience",
+          "blocks": [
+            {
+              "order": 1,
+              "problem": "Vendors miss pickups, employees complain, you’re stuck following up.",
+              "fixTitle": "Fix — Real -time tracking",
+              "fix": "One partner across vehicle types and cities with real -time tracking and ETA alerts, zero guesswork. "
+            },
+            {
+              "order": 2,
+              "problem": "No visibility until something goes wrong.",
+              "fixTitle": "Fix — Deploy",
+              "fix": "Smart routing built around your shift patterns, with real-time visibility into every trip."
+            },
+            {
               "order": 3,
-              "answer": "Yes. We offer a wide range of Electric Vehicles (EVs) as well as premium ICE vehicles, enabling customers to choose the fleet best suited to their operational and sustainability requirements.",
-              "question": "Do you provide both Electric Vehicles (EVs) and ICE vehicles?"
+              "problem": "Manual billing eats hours every month, disputes drag on.",
+              "fixTitle": "Fix — Automated billing",
+              "fix": "Automated, transparent billing. One invoice, zero reconciliation."
             },
             {
+              "order": 4,
+              "problem": "Safety and compliance are an afterthought until an incident happens.",
+              "fixTitle": "Fix — Assure",
+              "fix": "Verified drivers, women safety protocols, built-in SOS escalation."
+            }
+          ]
+        },
+        "midCta": {
+          "title": "",
+          "description": "See how Refex Mobility simplifies corporate transportation for teams like yours.",
+          "buttonText": "Talk to Our Team"
+        },
+        "features": {
+          "titlePrefix": "Built for",
+          "titleHighlight": "Enterprise Scale",
+          "image": "/uploads/images/image-1785833662932-418653696.jpg",
+          "imageAlt": "Employee transportation services",
+          "items": [
+            {
+              "order": 1,
+              "icon": "fa-tachometer-alt",
+              "label": "Dedicated enterprise dashboard"
+            },
+            {
+              "order": 2,
+              "icon": "fa-map-marker-alt",
+              "label": "Live GPS Tracking"
+            },
+            {
+              "order": 3,
+              "icon": "fa-mobile-alt",
+              "label": "Mobile App available on iOS & Android"
+            },
+            {
+              "order": 4,
+              "icon": "fa-file-invoice",
+              "label": "Automated Billing"
+            },
+            {
+              "order": 5,
+              "icon": "fa-headset",
+              "label": "24/7 Support"
+            },
+            {
+              "order": 6,
+              "icon": "fa-shield-alt",
+              "label": "Women Safety Protocols"
+            }
+          ]
+        },
+        "testimonials": {
+          "titlePrefix": "Results,",
+          "titleHighlight": "Not Just Promises",
+          "subtitle": "Client Testimonials",
+          "items": [
+            {
+              "order": 1,
+              "quote": "We are delighted with the services provided by Refex Mobility for employee transportation. Their tech-enabled vehicles ensure transparency and safety, which are our organization’s top priorities. The partnership has been both successful and fulfilling, significantly enhancing employee satisfaction.",
+              "name": "Sailas Nulaka",
+              "role": "Admin and Facilities",
+              "company": "Invenco by GVR",
+              "logoImage": "/uploads/images/image-1785833820150-248511930.png",
+              "logoPrimary": "Invenco",
+              "logoSecondary": "by GVR"
+            },
+            {
+              "order": 2,
+              "quote": "We are happy with the employee transportation service provided by Refex Mobility Ltd. The seamless transition to sustainable mobility enabled by technology has been both satisfying and successful, and it has definitely improved our team’s daily travel experience. The service has been reliable, punctual, safe, and comfortable.",
+              "name": "Kondanda Ram",
+              "role": "Sr Manager Finance and Admin",
+              "company": "Brady Company India Pvt. Ltd",
+              "logoImage": "/uploads/images/image-1785833829142-114976596.png",
+              "logoPrimary": "Brady",
+              "logoSecondary": "COMPANY"
+            },
+            {
+              "order": 3,
+              "quote": "Refex Mobility sets a golden standard for airport transfers. We are happy with consistently reliable, professional drivers and impeccable service every time.",
+              "name": "Varun Keswani",
+              "role": "Head of Supply - Asia & Middle East",
+              "company": "Transferz",
+              "logoImage": "/uploads/images/image-1785833848043-890816066.png",
+              "logoPrimary": "Transferz",
+              "logoSecondary": ""
+            },
+            {
+              "order": 4,
+              "quote": "Sincerely appreciate the excellent cab service provided for our airport pick-up and drop requirements. The vehicles were well-maintained, punctual, and the drivers were courteous and professional, ensuring a safe and comfortable journey. Your team’s reliability and commitment to service quality have made our travel experience hassle-free.",
+              "name": "Priya Balan",
+              "role": "Asst Manager- Facility",
+              "company": "Nous",
+              "logoImage": "",
+              "logoPrimary": "Nous",
+              "logoSecondary": ""
+            }
+          ]
+        },
+        "faq": {
+          "titlePrefix": "Frequently Asked",
+          "titleHighlight": "Questions",
+          "items": [
+            {
+              "order": 1,
+              "question": "What services does Refex Mobility provide?",
+              "answer": "Refex Mobility offers comprehensive corporate mobility solutions, including Employee Transportation Services (ETS), Airport Transfers, Chauffeured Car Rentals, Long-Term Rentals, Intercity Travel, Event Transportation, and Executive Mobility across major Indian cities.",
+              "list": []
+            },
+            {
+              "order": 2,
+              "question": "Which cities do you currently operate in?",
+              "answer": "We currently operate in Chennai, Bangalore, Delhi NCR, Mumbai, and Hyderabad, with the capability to support pan-India requirements through our trusted partner network.",
+              "list": []
+            },
+            {
+              "order": 3,
+              "question": "Do you provide both Electric Vehicles (EVs) and ICE vehicles?",
+              "answer": "Yes. We offer a wide range of Electric Vehicles (EVs) as well as premium ICE vehicles, enabling customers to choose the fleet best suited to their operational and sustainability requirements.",
+              "list": []
+            },
+            {
+              "order": 4,
+              "question": "What types of vehicles are available?",
+              "answer": "",
               "list": [
                 "Sedan EVs",
                 "Premium EV SUVs",
@@ -267,49 +549,45 @@
                 "SUVs",
                 "MPVs (6/7 Seaters)",
                 "Premium Executive Vehicles"
-              ],
-              "order": 4,
-              "answer": "",
-              "question": "What types of vehicles are available?"
+              ]
             },
             {
-              "list": [],
               "order": 5,
+              "question": "Do you offer airport transfers?",
               "answer": "Yes. We provide 24×7 airport transfers with professional chauffeurs, flight tracking, and timely pickups for corporate travelers.",
-              "question": "Do you offer airport transfers?"
+              "list": []
             },
             {
-              "list": [],
               "order": 6,
+              "question": "Can you support employee transportation for large organizations?",
               "answer": "Yes. We specialize in managing employee transportation programs for enterprises, including shift-based transportation, roster management, and technology-enabled trip monitoring.",
-              "question": "Can you support employee transportation for large organizations?"
+              "list": []
             },
             {
-              "list": [],
               "order": 7,
+              "question": "Do you provide long-term vehicle rentals?",
               "answer": "Yes. We offer flexible long-term rental solutions for organizations requiring dedicated vehicles with chauffeurs.",
-              "question": "Do you provide long-term vehicle rentals?"
+              "list": []
             },
             {
+              "order": 8,
+              "question": "What does your ESG team get?",
+              "answer": "",
               "list": [
                 "Per-trip CO₂ reports",
                 "Composition disclosure",
                 "Scope 3 emission tracking",
                 "Monthly sustainability MIS"
-              ],
-              "order": 8,
-              "answer": "",
-              "question": "What does your ESG team get?"
+              ]
             }
-          ],
-          "titlePrefix": "Frequently Asked",
-          "titleHighlight": "Questions"
+          ]
         },
         "form": {
-          "note": "Fill out the form, our experts will call back within 24 hours.",
           "title": "Let’s Build Your Enterprise Mobility Solution",
+          "note": "Fill out the form, our experts will call back within 24 hours",
           "buttonText": "Get a Custom Transport Plan",
           "submittingText": "Submitting…",
+
           "backgroundImage": "/uploads/images/image-1785488523819-878522644.jpg"
         },
         "hero": {
@@ -589,10 +867,12 @@
           "subtitle": "Client Testimonials",
           "titlePrefix": "Results,",
           "titleHighlight": "Not Just Promises"
+
+          "backgroundImage": "/uploads/images/image-1785490498003-83171065.jpg"
         }
       },
       "isActive": true,
-      "updatedAt": "2026-07-31T09:02:05.000Z"
+      "updatedAt": "2026-08-07T11:24:50.989Z"
     },
     "home": {
       "slug": "home",
@@ -838,6 +1118,7 @@
           "titleLine1": "One Corporate Mobility Partner.",
           "titleHighlight": "Every Business Journey.",
           "servicesLine": "Corporate Car Rental – Safe and Reliable • Airport Transfer Services for Corporate travels",
+
           "serviceButtons": [
             {
               "order": 1,
@@ -852,7 +1133,9 @@
               "label": "Intercity Travel"
             }
           ],
-          "lead": "Safe, reliable rides for corporate car rentals and airport transfers — trusted by 100+ companies.",
+          
+          "lead": "Safe, reliable rides for corporate car rentals and airport transfers, trusted by leading enterprises.",
+
           "backgroundImage": "/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp",
           "highlights": [
             {
@@ -910,102 +1193,147 @@
             {
               "order": 1,
               "name": "Amazon",
-              "image": "/src/assets/refexclients/amazon.png"
+
+              "image": "/assets/amazon-Ba0jenJf.png"
+
             },
             {
               "order": 2,
               "name": "Ather",
-              "image": "/src/assets/refexclients/Ather-logo.svg.png"
+
+              "image": "/assets/Ather-logo.svg-c-v-sIrx.png"
+
             },
             {
               "order": 3,
               "name": "Fairfield by Marriott",
-              "image": "/src/assets/refexclients/Fairfield_by_Marriott_logo.png"
+
+              "image": "/assets/Fairfield_by_Marriott_logo-DTf3PT2Z.png"
+
             },
             {
               "order": 4,
               "name": "Flipkart",
-              "image": "/src/assets/refexclients/flipkart-logo-png-transparent.png"
+
+              "image": "/assets/flipkart-logo-png-transparent-Ct4AH1XY.png"
+
             },
             {
               "order": 5,
               "name": "Four Points",
-              "image": "/src/assets/refexclients/Four_Points_Logo_neu.svg.png"
+
+              "image": "/assets/Four_Points_Logo_neu.svg-DQxzyhRN.png"
+
             },
             {
               "order": 6,
               "name": "Grant Thornton",
-              "image": "/src/assets/refexclients/grant-thornton.png"
+
+              "image": "/assets/grant-thornton-BhrehETd.png"
             },
             {
               "order": 7,
               "name": "Hexaware",
-              "image": "/src/assets/refexclients/Hexa%20ware.png"
+
+              "image": "/assets/Hexa%20ware-TOy2jbUJ.png"
+
             },
             {
               "order": 8,
               "name": "J.P. Morgan",
-              "image": "/src/assets/refexclients/JP%20Morgan.png"
+
+              
+              "image": "/assets/JP%20Morgan-4VwzywyW.png"
+
             },
             {
               "order": 9,
               "name": "Lemon Tree Hotels",
-              "image": "/src/assets/refexclients/lemon-tree-hotels.png"
+
+              "image": "/assets/lemon-tree-hotels-DaXliHw5.png"
+
             },
             {
               "order": 10,
               "name": "London Stock Exchange",
-              "image": "/src/assets/refexclients/london-stock-exchange-1-logo-black-and-white.png"
+
+             
+              "image": "/assets/london-stock-exchange-1-logo-black-and-white-BLzhHteY.png"
+
             },
             {
               "order": 11,
               "name": "MindSprint",
-              "image": "/src/assets/refexclients/Mindsprint_Logo.png"
+
+              "image": "/assets/Mindsprint_Logo-qwXUMgdD.png"
+
             },
             {
               "order": 12,
               "name": "Nestlé",
-              "image": "/src/assets/refexclients/Nestle.png"
+              "image": "/assets/Nestle-Cbi2S3lT.png"
+
+
+             
             },
             {
               "order": 13,
               "name": "PwC",
-              "image": "/src/assets/refexclients/pwc.png"
+
+              
+              "image": "/assets/pwc-kTfhTpg9.png"
+
             },
             {
               "order": 14,
               "name": "Raintree Hotels",
-              "image": "/src/assets/refexclients/raintree.jpeg"
+
+             
+              "image": "/assets/raintree-BlFIqK7B.jpeg"
+
             },
             {
               "order": 15,
               "name": "Samsung",
-              "image": "/src/assets/refexclients/Samsung.png"
+
+              "image": "/assets/Samsung-BWvm8yHf.png"
+
             },
             {
               "order": 16,
               "name": "Sopra Steria",
-              "image": "/src/assets/refexclients/sopra_steria.png"
+
+              "image": "/assets/sopra_steria-DuKnnHtI.png"
             },
             {
               "order": 17,
               "name": "Taj Hotels",
-              "image": "/src/assets/refexclients/Taj_Hotels_logo.svg.png"
+
+              "image": "/assets/Taj_Hotels_logo.svg-Cx2G8ale.png"
+
             },
             {
               "order": 18,
               "name": "TCS",
-              "image": "/src/assets/refexclients/Tata_Consultancy_Services_old_logo.svg.png"
+
+              "image": "/assets/Tata_Consultancy_Services_old_logo.svg-De-_qW_U.png"
+
             },
             {
               "order": 19,
               "name": "Titan",
-              "image": "/src/assets/refexclients/titan-logo-hd.webp"
-            },
+
+              "image": "data:image/webp;base64,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OtiRl1syds92AV7xBlOYSZVhHZclLN9DNZgtuuG2gTPUksIS/k5MyvCvAW06ZrwAs+hJWW5hJD/vTPpE3iUr1r8qvqiDLfSM5GfFZErknTHrBahlJ0qOkvzMebhU3hkLL2cThexKCQMj+Xnl0YbdE7J881pmAkuswVrBSH4+eYypvCtmvwCDqNNzpjAykp8ZhaTeIavX7kZa+ZlTFl6MNj+NyO9rSlbPfgHKWIM5zJyKsIrFFJbtn7JfVMODVM0JY/jLORTh3wPM6ZizXoBR1JDCwqkOuxOQ3+ekjB7BAuAtPzNSP3PCEtRwmIMaUKdjvfGiGy5azpoj1YfPiQDK8L2mZfQoFkB2Jy30nIqwBwEMYdn+qfDSwC6TqGJVcMIY/jJ7Lvx7gDsZe9kvQB9nIACMnF5hd3s/h50Ss3nh5WLoJTuzKjlhCursLUFPkCdjE8ECF2eggImQfC7W6vA9p2byWBZgjjQ4AjUnzEGVtSmoAnsSRrLoBtrCzKkOn7OtMq2bMJYFqGUnWi2jDSe+9G7CwktuqpDdaLmF0IZj4ZXYrRjFohqetNAzEk8TnXpvwJ+ChZeHsUHU8XKM5HMxkuKN2JtjAdo4g6OAgRMmxQEMzEFPJJCIjRSLbrjSFkpSZfh8Z+Xn8M1TtHjBpYN1FtGDF0ZOGMJfbqMI/+5IIEfDSpYFGCMMPF6k3BJU2RiDuixJgxderube8jPnhZkTfg6fi4U6fC9IIMcRMKYFKGUXYjUpzEFdFp9bgiqkkYYtNAsg0A1EsJAqw6cCENkUvnmi9o5rASZRw+xnSvK//h7bL+Hfd0gkCWtpFt2QKTgajhWm8PdtXN+HfxVSyf6FlxOB1/aBqdCzKsL8OaZX+NflSCX7R7bAye7MClb4Pqw7xVMuYRckk4IV6/u0pxoqZhhZYfLhfB3Lv/lwnkgn88e2AP3mgUtJyy3C900c3wu/JkvY4g1MC1DLzswwsUIp8P8Vw6/Cr8uRUOYvuHjYRzfcqNW08PL6hGzKGSll/fgWYN46kMFMCz/b+hZJJWD12o3EIB+Zo9Lywmjp70gr68e3AK3sRF1u4YXJToX0cjrfvbhPYjIrn+RsNa90IEkhu2p1/0sBnz59+gTSOO0XQYX//+TTpwy/f9nwbffEURT9t83R9AOg+jY5oH7Ar7H9K46n/BDXNziiUi7xNCccU3FTLFWGwyo/RNH9FUdWit+2+9cMB1f+Yd6mOeEAy7+v/tD4n7/gIMufflLp/iXHgRb3jz8tYd1//QUHW76Y/iMDgOKf/5Lh8Msf/uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//vuvHw=="
+
+              "image": "data:image/webp;base64,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"},
             {
               "order": 20,
               "name": "Wipro",
-              "image": "/src/assets/refexclients/Wipro_Primary_Logo_Color_RGB.svg.png"
+
+             
+
+              "image": "/assets/Wipro_Primary_Logo_Color_RGB.svg-C1EhNplL.png"
+
             }
           ]
         },
@@ -1016,6 +1344,7 @@
           "blocks": [
             {
               "order": 1,
+
               "problem": "<p><strong><span class=\"ql-cursor\">﻿</span></strong>A <strong>cancelled cab </strong>before a client meeting is a bad impression you didn’t sign up for.</p>",
               "fixTitle": "Fix — Zero Cancellation",
               "fix": "<p><strong><span class=\"ql-cursor\">﻿</span></strong>Zero <strong>Cancellation</strong> Promise on every booking, so your schedule stays yours.</p>"
@@ -1036,7 +1365,29 @@
               "order": 4,
               "problem": "<p>Approving and reconciling scattered travel invoices eats up finance team hours.</p>",
               "fixTitle": "Fix — Consolidated billing",
-              "fix": "<p>One consolidated dashboard, transparent billing, zero back-and-forth.</p>"
+              "fix": "<p>One consolidated dashboard, transparent billing, ze
+              "problem": "A cancelled cab before a client meeting is a bad impression you didn’t sign up for.",
+              "fixTitle": "Fix — Zero Cancellation",
+              "fix": "Zero Cancellation Promise on every booking, so your schedule stays yours."
+            },
+            {
+              "order": 2,
+              "problem": "Missed flights because a driver showed up late, or didn’t show at all.",
+              "fixTitle": "Fix — Flight-tracked transfers",
+              "fix": "Flight-tracked airport transfers with chauffeurs who arrive ahead of time, not just on time."
+            },
+            {
+              "order": 3,
+              "problem": "Outstation travel means losing visibility the moment the vehicle leaves the city.",
+              "fixTitle": "Fix — Live tracking & SOS",
+              "fix": "Real-time trip tracking and SOS escalation, whether it's a local ride or a 6-hour outstation trip."
+            },
+            {
+              "order": 4,
+              "problem": "Approving and reconciling scattered travel invoices eats up finance team hours.",
+              "fixTitle": "Fix — Consolidated billing",
+              "fix": "One consolidated dashboard, transparent billing, zero back-and-forth."
+
             }
           ]
         },
@@ -1048,7 +1399,9 @@
         "features": {
           "titlePrefix": "Built for How Corporate Travel",
           "titleHighlight": "Actually Works",
-          "image": "/wp-content/uploads/elementor/thumbs/outstanding-img-r97rc31a974htbzyt30e7ra24cs8axu2myh0lsb9kc.png",
+
+          "image": "/uploads/images/image-1785833710961-61858526.jpg",
+
           "imageAlt": "Corporate mobility services",
           "items": [
             {
@@ -1094,7 +1447,9 @@
               "name": "Varun Keswani",
               "role": "Head of Supply - Asia & Middle East",
               "company": "Transferz",
-              "logoImage": "",
+
+              "logoImage": "/uploads/images/image-1785833778259-64424211.png",
+
               "logoPrimary": "Transferz",
               "logoSecondary": ""
             },
@@ -1114,7 +1469,9 @@
               "name": "Sailas Nulaka",
               "role": "Admin and Facilities",
               "company": "Invenco by GVR",
-              "logoImage": "",
+
+              "logoImage": "/uploads/images/image-1785833790726-687122546.png",
+
               "logoPrimary": "Invenco",
               "logoSecondary": "by GVR"
             },
@@ -1124,7 +1481,9 @@
               "name": "Kondanda Ram",
               "role": "Sr Manager Finance and Admin",
               "company": "Brady Company India Pvt. Ltd",
-              "logoImage": "",
+
+              "logoImage": "/uploads/images/image-1785833801999-729330542.png",
+
               "logoPrimary": "Brady",
               "logoSecondary": "COMPANY"
             }
@@ -1198,14 +1557,16 @@
         },
         "form": {
           "title": "Let’s Build Your Enterprise Mobility Solution",
-          "note": "Fill out the form, our experts will call back within 24 hours.",
+          "note": "Fill out the form, our experts will call back within 24 hours",
           "buttonText": "Get a Custom Transport Plan",
           "submittingText": "Submitting…",
           "backgroundImage": "/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp"
         }
       },
       "isActive": true,
+
       "updatedAt": "2026-08-07T11:46:57.306Z"
+
     },
     "refunds-and-cancellation-policy": {
       "slug": "refunds-and-cancellation-policy",
