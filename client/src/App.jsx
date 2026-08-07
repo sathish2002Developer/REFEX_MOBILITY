@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import WebsiteHome from './pages/WebsiteHome'
 import BusinessCommute from './pages/BusinessCommute'
 import EtsLanding from './pages/EtsLanding'
@@ -57,8 +57,9 @@ function App() {
         <Route path="/business-commute" element={<BusinessCommute />} />
         <Route path="/employee-transportation" element={<EtsLanding />} />
         <Route path="/ets" element={<EtsLanding />} />
-        <Route path="/rac" element={<RacLanding />} />
+        <Route path="/CorporateRentals" element={<RacLanding />} />
         <Route path="/corporate-car-rental" element={<RacLanding />} />
+        <Route path="/rac" element={<Navigate to="/CorporateRentals" replace />} />
         <Route path="/drive-for-us" element={<DriveForUs />} />
         <Route path="/investor-relations" element={<InvestorRelations />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

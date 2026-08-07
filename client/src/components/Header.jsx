@@ -14,8 +14,9 @@ const Header = () => {
   const isDriveForUs = location.pathname === '/drive-for-us'
   const isInvestorRelations = location.pathname === '/investor-relations'
   const isRacLanding =
-    location.pathname === '/rac' ||
+    location.pathname === '/CorporateRentals' ||
     location.pathname === '/corporate-car-rental' ||
+    location.pathname === '/rac' ||
     location.pathname === '/employee-transportation' ||
     location.pathname === '/ets'
 

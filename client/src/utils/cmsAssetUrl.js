@@ -17,8 +17,9 @@ export function getHeroBackgroundStyle(imageUrl) {
 }
 
 export function getFinalBackgroundStyle(imageUrl) {
+  // Keep form side soft; pin photo to the right so car + person stay in the open area.
   const gradient =
-    'linear-gradient(105deg, rgba(255, 249, 248, 0.88) 0%, rgba(255, 255, 255, 0.5) 40%, rgba(255, 255, 255, 0.15) 55%, rgba(255, 255, 255, 0) 70%)'
+    'linear-gradient(90deg, #fff9f8 0%, #fff9f8 28%, rgba(255, 249, 248, 0.55) 42%, rgba(255, 255, 255, 0.12) 58%, rgba(255, 255, 255, 0) 72%)'
   if (!imageUrl) {
     return { background: gradient }
   }

@@ -183,13 +183,31 @@ header.header-rac-minimal .col-sm-12 {
 
 .rac-page .ets-hero__grid {
   gap: 28px clamp(40px, 5vw, 60px);
-  align-items: flex-start;
+  align-items: stretch;
+}
+
+.rac-page .ets-hero__copy {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  height: 100%;
+}
+
+.rac-page .ets-hero__copy .rac-hero-stats {
+  margin-top: auto;
 }
 
 .rac-page .ets-hero__grid > .rac-hero-form-card {
-  align-self: flex-start;
-  height: fit-content;
+  align-self: stretch;
+  height: 100%;
   max-height: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.rac-page .ets-hero__grid > .rac-hero-form-card .ets-form--hero-compact,
+.rac-page .ets-hero__grid > .rac-hero-form-card .ets-form {
+  flex: 1 1 auto;
 }
 
 .rac-page .ets-hero__grid > * {
@@ -397,34 +415,75 @@ header.header-rac-minimal .col-sm-12 {
   margin-top: 2px;
 }
 
-/* RAC client logos — full color, uniform size */
+/* Client logos — full color, uniform size (RAC + ETS) */
 .rac-page .ets-logos {
-  padding: 20px 0;
+  padding: 24px 0;
 }
 
 .rac-page .ets-logos__title {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+.rac-page .ets-logos__track-wrap {
+  mask-image: none;
+  -webkit-mask-image: none;
+  padding: 4px 0;
 }
 
 .rac-page .ets-logos__track {
-  gap: 36px;
+  gap: 20px;
+  align-items: center;
+  padding-inline: 24px;
+}
+
+.rac-page .ets-logos__item {
+  flex: 0 0 200px;
+  width: 200px;
+  height: 88px;
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .rac-page .ets-logos__track img {
-  flex: 0 0 120px;
-  width: 120px;
-  height: 40px;
-  min-width: 120px;
-  max-width: 120px;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   object-position: center;
   filter: none;
   opacity: 1;
+  transform: scale(1.2);
+  transform-origin: center;
 }
 
 .rac-page .ets-logos__track img:hover {
   filter: none;
   opacity: 1;
+}
+
+/* Smaller source logos — scale up so they stay readable */
+.rac-page .ets-logos__track img[alt='J.P. Morgan'],
+.rac-page .ets-logos__track img[alt='London Stock Exchange'],
+.rac-page .ets-logos__track img[alt='Lemon Tree Hotels'],
+.rac-page .ets-logos__track img[alt='Nestlé'],
+.rac-page .ets-logos__track img[alt='Titan'],
+.rac-page .ets-logos__track img[alt='Samsung'],
+.rac-page .ets-logos__track img[alt='Raintree Hotels'],
+.rac-page .ets-logos__track img[alt='Grant Thornton'],
+.rac-page .ets-logos__track img[alt='PwC'] {
+  transform: scale(1.55);
+}
+
+/* Tall/busy logos — keep inside the slot */
+.rac-page .ets-logos__track img[alt='Hexaware'],
+.rac-page .ets-logos__track img[alt='MindSprint'],
+.rac-page .ets-logos__track img[alt='Wipro'] {
+  transform: scale(1.05);
 }
 
 /* RAC page-wide typography — match hero scale */
@@ -795,24 +854,35 @@ header.header-rac-minimal .col-sm-12 {
 
 .ets-logos__track-wrap {
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
 .ets-logos__track {
   display: flex;
-  gap: 40px;
+  gap: 28px;
   width: max-content;
   animation: etsLogoScroll 40s linear infinite;
   align-items: center;
 }
 
+.ets-logos__item {
+  flex: 0 0 160px;
+  width: 160px;
+  height: 68px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
 .ets-logos__track img {
-  height: 42px;
-  width: auto;
-  max-width: 140px;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
+  object-position: center;
   filter: grayscale(1);
-  opacity: 0.75;
+  opacity: 0.85;
   transition: filter 0.2s ease, opacity 0.2s ease;
 }
 
@@ -1292,6 +1362,24 @@ header.header-rac-minimal .col-sm-12 {
     padding: 72px 0 40px;
   }
 
+  .rac-page .ets-hero__grid {
+    align-items: start;
+  }
+
+  .rac-page .ets-hero__copy {
+    height: auto;
+    min-height: 0;
+  }
+
+  .rac-page .ets-hero__copy .rac-hero-stats {
+    margin-top: 20px;
+  }
+
+  .rac-page .ets-hero__grid > .rac-hero-form-card {
+    height: auto;
+    align-self: start;
+  }
+
   .rac-page .rac-hero-form-card {
     padding: 28px 32px;
   }
@@ -1367,11 +1455,39 @@ header.header-rac-minimal .col-sm-12 {
   margin-bottom: 12px;
 }
 
-.rac-page .rac-hero-stats--ets {
-  grid-template-columns:
-    minmax(0, 1.05fr)
-    minmax(0, 1.35fr)
-    minmax(0, 0.75fr);
+/* ETS — keep every section on the same 1200px / 16px grid as hero + header */
+.ets-page.rac-page .ets-container {
+  max-width: var(--rac-layout-max);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--rac-layout-gutter);
+  padding-right: var(--rac-layout-gutter);
+  box-sizing: border-box;
+}
+
+/* ETS hero stats — 3 equal columns (override RAC 4-col rule) + centered cells */
+.ets-page.rac-page .rac-hero-stats.rac-hero-stats--ets {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 20px 10px;
+}
+
+.ets-page.rac-page .rac-hero-stats.rac-hero-stats--ets .rac-hero-stats__item {
+  align-items: center;
+  text-align: center;
+  padding: 2px 10px;
+}
+
+.ets-page.rac-page .rac-hero-stats.rac-hero-stats--ets .rac-hero-stats__item:first-child {
+  padding-left: 10px;
+}
+
+.ets-page.rac-page .ets-hero .ets-lead {
+  max-width: 100%;
+}
+
+.ets-page.rac-page .ets-hero .ets-highlights {
+  max-width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -1379,11 +1495,23 @@ header.header-rac-minimal .col-sm-12 {
     white-space: normal;
   }
 
-  .rac-page .rac-hero-stats--ets {
+  .ets-page.rac-page .rac-hero-stats.rac-hero-stats--ets {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 8px;
   }
 
-  .rac-page .rac-hero-stats--ets .rac-hero-stats__item:nth-child(3) {
+  .ets-page.rac-page .rac-hero-stats.rac-hero-stats--ets .rac-hero-stats__item {
+    border-left: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .ets-page.rac-page .rac-hero-stats.rac-hero-stats--ets .rac-hero-stats__item:nth-child(even) {
+    border-left: 3px solid var(--ets-primary, #f4553b);
+    padding-left: 12px;
+  }
+
+  .ets-page.rac-page .rac-hero-stats.rac-hero-stats--ets .rac-hero-stats__item:nth-child(3) {
     border-left: none;
     padding-left: 0;
     grid-column: 1 / -1;
@@ -1391,11 +1519,14 @@ header.header-rac-minimal .col-sm-12 {
 }
 
 @media (max-width: 480px) {
-  .rac-page .rac-hero-stats--ets {
+  .ets-page.rac-page .rac-hero-stats.rac-hero-stats--ets {
     grid-template-columns: 1fr;
   }
 
-  .rac-page .rac-hero-stats--ets .rac-hero-stats__item:nth-child(3) {
+  .ets-page.rac-page .rac-hero-stats.rac-hero-stats--ets .rac-hero-stats__item:nth-child(even),
+  .ets-page.rac-page .rac-hero-stats.rac-hero-stats--ets .rac-hero-stats__item:nth-child(3) {
+    border-left: none;
+    padding-left: 0;
     grid-column: auto;
   }
 }

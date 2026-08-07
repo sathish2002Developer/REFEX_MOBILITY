@@ -69,6 +69,73 @@ const AdminLandingPages = () => {
     })
   }
 
+  const addProblemBlock = () => {
+    setSections((prev) => {
+      const blocks = [...(prev.problems?.blocks || [])]
+      blocks.push({
+        order: blocks.length + 1,
+        problem: '',
+        fixTitle: 'Fix',
+        fix: '',
+      })
+      return { ...prev, problems: { ...prev.problems, blocks } }
+    })
+  }
+
+  const removeProblemBlock = (index) => {
+    setSections((prev) => {
+      const blocks = [...(prev.problems?.blocks || [])]
+      blocks.splice(index, 1)
+      return { ...prev, problems: { ...prev.problems, blocks } }
+    })
+  }
+
+  const addTestimonial = () => {
+    setSections((prev) => {
+      const items = [...(prev.testimonials?.items || [])]
+      items.push({
+        order: items.length + 1,
+        quote: '',
+        name: '',
+        role: '',
+        company: '',
+        logoImage: '',
+        logoPrimary: '',
+        logoSecondary: '',
+      })
+      return { ...prev, testimonials: { ...prev.testimonials, items } }
+    })
+  }
+
+  const removeTestimonial = (index) => {
+    setSections((prev) => {
+      const items = [...(prev.testimonials?.items || [])]
+      items.splice(index, 1)
+      return { ...prev, testimonials: { ...prev.testimonials, items } }
+    })
+  }
+
+  const addFaq = () => {
+    setSections((prev) => {
+      const items = [...(prev.faq?.items || [])]
+      items.push({
+        order: items.length + 1,
+        question: '',
+        answer: '',
+        list: [],
+      })
+      return { ...prev, faq: { ...prev.faq, items } }
+    })
+  }
+
+  const removeFaq = (index) => {
+    setSections((prev) => {
+      const items = [...(prev.faq?.items || [])]
+      items.splice(index, 1)
+      return { ...prev, faq: { ...prev.faq, items } }
+    })
+  }
+
   useEffect(() => {
     setLoading(true)
     const defaults = getCmsDefaults(activePageSlug)
@@ -299,52 +366,88 @@ const AdminLandingPages = () => {
 
           {activeSection === 'problems' && problems && (
             <div className="admin-section-card">
-              <h3>Problems & Fixes</h3>
-              {!isRac && (
-                <div className="admin-form-row">
-                  <div className="admin-form-group">
-                    <label>Title (before highlight)</label>
-                    <input value={problems.titlePrefix || ''} onChange={(e) => patch('problems', 'titlePrefix', e.target.value)} />
-                  </div>
-                  <div className="admin-form-group">
-                    <label>Title highlight</label>
-                    <input value={problems.titleHighlight || ''} onChange={(e) => patch('problems', 'titleHighlight', e.target.value)} />
-                  </div>
+              <h3>Problems & Fixes — {activePage?.label}</h3>
+              <p style={{ margin: '0 0 16px', color: '#666', fontSize: 14 }}>
+                Table columns on the public page: <strong>Problem</strong> | <strong>Fix</strong>. Works for both landing pages.
+              </p>
+              <div className="admin-form-row">
+                <div className="admin-form-group">
+                  <label>Title (before highlight)</label>
+                  <input
+                    value={problems.titlePrefix || ''}
+                    onChange={(e) => patch('problems', 'titlePrefix', e.target.value)}
+                  />
                 </div>
-              )}
-              {isRac && (
-                <div className="admin-form-row">
-                  <div className="admin-form-group">
-                    <label>Title (before highlight)</label>
-                    <input value={problems.titlePrefix || ''} onChange={(e) => patch('problems', 'titlePrefix', e.target.value)} />
-                  </div>
-                  <div className="admin-form-group">
-                    <label>Title highlight</label>
-                    <input value={problems.titleHighlight || ''} onChange={(e) => patch('problems', 'titleHighlight', e.target.value)} />
-                  </div>
+                <div className="admin-form-group">
+                  <label>Title highlight</label>
+                  <input
+                    value={problems.titleHighlight || ''}
+                    onChange={(e) => patch('problems', 'titleHighlight', e.target.value)}
+                  />
                 </div>
-              )}
+              </div>
               <div className="admin-form-group">
                 <label>Intro text</label>
-                <textarea rows={2} value={problems.lead || ''} onChange={(e) => patch('problems', 'lead', e.target.value)} />
+                <textarea
+                  rows={2}
+                  value={problems.lead || ''}
+                  onChange={(e) => patch('problems', 'lead', e.target.value)}
+                />
               </div>
+              <h4 style={{ marginTop: 20 }}>Problem / Fix rows</h4>
               {(problems.blocks || []).map((block, i) => (
                 <div key={i} className="admin-item-card">
-                  <h4>Block {i + 1}</h4>
-                  <div className="admin-form-group">
-                    <label>Problem</label>
-                    <textarea rows={2} value={block.problem || ''} onChange={(e) => patchList('problems', 'blocks', i, 'problem', e.target.value)} />
+                  <div
+                    className="admin-form-row"
+                    style={{ alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}
+                  >
+                    <h4 style={{ margin: 0 }}>Row {i + 1}</h4>
+                    <button
+                      type="button"
+                      className="admin-delete-button"
+                      onClick={() => removeProblemBlock(i)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                  <div className="admin-form-row">
+                    <div className="admin-form-group" style={{ flex: 1 }}>
+                      <label>Problem</label>
+                      <textarea
+                        rows={3}
+                        value={block.problem || ''}
+                        onChange={(e) => patchList('problems', 'blocks', i, 'problem', e.target.value)}
+                        placeholder="Describe the problem"
+                      />
+                    </div>
+                    <div className="admin-form-group" style={{ flex: 1 }}>
+                      <label>Fix</label>
+                      <textarea
+                        rows={3}
+                        value={block.fix || ''}
+                        onChange={(e) => patchList('problems', 'blocks', i, 'fix', e.target.value)}
+                        placeholder="Describe the fix"
+                      />
+                    </div>
                   </div>
                   <div className="admin-form-group">
-                    <label>Fix title</label>
-                    <input value={block.fixTitle || ''} onChange={(e) => patchList('problems', 'blocks', i, 'fixTitle', e.target.value)} />
-                  </div>
-                  <div className="admin-form-group">
-                    <label>Fix description</label>
-                    <textarea rows={2} value={block.fix || ''} onChange={(e) => patchList('problems', 'blocks', i, 'fix', e.target.value)} />
+                    <label>Fix title (optional)</label>
+                    <input
+                      value={block.fixTitle || ''}
+                      onChange={(e) => patchList('problems', 'blocks', i, 'fixTitle', e.target.value)}
+                      placeholder="e.g. Fix — Zero Cancellation"
+                    />
                   </div>
                 </div>
               ))}
+              <button
+                type="button"
+                className="admin-add-button"
+                onClick={addProblemBlock}
+                style={{ marginTop: 12 }}
+              >
+                + Add Problem / Fix row
+              </button>
             </div>
           )}
 
@@ -413,7 +516,10 @@ const AdminLandingPages = () => {
 
           {activeSection === 'testimonials' && testimonials && (
             <div className="admin-section-card">
-              <h3>Testimonials</h3>
+              <h3>Testimonials — {activePage?.label}</h3>
+              <p style={{ margin: '0 0 16px', color: '#666', fontSize: 14 }}>
+                Add or remove testimonials for both landing pages. Save to update the public slider.
+              </p>
               <div className="admin-form-row">
                 <div className="admin-form-group">
                   <label>Title (before highlight)</label>
@@ -428,9 +534,22 @@ const AdminLandingPages = () => {
                 <label>Subtitle</label>
                 <input value={testimonials.subtitle || ''} onChange={(e) => patch('testimonials', 'subtitle', e.target.value)} />
               </div>
+              <h4 style={{ marginTop: 20 }}>Testimonial items</h4>
               {(testimonials.items || []).map((item, i) => (
                 <div key={i} className="admin-item-card">
-                  <h4>Testimonial {i + 1}</h4>
+                  <div
+                    className="admin-form-row"
+                    style={{ alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}
+                  >
+                    <h4 style={{ margin: 0 }}>Testimonial {i + 1}</h4>
+                    <button
+                      type="button"
+                      className="admin-delete-button"
+                      onClick={() => removeTestimonial(i)}
+                    >
+                      Remove
+                    </button>
+                  </div>
                   <div className="admin-form-group">
                     <label>Quote</label>
                     <textarea rows={4} value={item.quote || ''} onChange={(e) => patchList('testimonials', 'items', i, 'quote', e.target.value)} />
@@ -467,12 +586,23 @@ const AdminLandingPages = () => {
                   </div>
                 </div>
               ))}
+              <button
+                type="button"
+                className="admin-add-button"
+                onClick={addTestimonial}
+                style={{ marginTop: 12 }}
+              >
+                + Add testimonial
+              </button>
             </div>
           )}
 
           {activeSection === 'faq' && faq && (
             <div className="admin-section-card">
-              <h3>FAQ</h3>
+              <h3>FAQ — {activePage?.label}</h3>
+              <p style={{ margin: '0 0 16px', color: '#666', fontSize: 14 }}>
+                Add or remove FAQ items for both landing pages. Save to update the public page.
+              </p>
               <div className="admin-form-row">
                 <div className="admin-form-group">
                   <label>Title (before highlight)</label>
@@ -483,9 +613,22 @@ const AdminLandingPages = () => {
                   <input value={faq.titleHighlight || ''} onChange={(e) => patch('faq', 'titleHighlight', e.target.value)} />
                 </div>
               </div>
+              <h4 style={{ marginTop: 20 }}>FAQ items</h4>
               {(faq.items || []).map((item, i) => (
                 <div key={i} className="admin-item-card">
-                  <h4>FAQ {i + 1}</h4>
+                  <div
+                    className="admin-form-row"
+                    style={{ alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}
+                  >
+                    <h4 style={{ margin: 0 }}>FAQ {i + 1}</h4>
+                    <button
+                      type="button"
+                      className="admin-delete-button"
+                      onClick={() => removeFaq(i)}
+                    >
+                      Remove
+                    </button>
+                  </div>
                   <div className="admin-form-group">
                     <label>Question</label>
                     <input value={item.question || ''} onChange={(e) => patchList('faq', 'items', i, 'question', e.target.value)} />
@@ -504,6 +647,14 @@ const AdminLandingPages = () => {
                   </div>
                 </div>
               ))}
+              <button
+                type="button"
+                className="admin-add-button"
+                onClick={addFaq}
+                style={{ marginTop: 12 }}
+              >
+                + Add FAQ
+              </button>
             </div>
           )}
 

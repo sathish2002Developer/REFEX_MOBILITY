@@ -96,8 +96,12 @@
 
 .rac-page .rac-features-section .ets-container {
   max-width: var(--rac-layout-max);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   padding-left: var(--rac-layout-gutter);
   padding-right: var(--rac-layout-gutter);
+  box-sizing: border-box;
 }
 
 .rac-page .rac-features-layout {
@@ -247,48 +251,81 @@
   flex-shrink: 0;
 }
 
-/* RAC problem/fix — Refex theme checkmark on fix side */
-.rac-page .ets-compare-icon--fix {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
-  background: var(--rac-check-bg);
-  border-radius: 50%;
-  color: var(--rac-check-color);
-  font-size: 14px;
+/* RAC problem/fix — table layout */
+.rac-page .rac-problems-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(93, 63, 58, 0.06);
+  border: 1px solid var(--ets-border, #ebe4e0);
+}
+
+.rac-page .rac-problems-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.rac-page .rac-problems-table th,
+.rac-page .rac-problems-table td {
+  padding: 18px 22px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.rac-page .rac-problems-table thead th {
+  background: #f8f1ee;
+  color: var(--ets-primary, #c45c26);
+  font-size: 16px;
   font-weight: 700;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  font-family: var(--ets-font);
+  text-align: center;
+  border-bottom: 1px solid var(--ets-border, #ebe4e0);
 }
 
-.rac-page .ets-compare-icon--fix::before {
-  content: '✓';
+.rac-page .rac-problems-table thead th:last-child {
+  color: #2e7d32;
 }
 
-.rac-page .ets-compare-card--fix .ets-compare-card__head h3 {
-  color: var(--ets-brown, #5d3f3a);
+.rac-page .rac-problems-table thead th:first-child,
+.rac-page .rac-problems-table tbody td:first-child {
+  width: 50%;
+  border-right: 1px solid var(--ets-border, #ebe4e0);
 }
 
-/* RAC compare — section intro + card copy on one line (desktop) */
+.rac-page .rac-problems-table tbody td {
+  color: var(--ets-muted, #5a504c);
+  background: #fff;
+  border-bottom: 1px solid var(--ets-border, #ebe4e0);
+}
+
+.rac-page .rac-problems-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.rac-page .rac-problems-table tbody tr:hover td {
+  background: #fcf8f6;
+}
+
 @media (min-width: 992px) {
   .rac-page .ets-problems__intro .ets-lead {
     white-space: nowrap;
     max-width: none;
   }
-
-  .rac-page .ets-compare-card p {
-    white-space: nowrap;
-    font-size: 13px;
-    line-height: 1.35;
-  }
 }
 
 @media (max-width: 991px) {
-  .rac-page .ets-problems__intro .ets-lead,
-  .rac-page .ets-compare-card p {
+  .rac-page .ets-problems__intro .ets-lead {
     white-space: normal;
+  }
+
+  .rac-page .rac-problems-table th,
+  .rac-page .rac-problems-table td {
+    padding: 14px 16px;
+    font-size: 14px;
   }
 }
 
@@ -307,31 +344,50 @@
   z-index: 2;
 }
 
-/* RAC contact form — full background + card overlaps top-left into FAQ */
+/* RAC contact form — full-width photo; card left, person/car right */
 .rac-page .rac-final {
   position: relative;
   z-index: 2;
   margin-top: 0;
   padding: 24px 0 64px;
   overflow: visible;
-  min-height: 520px;
+  min-height: 560px;
   background-color: #fff9f8;
-  background-position: center, right center;
-  background-size: 100% 100%, auto 100%;
-  background-repeat: no-repeat;
+}
+
+.rac-page .rac-final__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.rac-page .rac-final__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+.rac-page .rac-final__scrim {
+  display: none;
 }
 
 .rac-page .rac-final__grid {
+  position: relative;
+  z-index: 2;
   display: grid;
-  grid-template-columns: min(420px, 44%) 1fr;
+  grid-template-columns: min(400px, 38%) 1fr;
   gap: 0;
   align-items: start;
-  min-height: 0;
+  min-height: 480px;
 }
 
 .rac-page .rac-final__form-wrap {
   grid-column: 1;
-  max-width: 460px;
+  max-width: 400px;
   margin-top: -104px;
   position: relative;
   z-index: 5;
@@ -391,7 +447,7 @@
   padding: 32px 28px;
   border-radius: 24px;
   background: #fff;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
   border: none;
 }
 
@@ -515,6 +571,7 @@
 
 .rac-page .rac-final.ets-final {
   padding: 24px 0 64px;
+  background-image: none;
 }
 
 @media (max-width: 991px) {
@@ -525,13 +582,19 @@
   .rac-page .rac-final {
     margin-top: 0;
     padding: 16px 0 48px;
-    min-height: 440px;
-    background-size: 100% 100%, auto 90%;
-    background-position: center, right center;
+    min-height: 460px;
+  }
+
+  .rac-page .rac-final__media img {
+    object-position: 80% center;
+  }
+
+  .rac-page .rac-final__grid {
+    min-height: 380px;
   }
 
   .rac-page .rac-final__form-wrap {
-    max-width: 440px;
+    max-width: 400px;
     margin-top: -56px;
   }
 
@@ -598,8 +661,11 @@
 
   .rac-page .rac-final {
     padding: 12px 0 48px;
-    min-height: 380px;
-    background-size: 100% 100%, auto 85%;
+    min-height: 400px;
+  }
+
+  .rac-page .rac-final__media img {
+    object-position: 75% center;
   }
 
   .rac-page .rac-final__form-wrap {

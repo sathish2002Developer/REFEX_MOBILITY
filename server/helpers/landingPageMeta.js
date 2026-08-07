@@ -8,6 +8,8 @@ const SEED_PATHS = {
 };
 
 const ROUTE_TO_SLUG = {
+  "/CorporateRentals": "rac",
+  "/corporaterentals": "rac",
   "/rac": "rac",
   "/corporate-car-rental": "rac",
   "/employee-transportation": "employee-transportation",
@@ -45,7 +47,10 @@ function getPageMeta(slug) {
 }
 
 function getLandingPageMetaByPath(urlPath) {
-  const slug = ROUTE_TO_SLUG[String(urlPath || "").split("?")[0]];
+  const normalized = String(urlPath || "").split("?")[0];
+  const slug =
+    ROUTE_TO_SLUG[normalized] ||
+    ROUTE_TO_SLUG[normalized.toLowerCase()];
   if (!slug) return null;
   return getPageMeta(slug);
 }

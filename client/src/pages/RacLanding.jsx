@@ -11,7 +11,7 @@ import {
   RECAPTCHA_SITE_KEY,
   isLocalhost as isLocalhostHost,
 } from '../constants/businessForm'
-import { resolveCmsAssetUrl, getHeroBackgroundStyle, getFinalBackgroundStyle } from '../utils/cmsAssetUrl'
+import { resolveCmsAssetUrl, getHeroBackgroundStyle } from '../utils/cmsAssetUrl'
 import './EtsLanding.css'
 import './RacLanding.css'
 
@@ -352,7 +352,7 @@ const RacLanding = () => {
       <main>
         <section className="ets-hero" style={getHeroBackgroundStyle(hero.backgroundImage)}>
           <div className="ets-container ets-hero__grid">
-            <div>
+            <div className="ets-hero__copy">
               <h1 className="ets-h1">
                 {hero.titleLine1}
                 <br />
@@ -411,12 +411,13 @@ const RacLanding = () => {
           <div className="ets-logos__track-wrap">
             <div className="ets-logos__track">
               {logoLoop.map((logo, index) => (
-                <img
-                  key={`${logo.name}-${index}`}
-                  src={resolveCmsAssetUrl(logo.image)}
-                  alt={logo.name}
-                  loading="lazy"
-                />
+                <span className="ets-logos__item" key={`${logo.name}-${index}`}>
+                  <img
+                    src={resolveCmsAssetUrl(logo.image)}
+                    alt={logo.name}
+                    loading="lazy"
+                  />
+                </span>
               ))}
             </div>
           </div>
@@ -430,27 +431,23 @@ const RacLanding = () => {
               </h2>
               <p className="ets-lead">{problems.lead}</p>
             </div>
-            <div className="ets-compare-list">
-              {problems.blocks?.map((block) => (
-                <div key={block.problem} className="ets-compare-row">
-                  <article className="ets-compare-card ets-compare-card--problem">
-                    <div className="ets-compare-card__head">
-                      <span className="ets-compare-icon ets-compare-icon--problem" aria-hidden="true">
-                        !
-                      </span>
-                      <h3>Problem</h3>
-                    </div>
-                    <p>{block.problem}</p>
-                  </article>
-                  <article className="ets-compare-card ets-compare-card--fix">
-                    <div className="ets-compare-card__head">
-                      <span className="ets-compare-icon ets-compare-icon--fix" aria-hidden="true" />
-                      <h3>{block.fixTitle}</h3>
-                    </div>
-                    <p>{block.fix}</p>
-                  </article>
-                </div>
-              ))}
+            <div className="rac-problems-table-wrap">
+              <table className="rac-problems-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Problem</th>
+                    <th scope="col">Fix</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {problems.blocks?.map((block) => (
+                    <tr key={block.problem}>
+                      <td>{block.problem}</td>
+                      <td>{block.fix}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
@@ -601,8 +598,13 @@ const RacLanding = () => {
           ref={finalSectionRef}
           className={`ets-final rac-final${finalInView ? ' is-in-view' : ''}`}
           id="rac-lead-section"
-          style={getFinalBackgroundStyle(form.backgroundImage)}
         >
+          {form.backgroundImage ? (
+            <div className="rac-final__media" aria-hidden="true">
+              <img src={resolveCmsAssetUrl(form.backgroundImage)} alt="" />
+            </div>
+          ) : null}
+          <div className="rac-final__scrim" aria-hidden="true" />
           <div className="ets-container rac-final__grid">
             <div className="rac-final__form-wrap">
               <RacLeadForm

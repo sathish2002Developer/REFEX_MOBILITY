@@ -21,7 +21,7 @@ export const CMS_PAGES = [
 
 export const LANDING_CMS_PAGES = [
   { slug: 'employee-transportation', label: 'Employee Transportation (ETS)', path: '/employee-transportation' },
-  { slug: 'rac', label: 'Corporate Car Rental (RAC)', path: '/rac' },
+  { slug: 'rac', label: 'Corporate Car Rental (RAC)', path: '/CorporateRentals' },
 ]
 
 const REGISTRY = {
