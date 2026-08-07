@@ -393,8 +393,10 @@ header.header-rac-minimal .col-sm-12 {
 }
 
 .rac-page .rac-hero-form-card .ets-form-card__title {
-  font-size: 18px;
+  font-size: clamp(14px, 1.35vw, 17px);
   margin: 0 0 4px;
+  white-space: nowrap;
+  line-height: 1.25;
 }
 
 .rac-page .rac-hero-form-card .ets-form-card__note {
@@ -1382,6 +1384,11 @@ header.header-rac-minimal .col-sm-12 {
 
   .rac-page .rac-hero-form-card {
     padding: 28px 32px;
+  }
+
+  .rac-page .rac-hero-form-card .ets-form-card__title {
+    white-space: normal;
+    font-size: 16px;
   }
 
   .rac-page .rac-hero-form-card .ets-form-row {
