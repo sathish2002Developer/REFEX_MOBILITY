@@ -4,7 +4,10 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { parsePhoneNumberFromString } from 'libphonenumber-js'
 import Header from '../components/Header'
+import GoogleAdsLandingTag from '../components/GoogleAdsLandingTag'
+import LandingClientLogos from '../components/LandingClientLogos'
 import SubmissionSuccessOverlay from '../components/SubmissionSuccessOverlay'
+import { sanitizeCmsHtml } from '../utils/sanitizeHtml'
 import { useCmsPage } from '../hooks/useCmsPage'
 import {
   API_BASE_URL,
@@ -12,6 +15,7 @@ import {
   isLocalhost as isLocalhostHost,
 } from '../constants/businessForm'
 import { resolveCmsAssetUrl, getHeroBackgroundStyle } from '../utils/cmsAssetUrl'
+import { trackGoogleAdsConversion } from '../utils/googleAds'
 import './EtsLanding.css'
 import './RacLanding.css'
 
@@ -124,6 +128,7 @@ function EtsLeadForm({
       }
 
       setForm(EMPTY_FORM)
+      trackGoogleAdsConversion('employeeTransportation').catch(() => {})
       onSuccess?.()
     } catch (err) {
       setApiError(err?.message || 'Failed to submit. Please try again.')
@@ -339,11 +344,9 @@ const EtsLanding = () => {
     document.getElementById('ets-lead-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
-  const clientLogos = logos.items?.filter((logo) => logo.image) ?? []
-  const logoLoop = [...clientLogos, ...clientLogos]
-
   return (
     <div id="page" className="site ets-page rac-page">
+      <GoogleAdsLandingTag pagePath="/employee-transportation" />
       <Header />
       <main>
         <section className="ets-hero" style={getHeroBackgroundStyle(hero.backgroundImage)}>
@@ -379,26 +382,11 @@ const EtsLanding = () => {
             />
           </div>
         </section>
-        <section className="ets-logos" aria-label="Trusted by clients">
-          <div className="ets-container">
-            <p className="ets-logos__title">
-              {logos.titlePrefix} <strong>{logos.titleHighlight}</strong>
-            </p>
-          </div>
-          <div className="ets-logos__track-wrap">
-            <div className="ets-logos__track">
-              {logoLoop.map((logo, index) => (
-                <span className="ets-logos__item" key={`${logo.name}-${index}`}>
-                  <img
-                    src={resolveCmsAssetUrl(logo.image)}
-                    alt={logo.name}
-                    loading="lazy"
-                  />
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
+        <LandingClientLogos
+          titlePrefix={logos.titlePrefix}
+          titleHighlight={logos.titleHighlight}
+          items={logos.items}
+        />
 
         <section className="ets-section ets-problems-section">
           <div className="ets-container">
@@ -424,10 +412,16 @@ const EtsLanding = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {(problems.blocks ?? []).map((block) => (
-                    <tr key={block.problem}>
-                      <td>{block.problem}</td>
-                      <td>{block.fix}</td>
+                  {(problems.blocks ?? []).map((block, i) => (
+                    <tr key={`${i}-${block.fixTitle || 'row'}`}>
+                      <td
+                        className="rac-problems-table__rich"
+                        dangerouslySetInnerHTML={{ __html: sanitizeCmsHtml(block.problem) }}
+                      />
+                      <td
+                        className="rac-problems-table__rich"
+                        dangerouslySetInnerHTML={{ __html: sanitizeCmsHtml(block.fix) }}
+                      />
                     </tr>
                   ))}
                 </tbody>

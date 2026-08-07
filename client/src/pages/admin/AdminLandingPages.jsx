@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { LANDING_CMS_PAGES, getCmsDefaults, mergeCmsPage } from '../../constants/cmsPageRegistry'
 import { API_BASE_URL } from '../../constants/api'
 import AdminImageField from '../../components/admin/AdminImageField'
+import AdminRichTextField from '../../components/admin/AdminRichTextField'
 import './Admin.css'
 
 const SECTIONS = [
@@ -410,22 +411,20 @@ const AdminLandingPages = () => {
                       Remove
                     </button>
                   </div>
-                  <div className="admin-form-row">
-                    <div className="admin-form-group" style={{ flex: 1 }}>
-                      <label>Problem</label>
-                      <textarea
-                        rows={3}
+                  <div className="admin-form-row" style={{ alignItems: 'stretch' }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <AdminRichTextField
+                        label="Problem"
                         value={block.problem || ''}
-                        onChange={(e) => patchList('problems', 'blocks', i, 'problem', e.target.value)}
+                        onChange={(html) => patchList('problems', 'blocks', i, 'problem', html)}
                         placeholder="Describe the problem"
                       />
                     </div>
-                    <div className="admin-form-group" style={{ flex: 1 }}>
-                      <label>Fix</label>
-                      <textarea
-                        rows={3}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <AdminRichTextField
+                        label="Fix"
                         value={block.fix || ''}
-                        onChange={(e) => patchList('problems', 'blocks', i, 'fix', e.target.value)}
+                        onChange={(html) => patchList('problems', 'blocks', i, 'fix', html)}
                         placeholder="Describe the fix"
                       />
                     </div>
