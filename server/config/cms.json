@@ -1,243 +1,6 @@
 {
-
- 
-  
-  "updatedAt": "2026-08-07T11:24:50.999Z",
-
+  "updatedAt": "2026-08-10T10:42:21.018Z",
   "data": {
-    "business-commute": {
-      "slug": "business-commute",
-      "pageTitle": "Business Commute | Refex Mobility",
-      "metaDescription": "India's safest, most reliable and on-time mobility service for corporates and premium travel.",
-      "sections": {
-        "faq": {
-          "items": [
-            {
-              "order": 1,
-              "answer": "As a Refex customer, you get dedicated enterprise dashboard, ride management, monthly reports, payments and invoicing, and secure API integrations.",
-              "question": "What are the benefits of onboarding refex as a mobility partner for our organisation?"
-            },
-            {
-              "order": 2,
-              "answer": "Yes, Refex Mobility provides carbon savings certificates to our business clients, recognizing your contributions to sustainable and eco-friendly transportation.",
-              "question": "Do I get any carbon savings certificate?"
-            },
-            {
-              "order": 3,
-              "answer": "We at Refex ensure all fleet maintenance and driver training, maintaining high standards of safety, cleanliness, and reliability for every ride.",
-              "question": "Who is responsible for ownership and maintains the fleet and drivers?"
-            },
-            {
-              "order": 4,
-              "answer": "Yes. Refex allows you to book travel within City, Airport & Rentals 30 days in advance from our application and admin dashboard.",
-              "question": "Can I book my travel in advance?"
-            },
-            {
-              "order": 5,
-              "answer": "Refex waits for 30 min. If you do not board the cab during this time, the driver partners will cancel the pickup and a NO SHOW charge as per your company policy. Employees then need to rebook the Refex Cab.",
-              "question": "What happens if I do not board the cab from my scheduled time?"
-            },
-            {
-              "order": 6,
-              "answer": "Press Panic button installed at the Left and right side of the car near the front seat belt. Refex representative will immediately call back for support. You can also contact them through 24*7 contact number on your Refex app too.",
-              "question": "What to do in case of emergency?"
-            }
-          ],
-          "titlePrefix": "Frequently Asked",
-          "titleHighlight": "Questions"
-        },
-        "hero": {
-          "title": "Reliable, Sustainable Mobility for Your Business",
-          "ctaLink": "#connect-form",
-          "ctaText": "Get Started",
-          "subtitle": "Redefining corporate commutes with tailored mobility\nsolutions for modern enterprises that truly care.",
-          "backgroundImage": "/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp"
-        },
-        "industries": {
-          "items": [
-            {
-              "alt": "Corporates",
-              "image": "/wp-content/uploads/2025/07/user-m.png",
-              "order": 1,
-              "title": "Corporates",
-              "description": "Ensure your teams get to and from the office seamlessly, safely, and on time—every time."
-            },
-            {
-              "alt": "Healthcare & Pharmaceuticals",
-              "image": "/wp-content/uploads/2025/07/heart-img.png",
-              "order": 2,
-              "title": "Healthcare & Pharmaceuticals",
-              "description": "Provide reliable transportation for patients and caregivers—because timely care starts with timely rides."
-            },
-            {
-              "alt": "Education & Ed-Tech",
-              "image": "/wp-content/uploads/2025/07/graduation-icon.png",
-              "order": 3,
-              "titleLine1": "Education &",
-              "titleLine2": "Ed-Tech",
-              "description": "Empower students and staff with safe, efficient rides that support learning beyond the classroom."
-            },
-            {
-              "alt": "Hospitality",
-              "image": "/wp-content/uploads/2025/07/cap-icon.png",
-              "order": 4,
-              "title": "Hospitality",
-              "description": "Delight your guests with dependable rides—enhancing every step of their journey."
-            }
-          ],
-          "description": "Whether it's getting employees to work, patients to care, students to campus, or guests to their destination—timely, reliable transportation makes all the difference. That's why top organisations across healthcare, education, hospitality, and more trust us to power seamless mobility for the people who matter most to their business.",
-          "titlePrefix": "Reliable Solution",
-          "titleHighlight": "for every Industry"
-        },
-        "whyChooseRefex": {
-          "cards": [
-            {
-              "alt": "Seamless user management",
-              "image": "/wp-content/uploads/2025/07/seamless-icon.png",
-              "order": 1,
-              "title": "Seamless User Management",
-              "description": "Effortless user onboarding including verified onboarding"
-            },
-            {
-              "alt": "Create Guest Booking",
-              "image": "/wp-content/uploads/2025/07/booking-icon.png",
-              "order": 2,
-              "title": "Create Guest Booking",
-              "description": "Effortlessly book and manage guest reservations"
-            },
-            {
-              "alt": "24/7 Assistance",
-              "image": "/wp-content/uploads/2025/07/headphn.png",
-              "order": 3,
-              "title": "Get 24/7 Assistance",
-              "description": "Round the clock assistance available for all your needs"
-            },
-            {
-              "alt": "Dedicated Enterprise Dashboard",
-              "image": "/wp-content/uploads/2025/07/dashboard-icon.png",
-              "order": 4,
-              "title": "Dedicated Enterprise Dashboard",
-              "description": "Centralised business control hub for optimized operations."
-            },
-            {
-              "alt": "Flexible payment options",
-              "image": "/wp-content/uploads/2025/07/payment-icon.png",
-              "order": 5,
-              "title": "Flexible Payment Options",
-              "description": "Adaptable payment solutions for your convenience"
-            },
-            {
-              "alt": "Monthly MIS Report",
-              "image": "/wp-content/uploads/2025/07/monthly-report.png",
-              "order": 6,
-              "titleLine1": "Monthly MIS",
-              "titleLine2": "Report",
-              "description": "Monthly insights report to track progress."
-            },
-            {
-              "alt": "Luxuries & Amenities",
-              "image": "/wp-content/uploads/2025/07/luxuries-icon.png",
-              "order": 7,
-              "titleLine1": "Luxuries &",
-              "titleLine2": "Amenities",
-              "description": "Premium comfort features for enhanced travel experience."
-            }
-          ],
-          "description": "Elevate your business travel experience with our service, offering transparent pricing, an easy booking experience, clean cabs, superior payment and invoicing.",
-          "titlePrefix": "Why Choose",
-          "titleHighlight": "Refex For Business"
-        }
-      },
-      "isActive": true,
-      "updatedAt": "2026-06-19T09:46:16.000Z"
-    },
-    "drive-for-us": {
-      "slug": "drive-for-us",
-      "pageTitle": "Drive For Us | Refex Mobility",
-      "metaDescription": "India's most reliable corporate mobility service for safe, premium and on-time travel. Trusted by business driving clean transport goals.",
-      "sections": {
-        "faq": {
-          "items": [
-            {
-              "order": 1,
-              "answer": "Refex Mobility owns and maintains the fleet of vehicles. As a driver partner, you do not need to invest in purchasing a vehicle. You simply drive and earn — we handle the rest, including vehicle maintenance, insurance, and compliance.",
-              "question": "Who owns the vehicle in this partnership model?"
-            },
-            {
-              "order": 2,
-              "answer": "No need to worry about finding rides. Refex Mobility takes full responsibility for generating ride demand across all our operating cities, ensuring that our driver partners stay productive.",
-              "question": "Is there consistent demand or do I have to find my own rides?"
-            },
-            {
-              "order": 3,
-              "answer": "Payouts are made on time, every time. We follow a fixed payout cycle and deposit earnings directly into your registered bank account.",
-              "question": "When and how do I receive my payouts?"
-            },
-            {
-              "order": 4,
-              "answer": "We provide 24×7 Command Center support, including emergency assistance, route optimization, vehicle service coordination, and app guidance — so you're never alone on the road.",
-              "question": "What kind of support do I get on-road and off-road?"
-            },
-            {
-              "order": 5,
-              "answer": "Yes. We offer flexible models and shifts based on your preference",
-              "question": "Are there different models for driver partnerships?"
-            },
-            {
-              "order": 6,
-              "answer": "Getting started is simple. Just reach out to the mobile number listed on our website. Our team will guide you to the nearest onboarding center, verify your documents, explain the onboarding process, and get you started.",
-              "question": "How do I get started as a driver partner with Refex Mobility?"
-            }
-          ],
-          "titlePrefix": "Frequently Asked",
-          "titleHighlight": "Questions"
-        },
-        "hero": {
-          "title": "Power Your Earnings - Drive Smart",
-          "ctaLink": "#join-form",
-          "ctaText": "Get Started",
-          "subtitle": "We provide the car. You bring the skill. Join us as a professional driver and start earning with our fleet.",
-          "backgroundImage": "/wp-content/uploads/2025/07/drive-section-1-scaled.webp"
-        },
-        "whyChooseUs": {
-          "cards": [
-            {
-              "alt": "Zero Ownership Cost",
-              "image": "/wp-content/uploads/2025/07/zero-ownership.png",
-              "order": 1,
-              "titleLine1": "Zero Ownership",
-              "titleLine2": "Cost",
-              "description": "No need to buy or rent. Drive our fully maintained electric vehicles."
-            },
-            {
-              "alt": "Guaranteed Earnings + Incentives",
-              "image": "/wp-content/uploads/2025/07/earning-incentive.png",
-              "order": 2,
-              "title": "Guaranteed Earnings + Incentivest",
-              "description": "Earn weekly or monthly payouts with performance bonuses and rewards."
-            },
-            {
-              "alt": "App-Based Ride Assignments",
-              "image": "/wp-content/uploads/2025/07/ride-assignmentes.png",
-              "order": 3,
-              "title": "App-Based Ride Assignments",
-              "description": "Easy-to-use driver app with trip details, navigation, and payments."
-            },
-            {
-              "alt": "Reliable Support. Anytime.",
-              "image": "/wp-content/uploads/2025/07/support.png",
-              "order": 4,
-              "title": "Reliable Support. Anytime.",
-              "description": "We handle the vehicle upkeep. You focus on driving."
-            }
-          ],
-          "titlePrefix": "Why",
-          "titleHighlight": "Drive For Us ?"
-        }
-      },
-      "isActive": true,
-      "updatedAt": "2026-06-19T11:02:03.000Z"
-    },
     "employee-transportation": {
       "slug": "employee-transportation",
       "pageTitle": "Employee Transportation Services | Refex Mobility",
@@ -308,11 +71,6 @@
               "image": "/assets/Ather-logo.svg-c-v-sIrx.png"
             },
             {
-              "order": 6,
-              "name": "Grant Thornton",
-              "image": "/uploads/images/image-1786101857197-154977508.png"
-            },
-            {
               "order": 7,
               "name": "Hexaware",
               "image": "/assets/Hexa%20ware-TOy2jbUJ.png"
@@ -326,11 +84,6 @@
               "order": 10,
               "name": "London Stock Exchange",
               "image": "/assets/london-stock-exchange-1-logo-black-and-white-BLzhHteY.png"
-            },
-            {
-              "order": 11,
-              "name": "MindSprint",
-              "image": "/assets/Mindsprint_Logo-qwXUMgdD.png"
             },
             {
               "order": 12,
@@ -388,6 +141,21 @@
               "image": "data:image/webp;base64,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OtiRl1syds92AV7xBlOYSZVhHZclLN9DNZgtuuG2gTPUksIS/k5MyvCvAW06ZrwAs+hJWW5hJD/vTPpE3iUr1r8qvqiDLfSM5GfFZErknTHrBahlJ0qOkvzMebhU3hkLL2cThexKCQMj+Xnl0YbdE7J881pmAkuswVrBSH4+eYypvCtmvwCDqNNzpjAykp8ZhaTeIavX7kZa+ZlTFl6MNj+NyO9rSlbPfgHKWIM5zJyKsIrFFJbtn7JfVMODVM0JY/jLORTh3wPM6ZizXoBR1JDCwqkOuxOQ3+ekjB7BAuAtPzNSP3PCEtRwmIMaUKdjvfGiGy5azpoj1YfPiQDK8L2mZfQoFkB2Jy30nIqwBwEMYdn+qfDSwC6TqGJVcMIY/jJ7Lvx7gDsZe9kvQB9nIACMnF5hd3s/h50Ss3nh5WLoJTuzKjlhCursLUFPkCdjE8ECF2eggImQfC7W6vA9p2byWBZgjjQ4AjUnzEGVtSmoAnsSRrLoBtrCzKkOn7OtMq2bMJYFqGUnWi2jDSe+9G7CwktuqpDdaLmF0IZj4ZXYrRjFohqetNAzEk8TnXpvwJ+ChZeHsUHU8XKM5HMxkuKN2JtjAdo4g6OAgRMmxQEMzEFPJJCIjRSLbrjSFkpSZfh8Z+Xn8M1TtHjBpYN1FtGDF0ZOGMJfbqMI/+5IIEfDSpYFGCMMPF6k3BJU2RiDuixJgxderube8jPnhZkTfg6fi4U6fC9IIMcRMKYFKGUXYjUpzEFdFp9bgiqkkYYtNAsg0A1EsJAqw6cCENkUvnmi9o5rASZRw+xnSvK//h7bL+Hfd0gkCWtpFt2QKTgajhWm8PdtXN+HfxVSyf6FlxOB1/aBqdCzKsL8OaZX+NflSCX7R7bAye7MClb4Pqw7xVMuYRckk4IV6/u0pxoqZhhZYfLhfB3Lv/lwnkgn88e2AP3mgUtJyy3C900c3wu/JkvY4g1MC1DLzswwsUIp8P8Vw6/Cr8uRUOYvuHjYRzfcqNW08PL6hGzKGSll/fgWYN46kMFMCz/b+hZJJWD12o3EIB+Zo9Lywmjp70gr68e3AK3sRF1u4YXJToX0cjrfvbhPYjIrn+RsNa90IEkhu2p1/0sBnz59+gTSOO0XQYX//+TTpwy/f9nwbffEURT9t83R9AOg+jY5oH7Ar7H9K46n/BDXNziiUi7xNCccU3FTLFWGwyo/RNH9FUdWit+2+9cMB1f+Yd6mOeEAy7+v/tD4n7/gIMufflLp/iXHgRb3jz8tYd1//QUHW76Y/iMDgOKf/5Lh8Msf/uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//vuvHw=="
             },
             {
+              "order": 18,
+              "name": "Northern Trust",
+              "image": "/uploads/images/image-1786354730269-613459608.png"
+            },
+            {
+              "order": 18,
+              "name": "TCS",
+              "image": "/assets/Tata_Consultancy_Services_old_logo.svg-De-_qW_U.png"
+            },
+            {
+              "order": 19,
+              "name": "Titan",
+              "image": "data:image/webp;base64,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OtiRl1syds92AV7xBlOYSZVhHZclLN9DNZgtuuG2gTPUksIS/k5MyvCvAW06ZrwAs+hJWW5hJD/vTPpE3iUr1r8qvqiDLfSM5GfFZErknTHrBahlJ0qOkvzMebhU3hkLL2cThexKCQMj+Xnl0YbdE7J881pmAkuswVrBSH4+eYypvCtmvwCDqNNzpjAykp8ZhaTeIavX7kZa+ZlTFl6MNj+NyO9rSlbPfgHKWIM5zJyKsIrFFJbtn7JfVMODVM0JY/jLORTh3wPM6ZizXoBR1JDCwqkOuxOQ3+ekjB7BAuAtPzNSP3PCEtRwmIMaUKdjvfGiGy5azpoj1YfPiQDK8L2mZfQoFkB2Jy30nIqwBwEMYdn+qfDSwC6TqGJVcMIY/jJ7Lvx7gDsZe9kvQB9nIACMnF5hd3s/h50Ss3nh5WLoJTuzKjlhCursLUFPkCdjE8ECF2eggImQfC7W6vA9p2byWBZgjjQ4AjUnzEGVtSmoAnsSRrLoBtrCzKkOn7OtMq2bMJYFqGUnWi2jDSe+9G7CwktuqpDdaLmF0IZj4ZXYrRjFohqetNAzEk8TnXpvwJ+ChZeHsUHU8XKM5HMxkuKN2JtjAdo4g6OAgRMmxQEMzEFPJJCIjRSLbrjSFkpSZfh8Z+Xn8M1TtHjBpYN1FtGDF0ZOGMJfbqMI/+5IIEfDSpYFGCMMPF6k3BJU2RiDuixJgxderube8jPnhZkTfg6fi4U6fC9IIMcRMKYFKGUXYjUpzEFdFp9bgiqkkYYtNAsg0A1EsJAqw6cCENkUvnmi9o5rASZRw+xnSvK//h7bL+Hfd0gkCWtpFt2QKTgajhWm8PdtXN+HfxVSyf6FlxOB1/aBqdCzKsL8OaZX+NflSCX7R7bAye7MClb4Pqw7xVMuYRckk4IV6/u0pxoqZhhZYfLhfB3Lv/lwnkgn88e2AP3mgUtJyy3C900c3wu/JkvY4g1MC1DLzswwsUIp8P8Vw6/Cr8uRUOYvuHjYRzfcqNW08PL6hGzKGSll/fgWYN46kMFMCz/b+hZJJWD12o3EIB+Zo9Lywmjp70gr68e3AK3sRF1u4YXJToX0cjrfvbhPYjIrn+RsNa90IEkhu2p1/0sBnz59+gTSOO0XQYX//+TTpwy/f9nwbffEURT9t83R9AOg+jY5oH7Ar7H9K46n/BDXNziiUi7xNCccU3FTLFWGwyo/RNH9FUdWit+2+9cMB1f+Yd6mOeEAy7+v/tD4n7/gIMufflLp/iXHgRb3jz8tYd1//QUHW76Y/iMDgOKf/5Lh8Msf/uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//vuvHw=="
+            },
+            {
               "order": 20,
               "name": "Wipro",
               "image": "/assets/Wipro_Primary_Logo_Color_RGB.svg-C1EhNplL.png"
@@ -402,27 +170,27 @@
           "blocks": [
             {
               "order": 1,
-              "problem": "Vendors miss pickups, employees complain, you’re stuck following up.",
+              "problem": "<p><strong>Vendors miss pickups</strong>, employees complain, you’re stuck following up.</p>",
               "fixTitle": "Fix — Real -time tracking",
-              "fix": "One partner across vehicle types and cities with real -time tracking and ETA alerts, zero guesswork. "
+              "fix": "<p>One partner across vehicle types and cities with <strong>live tracking and ETA alerts, zero guesswork.</strong></p>"
             },
             {
               "order": 2,
-              "problem": "No visibility until something goes wrong.",
+              "problem": "<p><strong>No visibility</strong> until something goes wrong.</p>",
               "fixTitle": "Fix — Deploy",
-              "fix": "Smart routing built around your shift patterns, with real-time visibility into every trip."
+              "fix": "<p><strong>Smart routing </strong>built around your shift patterns, with <strong>real-time visibility</strong> into every trip.</p>"
             },
             {
               "order": 3,
-              "problem": "Manual billing eats hours every month, disputes drag on.",
+              "problem": "<p><strong>Manual billing</strong> eats hours every month, disputes drag on.</p>",
               "fixTitle": "Fix — Automated billing",
-              "fix": "Automated, transparent billing. One invoice, zero reconciliation."
+              "fix": "<p><strong>Automated, transparent billing</strong>. One invoice, zero reconciliation.</p>"
             },
             {
               "order": 4,
-              "problem": "Safety and compliance are an afterthought until an incident happens.",
+              "problem": "<p>Safety and compliance are an afterthought until an incident happens.</p>",
               "fixTitle": "Fix — Assure",
-              "fix": "Verified drivers, women safety protocols, built-in SOS escalation."
+              "fix": "<p>Verified drivers, women safety protocols, built-in SOS escalation.</p>"
             }
           ]
         },
@@ -587,527 +355,11 @@
           "note": "Fill out the form, our experts will call back within 24 hours",
           "buttonText": "Get a Custom Transport Plan",
           "submittingText": "Submitting…",
-
-          "backgroundImage": "/uploads/images/image-1785488523819-878522644.jpg"
-        },
-        "hero": {
-          "lead": "Safe, on-time, reliable transport for your workforce — across vehicle types, cities, and shift patterns.",
-          "highlights": [
-            {
-              "text": "Seamless migration",
-              "order": 1
-            },
-            {
-              "text": "Automated billing",
-              "order": 2
-            },
-            {
-              "text": "Cost-effective fleet options",
-              "order": 3
-            },
-            {
-              "text": "24/7 support team",
-              "order": 4
-            },
-            {
-              "text": "On-time rides",
-              "order": 5
-            },
-            {
-              "text": "Zero cancellation guaranteed",
-              "order": 6
-            }
-          ],
-          "titleLine1": "Reliable Employee Transportation Services",
-          "trustStats": [
-            {
-              "label": "Companies Trust Us",
-              "order": 1,
-              "value": "100+"
-            },
-            {
-              "label": "Company Owned Vehicles",
-              "order": 2,
-              "value": "2000+"
-            },
-            {
-              "label": "Cities",
-              "order": 3,
-              "value": "5"
-            }
-          ],
-          "servicesLine": "",
-          "titleHighlight": "Built for Every Enterprise.",
-          "backgroundImage": "/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp"
-        },
-        "logos": {
-          "items": [
-            {
-              "name": "Amazon",
-              "image": "/src/assets/refexclients/amazon.png",
-              "order": 1
-            },
-            {
-              "name": "Ather",
-              "image": "/src/assets/refexclients/Ather-logo.svg.png",
-              "order": 2
-            },
-            {
-              "name": "Fairfield by Marriott",
-              "image": "/src/assets/refexclients/Fairfield_by_Marriott_logo.png",
-              "order": 3
-            },
-            {
-              "name": "Flipkart",
-              "image": "/src/assets/refexclients/flipkart-logo-png-transparent.png",
-              "order": 4
-            },
-            {
-              "name": "Four Points",
-              "image": "/src/assets/refexclients/Four_Points_Logo_neu.svg.png",
-              "order": 5
-            },
-            {
-              "name": "Grant Thornton",
-              "image": "/src/assets/refexclients/grant-thornton.png",
-              "order": 6
-            },
-            {
-              "name": "Hexaware",
-              "image": "/src/assets/refexclients/Hexa%20ware.png",
-              "order": 7
-            },
-            {
-              "name": "J.P. Morgan",
-              "image": "/src/assets/refexclients/JP%20Morgan.png",
-              "order": 8
-            },
-            {
-              "name": "Lemon Tree Hotels",
-              "image": "/src/assets/refexclients/lemon-tree-hotels.png",
-              "order": 9
-            },
-            {
-              "name": "London Stock Exchange",
-              "image": "/src/assets/refexclients/london-stock-exchange-1-logo-black-and-white.png",
-              "order": 10
-            },
-            {
-              "name": "MindSprint",
-              "image": "/src/assets/refexclients/Mindsprint_Logo.png",
-              "order": 11
-            },
-            {
-              "name": "Nestlé",
-              "image": "/src/assets/refexclients/Nestle.png",
-              "order": 12
-            },
-            {
-              "name": "PwC",
-              "image": "/src/assets/refexclients/pwc.png",
-              "order": 13
-            },
-            {
-              "name": "Raintree Hotels",
-              "image": "/src/assets/refexclients/raintree.jpeg",
-              "order": 14
-            },
-            {
-              "name": "Samsung",
-              "image": "/src/assets/refexclients/Samsung.png",
-              "order": 15
-            },
-            {
-              "name": "Sopra Steria",
-              "image": "/src/assets/refexclients/sopra_steria.png",
-              "order": 16
-            },
-            {
-              "name": "Taj Hotels",
-              "image": "/src/assets/refexclients/Taj_Hotels_logo.svg.png",
-              "order": 17
-            },
-            {
-              "name": "TCS",
-              "image": "/src/assets/refexclients/Tata_Consultancy_Services_old_logo.svg.png",
-              "order": 18
-            },
-            {
-              "name": "Titan",
-              "image": "/src/assets/refexclients/titan-logo-hd.webp",
-              "order": 19
-            },
-            {
-              "name": "Wipro",
-              "image": "/src/assets/refexclients/Wipro_Primary_Logo_Color_RGB.svg.png",
-              "order": 20
-            }
-          ],
-          "titlePrefix": "Trusted by",
-          "titleHighlight": "leading enterprises"
-        },
-        "midCta": {
-          "title": "",
-          "buttonText": "Talk to Our Team",
-          "description": "See how Refex Mobility simplifies corporate transportation for teams like yours."
-        },
-        "features": {
-          "image": "/wp-content/uploads/elementor/thumbs/outstanding-img-r97rc31a974htbzyt30e7ra24cs8axu2myh0lsb9kc.png",
-          "items": [
-            {
-              "icon": "fa-tachometer-alt",
-              "label": "Dedicated enterprise dashboard",
-              "order": 1
-            },
-            {
-              "icon": "fa-map-marker-alt",
-              "label": "Live GPS Tracking",
-              "order": 2
-            },
-            {
-              "icon": "fa-mobile-alt",
-              "label": "Mobile App available on iOS & Android",
-              "order": 3
-            },
-            {
-              "icon": "fa-file-invoice",
-              "label": "Automated Billing",
-              "order": 4
-            },
-            {
-              "icon": "fa-headset",
-              "label": "24/7 Support",
-              "order": 5
-            },
-            {
-              "icon": "fa-shield-alt",
-              "label": "Women Safety Protocols",
-              "order": 6
-            }
-          ],
-          "imageAlt": "Employee transportation services",
-          "titlePrefix": "Built for",
-          "titleHighlight": "Enterprise Scale"
-        },
-        "problems": {
-          "lead": "One Partner for All Your Employee Transportation Needs",
-          "title": "",
-          "titlePrefix": "",
-          "titleHighlight": "",
-          "blocks": [
-            {
-              "fix": "Real-time tracking with live GPS and ETA alerts, zero guesswork.",
-              "order": 1,
-              "problem": "Vendors miss pickups, employees complain, you’re stuck following up.",
-              "fixTitle": "Fix —"
-            },
-            {
-              "fix": "Smart routing that adapts to shift changes automatically.",
-              "order": 2,
-              "problem": "No visibility until something goes wrong.",
-              "fixTitle": "Fix — Deploy"
-            },
-            {
-              "fix": "One transparent invoice, zero manual reconciliation.",
-              "order": 3,
-              "problem": "Manual billing eats hours every month, disputes drag on.",
-              "fixTitle": "Fix — Automated billing"
-            },
-            {
-              "fix": "Verified drivers, women safety protocols, built-in SOS escalation.",
-              "order": 4,
-              "problem": "Safety and compliance are an afterthought until an incident happens.",
-              "fixTitle": "Fix — Assure"
-            }
-          ]
-        },
-        "testimonials": {
-          "items": [
-            {
-              "name": "Sailas Nulaka",
-              "role": "Admin and Facilities",
-              "order": 1,
-              "quote": "We are delighted with the services provided by Refex Mobility for employee transportation. Their tech-enabled vehicles ensure transparency and safety, which are our organization’s top priorities. The partnership has been both successful and fulfilling, significantly enhancing employee satisfaction.",
-              "company": "Invenco by GVR",
-              "logoImage": "",
-              "logoPrimary": "Invenco",
-              "logoSecondary": "by GVR"
-            },
-            {
-              "name": "Kondanda Ram",
-              "role": "Sr Manager Finance and Admin",
-              "order": 2,
-              "quote": "We are happy with the employee transportation service provided by Refex Mobility Ltd. The seamless transition to sustainable mobility enabled by technology has been both satisfying and successful, and it has definitely improved our team’s daily travel experience. The service has been reliable, punctual, safe, and comfortable.",
-              "company": "Brady Company India Pvt. Ltd",
-              "logoImage": "",
-              "logoPrimary": "Brady",
-              "logoSecondary": "COMPANY"
-            },
-            {
-              "name": "Varun Keswani",
-              "role": "Head of Supply - Asia & Middle East",
-              "order": 3,
-              "quote": "Refex Mobility sets a golden standard for airport transfers. We are happy with consistently reliable, professional drivers and impeccable service every time.",
-              "company": "Transferz",
-              "logoImage": "",
-              "logoPrimary": "Transferz",
-              "logoSecondary": ""
-            },
-            {
-              "name": "Priya Balan",
-              "role": "Asst Manager- Facility",
-              "order": 4,
-              "quote": "Sincerely appreciate the excellent cab service provided for our airport pick-up and drop requirements. The vehicles were well-maintained, punctual, and the drivers were courteous and professional, ensuring a safe and comfortable journey. Your team’s reliability and commitment to service quality have made our travel experience hassle-free.",
-              "company": "Nous",
-              "logoImage": "",
-              "logoPrimary": "Nous",
-              "logoSecondary": ""
-            }
-          ],
-          "subtitle": "Client Testimonials",
-          "titlePrefix": "Results,",
-          "titleHighlight": "Not Just Promises"
-
           "backgroundImage": "/uploads/images/image-1785490498003-83171065.jpg"
         }
       },
       "isActive": true,
-      "updatedAt": "2026-08-07T11:24:50.989Z"
-    },
-    "home": {
-      "slug": "home",
-      "pageTitle": "Refex Mobility | Reliable, Sustainable Mobility Partner",
-      "metaDescription": "India's safest, most reliable and on-time mobility service for corporates and premium travel. Trusted by businesses, driving sustainability goals.",
-      "sections": {
-        "hero": {
-          "ctaLink": "/business-commute/#connect-form",
-          "ctaText": "Get Started",
-          "subtitle": "Rides that keep your business moving – on time, every time.",
-          "titlePrefix": "Where",
-          "titleSuffix": "Meets Responsibility.",
-          "titleHighlight": "Reliability",
-          "backgroundImage": "/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp"
-        },
-        "fleet": {
-          "vehicles": [
-            {
-              "alt": "MG ZS",
-              "order": 1
-            },
-            {
-              "alt": "Nexon",
-              "order": 2
-            },
-            {
-              "alt": "Citroen",
-              "order": 3
-            },
-            {
-              "alt": "Tiogor",
-              "order": 4
-            },
-            {
-              "alt": "XUV 400",
-              "order": 5
-            },
-            {
-              "alt": "Dzire",
-              "order": 6
-            },
-            {
-              "alt": "KIA",
-              "order": 7
-            },
-            {
-              "alt": "BYDE",
-              "order": 8
-            },
-            {
-              "alt": "Ertiga",
-              "order": 9
-            }
-          ],
-          "titlePrefix": "Driven by Choice,",
-          "titleHighlight": "Powered by Reliability",
-          "descriptionPart1": "Whether it's for daily commutes or corporate bookings,",
-          "descriptionPart2": "we have the right vehicle for every journey."
-        },
-        "aboutUs": {
-          "image": "/wp-content/uploads/2025/07/about-imgss.png",
-          "paragraphs": [
-            "Refex Green Mobility Limited (RGML) is a wholly-owned subsidiary of Refex Group's flagship listed entity, Refex Industries Limited. RGML underscores the group's commitment to sustainability and delivers clean mobility services for corporate transportation needs and B2B2C use cases with 1400+ company-owned vehicles. It leverages technology and aims to transform the mobility sector.",
-            "Operating under the brand name \"Refex Mobility\", RGML runs 100% cleaner-fueled vehicles. At Refex Mobility, we go beyond transportation, and we invite you to be part of a movement redefining sustainable mobility.",
-            "Enhance your journey with us and step into a future where sustainability meets innovation."
-          ],
-          "titlePrefix": "About",
-          "titleHighlight": "Us"
-        },
-        "rideOptions": {
-          "tabs": [
-            {
-              "slug": "corporate-commute",
-              "image": "/wp-content/uploads/elementor/thumbs/corpotate-img-r8jucgvni2gpbsuyfk3lfw5sh886uge24wkr57tjxo.png",
-              "label": "Corporate Commute",
-              "order": 1,
-              "ctaLink": "/business-commute/#connect-form",
-              "ctaText": "Get Started",
-              "heading": "Corporate commute packages",
-              "description": "Reliable daily transport for your employees\nusing 100% electric vehicles. Safe, punctual, and\nsustainable rides tailored for modern\nworkplaces."
-            },
-            {
-              "slug": "airport-transfers",
-              "image": "/wp-content/uploads/elementor/thumbs/airports-r8lh8mocw6sys37h6icg1dm0u481sua6mq756q8j70.png",
-              "label": "Airport Transfers",
-              "order": 2,
-              "ctaLink": "/business-commute/#connect-form",
-              "ctaText": "Get Started",
-              "heading": "Airport Transfers",
-              "description": "Enjoy stress-free airport pickups and drop-offs with professional drivers and on-time service. Travel in comfort, whether you're arriving or departing."
-            },
-            {
-              "slug": "hourly-rentals",
-              "image": "/wp-content/uploads/elementor/thumbs/hourly_rentals-r8lhafj7zr9r16l9nsdpbf8ttpcdjyfnvn7natkd9o.png",
-              "label": "Hourly Rentals",
-              "order": 3,
-              "ctaLink": "/business-commute/#connect-form",
-              "ctaText": "Get Started",
-              "heading": "Hourly Rentals",
-              "description": "Hourly Rentals offers customers the convenience of booking a car with a professional driver for a fixed number of hours. Whether it's a business meeting, city tour, shopping spree, users can choose the duration and travel comfortably."
-            },
-            {
-              "slug": "outstation-rides",
-              "image": "/wp-content/uploads/elementor/thumbs/outstanding-img-r97rc31a974htbzyt30e7ra24cs8axu2myh0lsb9k.png",
-              "label": "Outstation Rides",
-              "order": 4,
-              "ctaLink": "/business-commute/#connect-form",
-              "ctaText": "Get Started",
-              "heading": "Outstation Rides",
-              "description": "Whether it's a weekend escape, a business trip, or a visit home, our outstation rides offer safe, comfortable travel beyond city limits, so you can focus on the journey, not the hassle."
-            }
-          ],
-          "titlePrefix": "Ride",
-          "titleHighlight": "Options"
-        },
-        "whyChooseUs": {
-          "cards": [
-            {
-              "alt": "Eco-Friendly Rides",
-              "image": "/wp-content/uploads/2025/07/car-icons.png",
-              "order": 1,
-              "titleLine1": "Eco-Friendly",
-              "titleLine2": "Rides",
-              "description": "Go electric and travel cleaner - for you and the environment."
-            },
-            {
-              "alt": "Corporate Ride Solutions",
-              "image": "/wp-content/uploads/2025/07/corporate-icon.png",
-              "order": 2,
-              "titleLine1": "Corporate Ride",
-              "titleLine2": "Solutions",
-              "description": "Custom packages and dashboards for business and employee transport."
-            },
-            {
-              "alt": "Verified and Trained Drivers",
-              "image": "/wp-content/uploads/2025/07/verified-icon.png",
-              "order": 3,
-              "titleLine1": "Verified and Trained",
-              "titleLine2": "Drivers",
-              "description": "All drivers are background-checked and professionally trained."
-            },
-            {
-              "alt": "Safety and Hygiene Protocols",
-              "image": "/wp-content/uploads/2025/07/safty-icon.png",
-              "order": 4,
-              "titleLine1": "Safety and Hygiene",
-              "titleLine2": "Protocols",
-              "description": "Sanitized vehicles with strict hygiene standards for a worry-free ride."
-            }
-          ],
-          "titlePrefix": "why",
-          "titleHighlight": "Choose Us ?"
-        },
-        "expandingNetwork": {
-          "cities": [
-            {
-              "name": "Bangalore",
-              "image": "/wp-content/uploads/2025/07/banglore-img.png",
-              "order": 1
-            },
-            {
-              "name": "Hyderabad",
-              "image": "/wp-content/uploads/2025/07/hydrabad-img.png",
-              "order": 2
-            },
-            {
-              "name": "Delhi NCR",
-              "image": "/wp-content/uploads/2025/07/delhi-img.png",
-              "order": 3
-            },
-            {
-              "name": "Mumbai",
-              "image": "/wp-content/uploads/2025/07/mumbai-img.png",
-              "order": 4
-            },
-            {
-              "name": "Chennai",
-              "image": "/wp-content/uploads/2025/07/channai-img.png",
-              "order": 5
-            }
-          ],
-          "description": "Growing reach to meet your travel needs.",
-          "titlePrefix": "Our Expanding",
-          "titleHighlight": "Network"
-        },
-        "sustainabilityImpact": {
-          "counters": [
-            {
-              "order": 1,
-              "title": "Happy Riders",
-              "value": 60000,
-              "suffix": "+"
-            },
-            {
-              "order": 2,
-              "title": "CO₂  Saved",
-              "value": 6600,
-              "suffix": " Tonnes+"
-            },
-            {
-              "order": 3,
-              "title": "Kms Covered",
-              "value": 10.2,
-              "suffix": " Crore+"
-            },
-            {
-              "order": 4,
-              "title": "Ltrs Of Fuel Saved",
-              "value": 8.13,
-              "suffix": " Million+"
-            }
-          ],
-          "description": "Every ride counts toward a cleaner planet.",
-          "titlePrefix": "Sustainability",
-          "titleHighlight": "Impact"
-        }
-      },
-      "isActive": true,
-      "updatedAt": "2026-06-19T09:48:01.000Z"
-    },
-    "privacy-policy": {
-      "slug": "privacy-policy",
-      "pageTitle": "Privacy Policy | Refex Mobility",
-      "metaDescription": "India's safest, most reliable and on-time mobility service for corporates and premium travel. Trusted by businesses, driving sustainability goals.",
-      "sections": {
-        "body": {
-          "html": "<p>\r\n                                        This privacy policy applies to the Refex Mobility app for mobile devices that was created by Refex Green Mobility as a Free service. This service is intended for use \"AS IS\".\r\n                                      </p>\r\n\r\n                                      <h2>\r\n                                        Information Collection and Use\r\n                                      </h2>\r\n                                      <p>\r\n                                        The Application collects information when you download and use it. This information may include information such as\r\n                                      </p>\r\n                                      <ul>\r\n                                        <li>Your device's Internet Protocol address (e.g. IP address)</li>\r\n                                        <li>The pages of the Application that you visit, the time and date of your visit, the time spent on those pages.</li>\r\n                                        <li>The time spent on the Application.</li>\r\n                                        <li>The operating system you use on your mobile device.</li>\r\n                                      </ul>\r\n\r\n                                      <p>\r\n                                        To provide cab booking and ride tracking services, our app requires access to your <strong>precise location data</strong> (e.g., GPS). This data is essential for:\r\n                                      </p>\r\n                                      <ul>\r\n                                        <li>Matching you with nearby drivers</li>\r\n                                        <li>Providing accurate pickup and drop-off locations</li>\r\n                                        <li>Real-time ride tracking and navigation</li>\r\n                                        <li>Ensuring driver and passenger safety</li>\r\n                                        <li>Improving route efficiency and service quality</li>\r\n                                      </ul>\r\n\r\n                                      <p>\r\n                                        We collect location data only when the app is actively in use or running in the background (if permitted), and only with your explicit consent. You can manage location permissions at any time through your device settings.\r\n                                      </p>\r\n                                      <p>\r\n                                        Your location data is:\r\n                                      </p>\r\n                                      <ul>\r\n                                        <li><strong>Securely stored</strong> and transmitted using encrypted channels</li>\r\n                                        <li><strong>Not shared</strong> with third parties except as required for core service delivery (e.g., mapping, navigation, analytics)</li>\r\n                                        <li><strong>Never used for unrelated marketing purposes</strong> without your consent</li>\r\n                                      </ul>\r\n\r\n                                      <p>\r\n                                        If you disable location access, certain features of the app may not function properly, including booking and tracking rides.\r\n                                      </p>\r\n\r\n                                      <p>\r\n                                        The Service Provider may use the information you provided to contact you from time to time to provide you with important information, required notices and marketing promotions.\r\n                                      </p>\r\n\r\n                                      <p>\r\n                                        For a better experience, while using the Application, the Service Provider may require you to provide us with certain personally identifiable information, including but not limited to Email, Gender, Mobile number. The information that the Service Provider request will be retained by them and used as described in this privacy policy.\r\n                                      </p>\r\n\r\n                                      <h2>\r\n                                        Third Party Access\r\n                                      </h2>\r\n                                      <p>\r\n                                        Only aggregated, anonymized data is periodically transmitted to external services to aid the Service Provider in improving the Application and their service. The Service Provider may share your information with third parties in the ways that are described in this privacy statement.\r\n                                      </p>\r\n                                      <p>\r\n                                        Please note that the Application utilizes third-party services that have their own Privacy Policy about handling data. Below are the links to the Privacy Policy of the third-party service providers used by the Application:\r\n                                      </p>\r\n                                      <ul>\r\n                                        <li>Google Play Services</li>\r\n                                        <li>Google Analytics for Firebase</li>\r\n                                        <li>Firebase Crashlytics</li>\r\n                                      </ul>\r\n\r\n                                      <p>\r\n                                        The Service Provider may disclose User Provided and Automatically Collected Information:\r\n                                      </p>\r\n                                      <ul>\r\n                                        <li>as required by law, such as to comply with a subpoena, or similar legal process.</li>\r\n                                        <li>when they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, or respond to a government request.</li>\r\n                                        <li>with their trusted services providers who work on their behalf, do not have an independent use of the information we disclose to them, and have agreed to adhere to the rules set forth in this privacy statement.</li>\r\n                                      </ul>\r\n\r\n                                      <p>\r\n                                        This privacy policy explains how we collect, use, and disclose information, including SMS messages, when you use our app.\r\n                                      </p>\r\n\r\n                                      <h3>\r\n                                        Collection of SMS Messages\r\n                                      </h3>\r\n                                      <ul>\r\n                                        <li>Our app may request permission to access your SMS messages for specific purposes outlined in our app's functionality. We only access SMS messages when explicitly authorized by the user.</li>\r\n                                      </ul>\r\n\r\n                                      <h3>\r\n                                        Use of SMS Messages\r\n                                      </h3>\r\n                                      <ul>\r\n                                        <li>We only access and use SMS messages for purposes explicitly stated in our app's functionality. This includes purposes, such as OTP verification codes and transaction notifications.</li>\r\n                                      </ul>\r\n\r\n                                      <h3>\r\n                                        Storage and Security\r\n                                      </h3>\r\n                                      <ul>\r\n                                        <li>Any SMS messages accessed by our app are securely stored on your device and are not transmitted to our servers or any third parties.</li>\r\n                                        <li>We employ industry-standard security measures to protect your SMS messages and other personal information from unauthorized access, alteration, disclosure, or destruction.</li>\r\n                                      </ul>\r\n\r\n                                      <h3>\r\n                                        Disclosure of SMS Messages\r\n                                      </h3>\r\n                                      <ul>\r\n                                        <li>We do not disclose your SMS messages to third parties.</li>\r\n                                      </ul>\r\n\r\n                                      <h3>\r\n                                        User Control and Consent\r\n                                      </h3>\r\n                                      <ul>\r\n                                        <li>You have full control over the permissions granted to our app, including the ability to revoke permission to access SMS messages at any time through your device settings.</li>\r\n                                        <li>By using our app and granting permissions, you consent to the collection, use, and disclosure of SMS messages as described in this privacy policy.</li>\r\n                                      </ul>\r\n\r\n                                      <h2>\r\n                                        Opt-Out Rights\r\n                                      </h2>\r\n                                      <p>\r\n                                        You can stop all collection of information by the Application easily by uninstalling it. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.\r\n                                      </p>\r\n\r\n                                      <h2>\r\n                                        Data Retention Policy\r\n                                      </h2>\r\n                                      <p>\r\n                                        The Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. If you'd like them to delete User Provided Data that you have provided via the Application, please contact them at <a href=\"mailto:sasi.a@refex.co.in\">sasi.a@refex.co.in</a> and they will respond in a reasonable time.\r\n                                      </p>\r\n\r\n                                      <h2>\r\n                                        Children\r\n                                      </h2>\r\n                                      <p>\r\n                                        The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13.\r\n                                      </p>\r\n                                      <p>\r\n                                        The Application does not address anyone under the age of 13. The Service Provider does not knowingly collect personally identifiable information from children under 13 years of age. In the case the Service Provider discover that a child under 13 has provided personal information, the Service Provider will immediately delete this from their servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact the Service Provider (<a href=\"mailto:rgml.support@refex.co.in\">rgml.support@refex.co.in</a>) so that they will be able to take the necessary actions.\r\n                                      </p>\r\n\r\n                                      <h2>\r\n                                        Security\r\n                                      </h2>\r\n                                      <p>\r\n                                        The Service Provider is concerned about safeguarding the confidentiality of your information. The Service Provider provides physical, electronic, and procedural safeguards to protect information the Service Provider processes and maintains.\r\n                                      </p>\r\n\r\n                                      <h2>\r\n                                        Changes\r\n                                      </h2>\r\n                                      <p>\r\n                                        This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.\r\n                                      </p>\r\n                                      <p>\r\n                                        This privacy policy is effective as of 2024-03-24\r\n                                      </p>\r\n\r\n                                      <h2>\r\n                                        Your Consent\r\n                                      </h2>\r\n                                      <p>\r\n                                        By using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by us.\r\n                                      </p>\r\n\r\n                                      <h2>\r\n                                        Refund Policy\r\n                                      </h2>\r\n                                      <p>\r\n                                        1. This website with the URL of <a href=\"https://refexmobility.com\" target=\"_blank\" rel=\"noopener noreferrer\">https://refexmobility.com</a> (\"Website/Site\") is operated by Refex Green Mobility (RGML) Private Limited (\"We/Our/Us\").\r\n                                      </p>\r\n                                      <p>\r\n                                        2. We are committed to providing our customers with the highest quality services. However, on rare occasions, services may be found to be deficient. In such cases, we offer refund in accordance with this Refund Policy (\"Policy\").\r\n                                      </p>\r\n                                      <p>\r\n                                        3. You are advised to read Our Terms and Conditions along with this Policy.\r\n                                      </p>\r\n                                      <p>\r\n                                        4. By using this website, You agree to be bound by the terms contained in this policy without modification. If you do not agree to the terms contained in this Policy, You are advised not to transact on this website.\r\n                                      </p>\r\n                                      <p>\r\n                                        5. We offer 4-7 working Days refund policy for the eligible Services.\r\n                                      </p>\r\n                                      <p>\r\n                                        6. Please read this policy before availing service on this website, so that You can understand Your Rights as well as what You can expect from Us if You are not happy with Your purchase.\r\n                                      </p>\r\n\r\n                                      <h3>\r\n                                        DEFINITIONS\r\n                                      </h3>\r\n                                      <p>\r\n                                        1. \"Business Days\" – means a day that is not a Saturday, Sunday, public holiday, or bank holiday in India or in the state where our office is located.\r\n                                      </p>\r\n                                      <p>\r\n                                        2. \"Customer\" – means a person who avails services for considerations and does not include commercial purchases.\r\n                                      </p>\r\n                                      <p>\r\n                                        3. \"Date of Transaction\" – means the date of invoice of the service, which includes the date of renewal processed in accordance with the terms and conditions of the applicable service agreement.\r\n                                      </p>\r\n                                      <p>\r\n                                        4. \"Website\" – means this website with the URL: <a href=\"https://refexmobility.com\" target=\"_blank\" rel=\"noopener noreferrer\">https://refexmobility.com</a>\r\n                                      </p>\r\n\r\n                                      <h3>\r\n                                        REFUNDS RULES\r\n                                      </h3>\r\n                                      <p>\r\n                                        1. We will not process a refund if You have placed the order for the wrong service.\r\n                                      </p>\r\n                                      <p>\r\n                                        2. When you make a qualifying refund request. We may refund the full amount, less any additional cost incurred by Us in providing such Services.\r\n                                      </p>\r\n                                      <p>\r\n                                        3. Refund shall only be considered once the Customer concerned produces relevant documents and proof.\r\n                                      </p>\r\n                                      <p>\r\n                                        4. Once qualified, the refunds are applied to the original payment option.\r\n                                      </p>\r\n                                      <p>\r\n                                        5. The request for a refund of Services can be made in the following manner:\r\n                                      </p>\r\n                                      <p>\r\n                                        A) You can send an email to <a href=\"mailto:sasi.a@refex.co.in\">sasi.a@refex.co.in</a>.\r\n                                      </p>\r\n                                      <p>\r\n                                        B) To be eligible for a refund, You have to request for refund within 24 Hours (1 Day) just after the placement of your booking.\r\n                                      </p>\r\n                                      <p>\r\n                                        C) You will not be entitled to any kind of refund after 24 Hours (1 Day) of your booking.\r\n                                      </p>\r\n\r\n                                      <h3>\r\n                                        EXEMPTIONS\r\n                                      </h3>\r\n                                      <p>\r\n                                        Notwithstanding the other provisions of this Policy, We may refuse to provide a refund for a service if:\r\n                                      </p>\r\n                                      <p>\r\n                                        A) You knew or were made aware of the problem(s) with the service before you availed it.\r\n                                      </p>\r\n                                      <p>\r\n                                        B) Free Services.\r\n                                      </p>\r\n                                      <p>\r\n                                        C) Refund requests are placed after the refund window is closed.\r\n                                      </p>\r\n                                      <p>\r\n                                        Apart from the above, the following exemptions are applicable when it comes to the refund:\r\n                                      </p>\r\n                                      <p>\r\n                                        A) Payment towards Vinyl Printing\r\n                                      </p>\r\n                                      <p>\r\n                                        B) Payment towards Vehicle Registration Program (Vehicle Enrolment Scheme)\r\n                                      </p>\r\n                                      <p>\r\n                                        C) Payment towards delivered Advertising Services\r\n                                      </p>\r\n\r\n                                      <h3>\r\n                                        RESPONSE TIME\r\n                                      </h3>\r\n                                      <p>\r\n                                        1. Refunds are normally processed within 4-7 Business Days after checking the veracity of the refund request.\r\n                                      </p>\r\n                                      <p>\r\n                                        2. The period of the refund may also depend on various banking and payment channels, and We will not be liable for any errors or delays in a refund due to banks or third-party service providers.\r\n                                      </p>\r\n\r\n                                      <h3>\r\n                                        CANCELLATION OF RETURN REQUEST\r\n                                      </h3>\r\n                                      <p>\r\n                                        A request for return or refund once made can be cancelled by contacting customer care at <a href=\"https://refexmobility.com\" target=\"_blank\" rel=\"noopener noreferrer\">https://refexmobility.com</a>, <a href=\"tel:+917305956214\">(+91) 7305956214</a>.\r\n                                      </p>\r\n\r\n                                      <h3>\r\n                                        REFUSAL OF RETURN OR REFUND REQUEST\r\n                                      </h3>\r\n                                      <p>\r\n                                        We reserve the right to refuse any request for a or refund if such request is not in compliance with this Policy or applicable laws.\r\n                                      </p>\r\n\r\n                                      <h2>\r\n                                        Contact Us\r\n                                      </h2>\r\n                                      <p>\r\n                                        If you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the Service Provider via email at <a href=\"mailto:rgml.support@refex.co.in\">rgml.support@refex.co.in</a>\r\n                                      </p>"
-        },
-        "hero": {
-          "title": "Privacy Policy",
-          "backgroundImage": "https://refexmobility.com/wp-content/uploads/2025/07/drive-section-1-scaled.webp"
-        }
-      },
-      "isActive": true,
-      "updatedAt": "2026-06-19T09:46:16.000Z"
+      "updatedAt": "2026-08-10T09:48:33.676Z"
     },
     "rac": {
       "slug": "rac",
@@ -1117,8 +369,7 @@
         "hero": {
           "titleLine1": "One Corporate Mobility Partner.",
           "titleHighlight": "Every Business Journey.",
-          "servicesLine": "Corporate Car Rental – Safe and Reliable • Airport Transfer Services for Corporate travels",
-
+          "servicesLine": "",
           "serviceButtons": [
             {
               "order": 1,
@@ -1133,9 +384,7 @@
               "label": "Intercity Travel"
             }
           ],
-          
-          "lead": "Safe, reliable rides for corporate car rentals and airport transfers, trusted by leading enterprises.",
-
+          "lead": "Safe, reliable rides for corporate car rentals and airport transfers, trusted by leading businesses. ",
           "backgroundImage": "/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp",
           "highlights": [
             {
@@ -1193,147 +442,102 @@
             {
               "order": 1,
               "name": "Amazon",
-
               "image": "/assets/amazon-Ba0jenJf.png"
-
             },
             {
               "order": 2,
               "name": "Ather",
-
               "image": "/assets/Ather-logo.svg-c-v-sIrx.png"
-
             },
             {
               "order": 3,
               "name": "Fairfield by Marriott",
-
               "image": "/assets/Fairfield_by_Marriott_logo-DTf3PT2Z.png"
-
             },
             {
               "order": 4,
               "name": "Flipkart",
-
               "image": "/assets/flipkart-logo-png-transparent-Ct4AH1XY.png"
-
             },
             {
               "order": 5,
               "name": "Four Points",
-
               "image": "/assets/Four_Points_Logo_neu.svg-DQxzyhRN.png"
-
             },
             {
               "order": 6,
               "name": "Grant Thornton",
-
               "image": "/assets/grant-thornton-BhrehETd.png"
             },
             {
               "order": 7,
               "name": "Hexaware",
-
               "image": "/assets/Hexa%20ware-TOy2jbUJ.png"
-
             },
             {
               "order": 8,
               "name": "J.P. Morgan",
-
-              
               "image": "/assets/JP%20Morgan-4VwzywyW.png"
-
             },
             {
               "order": 9,
               "name": "Lemon Tree Hotels",
-
               "image": "/assets/lemon-tree-hotels-DaXliHw5.png"
-
             },
             {
               "order": 10,
               "name": "London Stock Exchange",
-
-             
               "image": "/assets/london-stock-exchange-1-logo-black-and-white-BLzhHteY.png"
-
             },
             {
               "order": 11,
               "name": "MindSprint",
-
               "image": "/assets/Mindsprint_Logo-qwXUMgdD.png"
-
             },
             {
               "order": 12,
               "name": "Nestlé",
               "image": "/assets/Nestle-Cbi2S3lT.png"
-
-
-             
             },
             {
               "order": 13,
               "name": "PwC",
-
-              
               "image": "/assets/pwc-kTfhTpg9.png"
-
             },
             {
               "order": 14,
               "name": "Raintree Hotels",
-
-             
               "image": "/assets/raintree-BlFIqK7B.jpeg"
-
             },
             {
               "order": 15,
               "name": "Samsung",
-
               "image": "/assets/Samsung-BWvm8yHf.png"
-
             },
             {
               "order": 16,
               "name": "Sopra Steria",
-
               "image": "/assets/sopra_steria-DuKnnHtI.png"
             },
             {
               "order": 17,
               "name": "Taj Hotels",
-
               "image": "/assets/Taj_Hotels_logo.svg-Cx2G8ale.png"
-
             },
             {
               "order": 18,
               "name": "TCS",
-
               "image": "/assets/Tata_Consultancy_Services_old_logo.svg-De-_qW_U.png"
-
             },
             {
               "order": 19,
               "name": "Titan",
-
               "image": "data:image/webp;base64,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OtiRl1syds92AV7xBlOYSZVhHZclLN9DNZgtuuG2gTPUksIS/k5MyvCvAW06ZrwAs+hJWW5hJD/vTPpE3iUr1r8qvqiDLfSM5GfFZErknTHrBahlJ0qOkvzMebhU3hkLL2cThexKCQMj+Xnl0YbdE7J881pmAkuswVrBSH4+eYypvCtmvwCDqNNzpjAykp8ZhaTeIavX7kZa+ZlTFl6MNj+NyO9rSlbPfgHKWIM5zJyKsIrFFJbtn7JfVMODVM0JY/jLORTh3wPM6ZizXoBR1JDCwqkOuxOQ3+ekjB7BAuAtPzNSP3PCEtRwmIMaUKdjvfGiGy5azpoj1YfPiQDK8L2mZfQoFkB2Jy30nIqwBwEMYdn+qfDSwC6TqGJVcMIY/jJ7Lvx7gDsZe9kvQB9nIACMnF5hd3s/h50Ss3nh5WLoJTuzKjlhCursLUFPkCdjE8ECF2eggImQfC7W6vA9p2byWBZgjjQ4AjUnzEGVtSmoAnsSRrLoBtrCzKkOn7OtMq2bMJYFqGUnWi2jDSe+9G7CwktuqpDdaLmF0IZj4ZXYrRjFohqetNAzEk8TnXpvwJ+ChZeHsUHU8XKM5HMxkuKN2JtjAdo4g6OAgRMmxQEMzEFPJJCIjRSLbrjSFkpSZfh8Z+Xn8M1TtHjBpYN1FtGDF0ZOGMJfbqMI/+5IIEfDSpYFGCMMPF6k3BJU2RiDuixJgxderube8jPnhZkTfg6fi4U6fC9IIMcRMKYFKGUXYjUpzEFdFp9bgiqkkYYtNAsg0A1EsJAqw6cCENkUvnmi9o5rASZRw+xnSvK//h7bL+Hfd0gkCWtpFt2QKTgajhWm8PdtXN+HfxVSyf6FlxOB1/aBqdCzKsL8OaZX+NflSCX7R7bAye7MClb4Pqw7xVMuYRckk4IV6/u0pxoqZhhZYfLhfB3Lv/lwnkgn88e2AP3mgUtJyy3C900c3wu/JkvY4g1MC1DLzswwsUIp8P8Vw6/Cr8uRUOYvuHjYRzfcqNW08PL6hGzKGSll/fgWYN46kMFMCz/b+hZJJWD12o3EIB+Zo9Lywmjp70gr68e3AK3sRF1u4YXJToX0cjrfvbhPYjIrn+RsNa90IEkhu2p1/0sBnz59+gTSOO0XQYX//+TTpwy/f9nwbffEURT9t83R9AOg+jY5oH7Ar7H9K46n/BDXNziiUi7xNCccU3FTLFWGwyo/RNH9FUdWit+2+9cMB1f+Yd6mOeEAy7+v/tD4n7/gIMufflLp/iXHgRb3jz8tYd1//QUHW76Y/iMDgOKf/5Lh8Msf/uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//vuvHw=="
-
-              "image": "data:image/webp;base64,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"},
+            },
             {
               "order": 20,
               "name": "Wipro",
-
-             
-
               "image": "/assets/Wipro_Primary_Logo_Color_RGB.svg-C1EhNplL.png"
-
             }
           ]
         },
@@ -1344,50 +548,27 @@
           "blocks": [
             {
               "order": 1,
-
-              "problem": "<p><strong><span class=\"ql-cursor\">﻿</span></strong>A <strong>cancelled cab </strong>before a client meeting is a bad impression you didn’t sign up for.</p>",
+              "problem": "<p>A <strong>cancelled cab</strong> before a client meeting is a bad impression you didn’t sign up for.</p>",
               "fixTitle": "Fix — Zero Cancellation",
-              "fix": "<p><strong><span class=\"ql-cursor\">﻿</span></strong>Zero <strong>Cancellation</strong> Promise on every booking, so your schedule stays yours.</p>"
+              "fix": "<p><strong>Zero Cancellation Promise</strong> on every booking, so your schedule stays yours.</p>"
             },
             {
               "order": 2,
-              "problem": "<p>Missed flights because a driver showed up late, or didn’t show at all.</p>",
+              "problem": "<p><strong>Missed flights </strong>because a driver showed up late, or didn’t show at all.</p>",
               "fixTitle": "Fix — Flight-tracked transfers",
-              "fix": "<p>Flight-tracked transfers with chauffeurs who arrive ahead of time, not just on time.</p>"
+              "fix": "<p><strong>Flight-tracked transfers </strong>with chauffeurs who arrive ahead of time, not just on time.</p>"
             },
             {
               "order": 3,
-              "problem": "<p>Outstation travel means losing visibility the moment the vehicle leaves the city.</p>",
+              "problem": "<p>Outstation travel means <strong>losing visibility</strong> the moment the vehicle leaves the city.</p>",
               "fixTitle": "Fix — Live tracking & SOS",
-              "fix": "<p>Real-time tracking and SOS escalation for local and outstation trips.</p>"
+              "fix": "<p><strong>Real-time tracking</strong> and SOS escalation for local and outstation trips.</p>"
             },
             {
               "order": 4,
-              "problem": "<p>Approving and reconciling scattered travel invoices eats up finance team hours.</p>",
+              "problem": "<p>Approving and reconciling <strong>scattered travel invoices</strong> eats up finance team hours.</p>",
               "fixTitle": "Fix — Consolidated billing",
-              "fix": "<p>One consolidated dashboard, transparent billing, ze
-              "problem": "A cancelled cab before a client meeting is a bad impression you didn’t sign up for.",
-              "fixTitle": "Fix — Zero Cancellation",
-              "fix": "Zero Cancellation Promise on every booking, so your schedule stays yours."
-            },
-            {
-              "order": 2,
-              "problem": "Missed flights because a driver showed up late, or didn’t show at all.",
-              "fixTitle": "Fix — Flight-tracked transfers",
-              "fix": "Flight-tracked airport transfers with chauffeurs who arrive ahead of time, not just on time."
-            },
-            {
-              "order": 3,
-              "problem": "Outstation travel means losing visibility the moment the vehicle leaves the city.",
-              "fixTitle": "Fix — Live tracking & SOS",
-              "fix": "Real-time trip tracking and SOS escalation, whether it's a local ride or a 6-hour outstation trip."
-            },
-            {
-              "order": 4,
-              "problem": "Approving and reconciling scattered travel invoices eats up finance team hours.",
-              "fixTitle": "Fix — Consolidated billing",
-              "fix": "One consolidated dashboard, transparent billing, zero back-and-forth."
-
+              "fix": "<p><strong>One consolidated dashboard,</strong> transparent billing, zero back-and-forth.</p>"
             }
           ]
         },
@@ -1399,9 +580,7 @@
         "features": {
           "titlePrefix": "Built for How Corporate Travel",
           "titleHighlight": "Actually Works",
-
-          "image": "/uploads/images/image-1785833710961-61858526.jpg",
-
+          "image": "/wp-content/uploads/elementor/thumbs/outstanding-img-r97rc31a974htbzyt30e7ra24cs8axu2myh0lsb9kc.png",
           "imageAlt": "Corporate mobility services",
           "items": [
             {
@@ -1447,9 +626,7 @@
               "name": "Varun Keswani",
               "role": "Head of Supply - Asia & Middle East",
               "company": "Transferz",
-
-              "logoImage": "/uploads/images/image-1785833778259-64424211.png",
-
+              "logoImage": "",
               "logoPrimary": "Transferz",
               "logoSecondary": ""
             },
@@ -1469,9 +646,7 @@
               "name": "Sailas Nulaka",
               "role": "Admin and Facilities",
               "company": "Invenco by GVR",
-
-              "logoImage": "/uploads/images/image-1785833790726-687122546.png",
-
+              "logoImage": "",
               "logoPrimary": "Invenco",
               "logoSecondary": "by GVR"
             },
@@ -1481,9 +656,7 @@
               "name": "Kondanda Ram",
               "role": "Sr Manager Finance and Admin",
               "company": "Brady Company India Pvt. Ltd",
-
-              "logoImage": "/uploads/images/image-1785833801999-729330542.png",
-
+              "logoImage": "",
               "logoPrimary": "Brady",
               "logoSecondary": "COMPANY"
             }
@@ -1557,48 +730,14 @@
         },
         "form": {
           "title": "Let’s Build Your Enterprise Mobility Solution",
-          "note": "Fill out the form, our experts will call back within 24 hours",
+          "note": "Fill out the form, our experts will call back within 24 hours.",
           "buttonText": "Get a Custom Transport Plan",
           "submittingText": "Submitting…",
           "backgroundImage": "/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp"
         }
       },
       "isActive": true,
-
-      "updatedAt": "2026-08-07T11:46:57.306Z"
-
-    },
-    "refunds-and-cancellation-policy": {
-      "slug": "refunds-and-cancellation-policy",
-      "pageTitle": "Refunds And Cancellation Policy | Refex Mobility",
-      "metaDescription": "Most reliable, safe and sustainable mobility service for corporate travel. Trusted by enterprises driving clean transport goals.",
-      "sections": {
-        "body": {
-          "html": "<p><strong>Refund Policy</strong></p>\r\n                                    <p>1. This website with the URL of <a href=\"https://refexmobility.com\" target=\"_blank\" rel=\"noopener noreferrer\">https://refexmobility.com</a> (\"Website/Site\") is operated by Refex Green Mobility (RGML) Private Limited (\"We/Our/Us\").</p>\r\n\r\n                                    <p>2. We are committed to providing our customers with the highest quality services. However, on rare occasions, services may be found to be deficient. In such cases, we offer refund in accordance with this Refund Policy (\"Policy\").</p>\r\n\r\n                                    <p>3. You are advised to read Our Terms and Conditions along with this Policy.</p>\r\n\r\n                                    <p>4. By using this website, You agree to be bound by the terms contained in this policy without modification. If you do not agree to the terms contained in this Policy, You are advised not to transact on this website.</p>\r\n\r\n                                    <p>5. We offer 4-7 working Days refund policy for the eligible Services.</p>\r\n\r\n                                    <p>6. Please read this policy before availing service on this website, so that You can understand Your Rights as well as what You can expect from Us if You are not happy with Your purchase.</p>\r\n\r\n                                    <p><strong>DEFINITIONS</strong></p>\r\n                                    <p>1. \"Business Days\" – means a day that is not a Saturday, Sunday, public holiday, or bank holiday in India or in the state where our office is located.</p>\r\n\r\n                                    <p>2. \"Customer\" – means a person who avails services for considerations and does not include commercial purchases.</p>\r\n\r\n                                    <p>3. \"Date of Transaction\" – means the date of invoice of the service, which includes the date of renewal processed in accordance with the terms and conditions of the applicable service agreement.</p>\r\n\r\n                                    <p>4. \"Website\" – means this website with the URL: <a href=\"https://refexmobility.com\" target=\"_blank\" rel=\"noopener noreferrer\">https://refexmobility.com</a></p>\r\n\r\n                                    <p><strong>REFUNDS RULES</strong></p>\r\n                                    <p>1. We will not process a refund if You have placed the order for the wrong service.</p>\r\n\r\n                                    <p>2. When you make a qualifying refund request. We may refund the full amount, less any additional cost incurred by Us in providing such Services.</p>\r\n\r\n                                    <p>3. Refund shall only be considered once the Customer concerned produces relevant documents and proof.</p>\r\n\r\n                                    <p>4. Once qualified, the refunds are applied to the original payment option.</p>\r\n\r\n                                    <p>5. The request for a refund of Services can be made in the following manner:</p>\r\n                                    <p>A) You can send an email to <a href=\"mailto:sasi.a@refex.co.in\">sasi.a@refex.co.in</a>.<br />\r\n                                    B) To be eligible for a refund, You have to request for refund within 24 Hours (1 Day) just after the placement of your booking.<br />\r\n                                    C) You will not be entitled to any kind of refund after 24 Hours (1 Day) of your booking.</p>\r\n\r\n                                    <p><strong>EXEMPTIONS</strong></p>\r\n                                    <p>Notwithstanding the other provisions of this Policy, We may refuse to provide a refund for a service if:</p>\r\n                                    <p>A) You knew or were made aware of the problem(s) with the service before you availed it.<br />\r\n                                    B) Free Services.<br />\r\n                                    C) Refund requests are placed after the refund window is closed.</p>\r\n\r\n                                    <p>Apart from the above, the following exemptions are applicable when it comes to the refund:</p>\r\n                                    <p>A) Payment towards Vinyl Printing<br />\r\n                                    B) Payment towards Vehicle Registration Program (Vehicle Enrolment Scheme)<br />\r\n                                    C) Payment towards delivered Advertising Services</p>\r\n\r\n                                    <p><strong>RESPONSE TIME</strong></p>\r\n                                    <p>1. Refunds are normally processed within 4-7 Business Days after checking the veracity of the refund request.</p>\r\n\r\n                                    <p>2. The period of the refund may also depend on various banking and payment channels, and We will not be liable for any errors or delays in a refund due to banks or third-party service providers.</p>\r\n\r\n                                    <p><strong>CANCELLATION OF RETURN REQUEST</strong></p>\r\n                                    <p>A request for return or refund once made can be cancelled by contacting customer care at <a href=\"https://refexmobility.com\" target=\"_blank\" rel=\"noopener noreferrer\">https://refexmobility.com</a>, <a href=\"tel:+917305956214\">(+91) 7305956214</a>.</p>\r\n\r\n                                    <p><strong>REFUSAL OF RETURN OR REFUND REQUEST</strong></p>\r\n                                    <p>We reserve the right to refuse any request for a or refund if such request is not in compliance with this Policy or applicable laws.</p>\r\n\r\n                                    <p><strong>Contact Us</strong></p>\r\n                                    <p>If you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the Service Provider via email at <a href=\"mailto:rgml.support@refex.co.in\">rgml.support@refex.co.in</a></p>"
-        },
-        "hero": {
-          "title": "Refunds And Cancellation Policy",
-          "backgroundImage": "https://refexmobility.com/wp-content/uploads/2025/07/drive-section-1-scaled.webp"
-        }
-      },
-      "isActive": true,
-      "updatedAt": "2026-06-19T09:46:16.000Z"
-    },
-    "terms-and-conditions": {
-      "slug": "terms-and-conditions",
-      "pageTitle": "Terms and Conditions | Refex Mobility",
-      "metaDescription": "Most reliable, safe and sustainable mobility service for corporate travel. Trusted by enterprises driving clean transport goals.",
-      "sections": {
-        "body": {
-          "html": "<p><strong>1. Introduction</strong><br />\r\n                                    These terms and conditions govern your use of our cab booking app; by using our app, you accept these terms and conditions in full. If you disagree with these terms and conditions or any part of these terms and conditions, you must not use our app.</p>\r\n\r\n                                    <p><strong>2. License to use app</strong><br />\r\n                                    Unless otherwise stated, we or our licensors own the intellectual property rights in the app and material on the app. Subject to the license below, all these intellectual property rights are reserved. You may view, download for caching purposes only, and print pages from the app for your own personal use, subject to the restrictions set out below and elsewhere in these terms and conditions. You must not:</p>\r\n                                    <ul>\r\n                                      <li>Republish material from this app (including republication on another website)</li>\r\n                                      <li>Sell, rent or sub-license material from the app</li>\r\n                                      <li>Show any material from the app in public</li>\r\n                                      <li>Reproduce, duplicate, copy or otherwise exploit material on our app for a commercial purpose</li>\r\n                                      <li>Edit or otherwise modify any material on the app</li>\r\n                                      <li>Redistribute material from this app except for content specifically and expressly made available for redistribution.</li>\r\n                                    </ul>\r\n\r\n                                    <p><strong>3. Acceptable use</strong><br />\r\n                                    You must not use our app in any way that causes, or may cause, damage to the app or impairment of the availability or accessibility of the app; or in any way which is unlawful, illegal, fraudulent or harmful, or in connection with any unlawful, illegal, fraudulent or harmful purpose or activity.<br />\r\n                                    You must not use our app to copy, store, host, transmit, send, use, publish or distribute any material which consists of or is linked to any spyware, computer virus, Trojan horse, worm, keystroke logger, rootkit or other malicious computer software. You must not conduct any systematic or automated data collection activities on or in relation to our app without our express written consent. You must not use our app to transmit or send unsolicited commercial communications or for marketing without our express written consent.</p>\r\n\r\n                                    <p><strong>4. User content</strong><br />\r\n                                    In these terms and conditions, \"your user content\" means material (including without limitation text, images, audio material, video material and audio-visual material) that you submit to our app for whatever purpose. You grant to us a worldwide, irrevocable, non-exclusive, royalty-free license to use, reproduce, adapt, publish, translate and distribute your user content in any existing or future media. You also grant to us the right to sublicense these rights and the right to bring an action for infringement of these rights. Your user content must not be illegal or unlawful, must not infringe any third party's legal rights and must not give rise to legal action. We reserve the right to edit or remove any material submitted to our app.</p>\r\n\r\n                                    <p><strong>5. Data Privacy and Consent</strong><br />\r\n                                    By registering on the Refex Green Mobility platform, users explicitly consent to the collection, processing, and storage of their personal information, including but not limited to business contact details, in accordance with the Digital Personal Data Protection Act (DPDPA), 2023.<br />\r\n                                    Users have the right to withdraw their consent or request deletion of their personal data (such as email address) at any time. Such requests can be submitted by contacting tech@refex.co.in. Upon verification, the requested data will be securely deleted from our systems within 15 working days, unless required for legal or compliance purposes. Refex Green Mobility retains personal data for a maximum period of 7 years from the date of last activity or usage, after which it is automatically removed from the system.<br />\r\n                                    We are ISO/IEC 27001:2013 certified, and our systems are designed to safeguard personal data using industry-standard security practices, including encryption, access controls, and regular audits to prevent unauthorized access or misuse.</p>\r\n\r\n                                    <p><strong>6. Limitations of liability</strong><br />\r\n                                    The information on this app is provided free-of-charge and you acknowledge that it would be unreasonable to hold us liable in respect of this app and the information on this app. Our liability is limited and excluded to the maximum extent permitted under applicable law. We will not be liable for any direct or indirect loss or damage arising under these terms and conditions or in connection with our app. Nothing in these terms and conditions shall exclude or limit our liability for fraud, death or personal injury caused by our negligence, or for any other liability which cannot be excluded or limited under applicable law.</p>\r\n\r\n                                    <p><strong>7. Indemnity</strong><br />\r\n                                    You hereby indemnify us and undertake to keep us indemnified against any losses, damages, costs, liabilities and expenses (including legal expenses and any amounts paid by us to a third party in settlement of a claim or dispute) incurred or suffered by us arising out of any breach by you of any provision of these terms and conditions.</p>\r\n\r\n                                    <p><strong>8. Breaches of these terms and conditions</strong><br />\r\n                                    If you breach these terms and conditions in any way, we may take such action as we deem appropriate to deal with the breach, including suspending or blocking your access to the app, and/or bringing court proceedings against you.</p>"
-        },
-        "hero": {
-          "title": "Terms And Conditions",
-          "backgroundImage": "https://refexmobility.com/wp-content/uploads/2025/07/drive-section-1-scaled.webp"
-        }
-      },
-      "isActive": true,
-      "updatedAt": "2026-06-19T09:46:16.000Z"
+      "updatedAt": "2026-08-10T10:42:21.011Z"
     }
   }
 }
