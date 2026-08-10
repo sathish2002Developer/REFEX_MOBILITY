@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef } from 'react'
+import { resolveLandingLogoImage } from '../constants/landingClientLogosDefaults'
 import { resolveCmsAssetUrl } from '../utils/cmsAssetUrl'
 
 const SWIPER_JS = '/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js'
@@ -57,20 +58,147 @@ function waitForSwiper(timeoutMs = 8000) {
   })
 }
 
+/** Normalize CMS typos / aliases for display + CSS hooks */
+function normalizeLogoMeta(name = '') {
+  const compact = String(name).toLowerCase().replace(/[^a-z0-9]/g, '')
+  if (
+    compact.includes('ltimindtree') ||
+    compact.includes('mindtree') ||
+    compact.includes('ltmnintrr') ||
+    compact.includes('ltmintree') ||
+    compact.includes('ltimind') ||
+    /^ltm/.test(compact)
+  ) {
+    return { label: 'LTIMindtree', tone: 'compact' }
+  }
+  if (compact.includes('samsung')) return { label: 'Samsung', tone: 'compact' }
+  if (compact.includes('lemontree')) return { label: name, tone: 'compact' }
+  if (compact.includes('londonstock') || compact.includes('stockexchange')) {
+    return { label: name, tone: 'compact' }
+  }
+  // Already large / fills the canvas — never apply compact boost
+  if (compact.includes('fairfield')) return { label: name, tone: 'tall' }
+  if (compact.includes('flipkart')) return { label: name, tone: 'wide' }
+  if (compact.includes('mindsprint')) return { label: name, tone: 'wide' }
+  if (compact.includes('nestle') || compact === 'nestl') return { label: name, tone: 'tall' }
+  return { label: name || 'Client logo', tone: 'default' }
+}
+
 /**
- * Business Commute–style client logo Swiper for ETS / CorporateRentals.
+ * Detect logos with heavy transparent/white padding so we can enlarge only those.
+ * Returns fill ratios of the ink bounding box vs the image canvas.
+ */
+function measureLogoInkFill(img) {
+  try {
+    const nw = img.naturalWidth
+    const nh = img.naturalHeight
+    if (!nw || !nh) return { area: 1, height: 1, width: 1 }
+
+    const maxSide = 160
+    const scale = Math.min(1, maxSide / Math.max(nw, nh))
+    const cw = Math.max(1, Math.round(nw * scale))
+    const ch = Math.max(1, Math.round(nh * scale))
+    const canvas = document.createElement('canvas')
+    canvas.width = cw
+    canvas.height = ch
+    const ctx = canvas.getContext('2d', { willReadFrequently: true })
+    if (!ctx) return { area: 1, height: 1, width: 1 }
+
+    ctx.drawImage(img, 0, 0, cw, ch)
+    const { data } = ctx.getImageData(0, 0, cw, ch)
+
+    let minX = cw
+    let minY = ch
+    let maxX = -1
+    let maxY = -1
+
+    for (let y = 0; y < ch; y += 1) {
+      for (let x = 0; x < cw; x += 1) {
+        const i = (y * cw + x) * 4
+        const r = data[i]
+        const g = data[i + 1]
+        const b = data[i + 2]
+        const a = data[i + 3]
+        const isInk = a > 24 && (r < 248 || g < 248 || b < 248)
+        if (!isInk) continue
+        if (x < minX) minX = x
+        if (y < minY) minY = y
+        if (x > maxX) maxX = x
+        if (y > maxY) maxY = y
+      }
+    }
+
+    if (maxX < 0) return { area: 1, height: 1, width: 1 }
+
+    const fillW = (maxX - minX + 1) / cw
+    const fillH = (maxY - minY + 1) / ch
+    return { area: fillW * fillH, height: fillH, width: fillW }
+  } catch {
+    // CORS / tainted canvas — leave sizing alone
+    return { area: 1, height: 1, width: 1 }
+  }
+}
+
+function isPaddedTinyLogo(fill) {
+  return fill.height < 0.58 || fill.width < 0.5 || fill.area < 0.3
+}
+
+function handleLogoLoad(event, tone) {
+  const img = event.currentTarget
+  const slot = img.closest('.landing-client-logos__slot')
+  if (!slot || tone === 'tall' || tone === 'wide') return
+
+  if (tone === 'compact') {
+    slot.classList.add('tone-compact')
+    return
+  }
+
+  const fill = measureLogoInkFill(img)
+  if (isPaddedTinyLogo(fill)) {
+    slot.classList.remove('tone-default')
+    slot.classList.add('tone-compact')
+  }
+}
+
+/**
+ * Business Commute–style client logos with even visual scale.
  */
 export default function LandingClientLogos({ titlePrefix, titleHighlight, items = [] }) {
   const swiperRef = useRef(null)
-  const logos = useMemo(
-    () => (items || []).filter((logo) => logo?.image),
-    // Stabilize on content, not array identity (CMS merge recreates arrays each render)
+  const logos = useMemo(() => {
+    const seen = new Set()
+    return (items || [])
+      .map((logo) => {
+        const meta = normalizeLogoMeta(logo?.name)
+        return {
+          ...logo,
+          name: meta.label,
+          tone: meta.tone,
+          image: resolveLandingLogoImage(logo?.name, logo?.image),
+        }
+      })
+      .filter((logo) => {
+        if (!logo?.image) return false
+        const key = `${String(logo.name || '').trim().toLowerCase()}|${logo.image}`
+        if (seen.has(key)) return false
+        seen.add(key)
+        return true
+      })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [JSON.stringify((items || []).map((l) => [l?.name, l?.image]))]
-  )
+  }, [JSON.stringify((items || []).map((l) => [l?.name, l?.image]))])
+
+  const slides = useMemo(() => {
+    if (!logos.length) return []
+    if (logos.length >= 10) return logos
+    const out = []
+    while (out.length < 10) {
+      logos.forEach((logo) => out.push(logo))
+    }
+    return out
+  }, [logos])
 
   useEffect(() => {
-    if (!logos.length) return undefined
+    if (!slides.length) return undefined
 
     let swiperInstance = null
     let cancelled = false
@@ -89,20 +217,19 @@ export default function LandingClientLogos({ titlePrefix, titleHighlight, items 
 
         swiperInstance = new window.Swiper(swiperRef.current, {
           slidesPerView: 5,
-          spaceBetween: 15,
+          spaceBetween: 28,
           speed: 500,
           autoplay: {
             delay: 1000,
             disableOnInteraction: false,
           },
           loop: true,
-          watchOverflow: true,
           breakpoints: {
-            1920: { slidesPerView: 5, spaceBetween: 15 },
-            1024: { slidesPerView: 5, spaceBetween: 10 },
-            768: { slidesPerView: 4, spaceBetween: 8 },
-            480: { slidesPerView: 3, spaceBetween: 6 },
-            0: { slidesPerView: 2, spaceBetween: 6 },
+            1920: { slidesPerView: 5, spaceBetween: 32 },
+            1024: { slidesPerView: 4, spaceBetween: 24 },
+            768: { slidesPerView: 3, spaceBetween: 20 },
+            480: { slidesPerView: 2, spaceBetween: 16 },
+            0: { slidesPerView: 2, spaceBetween: 14 },
           },
         })
       } catch {
@@ -112,7 +239,6 @@ export default function LandingClientLogos({ titlePrefix, titleHighlight, items 
       }
     }
 
-    // Wait a frame so the ref + slides are in the DOM
     retryTimer = window.setTimeout(init, 0)
 
     return () => {
@@ -124,7 +250,7 @@ export default function LandingClientLogos({ titlePrefix, titleHighlight, items 
         swiperRef.current.swiper.destroy(true, true)
       }
     }
-  }, [logos])
+  }, [slides])
 
   if (!logos.length) return null
 
@@ -136,29 +262,38 @@ export default function LandingClientLogos({ titlePrefix, titleHighlight, items 
         </p>
       </div>
       <div className="landing-client-logos__swiper-wrap">
-        <div
-          ref={swiperRef}
-          className="swiper landing-client-logos-swiper client-logos-swiper"
-          role="region"
-          aria-roledescription="carousel"
-          aria-label="Client logos"
-        >
-          <div className="swiper-wrapper">
-            {logos.map((logo, index) => (
-              <div
-                className="swiper-slide"
-                key={`${logo.name}-${index}`}
-                role="group"
-                aria-roledescription="slide"
-              >
-                <div
-                  className="landing-client-logos__image elementor-carousel-image"
-                  role="img"
-                  aria-label={logo.name}
-                  style={{ backgroundImage: `url(${resolveCmsAssetUrl(logo.image)})` }}
-                />
-              </div>
-            ))}
+        <div className="elementor-swiper">
+          <div
+            ref={swiperRef}
+            className="elementor-main-swiper swiper landing-client-logos-swiper client-logos-swiper"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Client logos"
+          >
+            <div className="swiper-wrapper">
+              {slides.map((logo, index) => {
+                const label = logo.name || `Logo ${index + 1}`
+                return (
+                  <div
+                    className="swiper-slide"
+                    key={`${label}-${index}`}
+                    role="group"
+                    aria-roledescription="slide"
+                  >
+                    <div className={`landing-client-logos__slot tone-${logo.tone || 'default'}`}>
+                      <img
+                        className="landing-client-logos__img"
+                        src={resolveCmsAssetUrl(logo.image)}
+                        alt={label}
+                        loading="lazy"
+                        decoding="async"
+                        onLoad={(event) => handleLogoLoad(event, logo.tone || 'default')}
+                      />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </div>
       </div>

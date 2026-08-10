@@ -41,3 +41,18 @@ export const DEFAULT_LANDING_CLIENT_LOGOS = [
   { order: 19, name: 'Titan', image: Titan },
   { order: 20, name: 'Wipro', image: Wipro },
 ]
+
+const LOGO_IMAGE_BY_NAME = DEFAULT_LANDING_CLIENT_LOGOS.reduce((acc, logo) => {
+  acc[String(logo.name || '').trim().toLowerCase()] = logo.image
+  return acc
+}, {})
+
+/** Map legacy `/src/assets/refexclients/...` CMS paths back to bundled logo URLs. */
+export function resolveLandingLogoImage(name, image) {
+  if (image && !String(image).includes('/src/assets/refexclients/')) {
+    return image
+  }
+  const byName = LOGO_IMAGE_BY_NAME[String(name || '').trim().toLowerCase()]
+  if (byName) return byName
+  return image || ''
+}

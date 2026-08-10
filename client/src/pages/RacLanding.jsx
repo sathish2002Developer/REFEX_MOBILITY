@@ -406,9 +406,10 @@ const RacLanding = () => {
         </section>
 
         <LandingClientLogos
+          key={`rac-logos-${(logos.items || []).map((l) => `${l.name}:${l.image}`).join('|')}`}
           titlePrefix={logos.titlePrefix}
           titleHighlight={logos.titleHighlight}
-          items={logos.items}
+          items={logos.items || []}
         />
 
         <section className="ets-section ets-problems-section">

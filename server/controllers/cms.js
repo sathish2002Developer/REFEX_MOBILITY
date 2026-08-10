@@ -25,6 +25,11 @@ const SEED_PATHS = {
   "refunds-and-cancellation-policy": path.join(__dirname, "../seeds/refunds_and_cancellation.json"),
 };
 
+// When DB sync is skipped / optional, never wait on MySQL DNS timeouts for CMS.
+const CMS_SNAPSHOT_ONLY =
+  process.env.SKIP_DB_SYNC === "true" || process.env.START_WITHOUT_DB === "true";
+let dbReadsEnabled = !CMS_SNAPSHOT_ONLY;
+
 function formatPage(row) {
   if (!row) return null;
   return {
@@ -58,13 +63,17 @@ function deepMergeObjects(base = {}, override = {}) {
   Object.keys(override).forEach((key) => {
     const baseVal = base[key]
     const overrideVal = override[key]
+    // Arrays from DB/admin always win (add/remove logos, FAQ, etc.)
+    if (Array.isArray(overrideVal)) {
+      merged[key] = overrideVal
+      return
+    }
     if (
       baseVal &&
       overrideVal &&
       typeof baseVal === 'object' &&
       typeof overrideVal === 'object' &&
-      !Array.isArray(baseVal) &&
-      !Array.isArray(overrideVal)
+      !Array.isArray(baseVal)
     ) {
       merged[key] = deepMergeObjects(baseVal, overrideVal)
     } else if (overrideVal !== undefined) {
@@ -87,15 +96,23 @@ function mergePageWithSnapshot(dbPage, slug) {
   const snapshot = getPageFromSnapshot(slug)
   if (!snapshot) return dbPage
 
+  const dbTime = new Date(dbPage.updatedAt || 0).getTime() || 0
+  const snapTime = new Date(snapshot.updatedAt || 0).getTime() || 0
+  // Prefer the newer source so snapshot-only admin saves (DB down) are not
+  // overwritten by stale DB rows that still contain deleted logos.
+  const newer = snapTime > dbTime ? snapshot : dbPage
+  const older = snapTime > dbTime ? dbPage : snapshot
+
   const merged = {
-    ...snapshot,
-    ...dbPage,
-    sections: deepMergeObjects(snapshot.sections || {}, dbPage.sections || {}),
+    ...older,
+    ...newer,
+    sections: deepMergeObjects(older.sections || {}, newer.sections || {}),
+    updatedAt: newer.updatedAt || older.updatedAt,
   }
 
-  if (shouldUseSnapshotMeta(dbPage, snapshot)) {
-    merged.pageTitle = snapshot.pageTitle
-    merged.metaDescription = snapshot.metaDescription
+  if (shouldUseSnapshotMeta(merged, snapshot)) {
+    merged.pageTitle = snapshot.pageTitle || merged.pageTitle
+    merged.metaDescription = snapshot.metaDescription || merged.metaDescription
   }
 
   return merged
@@ -154,20 +171,29 @@ async function syncCmsJsonSnapshot() {
 
 exports.listPages = async (req, res) => {
   try {
-    const rows = await CmsPage.findAll({
-      where: { is_active: true },
-      order: [["slug", "ASC"]],
-    });
-    return status.responseStatus(res, 200, "CMS pages retrieved successfully", {
-      pages: rows.map(formatPage),
-    });
-  } catch (error) {
+    if (dbReadsEnabled) {
+      try {
+        const rows = await CmsPage.findAll({
+          where: { is_active: true },
+          order: [["slug", "ASC"]],
+        });
+        return status.responseStatus(res, 200, "CMS pages retrieved successfully", {
+          pages: rows.map(formatPage),
+        });
+      } catch (dbError) {
+        dbReadsEnabled = false;
+        console.warn("[CMS] DB disabled after listPages failure:", dbError.message);
+      }
+    }
+
     const data = readCmsJsonSnapshot();
     if (data) {
       return status.responseStatus(res, 200, "CMS pages retrieved successfully", {
         pages: Object.values(data),
       });
     }
+    return status.responseStatus(res, 500, "Error fetching CMS pages");
+  } catch (error) {
     console.error("[CMS] listPages error:", error);
     return status.responseStatus(res, 500, "Error fetching CMS pages", null, error.message);
   }
@@ -180,11 +206,22 @@ exports.getPageBySlug = async (req, res) => {
       return status.responseStatus(res, 404, "CMS page not found");
     }
 
+    // Snapshot-first / snapshot-only: avoid multi-second MySQL DNS timeouts that
+    // delay landing sections (Problem/Fix, logos, etc.) after refresh.
+    if (!dbReadsEnabled) {
+      const snapshotPage = getPageFromSnapshot(slug);
+      if (snapshotPage) {
+        return status.responseStatus(res, 200, "CMS page retrieved successfully", snapshotPage);
+      }
+      return status.responseStatus(res, 404, "CMS page not found");
+    }
+
     let row = null;
     try {
       row = await CmsPage.findOne({ where: { slug, is_active: true } });
     } catch (dbError) {
-      console.warn("[CMS] DB read failed, using snapshot:", dbError.message);
+      dbReadsEnabled = false;
+      console.warn("[CMS] DB disabled after read failure, using snapshot:", dbError.message);
     }
 
     if (row) {
@@ -230,53 +267,57 @@ exports.updatePage = async (req, res) => {
     };
 
     let savedViaDb = false;
-    try {
-      let row = await CmsPage.findOne({ where: { slug } });
-      if (!row) {
-        const seed = SEED_PATHS[slug] ? readJsonFile(SEED_PATHS[slug]) : null;
-        row = await CmsPage.create({
-          slug,
-          page_title: seed?.pageTitle || formatted.pageTitle,
-          meta_description: seed?.metaDescription ?? formatted.metaDescription,
-          sections: seed?.sections || formatted.sections,
-          is_active: true,
-        });
-      }
-
-      if (row) {
-        const updates = {};
-        if (pageTitle !== undefined) {
-          const title = String(pageTitle).trim();
-          if (!title) return status.responseStatus(res, 400, "pageTitle cannot be empty");
-          updates.page_title = title;
+    if (dbReadsEnabled) {
+      try {
+        let row = await CmsPage.findOne({ where: { slug } });
+        if (!row) {
+          const seed = SEED_PATHS[slug] ? readJsonFile(SEED_PATHS[slug]) : null;
+          row = await CmsPage.create({
+            slug,
+            page_title: seed?.pageTitle || formatted.pageTitle,
+            meta_description: seed?.metaDescription ?? formatted.metaDescription,
+            sections: seed?.sections || formatted.sections,
+            is_active: true,
+          });
         }
-        if (metaDescription !== undefined) updates.meta_description = String(metaDescription);
-        if (sections !== undefined) {
-          if (typeof sections !== "object" || sections === null || Array.isArray(sections)) {
-            return status.responseStatus(res, 400, "sections must be an object");
+
+        if (row) {
+          const updates = {};
+          if (pageTitle !== undefined) {
+            const title = String(pageTitle).trim();
+            if (!title) return status.responseStatus(res, 400, "pageTitle cannot be empty");
+            updates.page_title = title;
           }
-          updates.sections = sections;
-        }
-        if (isActive !== undefined) updates.is_active = !!isActive;
+          if (metaDescription !== undefined) updates.meta_description = String(metaDescription);
+          if (sections !== undefined) {
+            if (typeof sections !== "object" || sections === null || Array.isArray(sections)) {
+              return status.responseStatus(res, 400, "sections must be an object");
+            }
+            updates.sections = sections;
+          }
+          if (isActive !== undefined) updates.is_active = !!isActive;
 
-        if (Object.keys(updates).length) {
-          await row.update(updates);
-          await row.reload();
+          if (Object.keys(updates).length) {
+            await row.update(updates);
+            await row.reload();
+          }
+          formatted.pageTitle = row.page_title;
+          formatted.metaDescription = row.meta_description;
+          formatted.sections = row.sections;
+          formatted.isActive = row.is_active;
+          formatted.updatedAt = row.updated_at;
+          savedViaDb = true;
         }
-        formatted.pageTitle = row.page_title;
-        formatted.metaDescription = row.meta_description;
-        formatted.sections = row.sections;
-        formatted.isActive = row.is_active;
-        formatted.updatedAt = row.updated_at;
-        savedViaDb = true;
-        await syncCmsJsonSnapshot();
+      } catch (dbError) {
+        dbReadsEnabled = false;
+        console.warn("[CMS] DB disabled after save failure, writing snapshot:", dbError.message);
       }
-    } catch (dbError) {
-      console.warn("[CMS] DB save failed, writing snapshot:", dbError.message);
     }
 
+    // Always write this page into cms.json so admin edits persist without DB.
+    writePageToSnapshot(slug, formatted);
     if (!savedViaDb) {
-      writePageToSnapshot(slug, formatted);
+      console.warn("[CMS] Saved page to snapshot only:", slug);
     }
 
     return status.responseStatus(res, 200, "CMS page updated successfully", formatted);

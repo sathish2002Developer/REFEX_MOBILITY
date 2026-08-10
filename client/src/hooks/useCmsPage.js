@@ -3,32 +3,85 @@ import { getCmsDefaults, mergeCmsPage } from '../constants/cmsPageRegistry'
 import { applyPageMeta } from '../constants/pageMeta'
 import { API_BASE_URL } from '../constants/api'
 
+const cacheKey = (slug) => `cms-page-cache:${slug}`
+
+function readCachedCms(slug) {
+  try {
+    const raw = sessionStorage.getItem(cacheKey(slug))
+    if (!raw) return null
+    const parsed = JSON.parse(raw)
+    if (!parsed?.sections) return null
+    return parsed
+  } catch {
+    return null
+  }
+}
+
+function writeCachedCms(slug, cms) {
+  try {
+    sessionStorage.setItem(
+      cacheKey(slug),
+      JSON.stringify({
+        pageTitle: cms.pageTitle,
+        metaDescription: cms.metaDescription,
+        sections: cms.sections,
+      })
+    )
+  } catch {
+    /* ignore quota / private mode */
+  }
+}
+
+function getInitialCms(slug) {
+  const cached = readCachedCms(slug)
+  if (cached) return mergeCmsPage(slug, cached)
+
+  // Show text sections immediately (Problem/Fix, hero, etc.).
+  // Keep logos empty until CMS returns so removed logos cannot flash back.
+  const defaults = getCmsDefaults(slug)
+  return {
+    pageTitle: defaults.pageTitle,
+    metaDescription: defaults.metaDescription,
+    sections: {
+      ...defaults.sections,
+      logos: defaults.sections.logos
+        ? { ...defaults.sections.logos, items: [] }
+        : defaults.sections.logos,
+    },
+  }
+}
+
 export function useCmsPage(slug, { setTitle = true, setMeta = true, heroStyleId = null } = {}) {
-  const [cms, setCms] = useState(() => getCmsDefaults(slug))
+  const [cms, setCms] = useState(() => getInitialCms(slug))
 
   useLayoutEffect(() => {
-    const defaults = getCmsDefaults(slug)
+    const initial = getInitialCms(slug)
+    setCms(initial)
     applyPageMeta({
-      pageTitle: setTitle ? defaults.pageTitle : undefined,
-      metaDescription: setMeta ? defaults.metaDescription : undefined,
+      pageTitle: setTitle ? initial.pageTitle : undefined,
+      metaDescription: setMeta ? initial.metaDescription : undefined,
     })
   }, [slug, setMeta, setTitle])
 
   useEffect(() => {
+    let cancelled = false
     const load = async () => {
       try {
         const res = await fetch(`${API_BASE_URL}/api/cms/pages/${slug}`)
-        if (res.ok) {
-          const result = await res.json()
-          if (result.success && result.data) {
-            setCms(mergeCmsPage(slug, result.data))
-          }
-        }
+        if (!res.ok) return
+        const result = await res.json()
+        if (cancelled || !result.success || !result.data) return
+        const merged = mergeCmsPage(slug, result.data)
+        setCms(merged)
+        writeCachedCms(slug, merged)
       } catch (e) {
         console.warn(`CMS load failed for ${slug}`, e)
       }
     }
     load()
+    return () => {
+      cancelled = true
+    }
   }, [slug])
 
   useLayoutEffect(() => {

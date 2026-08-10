@@ -437,112 +437,125 @@ header.header-rac-minimal .col-sm-12 {
   font-weight: 700;
 }
 
+/*
+ * Equal visual logo scale (match reference):
+ * - same slot for every brand
+ * - fixed paint height so logos share similar presence
+ * - light optical tweaks only for padded wordmarks (Samsung / LTIMindtree)
+ */
 .rac-page .landing-client-logos__swiper-wrap {
   width: 100%;
-  padding: 10px 0;
+  padding: 0;
   overflow: hidden;
 }
 
-.rac-page .landing-client-logos-swiper {
+.rac-page .landing-client-logos .elementor-swiper {
+  width: 100%;
+}
+
+/*
+ * Match admin logo preview: large box, full logo via object-fit: contain.
+ * Extra scale only for padded/tiny files (tone-compact).
+ */
+.rac-page .landing-client-logos-swiper.client-logos-swiper {
   width: 100%;
   height: auto;
+  min-height: auto;
+  padding: 24px 0 28px;
   overflow: hidden;
 }
 
 .rac-page .landing-client-logos-swiper .swiper-wrapper {
   align-items: center;
   height: auto;
+  min-height: auto;
 }
 
 .rac-page .landing-client-logos-swiper .swiper-slide {
   height: auto;
+  min-height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px;
+  padding: 10px 12px;
   box-sizing: border-box;
 }
 
-.rac-page .landing-client-logos__image {
-  width: 100%;
-  max-width: 150px;
-  height: 100px;
-  min-height: 100px;
-  max-height: 100px;
-  min-width: 90px;
+.rac-page .landing-client-logos__slot {
+  width: 240px;
+  height: 128px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: transparent;
+  box-sizing: border-box;
+  overflow: visible;
 }
 
-.rac-page .landing-client-logos__image[aria-label='London Stock Exchange'],
-.rac-page .landing-client-logos__image[aria-label='J.P. Morgan'],
-.rac-page .landing-client-logos__image[aria-label='Samsung'],
-.rac-page .landing-client-logos__image[aria-label='Titan'],
-.rac-page .landing-client-logos__image[aria-label='Raintree Hotels'],
-.rac-page .landing-client-logos__image[aria-label='Nestlé'] {
-  height: 160px;
-  min-height: 160px;
-  max-height: 160px;
+/* Same idea as .admin-image-preview — fill the box, keep aspect */
+.rac-page .landing-client-logos__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
+  transform: none;
+  transform-origin: center center;
 }
 
-.rac-page .landing-client-logos__image[aria-label='Lemon Tree Hotels'] {
-  height: 200px;
-  min-height: 200px;
-  max-height: 200px;
+.rac-page .landing-client-logos__slot.tone-tall .landing-client-logos__img,
+.rac-page .landing-client-logos__slot.tone-wide .landing-client-logos__img,
+.rac-page .landing-client-logos__slot.tone-default .landing-client-logos__img {
+  transform: none;
+}
+
+/* Padded/tiny source files only */
+.rac-page .landing-client-logos__slot.tone-compact .landing-client-logos__img {
+  transform: scale(1.4);
 }
 
 @media (max-width: 1024px) {
-  .rac-page .landing-client-logos__image {
-    max-width: 180px;
-    min-width: 150px;
-    height: 90px;
-    min-height: 90px;
-    max-height: 90px;
+  .rac-page .landing-client-logos-swiper.client-logos-swiper {
+    padding: 20px 0 24px;
   }
 
-  .rac-page .landing-client-logos__image[aria-label='London Stock Exchange'],
-  .rac-page .landing-client-logos__image[aria-label='J.P. Morgan'],
-  .rac-page .landing-client-logos__image[aria-label='Samsung'],
-  .rac-page .landing-client-logos__image[aria-label='Titan'],
-  .rac-page .landing-client-logos__image[aria-label='Raintree Hotels'],
-  .rac-page .landing-client-logos__image[aria-label='Nestlé'],
-  .rac-page .landing-client-logos__image[aria-label='Lemon Tree Hotels'] {
-    height: 130px;
-    min-height: 130px;
-    max-height: 130px;
+  .rac-page .landing-client-logos-swiper .swiper-slide {
+    padding: 8px 10px;
+  }
+
+  .rac-page .landing-client-logos__slot {
+    width: 210px;
+    height: 112px;
+  }
+
+  .rac-page .landing-client-logos__slot.tone-compact .landing-client-logos__img {
+    transform: scale(1.3);
   }
 }
 
 @media (max-width: 768px) {
   .rac-page .landing-client-logos__swiper-wrap {
-    padding: 8px 0;
+    padding: 0;
+  }
+
+  .rac-page .landing-client-logos-swiper.client-logos-swiper {
+    padding: 16px 0 18px;
   }
 
   .rac-page .landing-client-logos-swiper .swiper-slide {
-    padding: 3px;
+    padding: 6px 8px;
   }
 
-  .rac-page .landing-client-logos__image {
-    max-width: 150px;
-    min-width: 80px;
-    height: 70px;
-    min-height: 70px;
-    max-height: 70px;
+  .rac-page .landing-client-logos__slot {
+    width: 168px;
+    height: 96px;
   }
 
-  .rac-page .landing-client-logos__image[aria-label='London Stock Exchange'],
-  .rac-page .landing-client-logos__image[aria-label='J.P. Morgan'],
-  .rac-page .landing-client-logos__image[aria-label='Samsung'],
-  .rac-page .landing-client-logos__image[aria-label='Titan'],
-  .rac-page .landing-client-logos__image[aria-label='Raintree Hotels'],
-  .rac-page .landing-client-logos__image[aria-label='Nestlé'],
-  .rac-page .landing-client-logos__image[aria-label='Lemon Tree Hotels'] {
-    height: 110px;
-    min-height: 110px;
-    max-height: 110px;
+  .rac-page .landing-client-logos__slot.tone-compact .landing-client-logos__img {
+    transform: scale(1.25);
   }
 }
 

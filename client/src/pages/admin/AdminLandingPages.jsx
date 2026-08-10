@@ -64,8 +64,9 @@ const AdminLandingPages = () => {
 
   const removeLogo = (index) => {
     setSections((prev) => {
-      const items = [...(prev.logos?.items || [])]
-      items.splice(index, 1)
+      const items = (prev.logos?.items || [])
+        .filter((_, i) => i !== index)
+        .map((item, i) => ({ ...item, order: i + 1 }))
       return { ...prev, logos: { ...prev.logos, items } }
     })
   }
@@ -138,36 +139,64 @@ const AdminLandingPages = () => {
   }
 
   useEffect(() => {
+    let cancelled = false
     setLoading(true)
     const defaults = getCmsDefaults(activePageSlug)
     setPageTitle(defaults.pageTitle)
     setMetaDescription(defaults.metaDescription)
-    setSections(JSON.parse(JSON.stringify(defaults.sections)))
+    // Do not preload default client logos — wait for saved CMS list.
+    const initialSections = JSON.parse(JSON.stringify(defaults.sections))
+    if (initialSections.logos) initialSections.logos.items = []
+    setSections(initialSections)
     setActiveSection('meta')
     fetch(`${API_BASE_URL}/api/cms/pages/${activePageSlug}`)
       .then((r) => r.json())
       .then((result) => {
-        if (result.success && result.data) {
-          const merged = mergeCmsPage(activePageSlug, result.data)
-          setPageTitle(merged.pageTitle)
-          setMetaDescription(merged.metaDescription)
-          setSections(merged.sections)
-        }
+        if (cancelled || !result.success || !result.data) return
+        const merged = mergeCmsPage(activePageSlug, result.data)
+        setPageTitle(merged.pageTitle)
+        setMetaDescription(merged.metaDescription)
+        setSections(merged.sections)
       })
       .catch(console.error)
-      .finally(() => setLoading(false))
+      .finally(() => {
+        if (!cancelled) setLoading(false)
+      })
+    return () => {
+      cancelled = true
+    }
   }, [activePageSlug])
 
   const handleSave = async () => {
     setSaving(true)
     try {
+      // Persist exact admin logo list (no default padding).
+      const payloadSections = {
+        ...sections,
+        logos: {
+          ...sections.logos,
+          items: (sections.logos?.items || []).map((item, index) => ({
+            order: index + 1,
+            name: item?.name || '',
+            image: item?.image || '',
+          })),
+        },
+      }
       const res = await fetch(`${API_BASE_URL}/api/cms/pages/${activePageSlug}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pageTitle, metaDescription, sections }),
+        body: JSON.stringify({ pageTitle, metaDescription, sections: payloadSections }),
       })
       const result = await res.json()
-      showMsg(result.success ? 'Saved! Landing page will show updated content.' : result.message || 'Save failed')
+      if (result.success && result.data) {
+        const merged = mergeCmsPage(activePageSlug, result.data)
+        setPageTitle(merged.pageTitle)
+        setMetaDescription(merged.metaDescription)
+        setSections(merged.sections)
+        showMsg('Saved! Landing page will show updated content.')
+      } else {
+        showMsg(result.message || 'Save failed')
+      }
     } catch {
       showMsg('Error saving')
     } finally {
@@ -354,6 +383,7 @@ const AdminLandingPages = () => {
                   </div>
                   <AdminImageField
                     label="Logo image"
+                    variant="logo"
                     value={logo.image || ''}
                     onChange={(url) => patchList('logos', 'items', i, 'image', url)}
                   />

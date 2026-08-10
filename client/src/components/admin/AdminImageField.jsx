@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { API_BASE_URL } from '../../constants/api'
 import { resolveCmsAssetUrl } from '../../utils/cmsAssetUrl'
 
-const AdminImageField = ({ label, value, onChange, hint }) => {
+const AdminImageField = ({ label, value, onChange, hint, variant = 'default' }) => {
   const inputRef = useRef(null)
   const [uploading, setUploading] = useState(false)
   const [error, setError] = useState('')
@@ -68,8 +68,18 @@ const AdminImageField = ({ label, value, onChange, hint }) => {
         style={{ marginTop: 8 }}
       />
       {previewSrc ? (
-        <div className="admin-image-preview-wrap">
-          <img src={previewSrc} alt="" className="admin-image-preview" />
+        <div
+          className={`admin-image-preview-wrap${
+            variant === 'logo' ? ' admin-image-preview-wrap--logo' : ''
+          }`}
+        >
+          <img
+            src={previewSrc}
+            alt=""
+            className={`admin-image-preview${
+              variant === 'logo' ? ' admin-image-preview--logo' : ''
+            }`}
+          />
         </div>
       ) : null}
     </div>
