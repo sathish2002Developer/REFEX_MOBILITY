@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-08-10T10:42:21.018Z",
+  "updatedAt": "2026-08-12T06:59:11.066Z",
   "data": {
     "employee-transportation": {
       "slug": "employee-transportation",
-      "pageTitle": "Employee Transportation Services | Refex Mobility",
-      "metaDescription": "Reliable employee transportation for enterprises. Safe, on-time corporate mobility with live tracking, automated billing, and 24/7 support across major Indian cities.",
+      "pageTitle": "AI-Powered Employee Transport Solutions | Refex Mobility",
+      "metaDescription": "Manage commute operations end-to-end with AI-powered routing, real-time tracking & automated billing across 5 cities. Audit-ready reporting. Get a quote.",
       "sections": {
         "hero": {
           "titleLine1": "Reliable Employee Transportation Services",
@@ -63,7 +63,7 @@
             {
               "order": 1,
               "name": "Amazon",
-              "image": "/uploads/images/image-1786101846355-593237746.png"
+              "image": "/assets/amazon-Ba0jenJf.png"
             },
             {
               "order": 2,
@@ -71,126 +71,121 @@
               "image": "/assets/Ather-logo.svg-c-v-sIrx.png"
             },
             {
-              "order": 7,
+              "order": 3,
+              "name": "Flipkart",
+              "image": "/assets/flipkart-logo-png-transparent-Ct4AH1XY.png"
+            },
+            {
+              "order": 4,
+              "name": "Grant Thornton",
+              "image": "/assets/grant-thornton-BhrehETd.png"
+            },
+            {
+              "order": 5,
               "name": "Hexaware",
               "image": "/assets/Hexa%20ware-TOy2jbUJ.png"
             },
             {
-              "order": 8,
+              "order": 6,
               "name": "J.P. Morgan",
               "image": "/assets/JP%20Morgan-4VwzywyW.png"
             },
             {
-              "order": 10,
+              "order": 7,
               "name": "London Stock Exchange",
               "image": "/assets/london-stock-exchange-1-logo-black-and-white-BLzhHteY.png"
             },
             {
-              "order": 12,
+              "order": 8,
               "name": "Nestlé",
               "image": "/assets/Nestle-Cbi2S3lT.png"
             },
             {
-              "order": 15,
+              "order": 9,
               "name": "Samsung",
               "image": "/assets/Samsung-BWvm8yHf.png"
             },
             {
-              "order": 16,
+              "order": 10,
               "name": "Sopra Steria",
               "image": "/assets/sopra_steria-DuKnnHtI.png"
             },
             {
-              "order": 20,
+              "order": 11,
+              "name": "TCS",
+              "image": "/assets/Tata_Consultancy_Services_old_logo.svg-De-_qW_U.png"
+            },
+            {
+              "order": 12,
+              "name": "Titan",
+              "image": "data:image/webp;base64,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OtiRl1syds92AV7xBlOYSZVhHZclLN9DNZgtuuG2gTPUksIS/k5MyvCvAW06ZrwAs+hJWW5hJD/vTPpE3iUr1r8qvqiDLfSM5GfFZErknTHrBahlJ0qOkvzMebhU3hkLL2cThexKCQMj+Xnl0YbdE7J881pmAkuswVrBSH4+eYypvCtmvwCDqNNzpjAykp8ZhaTeIavX7kZa+ZlTFl6MNj+NyO9rSlbPfgHKWIM5zJyKsIrFFJbtn7JfVMODVM0JY/jLORTh3wPM6ZizXoBR1JDCwqkOuxOQ3+ekjB7BAuAtPzNSP3PCEtRwmIMaUKdjvfGiGy5azpoj1YfPiQDK8L2mZfQoFkB2Jy30nIqwBwEMYdn+qfDSwC6TqGJVcMIY/jJ7Lvx7gDsZe9kvQB9nIACMnF5hd3s/h50Ss3nh5WLoJTuzKjlhCursLUFPkCdjE8ECF2eggImQfC7W6vA9p2byWBZgjjQ4AjUnzEGVtSmoAnsSRrLoBtrCzKkOn7OtMq2bMJYFqGUnWi2jDSe+9G7CwktuqpDdaLmF0IZj4ZXYrRjFohqetNAzEk8TnXpvwJ+ChZeHsUHU8XKM5HMxkuKN2JtjAdo4g6OAgRMmxQEMzEFPJJCIjRSLbrjSFkpSZfh8Z+Xn8M1TtHjBpYN1FtGDF0ZOGMJfbqMI/+5IIEfDSpYFGCMMPF6k3BJU2RiDuixJgxderube8jPnhZkTfg6fi4U6fC9IIMcRMKYFKGUXYjUpzEFdFp9bgiqkkYYtNAsg0A1EsJAqw6cCENkUvnmi9o5rASZRw+xnSvK//h7bL+Hfd0gkCWtpFt2QKTgajhWm8PdtXN+HfxVSyf6FlxOB1/aBqdCzKsL8OaZX+NflSCX7R7bAye7MClb4Pqw7xVMuYRckk4IV6/u0pxoqZhhZYfLhfB3Lv/lwnkgn88e2AP3mgUtJyy3C900c3wu/JkvY4g1MC1DLzswwsUIp8P8Vw6/Cr8uRUOYvuHjYRzfcqNW08PL6hGzKGSll/fgWYN46kMFMCz/b+hZJJWD12o3EIB+Zo9Lywmjp70gr68e3AK3sRF1u4YXJToX0cjrfvbhPYjIrn+RsNa90IEkhu2p1/0sBnz59+gTSOO0XQYX//+TTpwy/f9nwbffEURT9t83R9AOg+jY5oH7Ar7H9K46n/BDXNziiUi7xNCccU3FTLFWGwyo/RNH9FUdWit+2+9cMB1f+Yd6mOeEAy7+v/tD4n7/gIMufflLp/iXHgRb3jz8tYd1//QUHW76Y/iMDgOKf/5Lh8Msf/uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//vuvHw=="
+            },
+            {
+              "order": 13,
               "name": "Wipro",
               "image": "/assets/Wipro_Primary_Logo_Color_RGB.svg-C1EhNplL.png"
             },
             {
-              "order": 13,
+              "order": 14,
               "name": "BRADY",
               "image": "/uploads/images/image-1786078414655-227836700.png"
             },
             {
-              "order": 14,
+              "order": 15,
               "name": "LTI Mindtree",
               "image": "/uploads/images/image-1786078592819-87334130.png"
             },
             {
-              "order": 15,
+              "order": 16,
               "name": "GILABRCO - GVR",
               "image": "/uploads/images/image-1786078646788-143141393.png"
             },
             {
-              "order": 16,
+              "order": 17,
               "name": "Grant Thornton",
               "image": "/uploads/images/image-1786078751493-306274591.png"
             },
             {
-              "order": 17,
+              "order": 18,
               "name": "AstraZeneca",
               "image": "/uploads/images/image-1786078875712-249099175.png"
             },
             {
-              "order": 18,
-              "name": "TCS",
-              "image": "/assets/Tata_Consultancy_Services_old_logo.svg-De-_qW_U.png"
-            },
-            {
               "order": 19,
-              "name": "Titan",
-              "image": "data:image/webp;base64,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OtiRl1syds92AV7xBlOYSZVhHZclLN9DNZgtuuG2gTPUksIS/k5MyvCvAW06ZrwAs+hJWW5hJD/vTPpE3iUr1r8qvqiDLfSM5GfFZErknTHrBahlJ0qOkvzMebhU3hkLL2cThexKCQMj+Xnl0YbdE7J881pmAkuswVrBSH4+eYypvCtmvwCDqNNzpjAykp8ZhaTeIavX7kZa+ZlTFl6MNj+NyO9rSlbPfgHKWIM5zJyKsIrFFJbtn7JfVMODVM0JY/jLORTh3wPM6ZizXoBR1JDCwqkOuxOQ3+ekjB7BAuAtPzNSP3PCEtRwmIMaUKdjvfGiGy5azpoj1YfPiQDK8L2mZfQoFkB2Jy30nIqwBwEMYdn+qfDSwC6TqGJVcMIY/jJ7Lvx7gDsZe9kvQB9nIACMnF5hd3s/h50Ss3nh5WLoJTuzKjlhCursLUFPkCdjE8ECF2eggImQfC7W6vA9p2byWBZgjjQ4AjUnzEGVtSmoAnsSRrLoBtrCzKkOn7OtMq2bMJYFqGUnWi2jDSe+9G7CwktuqpDdaLmF0IZj4ZXYrRjFohqetNAzEk8TnXpvwJ+ChZeHsUHU8XKM5HMxkuKN2JtjAdo4g6OAgRMmxQEMzEFPJJCIjRSLbrjSFkpSZfh8Z+Xn8M1TtHjBpYN1FtGDF0ZOGMJfbqMI/+5IIEfDSpYFGCMMPF6k3BJU2RiDuixJgxderube8jPnhZkTfg6fi4U6fC9IIMcRMKYFKGUXYjUpzEFdFp9bgiqkkYYtNAsg0A1EsJAqw6cCENkUvnmi9o5rASZRw+xnSvK//h7bL+Hfd0gkCWtpFt2QKTgajhWm8PdtXN+HfxVSyf6FlxOB1/aBqdCzKsL8OaZX+NflSCX7R7bAye7MClb4Pqw7xVMuYRckk4IV6/u0pxoqZhhZYfLhfB3Lv/lwnkgn88e2AP3mgUtJyy3C900c3wu/JkvY4g1MC1DLzswwsUIp8P8Vw6/Cr8uRUOYvuHjYRzfcqNW08PL6hGzKGSll/fgWYN46kMFMCz/b+hZJJWD12o3EIB+Zo9Lywmjp70gr68e3AK3sRF1u4YXJToX0cjrfvbhPYjIrn+RsNa90IEkhu2p1/0sBnz59+gTSOO0XQYX//+TTpwy/f9nwbffEURT9t83R9AOg+jY5oH7Ar7H9K46n/BDXNziiUi7xNCccU3FTLFWGwyo/RNH9FUdWit+2+9cMB1f+Yd6mOeEAy7+v/tD4n7/gIMufflLp/iXHgRb3jz8tYd1//QUHW76Y/iMDgOKf/5Lh8Msf/uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//vuvHw=="
-            },
-            {
-              "order": 18,
               "name": "Northern Trust",
               "image": "/uploads/images/image-1786354730269-613459608.png"
-            },
-            {
-              "order": 18,
-              "name": "TCS",
-              "image": "/assets/Tata_Consultancy_Services_old_logo.svg-De-_qW_U.png"
-            },
-            {
-              "order": 19,
-              "name": "Titan",
-              "image": "data:image/webp;base64,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OtiRl1syds92AV7xBlOYSZVhHZclLN9DNZgtuuG2gTPUksIS/k5MyvCvAW06ZrwAs+hJWW5hJD/vTPpE3iUr1r8qvqiDLfSM5GfFZErknTHrBahlJ0qOkvzMebhU3hkLL2cThexKCQMj+Xnl0YbdE7J881pmAkuswVrBSH4+eYypvCtmvwCDqNNzpjAykp8ZhaTeIavX7kZa+ZlTFl6MNj+NyO9rSlbPfgHKWIM5zJyKsIrFFJbtn7JfVMODVM0JY/jLORTh3wPM6ZizXoBR1JDCwqkOuxOQ3+ekjB7BAuAtPzNSP3PCEtRwmIMaUKdjvfGiGy5azpoj1YfPiQDK8L2mZfQoFkB2Jy30nIqwBwEMYdn+qfDSwC6TqGJVcMIY/jJ7Lvx7gDsZe9kvQB9nIACMnF5hd3s/h50Ss3nh5WLoJTuzKjlhCursLUFPkCdjE8ECF2eggImQfC7W6vA9p2byWBZgjjQ4AjUnzEGVtSmoAnsSRrLoBtrCzKkOn7OtMq2bMJYFqGUnWi2jDSe+9G7CwktuqpDdaLmF0IZj4ZXYrRjFohqetNAzEk8TnXpvwJ+ChZeHsUHU8XKM5HMxkuKN2JtjAdo4g6OAgRMmxQEMzEFPJJCIjRSLbrjSFkpSZfh8Z+Xn8M1TtHjBpYN1FtGDF0ZOGMJfbqMI/+5IIEfDSpYFGCMMPF6k3BJU2RiDuixJgxderube8jPnhZkTfg6fi4U6fC9IIMcRMKYFKGUXYjUpzEFdFp9bgiqkkYYtNAsg0A1EsJAqw6cCENkUvnmi9o5rASZRw+xnSvK//h7bL+Hfd0gkCWtpFt2QKTgajhWm8PdtXN+HfxVSyf6FlxOB1/aBqdCzKsL8OaZX+NflSCX7R7bAye7MClb4Pqw7xVMuYRckk4IV6/u0pxoqZhhZYfLhfB3Lv/lwnkgn88e2AP3mgUtJyy3C900c3wu/JkvY4g1MC1DLzswwsUIp8P8Vw6/Cr8uRUOYvuHjYRzfcqNW08PL6hGzKGSll/fgWYN46kMFMCz/b+hZJJWD12o3EIB+Zo9Lywmjp70gr68e3AK3sRF1u4YXJToX0cjrfvbhPYjIrn+RsNa90IEkhu2p1/0sBnz59+gTSOO0XQYX//+TTpwy/f9nwbffEURT9t83R9AOg+jY5oH7Ar7H9K46n/BDXNziiUi7xNCccU3FTLFWGwyo/RNH9FUdWit+2+9cMB1f+Yd6mOeEAy7+v/tD4n7/gIMufflLp/iXHgRb3jz8tYd1//QUHW76Y/iMDgOKf/5Lh8Msf/uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//vuvHw=="
-            },
-            {
-              "order": 20,
-              "name": "Wipro",
-              "image": "/assets/Wipro_Primary_Logo_Color_RGB.svg-C1EhNplL.png"
             }
           ]
         },
         "problems": {
           "title": "",
-          "titlePrefix": "One Partner for All Your ",
-          "titleHighlight": "Employee Transportation Needs",
-          "lead": " Transform Your Employee Transportation Experience",
+          "titlePrefix": "Transform Your",
+          "titleHighlight": "Employee Transportation Experience",
+          "lead": "One Partner for All Your Employee Transportation Needs",
           "blocks": [
             {
               "order": 1,
               "problem": "<p><strong>Vendors miss pickups</strong>, employees complain, you’re stuck following up.</p>",
-              "fixTitle": "Fix — Real -time tracking",
-              "fix": "<p>One partner across vehicle types and cities with <strong>live tracking and ETA alerts, zero guesswork.</strong></p>"
+              "fixTitle": "Fix — Atlas",
+              "fix": "<p><span style=\"color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0);\">One partner across vehicle types and cities with </span><strong>live tracking and ETA alerts</strong>, zero guesswork.</p>"
             },
             {
               "order": 2,
-              "problem": "<p><strong>No visibility</strong> until something goes wrong.</p>",
+              "problem": "<p><strong>No visibility </strong>until something goes wrong.</p>",
               "fixTitle": "Fix — Deploy",
-              "fix": "<p><strong>Smart routing </strong>built around your shift patterns, with <strong>real-time visibility</strong> into every trip.</p>"
+              "fix": "<p><strong> Smart routing </strong><strong style=\"color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0);\"> </strong><span style=\"color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0);\">built around your shift patterns, with </span><strong>real -time visibilty</strong><strong style=\"color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0);\">  </strong><span style=\"color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0);\">into every trip.</span></p><p><br></p>"
             },
             {
               "order": 3,
               "problem": "<p><strong>Manual billing</strong> eats hours every month, disputes drag on.</p>",
               "fixTitle": "Fix — Automated billing",
-              "fix": "<p><strong>Automated, transparent billing</strong>. One invoice, zero reconciliation.</p>"
+              "fix": "<p><strong>Automated, transparent billing .</strong><span style=\"color: rgb(0, 0, 0);\"> One invoice, zero reconciliation.</span></p>"
             },
             {
               "order": 4,
-              "problem": "<p>Safety and compliance are an afterthought until an incident happens.</p>",
+              "problem": "<p><strong>No safety and compliance </strong>until an incident happens.</p>",
               "fixTitle": "Fix — Assure",
-              "fix": "<p>Verified drivers, women safety protocols, built-in SOS escalation.</p>"
+              "fix": "<p><strong>Verified drivers, women safety protocols </strong>, built-in SOS escalation.</p>"
             }
           ]
         },
@@ -202,7 +197,7 @@
         "features": {
           "titlePrefix": "Built for",
           "titleHighlight": "Enterprise Scale",
-          "image": "/uploads/images/image-1785833662932-418653696.jpg",
+          "image": "/uploads/images/image-1786441458985-2416311.jpg",
           "imageAlt": "Employee transportation services",
           "items": [
             {
@@ -277,9 +272,9 @@
               "quote": "Sincerely appreciate the excellent cab service provided for our airport pick-up and drop requirements. The vehicles were well-maintained, punctual, and the drivers were courteous and professional, ensuring a safe and comfortable journey. Your team’s reliability and commitment to service quality have made our travel experience hassle-free.",
               "name": "Priya Balan",
               "role": "Asst Manager- Facility",
-              "company": "Nous",
-              "logoImage": "",
-              "logoPrimary": "Nous",
+              "company": "Artizent",
+              "logoImage": "/uploads/images/image-1786444947962-903152064.png",
+              "logoPrimary": "Artizent",
               "logoSecondary": ""
             }
           ]
@@ -311,12 +306,12 @@
               "question": "What types of vehicles are available?",
               "answer": "",
               "list": [
-                "Sedan EVs",
-                "Premium EV SUVs",
-                "Sedans",
-                "SUVs",
-                "MPVs (6/7 Seaters)",
-                "Premium Executive Vehicles"
+                "•\tSedan EVs",
+                "•\tPremium EV SUVs",
+                "•\tSedans",
+                "•\tSUVs",
+                "•\tMPVs (6/7 Seaters)",
+                "•\tPremium Executive Vehicles"
               ]
             },
             {
@@ -342,24 +337,24 @@
               "question": "What does your ESG team get?",
               "answer": "",
               "list": [
-                "Per-trip CO₂ reports",
-                "Composition disclosure",
-                "Scope 3 emission tracking",
-                "Monthly sustainability MIS"
+                "•\tPer-trip CO₂ reports",
+                "•\tComposition disclosure",
+                "•\tScope 3 emission tracking",
+                "•\tMonthly sustainability MIS"
               ]
             }
           ]
         },
         "form": {
           "title": "Let’s Build Your Enterprise Mobility Solution",
-          "note": "Fill out the form, our experts will call back within 24 hours",
+          "note": "Fill out the form, our experts will call back within 24 hours.",
           "buttonText": "Get a Custom Transport Plan",
           "submittingText": "Submitting…",
           "backgroundImage": "/uploads/images/image-1785490498003-83171065.jpg"
         }
       },
       "isActive": true,
-      "updatedAt": "2026-08-10T09:48:33.676Z"
+      "updatedAt": "2026-08-12T06:58:43.984Z"
     },
     "rac": {
       "slug": "rac",
@@ -441,103 +436,73 @@
           "items": [
             {
               "order": 1,
-              "name": "Amazon",
-              "image": "/assets/amazon-Ba0jenJf.png"
-            },
-            {
-              "order": 2,
-              "name": "Ather",
-              "image": "/assets/Ather-logo.svg-c-v-sIrx.png"
-            },
-            {
-              "order": 3,
               "name": "Fairfield by Marriott",
               "image": "/assets/Fairfield_by_Marriott_logo-DTf3PT2Z.png"
             },
             {
-              "order": 4,
+              "order": 2,
               "name": "Flipkart",
               "image": "/assets/flipkart-logo-png-transparent-Ct4AH1XY.png"
             },
             {
-              "order": 5,
+              "order": 3,
               "name": "Four Points",
               "image": "/assets/Four_Points_Logo_neu.svg-DQxzyhRN.png"
             },
             {
-              "order": 6,
-              "name": "Grant Thornton",
-              "image": "/assets/grant-thornton-BhrehETd.png"
-            },
-            {
-              "order": 7,
-              "name": "Hexaware",
-              "image": "/assets/Hexa%20ware-TOy2jbUJ.png"
-            },
-            {
-              "order": 8,
-              "name": "J.P. Morgan",
-              "image": "/assets/JP%20Morgan-4VwzywyW.png"
-            },
-            {
-              "order": 9,
-              "name": "Lemon Tree Hotels",
-              "image": "/assets/lemon-tree-hotels-DaXliHw5.png"
-            },
-            {
-              "order": 10,
-              "name": "London Stock Exchange",
-              "image": "/assets/london-stock-exchange-1-logo-black-and-white-BLzhHteY.png"
-            },
-            {
-              "order": 11,
-              "name": "MindSprint",
-              "image": "/assets/Mindsprint_Logo-qwXUMgdD.png"
-            },
-            {
-              "order": 12,
-              "name": "Nestlé",
-              "image": "/assets/Nestle-Cbi2S3lT.png"
-            },
-            {
-              "order": 13,
+              "order": 4,
               "name": "PwC",
               "image": "/assets/pwc-kTfhTpg9.png"
             },
             {
-              "order": 14,
+              "order": 5,
               "name": "Raintree Hotels",
               "image": "/assets/raintree-BlFIqK7B.jpeg"
             },
             {
-              "order": 15,
-              "name": "Samsung",
-              "image": "/assets/Samsung-BWvm8yHf.png"
-            },
-            {
-              "order": 16,
-              "name": "Sopra Steria",
-              "image": "/assets/sopra_steria-DuKnnHtI.png"
-            },
-            {
-              "order": 17,
+              "order": 6,
               "name": "Taj Hotels",
               "image": "/assets/Taj_Hotels_logo.svg-Cx2G8ale.png"
             },
             {
-              "order": 18,
-              "name": "TCS",
-              "image": "/assets/Tata_Consultancy_Services_old_logo.svg-De-_qW_U.png"
-            },
-            {
-              "order": 19,
+              "order": 7,
               "name": "Titan",
               "image": "data:image/webp;base64,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OtiRl1syds92AV7xBlOYSZVhHZclLN9DNZgtuuG2gTPUksIS/k5MyvCvAW06ZrwAs+hJWW5hJD/vTPpE3iUr1r8qvqiDLfSM5GfFZErknTHrBahlJ0qOkvzMebhU3hkLL2cThexKCQMj+Xnl0YbdE7J881pmAkuswVrBSH4+eYypvCtmvwCDqNNzpjAykp8ZhaTeIavX7kZa+ZlTFl6MNj+NyO9rSlbPfgHKWIM5zJyKsIrFFJbtn7JfVMODVM0JY/jLORTh3wPM6ZizXoBR1JDCwqkOuxOQ3+ekjB7BAuAtPzNSP3PCEtRwmIMaUKdjvfGiGy5azpoj1YfPiQDK8L2mZfQoFkB2Jy30nIqwBwEMYdn+qfDSwC6TqGJVcMIY/jJ7Lvx7gDsZe9kvQB9nIACMnF5hd3s/h50Ss3nh5WLoJTuzKjlhCursLUFPkCdjE8ECF2eggImQfC7W6vA9p2byWBZgjjQ4AjUnzEGVtSmoAnsSRrLoBtrCzKkOn7OtMq2bMJYFqGUnWi2jDSe+9G7CwktuqpDdaLmF0IZj4ZXYrRjFohqetNAzEk8TnXpvwJ+ChZeHsUHU8XKM5HMxkuKN2JtjAdo4g6OAgRMmxQEMzEFPJJCIjRSLbrjSFkpSZfh8Z+Xn8M1TtHjBpYN1FtGDF0ZOGMJfbqMI/+5IIEfDSpYFGCMMPF6k3BJU2RiDuixJgxderube8jPnhZkTfg6fi4U6fC9IIMcRMKYFKGUXYjUpzEFdFp9bgiqkkYYtNAsg0A1EsJAqw6cCENkUvnmi9o5rASZRw+xnSvK//h7bL+Hfd0gkCWtpFt2QKTgajhWm8PdtXN+HfxVSyf6FlxOB1/aBqdCzKsL8OaZX+NflSCX7R7bAye7MClb4Pqw7xVMuYRckk4IV6/u0pxoqZhhZYfLhfB3Lv/lwnkgn88e2AP3mgUtJyy3C900c3wu/JkvY4g1MC1DLzswwsUIp8P8Vw6/Cr8uRUOYvuHjYRzfcqNW08PL6hGzKGSll/fgWYN46kMFMCz/b+hZJJWD12o3EIB+Zo9Lywmjp70gr68e3AK3sRF1u4YXJToX0cjrfvbhPYjIrn+RsNa90IEkhu2p1/0sBnz59+gTSOO0XQYX//+TTpwy/f9nwbffEURT9t83R9AOg+jY5oH7Ar7H9K46n/BDXNziiUi7xNCccU3FTLFWGwyo/RNH9FUdWit+2+9cMB1f+Yd6mOeEAy7+v/tD4n7/gIMufflLp/iXHgRb3jz8tYd1//QUHW76Y/iMDgOKf/5Lh8Msf/uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//uM//vuvHw=="
             },
             {
-              "order": 20,
-              "name": "Wipro",
-              "image": "/assets/Wipro_Primary_Logo_Color_RGB.svg-C1EhNplL.png"
+              "order": 8,
+              "name": "Apollo Tyres",
+              "image": "/uploads/images/image-1786448728446-742379661.png"
+            },
+            {
+              "order": 9,
+              "name": "H&M",
+              "image": "/uploads/images/image-1786448807538-633528853.png"
+            },
+            {
+              "order": 10,
+              "name": "Grant Thornton ",
+              "image": "/uploads/images/image-1786448869224-231419887.png"
+            },
+            {
+              "order": 11,
+              "name": "AIRTEL",
+              "image": "/uploads/images/image-1786448937255-782704272.png"
+            },
+            {
+              "order": 12,
+              "name": "Micheal Page",
+              "image": "/uploads/images/image-1786449242581-797701269.png"
+            },
+            {
+              "order": 13,
+              "name": "Renew Power",
+              "image": "/uploads/images/image-1786449340655-943843479.png"
+            },
+            {
+              "order": 14,
+              "name": "Apollo Hospital",
+              "image": "/uploads/images/image-1786449500009-127029313.png"
             }
           ]
         },
@@ -580,7 +545,7 @@
         "features": {
           "titlePrefix": "Built for How Corporate Travel",
           "titleHighlight": "Actually Works",
-          "image": "/wp-content/uploads/elementor/thumbs/outstanding-img-r97rc31a974htbzyt30e7ra24cs8axu2myh0lsb9kc.png",
+          "image": "/uploads/images/image-1786441489820-322013716.jpg",
           "imageAlt": "Corporate mobility services",
           "items": [
             {
@@ -626,7 +591,7 @@
               "name": "Varun Keswani",
               "role": "Head of Supply - Asia & Middle East",
               "company": "Transferz",
-              "logoImage": "",
+              "logoImage": "/uploads/images/image-1786441620276-700998402.png",
               "logoPrimary": "Transferz",
               "logoSecondary": ""
             },
@@ -635,9 +600,9 @@
               "quote": "Sincerely appreciate the excellent cab service provided for our airport pick-up and drop requirements. The vehicles were well-maintained, punctual, and the drivers were courteous and professional, ensuring a safe and comfortable journey. Your team’s reliability and commitment to service quality have made our travel experience hassle-free.",
               "name": "Priya Balan",
               "role": "Asst Manager- Facility",
-              "company": "Nous",
-              "logoImage": "",
-              "logoPrimary": "Nous",
+              "company": "Artizent",
+              "logoImage": "/uploads/images/image-1786444965681-674008268.png",
+              "logoPrimary": "Artizent",
               "logoSecondary": ""
             },
             {
@@ -646,7 +611,7 @@
               "name": "Sailas Nulaka",
               "role": "Admin and Facilities",
               "company": "Invenco by GVR",
-              "logoImage": "",
+              "logoImage": "/uploads/images/image-1786441644513-167952195.png",
               "logoPrimary": "Invenco",
               "logoSecondary": "by GVR"
             },
@@ -656,7 +621,7 @@
               "name": "Kondanda Ram",
               "role": "Sr Manager Finance and Admin",
               "company": "Brady Company India Pvt. Ltd",
-              "logoImage": "",
+              "logoImage": "/uploads/images/image-1786441653501-428237795.png",
               "logoPrimary": "Brady",
               "logoSecondary": "COMPANY"
             }
@@ -689,12 +654,12 @@
               "question": "What types of vehicles are available?",
               "answer": "",
               "list": [
-                "Sedan EVs",
-                "Premium EV SUVs",
-                "Sedans",
-                "SUVs",
-                "MPVs (6/7 Seaters)",
-                "Premium Executive Vehicles"
+                "•\tSedan EVs",
+                "•\tPremium EV SUVs",
+                "•\tSedans",
+                "•\tSUVs",
+                "•\tMPVs (6/7 Seaters)",
+                "•\tPremium Executive Vehicles"
               ]
             },
             {
@@ -720,10 +685,10 @@
               "question": "What does your ESG team get?",
               "answer": "",
               "list": [
-                "Per-trip CO₂ reports",
-                "Composition disclosure",
-                "Scope 3 emission tracking",
-                "Monthly sustainability MIS"
+                "•\tPer-trip CO₂ reports",
+                "•\tComposition disclosure",
+                "•\tScope 3 emission tracking",
+                "•\tMonthly sustainability MIS"
               ]
             }
           ]
@@ -737,7 +702,7 @@
         }
       },
       "isActive": true,
-      "updatedAt": "2026-08-10T10:42:21.011Z"
+      "updatedAt": "2026-08-12T06:59:11.059Z"
     }
   }
 }
