@@ -14,9 +14,9 @@ class EmailService {
         : undefined;
 
     this.transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtppro.zoho.in',
+      host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port,
-      secure: port === 465,
+      secure: port === 465 || String(process.env.SMTP_SECURE).toLowerCase() === 'true',
       requireTLS: port === 587,
       auth,
       tls: {
