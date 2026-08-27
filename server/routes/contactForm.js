@@ -1,7 +1,6 @@
 const express = require('express');
 const { body, validationResult } = require('express-validator');
 
-const emailService = require('../services/email_service');
 const { sendToKissflowWebhook } = require('../helpers/kissflowWebhook');
 const { buildContactFormKissflowPayload } = require('../helpers/kissflowPayloadBuilder');
 const {
@@ -10,6 +9,7 @@ const {
   KISSFLOW_CONTACT_WEBHOOK_URL,
 } = require('../config/siteConfig');
 const { isValidInternationalPhone } = require('../helpers/phoneValidation');
+const { getSpamRejection } = require('../helpers/spamFilter');
 
 const router = express.Router();
 
@@ -44,8 +44,8 @@ router.post(
         }
         return true;
       }),
-    body('company').optional().isString(),
-    body('message').trim().notEmpty().withMessage('message is required'),
+    body('company').optional().isString().isLength({ max: 200 }),
+    body('message').trim().notEmpty().withMessage('message is required').isLength({ max: 5000 }),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -70,6 +70,17 @@ router.post(
       });
     }
 
+    const spam = getSpamRejection(req.body || {});
+    if (spam) {
+      console.warn('[ContactForm] Ignored spam submission', spam);
+      return res.json({
+        success: true,
+        message: 'Contact form submitted successfully',
+        emailSent: false,
+        ignored: true,
+      });
+    }
+
     const { name, email, phone, company, message } = req.body || {};
 
     const webhookData = buildContactFormKissflowPayload(req, {
@@ -87,29 +98,6 @@ router.post(
       KISSFLOW_CONTACT_WEBHOOK_URL
     );
 
-    // let emailSent = false;
-    // try {
-    //   // Send email (existing implementation)
-    //   await emailService.sendContactFormEmail({
-    //     name,
-    //     email,
-    //     phone: phoneDigits || phone,
-    //     company,
-    //     message,
-    //     ipAddress: meta.ipAddress,
-    //   });
-    //   emailSent = true;
-
-    //   // Auto-reply is optional; don't fail the main response if it fails
-    //   try {
-    //     await emailService.sendAutoReply(email, name);
-    //   } catch (err) {
-    //     console.error('Contact form auto-reply failed', { message: err?.message });
-    //   }
-    // } catch (error) {
-    //   console.error('Contact form email failed', error);
-    // }
-
     const emailSent = false;
 
     return res.json({
@@ -121,4 +109,3 @@ router.post(
 );
 
 module.exports = router;
-

@@ -48,6 +48,9 @@ router.post(
       .withMessage('company name is required')
       .bail()
       .isLength({ min: 1, max: 200 })
+      .withMessage('company name is invalid')
+      .bail()
+      .matches(/^[\p{L}\p{M}\d\s&'.,()+\/-]+$/u)
       .withMessage('company name is invalid'),
     body('email')
       .trim()
@@ -85,7 +88,13 @@ router.post(
     body('department')
       .trim()
       .notEmpty()
-      .withMessage('department is required'),
+      .withMessage('department is required')
+      .bail()
+      .isLength({ max: 200 })
+      .withMessage('department is invalid')
+      .bail()
+      .matches(/^[\p{L}\p{M}\d\s&'.,()+\/-]+$/u)
+      .withMessage('department is invalid'),
     body('regions').custom((value) => {
       if (value === undefined || value === null) {
         throw new Error('regions is required');
@@ -108,7 +117,16 @@ router.post(
       }
       return true;
     }),
-    body('comment').optional().isString().isLength({ max: 5000 }),
+    body('comment')
+      .optional({ values: 'falsy' })
+      .isString()
+      .isLength({ max: 5000 })
+      .custom((value) => {
+        if (value && /<\s*\/?\s*script\b/i.test(String(value))) {
+          throw new Error('comment is invalid');
+        }
+        return true;
+      }),
   ],
   (req, res, next) => {
     if (formatValidationErrorResponse(req, res) !== true) {

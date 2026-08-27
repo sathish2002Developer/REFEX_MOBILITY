@@ -3,6 +3,7 @@ const { responseStatus } = require('../helpers/response');
 const { sendToKissflowWebhook } = require('../helpers/kissflowWebhook');
 const { buildBusinessCommuteKissflowPayload } = require('../helpers/kissflowPayloadBuilder');
 const { assertRecaptchaForSubmit } = require('../helpers/recaptcha');
+const { getSpamRejection } = require('../helpers/spamFilter');
 const {
   WEBSITE_NAME,
   BUSINESS_FORM_NAME,
@@ -11,6 +12,16 @@ const {
 
 const submitBusinessCommuteForm = async (req, res) => {
   try {
+    const spam = getSpamRejection(req.body || {});
+    if (spam) {
+      console.warn('[BusinessCommute] Ignored spam submission', spam);
+      // Fake success so bots / XSS probes do not keep probing
+      return responseStatus(res, 200, 'Thank you! Our team will reach out shortly.', {
+        emailSent: false,
+        ignored: true,
+      });
+    }
+
     const captcha = await assertRecaptchaForSubmit(req);
     if (!captcha.ok) {
       return res.status(400).json({
