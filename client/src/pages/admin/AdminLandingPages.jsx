@@ -708,6 +708,22 @@ const AdminLandingPages = () => {
                   <input value={form.submittingText || ''} onChange={(e) => patch('form', 'submittingText', e.target.value)} />
                 </div>
               </div>
+              <div className="admin-form-group">
+                <label>Submit note (bold line)</label>
+                <input
+                  value={form.submitNoteBold || ''}
+                  onChange={(e) => patch('form', 'submitNoteBold', e.target.value)}
+                  placeholder="Note: Business & Corporate Inquiries Only."
+                />
+              </div>
+              <div className="admin-form-group">
+                <label>Submit note (second line)</label>
+                <input
+                  value={form.submitNoteLine || ''}
+                  onChange={(e) => patch('form', 'submitNoteLine', e.target.value)}
+                  placeholder="Not for driver applications or personal cab requests."
+                />
+              </div>
               <AdminImageField
                 label="Final section background"
                 value={form.backgroundImage || ''}

@@ -203,6 +203,8 @@ export const DEFAULT_RAC_LANDING_CMS = {
       note: 'Fill out the form, our experts will call back within 24 hours.',
       buttonText: 'Get a Custom Transport Plan',
       submittingText: 'Submitting…',
+      submitNoteBold: 'Note: Business & Corporate Inquiries Only.',
+      submitNoteLine: 'Not for driver applications or personal cab requests.',
       backgroundImage: '/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp',
     },
   },

@@ -289,9 +289,11 @@ function EtsLeadForm({
           {submitting ? formCopy.submittingText : formCopy.buttonText}
         </button>
         <p className="ets-form-submit-note">
-          <strong>Note: Business &amp; Corporate Inquiries Only.</strong>
+          <strong>
+            {formCopy.submitNoteBold || 'Note: Business & Corporate Inquiries Only.'}
+          </strong>
           <br />
-          Not for driver applications or personal cab requests.
+          {formCopy.submitNoteLine || 'Not for driver applications or personal cab requests.'}
         </p>
       </form>
     </div>
