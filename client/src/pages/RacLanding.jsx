@@ -289,6 +289,11 @@ function RacLeadForm({ formId, submitting, setSubmitting, onSuccess, variant = '
         <button type="submit" className="ets-btn ets-btn--primary" disabled={submitting}>
           {submitting ? formCopy?.submittingText : formCopy?.buttonText}
         </button>
+        <p className="ets-form-submit-note">
+          <strong>Note: Business &amp; Corporate Inquiries Only.</strong>
+          <br />
+          Not for driver applications or personal cab requests.
+        </p>
       </form>
     </div>
   )

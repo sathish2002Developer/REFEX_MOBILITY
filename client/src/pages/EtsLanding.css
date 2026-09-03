@@ -904,6 +904,28 @@ header.header-rac-minimal .col-sm-12 {
   margin-top: 4px;
 }
 
+.ets-form-submit-note {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--ets-muted);
+  text-align: center;
+}
+
+.ets-form-submit-note strong {
+  color: var(--ets-orange, #f4553b);
+  font-weight: 700;
+}
+
+.rac-page .ets-form-submit-note {
+  font-size: 12px;
+  color: #6b5a56;
+}
+
+.rac-page .ets-form-submit-note strong {
+  color: #f4553b;
+}
+
 /* Logo strip */
 .ets-logos {
   padding: 28px 0;
