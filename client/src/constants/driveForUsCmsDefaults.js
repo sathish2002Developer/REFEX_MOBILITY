@@ -13,7 +13,7 @@ export const DEFAULT_DRIVE_FOR_US_CMS = {
     },
     whyChooseUs: {
       titlePrefix: 'Why',
-      titleHighlight: 'Drive For Us ?',
+      titleHighlight: 'Drive For Us?',
       cards: [
         {
           order: 1,
@@ -25,7 +25,7 @@ export const DEFAULT_DRIVE_FOR_US_CMS = {
         },
         {
           order: 2,
-          title: 'Guaranteed Earnings + Incentivest',
+          title: 'Guaranteed Earnings + Incentives',
           description: 'Earn weekly or monthly payouts with performance bonuses and rewards.',
           image: '/wp-content/uploads/2025/07/earning-incentive.png',
           alt: 'Guaranteed Earnings + Incentives',
@@ -90,18 +90,48 @@ export const DEFAULT_DRIVE_FOR_US_CMS = {
   },
 }
 
+/** Collapse odd whitespace / spaces before punctuation from CMS copy. */
+export function normalizeCmsText(value) {
+  if (value == null) return ''
+  return String(value)
+    .replace(/[\u00A0\u2000-\u200B\u202F\u205F\u3000]/g, ' ')
+    .replace(/[ \t\f\v]+/g, ' ')
+    .replace(/\s+([.,!?;:])/g, '$1')
+    .replace(/\s*\n\s*/g, ' ')
+    .trim()
+}
+
 export function mergeDriveForUsCms(apiData) {
   if (!apiData) return DEFAULT_DRIVE_FOR_US_CMS
   const d = DEFAULT_DRIVE_FOR_US_CMS
+  const heroIn = apiData.sections?.hero || {}
+  const whyIn = apiData.sections?.whyChooseUs || {}
+  const faqIn = apiData.sections?.faq || {}
   return {
     pageTitle: apiData.pageTitle || d.pageTitle,
     metaDescription: apiData.metaDescription || d.metaDescription,
     sections: {
       ...d.sections,
       ...(apiData.sections || {}),
-      hero: { ...d.sections.hero, ...(apiData.sections?.hero || {}) },
-      whyChooseUs: { ...d.sections.whyChooseUs, ...(apiData.sections?.whyChooseUs || {}) },
-      faq: { ...d.sections.faq, ...(apiData.sections?.faq || {}) },
+      hero: {
+        ...d.sections.hero,
+        ...heroIn,
+        title: normalizeCmsText(heroIn.title ?? d.sections.hero.title),
+        subtitle: normalizeCmsText(heroIn.subtitle ?? d.sections.hero.subtitle),
+        ctaText: normalizeCmsText(heroIn.ctaText ?? d.sections.hero.ctaText),
+      },
+      whyChooseUs: {
+        ...d.sections.whyChooseUs,
+        ...whyIn,
+        titlePrefix: normalizeCmsText(whyIn.titlePrefix ?? d.sections.whyChooseUs.titlePrefix),
+        titleHighlight: normalizeCmsText(whyIn.titleHighlight ?? d.sections.whyChooseUs.titleHighlight),
+      },
+      faq: {
+        ...d.sections.faq,
+        ...faqIn,
+        titlePrefix: normalizeCmsText(faqIn.titlePrefix ?? d.sections.faq.titlePrefix),
+        titleHighlight: normalizeCmsText(faqIn.titleHighlight ?? d.sections.faq.titleHighlight),
+      },
     },
   }
 }

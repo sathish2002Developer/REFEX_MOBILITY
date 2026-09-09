@@ -40,6 +40,9 @@ const Footer = () => {
                   <a href="https://www.instagram.com/refexmobility" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
                     <i className="fab fa-instagram"></i>
                   </a>
+                  <a href="https://www.youtube.com/@RefexMobilityLimited" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="YouTube">
+                    <i className="fab fa-youtube"></i>
+                  </a>
                 </div>
               </div>
             </div>
@@ -47,6 +50,9 @@ const Footer = () => {
               <div className="widget footer-logo text-left">
                 <h4 className="footer-title">Quick Links</h4>
                 <ul className="ftr-menus">
+                  <li>
+                    <Link to="/about-us">About Us</Link>
+                  </li>
                   <li>
                     <a href="https://refexmobility.com/drive-for-us/">Drive With Us</a>
                   </li>

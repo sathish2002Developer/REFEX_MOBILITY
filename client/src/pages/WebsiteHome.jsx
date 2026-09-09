@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import './Home.css'
@@ -1545,11 +1546,11 @@ const WebsiteHome = () => {
                                   data-id="276667f"
                                   data-element_type="section"
                                 >
-                                  <div className="elementor-container elementor-column-gap-default">
-                                    <div className="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-cfc7ea1" data-id="cfc7ea1" data-element_type="column">
-                                      <div className="elementor-widget-wrap elementor-element-populated">
-                                        <div className="elementor-element elementor-element-c3cddcc elementor-widget-mobile__width-initial elementor-widget elementor-widget-image" data-id="c3cddcc" data-element_type="widget" data-widget_type="image.default">
-                                          <div className="elementor-widget-container">
+                                  <div className="elementor-container elementor-column-gap-default" style={{ display: 'flex', alignItems: 'stretch' }}>
+                                    <div className="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-cfc7ea1" data-id="cfc7ea1" data-element_type="column" style={{ display: 'flex' }}>
+                                      <div className="elementor-widget-wrap elementor-element-populated" style={{ width: '100%', height: '100%' }}>
+                                        <div className="elementor-element elementor-element-c3cddcc elementor-widget-mobile__width-initial elementor-widget elementor-widget-image" data-id="c3cddcc" data-element_type="widget" data-widget_type="image.default" style={{ height: '100%' }}>
+                                          <div className="elementor-widget-container" style={{ height: '100%' }}>
                                             <img 
                                               decoding="async" 
                                               width="996" 
@@ -1558,18 +1559,19 @@ const WebsiteHome = () => {
                                               className="attachment-full size-full wp-image-8642" 
                                               alt="About Refex Mobility"
                                               loading="lazy"
+                                              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                             />
                                           </div>
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-5b5605b" data-id="5b5605b" data-element_type="column">
-                                      <div className="elementor-widget-wrap elementor-element-populated">
-                                        <div className="elementor-element elementor-element-68ee200 elementor-widget-laptop__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-image-box" data-id="68ee200" data-element_type="widget" data-widget_type="image-box.default">
+                                    <div className="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-5b5605b" data-id="5b5605b" data-element_type="column" style={{ display: 'flex' }}>
+                                      <div className="elementor-widget-wrap elementor-element-populated" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', width: '100%' }}>
+                                        <div className="elementor-element elementor-element-68ee200 elementor-widget-laptop__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-image-box" data-id="68ee200" data-element_type="widget" data-widget_type="image-box.default" style={{ margin: 0, padding: 0 }}>
                                           <div className="elementor-widget-container">
                                             <div className="elementor-image-box-wrapper">
                                               <div className="elementor-image-box-content">
-                                                <h3 className="elementor-image-box-title">
+                                                <h3 className="elementor-image-box-title" style={{ margin: '0 0 8px' }}>
                                                   {aboutUs.titlePrefix}{' '}
                                                   <span style={{color: '#F4553B'}}>{aboutUs.titleHighlight}</span>
                                                 </h3>
@@ -1577,19 +1579,33 @@ const WebsiteHome = () => {
                                             </div>
                                           </div>
                                         </div>
-                                        <div className="elementor-element elementor-element-9159ae5 elementor-widget elementor-widget-text-editor" data-id="9159ae5" data-element_type="widget" data-widget_type="text-editor.default">
+                                        <div className="elementor-element elementor-element-9159ae5 elementor-widget elementor-widget-text-editor" data-id="9159ae5" data-element_type="widget" data-widget_type="text-editor.default" style={{ marginBottom: 10 }}>
                                           <div className="elementor-widget-container">
                                             {aboutUs.paragraphs?.[0]}
                                           </div>
                                         </div>
-                                        <div className="elementor-element elementor-element-b52014e elementor-widget elementor-widget-text-editor" data-id="b52014e" data-element_type="widget" data-widget_type="text-editor.default">
+                                        <div className="elementor-element elementor-element-b52014e elementor-widget elementor-widget-text-editor" data-id="b52014e" data-element_type="widget" data-widget_type="text-editor.default" style={{ marginBottom: 10 }}>
                                           <div className="elementor-widget-container">
                                             {aboutUs.paragraphs?.[1]}
                                           </div>
                                         </div>
-                                        <div className="elementor-element elementor-element-d2eb3a8 elementor-widget elementor-widget-text-editor" data-id="d2eb3a8" data-element_type="widget" data-widget_type="text-editor.default">
+                                        <div className="elementor-element elementor-element-d2eb3a8 elementor-widget elementor-widget-text-editor" data-id="d2eb3a8" data-element_type="widget" data-widget_type="text-editor.default" style={{ marginBottom: 10 }}>
                                           <div className="elementor-widget-container">
-                                            <p>{aboutUs.paragraphs?.[2]}</p>
+                                            <p style={{ margin: 0 }}>{aboutUs.paragraphs?.[2]}</p>
+                                          </div>
+                                        </div>
+                                        <div className="elementor-element elementor-widget elementor-widget-button home-about-read-more">
+                                          <div className="elementor-widget-container">
+                                            <div className="elementor-button-wrapper">
+                                              <Link
+                                                to="/about-us"
+                                                className="elementor-button elementor-button-link elementor-size-sm home-about-read-more__btn"
+                                              >
+                                                <span className="elementor-button-content-wrapper">
+                                                  <span className="elementor-button-text">Read More</span>
+                                                </span>
+                                              </Link>
+                                            </div>
                                           </div>
                                         </div>
                                       </div>

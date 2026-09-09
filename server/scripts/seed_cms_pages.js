@@ -6,6 +6,7 @@ const { syncCmsJsonSnapshot } = require("../controllers/cms");
 
 const SEED_FILES = [
   path.join(__dirname, "../seeds/home_page.json"),
+  path.join(__dirname, "../seeds/about_us_page.json"),
   path.join(__dirname, "../seeds/drive_for_us.json"),
   path.join(__dirname, "../seeds/business_commute_page.json"),
   path.join(__dirname, "../seeds/employee_transportation_page.json"),

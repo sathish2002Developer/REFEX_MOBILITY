@@ -12,10 +12,10 @@
     },
     "whyChooseUs": {
       "titlePrefix": "Why",
-      "titleHighlight": "Drive For Us ?",
+      "titleHighlight": "Drive For Us?",
       "cards": [
         { "order": 1, "titleLine1": "Zero Ownership", "titleLine2": "Cost", "description": "No need to buy or rent. Drive our fully maintained electric vehicles.", "image": "/wp-content/uploads/2025/07/zero-ownership.png", "alt": "Zero Ownership Cost" },
-        { "order": 2, "title": "Guaranteed Earnings + Incentivest", "description": "Earn weekly or monthly payouts with performance bonuses and rewards.", "image": "/wp-content/uploads/2025/07/earning-incentive.png", "alt": "Guaranteed Earnings + Incentives" },
+        { "order": 2, "title": "Guaranteed Earnings + Incentives", "description": "Earn weekly or monthly payouts with performance bonuses and rewards.", "image": "/wp-content/uploads/2025/07/earning-incentive.png", "alt": "Guaranteed Earnings + Incentives" },
         { "order": 3, "title": "App-Based Ride Assignments", "description": "Easy-to-use driver app with trip details, navigation, and payments.", "image": "/wp-content/uploads/2025/07/ride-assignmentes.png", "alt": "App-Based Ride Assignments" },
         { "order": 4, "title": "Reliable Support. Anytime.", "description": "We handle the vehicle upkeep. You focus on driving.", "image": "/wp-content/uploads/2025/07/support.png", "alt": "Reliable Support. Anytime." }
       ]

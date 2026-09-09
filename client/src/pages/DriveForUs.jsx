@@ -237,13 +237,13 @@ const DriveForUs = () => {
                             <div className="elementor-widget-wrap elementor-element-populated">
                               <div className="elementor-element elementor-element-c00bf29 elementor-widget__width-initial elementor-widget-tablet__width-inherit elementor-widget-mobile__width-inherit elementor-widget elementor-widget-heading" data-id="c00bf29" data-element_type="widget" data-widget_type="heading.default">
                                 <div className="elementor-widget-container">
-                                  <h2 className="elementor-heading-title elementor-size-default" style={{ color: '#FFFFFF', fontFamily: '"Poppins", Sans-serif', fontSize: '56px', fontWeight: 700, lineHeight: '1.2em' }}>
+                                  <h2 className="mb-3 elementor-heading-title elementor-size-default" style={{ color: '#FFFFFF', fontFamily: '"Poppins", Sans-serif', fontSize: '56px', fontWeight: 700, lineHeight: '1.2em', letterSpacing: '-0.02em', wordSpacing: 'normal' }}>
                                     {hero?.title}
                                   </h2>
                                 </div>
                               </div>
-                              <div className="elementor-element elementor-element-a11fdc0 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="a11fdc0" data-element_type="widget" data-widget_type="text-editor.default">
-                                <div className="elementor-widget-container" style={{ color: '#FFFFFF', fontFamily: '"Poppins", Sans-serif', fontSize: '20px', fontWeight: 400, lineHeight: '1.6em' }}>
+                              <div className="mb-3 elementor-element elementor-element-a11fdc0 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="a11fdc0" data-element_type="widget" data-widget_type="text-editor.default">
+                                <div className="elementor-widget-container" style={{ color: '#FFFFFF', fontFamily: '"Poppins", Sans-serif', fontSize: '20px', fontWeight: 400, lineHeight: '1.6em', letterSpacing: 'normal', wordSpacing: 'normal', maxWidth: '42em' }}>
                                   <p style={{ color: '#FFFFFF' }}>{hero?.subtitle}</p>
                                 </div>
                               </div>
@@ -661,7 +661,7 @@ const DriveForUs = () => {
                                           <div className="elementor-image-box-wrapper">
                                             <div className="elementor-image-box-content">
                                               <h3 className="elementor-image-box-title">
-                                                Ready to <span style={{color: '#F4553B'}}> Join?</span>
+                                                Ready to <span style={{color: '#F4553B'}}>Join?</span>
                                               </h3>
                                               <p className="elementor-image-box-description">
                                                 No need to buy or maintain a car - we will provide you the car. Enjoy steady income, flexible hours, and full support. No EMI. No hassle. Just drive and earn.
@@ -1059,7 +1059,7 @@ const DriveForUs = () => {
                                           <div className="elementor-image-box-wrapper">
                                             <div className="elementor-image-box-content">
                                               <h3 className="elementor-image-box-title">
-                                                Ready to <span style={{color: '#F4553B'}}> Join?</span>
+                                                Ready to <span style={{color: '#F4553B'}}>Join?</span>
                                               </h3>
                                               <p className="elementor-image-box-description">
                                                 No need to buy or maintain a car - we will provide you the car. Enjoy steady income, flexible hours, and full support. No EMI. No hassle. Just drive and earn.

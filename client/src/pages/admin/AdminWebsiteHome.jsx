@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { CMS_PAGES, getCmsDefaults, mergeCmsPage } from '../../constants/cmsPageRegistry'
 import { API_BASE_URL } from '../../constants/api'
+import AdminImageField from '../../components/admin/AdminImageField'
 import './Admin.css'
 
 const HOME_SECTIONS = [
@@ -35,8 +36,18 @@ const LEGAL_SECTIONS = [
   { id: 'body', label: 'Page Content' },
 ]
 
+const ABOUT_SECTIONS = [
+  { id: 'meta', label: 'Page Meta' },
+  { id: 'hero', label: 'Hero' },
+  { id: 'intro', label: 'Intro' },
+  { id: 'brandValues', label: 'Brand Values' },
+  { id: 'brandGoals', label: 'Brand Goals' },
+  { id: 'leadership', label: 'Leadership Team' },
+]
+
 const PAGE_SECTIONS = {
   home: HOME_SECTIONS,
+  'about-us': ABOUT_SECTIONS,
   'drive-for-us': DRIVE_SECTIONS,
   'business-commute': BUSINESS_SECTIONS,
   'terms-and-conditions': LEGAL_SECTIONS,
@@ -104,7 +115,7 @@ const AdminWebsiteHome = () => {
 
   if (loading) return <div className="admin-home"><p>Loading...</p></div>
 
-  const { hero, sustainabilityImpact, whyChooseUs, rideOptions, expandingNetwork, fleet, aboutUs, whyChooseRefex, industries, faq, body } = sections
+  const { hero, sustainabilityImpact, whyChooseUs, rideOptions, expandingNetwork, fleet, aboutUs, whyChooseRefex, industries, faq, body, intro, brandValues, brandGoals, leadership } = sections
   const sectionNav = PAGE_SECTIONS[activePageSlug] || HOME_SECTIONS
   const activePage = CMS_PAGES.find((p) => p.slug === activePageSlug)
 
@@ -162,6 +173,54 @@ const AdminWebsiteHome = () => {
                 <div className="admin-form-group"><label>Button Text</label><input value={hero.ctaText || ''} onChange={(e) => patch('hero', 'ctaText', e.target.value)} /></div>
                 <div className="admin-form-group"><label>Button Link</label><input value={hero.ctaLink || ''} onChange={(e) => patch('hero', 'ctaLink', e.target.value)} /></div>
               </div>
+              {activePageSlug === 'business-commute' && (
+                <div style={{ borderTop: '1px solid #eee', marginTop: 16, paddingTop: 16 }}>
+                  <h4 style={{ margin: '0 0 12px 0' }}>Secondary hero links</h4>
+                  {(hero.secondaryCtas || [
+                    { label: 'Employee Transportation Service', link: '/employee-transportation' },
+                    { label: 'RAC', link: '/CorporateRentals' },
+                  ]).map((cta, i) => (
+                    <div className="admin-form-row" key={i}>
+                      <div className="admin-form-group">
+                        <label>Button {i + 1} text</label>
+                        <input
+                          value={cta.label || ''}
+                          onChange={(e) => {
+                            const list = [...(hero.secondaryCtas || [])]
+                            while (list.length < 2) {
+                              list.push(
+                                i === 0
+                                  ? { label: 'Employee Transportation Service', link: '/employee-transportation' }
+                                  : { label: 'RAC', link: '/CorporateRentals' }
+                              )
+                            }
+                            list[i] = { ...list[i], label: e.target.value }
+                            patch('hero', 'secondaryCtas', list)
+                          }}
+                        />
+                      </div>
+                      <div className="admin-form-group">
+                        <label>Button {i + 1} link</label>
+                        <input
+                          value={cta.link || ''}
+                          onChange={(e) => {
+                            const list = [...(hero.secondaryCtas || [])]
+                            while (list.length < 2) {
+                              list.push(
+                                i === 0
+                                  ? { label: 'Employee Transportation Service', link: '/employee-transportation' }
+                                  : { label: 'RAC', link: '/CorporateRentals' }
+                              )
+                            }
+                            list[i] = { ...list[i], link: e.target.value }
+                            patch('hero', 'secondaryCtas', list)
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
               <div className="admin-form-group"><label>Background Image URL</label><input value={hero.backgroundImage || ''} onChange={(e) => patch('hero', 'backgroundImage', e.target.value)} /></div>
               {activePageSlug === 'home' && (
                 <div style={{ borderTop: '1px solid #eee', marginTop: 20, paddingTop: 20 }}>
@@ -322,6 +381,125 @@ const AdminWebsiteHome = () => {
                     paragraphs[i] = e.target.value
                     patch('aboutUs', 'paragraphs', paragraphs)
                   }} />
+                </div>
+              ))}
+            </div>
+          )}
+          {activePageSlug === 'about-us' && activeSection === 'hero' && hero && (
+            <div className="admin-section-card">
+              <h3>Hero Banner</h3>
+              <div className="admin-form-group">
+                <label>Title</label>
+                <input value={hero.title || ''} onChange={(e) => patch('hero', 'title', e.target.value)} />
+              </div>
+              <div className="admin-form-group">
+                <label>Subtitle</label>
+                <input value={hero.subtitle || ''} onChange={(e) => patch('hero', 'subtitle', e.target.value)} />
+              </div>
+              <AdminImageField
+                label="Background image"
+                value={hero.backgroundImage || ''}
+                onChange={(url) => patch('hero', 'backgroundImage', url)}
+                hint="Wide banner recommended. Used behind the About Us title."
+              />
+            </div>
+          )}
+          {activePageSlug === 'about-us' && activeSection === 'intro' && intro && (
+            <div className="admin-section-card">
+              <h3>About intro</h3>
+              <div className="admin-form-row">
+                <div className="admin-form-group"><label>Title (before)</label><input value={intro.titlePrefix || ''} onChange={(e) => patch('intro', 'titlePrefix', e.target.value)} /></div>
+                <div className="admin-form-group"><label>Title highlight</label><input value={intro.titleHighlight || ''} onChange={(e) => patch('intro', 'titleHighlight', e.target.value)} /></div>
+              </div>
+              {(intro.paragraphs || []).map((p, i) => (
+                <div key={i} className="admin-form-group">
+                  <label>Paragraph {i + 1}</label>
+                  <textarea
+                    rows={4}
+                    value={p}
+                    onChange={(e) => {
+                      const paragraphs = [...(intro.paragraphs || [])]
+                      paragraphs[i] = e.target.value
+                      patch('intro', 'paragraphs', paragraphs)
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+          {activePageSlug === 'about-us' && activeSection === 'brandValues' && brandValues && (
+            <div className="admin-section-card">
+              <h3>Brand Values</h3>
+              <div className="admin-form-row">
+                <div className="admin-form-group"><label>Title (before)</label><input value={brandValues.titlePrefix || ''} onChange={(e) => patch('brandValues', 'titlePrefix', e.target.value)} /></div>
+                <div className="admin-form-group"><label>Title highlight</label><input value={brandValues.titleHighlight || ''} onChange={(e) => patch('brandValues', 'titleHighlight', e.target.value)} /></div>
+              </div>
+              {(brandValues.items || []).map((item, i) => (
+                <div key={i} className="admin-item-card">
+                  <h4>Value {i + 1}</h4>
+                  <div className="admin-form-row">
+                    <div className="admin-form-group"><label>Label</label><input value={item.label || ''} onChange={(e) => patchList('brandValues', 'items', i, 'label', e.target.value)} /></div>
+                    <div className="admin-form-group"><label>Icon class</label><input value={item.icon || ''} onChange={(e) => patchList('brandValues', 'items', i, 'icon', e.target.value)} placeholder="fa-shield-alt" /></div>
+                  </div>
+                  <div className="admin-form-group"><label>Description</label><textarea rows={2} value={item.description || ''} onChange={(e) => patchList('brandValues', 'items', i, 'description', e.target.value)} /></div>
+                </div>
+              ))}
+            </div>
+          )}
+          {activePageSlug === 'about-us' && activeSection === 'brandGoals' && brandGoals && (
+            <div className="admin-section-card">
+              <h3>Brand Goals</h3>
+              <div className="admin-form-row">
+                <div className="admin-form-group"><label>Title (before)</label><input value={brandGoals.titlePrefix || ''} onChange={(e) => patch('brandGoals', 'titlePrefix', e.target.value)} /></div>
+                <div className="admin-form-group"><label>Title highlight</label><input value={brandGoals.titleHighlight || ''} onChange={(e) => patch('brandGoals', 'titleHighlight', e.target.value)} /></div>
+              </div>
+              {(brandGoals.items || []).map((item, i) => (
+                <div key={i} className="admin-item-card">
+                  <h4>{item.label || `Goal ${i + 1}`}</h4>
+                  <div className="admin-form-group"><label>Label</label><input value={item.label || ''} onChange={(e) => patchList('brandGoals', 'items', i, 'label', e.target.value)} /></div>
+                  <div className="admin-form-group"><label>Text</label><textarea rows={3} value={item.text || ''} onChange={(e) => patchList('brandGoals', 'items', i, 'text', e.target.value)} /></div>
+                </div>
+              ))}
+            </div>
+          )}
+          {activePageSlug === 'about-us' && activeSection === 'leadership' && leadership && (
+            <div className="admin-section-card">
+              <h3>Leadership Team</h3>
+              <div className="admin-form-row">
+                <div className="admin-form-group"><label>Title (before)</label><input value={leadership.titlePrefix || ''} onChange={(e) => patch('leadership', 'titlePrefix', e.target.value)} /></div>
+                <div className="admin-form-group"><label>Title highlight</label><input value={leadership.titleHighlight || ''} onChange={(e) => patch('leadership', 'titleHighlight', e.target.value)} /></div>
+              </div>
+              <p style={{ fontSize: 13, color: '#666', marginBottom: 12 }}>
+                Upload headshots for each leader. Bio opens on the public page via Read More.
+              </p>
+              {(leadership.items || []).map((item, i) => (
+                <div key={i} className="admin-item-card">
+                  <h4>{item.name || `Leader ${i + 1}`}</h4>
+                  <div className="admin-form-row">
+                    <div className="admin-form-group"><label>Name</label><input value={item.name || ''} onChange={(e) => patchList('leadership', 'items', i, 'name', e.target.value)} /></div>
+                    <div className="admin-form-group"><label>Role</label><input value={item.role || ''} onChange={(e) => patchList('leadership', 'items', i, 'role', e.target.value)} /></div>
+                  </div>
+                  <AdminImageField
+                    label="Headshot"
+                    variant="logo"
+                    value={item.image || ''}
+                    onChange={(url) => patchList('leadership', 'items', i, 'image', url)}
+                    hint="Square headshot recommended."
+                  />
+                  {(Array.isArray(item.bio) ? item.bio : [item.bio || '']).map((para, pIndex) => (
+                    <div key={pIndex} className="admin-form-group">
+                      <label>Bio paragraph {pIndex + 1}</label>
+                      <textarea
+                        rows={4}
+                        value={para || ''}
+                        onChange={(e) => {
+                          const bio = [...(Array.isArray(item.bio) ? item.bio : [item.bio || ''])]
+                          bio[pIndex] = e.target.value
+                          patchList('leadership', 'items', i, 'bio', bio)
+                        }}
+                      />
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>

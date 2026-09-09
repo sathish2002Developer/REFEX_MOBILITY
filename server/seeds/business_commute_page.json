@@ -8,7 +8,11 @@
       "subtitle": "Redefining corporate commutes with tailored mobility\nsolutions for modern enterprises that truly care.",
       "ctaText": "Get Started",
       "ctaLink": "#connect-form",
-      "backgroundImage": "/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp"
+      "backgroundImage": "/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp",
+      "secondaryCtas": [
+        { "label": "Employee Transportation Service", "link": "/employee-transportation" },
+        { "label": "RAC", "link": "/CorporateRentals" }
+      ]
     },
     "whyChooseRefex": {
       "titlePrefix": "Why Choose",

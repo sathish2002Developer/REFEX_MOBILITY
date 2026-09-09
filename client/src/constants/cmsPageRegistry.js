@@ -9,9 +9,11 @@ import {
   DEFAULT_REFUNDS_CMS,
   mergeLegalPageCms,
 } from './legalPagesCmsDefaults'
+import { DEFAULT_ABOUT_US_CMS, mergeAboutUsCms } from './aboutUsCmsDefaults'
 
 export const CMS_PAGES = [
   { slug: 'home', label: 'Website Home', path: '/' },
+  { slug: 'about-us', label: 'About Us', path: '/about-us' },
   { slug: 'drive-for-us', label: 'Drive For Us', path: '/drive-for-us' },
   { slug: 'business-commute', label: 'Business Commute', path: '/business-commute' },
   { slug: 'terms-and-conditions', label: 'Terms & Conditions', path: '/terms-and-conditions' },
@@ -26,6 +28,7 @@ export const LANDING_CMS_PAGES = [
 
 const REGISTRY = {
   home: { defaults: DEFAULT_HOME_CMS, merge: mergeHomeCms },
+  'about-us': { defaults: DEFAULT_ABOUT_US_CMS, merge: mergeAboutUsCms },
   'drive-for-us': { defaults: DEFAULT_DRIVE_FOR_US_CMS, merge: mergeDriveForUsCms },
   'business-commute': { defaults: DEFAULT_BUSINESS_COMMUTE_CMS, merge: mergeBusinessCommuteCms },
   'employee-transportation': { defaults: DEFAULT_ETS_LANDING_CMS, merge: mergeEtsLandingCms },

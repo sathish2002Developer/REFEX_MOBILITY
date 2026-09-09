@@ -16,6 +16,7 @@ import {
 } from '../constants/businessForm'
 import { resolveCmsAssetUrl, getHeroBackgroundStyle } from '../utils/cmsAssetUrl'
 import { trackGoogleAdsConversion } from '../utils/googleAds'
+import { getBusinessEmailFieldError } from '../utils/businessEmail'
 import './EtsLanding.css'
 import './RacLanding.css'
 
@@ -34,12 +35,6 @@ const CITY_TO_REGION = {
   'Delhi NCR': 'Delhi NCR',
   Mumbai: 'Mumbai',
   Hyderabad: 'Hyderabad',
-}
-
-function validateEmail(email) {
-  if (!email) return 'Work email is required'
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Enter a valid work email'
-  return ''
 }
 
 function validatePhone(phone) {
@@ -70,7 +65,7 @@ function RacLeadForm({ formId, submitting, setSubmitting, onSuccess, variant = '
     e.preventDefault()
     const nextErrors = {
       name: form.name.trim() ? '' : 'Name is required',
-      email: validateEmail(form.email.trim()),
+      email: getBusinessEmailFieldError(form.email),
       phone: validatePhone(form.phone),
       companyName: form.companyName.trim() ? '' : 'Company is required',
       city: form.city.trim() ? '' : 'City is required',

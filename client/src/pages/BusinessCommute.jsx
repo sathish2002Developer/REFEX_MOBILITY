@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import PhoneInput from 'react-phone-input-2'
@@ -155,6 +156,39 @@ function validateBusinessPhone(e164Phone) {
   return null
 }
 
+const DEFAULT_HERO_SECONDARY_CTAS = [
+  { label: 'Employee Transportation Service', link: '/employee-transportation' },
+  { label: 'RAC', link: '/CorporateRentals' },
+]
+
+function HeroSecondaryCtaIcon({ link }) {
+  const isRac = /corporaterentals/i.test(link || '')
+  if (isRac) {
+    return (
+      <svg className="business-commute-hero-service__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M4.5 16h15M6 16l1.15-6.1A2 2 0 0 1 9.12 8h5.76a2 2 0 0 1 1.97 1.9L18 16M7.2 11h9.6M7 16v1.4a1.6 1.6 0 1 1-3.2 0V16m13.2 0v1.4a1.6 1.6 0 1 0 3.2 0V16"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    )
+  }
+  return (
+    <svg className="business-commute-hero-service__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M4 17h16M5.5 17l1-5.2A2 2 0 0 1 8.46 10h7.08a2 2 0 0 1 1.96 1.8L18.5 17M8 10V8.8A1.8 1.8 0 0 1 9.8 7h4.4A1.8 1.8 0 0 1 16 8.8V10M7.2 17v1.3a1.5 1.5 0 1 1-3 0V17m12.6 0v1.3a1.5 1.5 0 1 0 3 0V17"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
 const BusinessCommute = () => {
   const cms = useCmsPage('business-commute')
   const { hero, whyChooseRefex, industries, faq } = cms.sections
@@ -267,7 +301,7 @@ const BusinessCommute = () => {
       .elementor-5464 .elementor-element.elementor-element-a11fdc0 p {
         color: #FFFFFF;
       }
-      .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button {
+      .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button:not(.business-commute-hero-btn--white) {
         background-color: #F4553B;
         font-family: "Poppins", Sans-serif;
         font-size: 18px;
@@ -277,10 +311,28 @@ const BusinessCommute = () => {
         border-radius: 50px 50px 50px 50px;
         padding: 15px 40px 15px 40px;
       }
-      .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button:hover,
-      .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button:focus {
+      .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button:not(.business-commute-hero-btn--white):hover,
+      .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button:not(.business-commute-hero-btn--white):focus {
         background-color: #4DAF40;
         color: #FFFFFF;
+      }
+      .elementor-5464 .elementor-element.elementor-element-bc8f999 .business-commute-hero-btn--white.elementor-button {
+        background-color: #ffffff !important;
+        background-image: none !important;
+        color: #F4553B !important;
+        fill: #F4553B !important;
+        font-family: "Poppins", Sans-serif;
+        font-size: 13px !important;
+        font-weight: 600;
+        border-radius: 50px;
+        padding: 8px 18px !important;
+        border: 1.5px solid #ffffff !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+      }
+      .elementor-5464 .elementor-element.elementor-element-bc8f999 .business-commute-hero-btn--white.elementor-button:hover,
+      .elementor-5464 .elementor-element.elementor-element-bc8f999 .business-commute-hero-btn--white.elementor-button:focus {
+        background-color: #fff5f3 !important;
+        color: #d9432d !important;
       }
       .elementor-5464 .elementor-element.elementor-element-234530b:not(.elementor-motion-effects-element-type-background),
       .elementor-5464 .elementor-element.elementor-element-234530b > .elementor-motion-effects-container > .elementor-motion-effects-layer {
@@ -356,7 +408,7 @@ const BusinessCommute = () => {
         .elementor-5464 .elementor-element.elementor-element-bc8f999 {
           text-align: center !important;
         }
-        .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button {
+        .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button:not(.business-commute-hero-btn--white) {
           font-size: 16px;
           padding: 12px 30px;
           margin: 0 auto;
@@ -384,7 +436,7 @@ const BusinessCommute = () => {
         .elementor-5464 .elementor-element.elementor-element-a11fdc0 {
           font-size: 15px;
         }
-        .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button {
+        .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button:not(.business-commute-hero-btn--white) {
           font-size: 14px;
           padding: 10px 25px;
         }
@@ -407,7 +459,7 @@ const BusinessCommute = () => {
         .elementor-5464 .elementor-element.elementor-element-a11fdc0 {
           font-size: 14px;
         }
-        .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button {
+        .elementor-5464 .elementor-element.elementor-element-bc8f999 .elementor-button:not(.business-commute-hero-btn--white) {
           font-size: 13px;
           padding: 10px 20px;
         }
@@ -999,40 +1051,72 @@ const BusinessCommute = () => {
                           }}
                         >
                       
-                        <div className="elementor-container elementor-column-gap-default" style={{position: 'relative', zIndex: 2, maxWidth: '1200px', margin: '0 auto', padding: '0 15px', width: '100%', boxSizing: 'border-box'}}>
+                        <div className="elementor-container elementor-column-gap-default" style={{ position: 'relative', zIndex: 2, maxWidth: '1200px', margin: '0 auto', padding: '90px 15px 0 15px', width: '100%', boxSizing: 'border-box' }}>
                             <div className="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-cb3f33f" data-id="cb3f33f" data-element_type="column">
                               <div className="elementor-widget-wrap elementor-element-populated" style={{textAlign: 'left'}}>
                                 <div className="elementor-element elementor-element-c00bf29 elementor-widget__width-initial elementor-widget-tablet__width-inherit elementor-widget-mobile__width-inherit elementor-widget elementor-widget-heading" data-id="c00bf29" data-element_type="widget" data-widget_type="heading.default">
                                   <div className="elementor-widget-container">
-                                    <h2 className="elementor-heading-title elementor-size-default" style={{
+                                    <h2 className="mb-3 elementor-heading-title elementor-size-default" style={{
                                       color: '#FFFFFF',
                                       fontFamily: '"Poppins", Sans-serif',
                                       fontSize: '56px',
                                       fontWeight: 700,
                                       lineHeight: '1.2em',
-                                      marginBottom: '20px',
+                                      letterSpacing: '-0.02em',
+                                      wordSpacing: 'normal',
                                       textAlign: 'left'
                                     }}>
                                       {hero?.title}
                                     </h2>
                                   </div>
                                 </div>
-                                <div className="elementor-element elementor-element-a11fdc0 elementor-widget__width-initial elementor-widget-laptop__width-initial elementor-widget elementor-widget-text-editor" data-id="a11fdc0" data-element_type="widget" data-widget_type="text-editor.default">
-                                  <div className="elementor-widget-container" style={{textAlign: 'left'}}>
-                                    <p style={{
-                                      color: '#FFFFFF',
-                                      fontFamily: '"Poppins", Sans-serif',
-                                      fontSize: '20px',
-                                      fontWeight: 400,
-                                      lineHeight: '1.6em',
-                                      marginBottom: '30px',
-                                      textAlign: 'left'
-                                    }}>{renderTextWithBreaks(hero?.subtitle)}</p>
+                                <div className="mb-3 elementor-element elementor-element-a11fdc0 elementor-widget__width-initial elementor-widget-laptop__width-initial elementor-widget elementor-widget-text-editor" data-id="a11fdc0" data-element_type="widget" data-widget_type="text-editor.default">
+                                  <div className="elementor-widget-container" style={{
+                                    color: '#FFFFFF',
+                                    fontFamily: '"Poppins", Sans-serif',
+                                    fontSize: '20px',
+                                    fontWeight: 400,
+                                    lineHeight: '1.6em',
+                                    letterSpacing: 'normal',
+                                    wordSpacing: 'normal',
+                                    maxWidth: '42em',
+                                    textAlign: 'left'
+                                  }}>
+                                    <p style={{ color: '#FFFFFF', marginBottom: 0 }}>{renderTextWithBreaks(hero?.subtitle)}</p>
                                   </div>
                                 </div>
                                 <div className="elementor-element elementor-element-bc8f999 elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="bc8f999" data-element_type="widget" data-widget_type="button.default">
                                   <div className="elementor-widget-container" style={{textAlign: 'left'}}>
-                                    <div className="elementor-button-wrapper">
+                                    <div className="elementor-button-wrapper business-commute-hero-ctas">
+                                      <div className="business-commute-hero-ctas__secondary">
+                                        {(hero?.secondaryCtas?.length
+                                          ? hero.secondaryCtas
+                                          : DEFAULT_HERO_SECONDARY_CTAS
+                                        ).map((cta) => (
+                                          <Link
+                                            key={cta.link || cta.label}
+                                            to={cta.link || '/'}
+                                            className="business-commute-hero-service"
+                                            aria-label={
+                                              /corporaterentals/i.test(cta.link || '')
+                                                ? 'RAC Corporate Rentals'
+                                                : cta.label
+                                            }
+                                          >
+                                            <HeroSecondaryCtaIcon link={cta.link} />
+                                            <span>{cta.label}</span>
+                                            <svg className="business-commute-hero-service__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                              <path
+                                                d="M3 8h10M9 4l4 4-4 4"
+                                                stroke="currentColor"
+                                                strokeWidth="1.6"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                              />
+                                            </svg>
+                                          </Link>
+                                        ))}
+                                      </div>
                                       <a className="elementor-button elementor-button-link elementor-size-sm" href={hero?.ctaLink || '#connect-form'} onClick={scrollToForm} style={{
                                         backgroundColor: '#F4553B',
                                         fontFamily: '"Poppins", Sans-serif',

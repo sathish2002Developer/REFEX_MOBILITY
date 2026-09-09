@@ -10,6 +10,10 @@ export const DEFAULT_BUSINESS_COMMUTE_CMS = {
       ctaText: 'Get Started',
       ctaLink: '#connect-form',
       backgroundImage: '/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp',
+      secondaryCtas: [
+        { label: 'Employee Transportation Service', link: '/employee-transportation' },
+        { label: 'RAC', link: '/CorporateRentals' },
+      ],
     },
     whyChooseRefex: {
       titlePrefix: 'Why Choose',
@@ -62,7 +66,12 @@ export function mergeBusinessCommuteCms(apiData) {
     sections: {
       ...d.sections,
       ...(apiData.sections || {}),
-      hero: { ...d.sections.hero, ...(apiData.sections?.hero || {}) },
+      hero: {
+        ...d.sections.hero,
+        ...(apiData.sections?.hero || {}),
+        secondaryCtas:
+          apiData.sections?.hero?.secondaryCtas ?? d.sections.hero.secondaryCtas,
+      },
       whyChooseRefex: { ...d.sections.whyChooseRefex, ...(apiData.sections?.whyChooseRefex || {}) },
       industries: { ...d.sections.industries, ...(apiData.sections?.industries || {}) },
       faq: { ...d.sections.faq, ...(apiData.sections?.faq || {}) },

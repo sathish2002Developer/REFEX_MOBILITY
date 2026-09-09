@@ -2,6 +2,7 @@ const express = require('express');
 const { body, validationResult } = require('express-validator');
 const businessCommuteController = require('../controllers/businessCommute');
 const { isValidInternationalPhone } = require('../helpers/phoneValidation');
+const { validateBusinessEmail } = require('../helpers/businessEmail');
 const rateLimitBusinessCommute = require('../middlewares/rateLimitBusinessCommute');
 const {
   ALLOWED_BUSINESS_SERVICES,
@@ -9,9 +10,6 @@ const {
 } = require('../config/siteConfig');
 
 const router = express.Router();
-
-const EMAIL_REGEX =
-  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
 
 const formatValidationErrorResponse = (req, res) => {
   const errors = validationResult(req);
@@ -57,8 +55,13 @@ router.post(
       .notEmpty()
       .withMessage('email is required')
       .bail()
-      .matches(EMAIL_REGEX)
-      .withMessage('email is invalid'),
+      .custom((value) => {
+        const result = validateBusinessEmail(value);
+        if (!result.ok) {
+          throw new Error(result.error || 'email is invalid');
+        }
+        return true;
+      }),
     body('phone')
       .trim()
       .notEmpty()

@@ -10,6 +10,7 @@ const Header = () => {
   const buttonRef = useRef(null)
 
   const isHome = location.pathname === '/'
+  const isAboutUs = location.pathname === '/about-us'
   const isBusinessCommute = location.pathname === '/business-commute'
   const isDriveForUs = location.pathname === '/drive-for-us'
   const isInvestorRelations = location.pathname === '/investor-relations'
@@ -101,6 +102,9 @@ const Header = () => {
                         <ul id="top-menu" className="navbar-nav ml-auto">
                           <li id="menu-item-5766" className={`menu-item menu-item-type-post_type menu-item-object-page menu-item-home ${isHome ? 'current-menu-item page_item current_page_item' : ''} menu-item-5766`}>
                             <Link to="/" aria-current={isHome ? 'page' : undefined}>Home</Link>
+                          </li>
+                          <li id="menu-item-about-us" className={`menu-item menu-item-type-post_type menu-item-object-page ${isAboutUs ? 'current-menu-item page_item current_page_item' : ''} menu-item-about-us`}>
+                            <Link to="/about-us" aria-current={isAboutUs ? 'page' : undefined}>About Us</Link>
                           </li>
                           <li id="menu-item-5667" className={`menu-item menu-item-type-post_type menu-item-object-page ${isBusinessCommute ? 'current-menu-item page_item current_page_item' : ''} menu-item-5667`}>
                             <Link to="/business-commute" aria-current={isBusinessCommute ? 'page' : undefined}>Business Commute</Link>

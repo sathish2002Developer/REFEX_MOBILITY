@@ -4,6 +4,7 @@ const { sendToKissflowWebhook } = require('../helpers/kissflowWebhook');
 const { buildBusinessCommuteKissflowPayload } = require('../helpers/kissflowPayloadBuilder');
 const { assertRecaptchaForSubmit } = require('../helpers/recaptcha');
 const { getSpamRejection } = require('../helpers/spamFilter');
+const { validateBusinessEmail } = require('../helpers/businessEmail');
 const {
   WEBSITE_NAME,
   BUSINESS_FORM_NAME,
@@ -19,6 +20,17 @@ const submitBusinessCommuteForm = async (req, res) => {
       return responseStatus(res, 200, 'Thank you! Our team will reach out shortly.', {
         emailSent: false,
         ignored: true,
+      });
+    }
+
+    // Defense in depth: reject personal/free emails even if route validators are bypassed
+    const emailCheck = validateBusinessEmail(req.body?.email);
+    if (!emailCheck.ok) {
+      return res.status(400).json({
+        success: false,
+        message: emailCheck.error,
+        errorMessages: [emailCheck.error],
+        errors: [{ path: 'email', msg: emailCheck.error }],
       });
     }
 

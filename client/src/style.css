@@ -3998,7 +3998,7 @@ header a.navbar-brand img{
       font-size: 36px;
       font-weight: 700;
       color: #5D3F3A;
-      margin-bottom: 30px;
+      margin-bottom: 8px;
     }
     
     .elementor-element-3a25435 .elementor-widget-text-editor {
@@ -4007,24 +4007,24 @@ header a.navbar-brand img{
       font-weight: 400;
       color: #5D3F3A;
       line-height: 1.8;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     
     .elementor-element-3a25435 .elementor-widget-text-editor p {
-      margin-bottom: 20px;
+      margin-bottom: 0;
       line-height: 1.8;
     }
     
     .elementor-element-3a25435 .elementor-widget-image img {
       width: 100%;
-      height: auto;
+      height: 100%;
       border-radius: 10px;
       object-fit: cover;
     }
     
     .elementor-element-3a25435 .elementor-column {
       display: flex;
-      align-items: center;
+      align-items: stretch;
     }
     
     .elementor-element-3a25435 .elementor-element-cfc7ea1 {
@@ -4033,6 +4033,28 @@ header a.navbar-brand img{
     
     .elementor-element-3a25435 .elementor-element-5b5605b {
       padding-left: 30px;
+    }
+
+    .home-about-read-more__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #F4553B;
+      color: #FFFFFF;
+      font-family: "Poppins", Sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1;
+      border-radius: 50px;
+      padding: 14px 32px;
+      text-decoration: none;
+    }
+
+    .home-about-read-more__btn:hover,
+    .home-about-read-more__btn:focus {
+      background-color: #e0452b;
+      color: #FFFFFF;
+      text-decoration: none;
     }
     
     @media (max-width: 768px) {
@@ -4177,9 +4199,10 @@ header a.navbar-brand img{
     .business-commute .elementor-element-b485948 {
       min-height: 600px;
       display: flex;
-      align-items: center;
+      align-items: flex-start !important;
       position: relative;
-      padding: 100px 0;
+      padding-top: 0 !important;
+      padding-bottom: 100px !important;
     }
   
     .business-commute .elementor-element-b485948 .elementor-background-overlay {
@@ -4197,6 +4220,14 @@ header a.navbar-brand img{
     .business-commute .elementor-element-b485948 .elementor-container {
       position: relative;
       z-index: 2;
+      max-width: 1200px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      padding-top: 90px !important;
+      padding-left: 15px !important;
+      padding-right: 15px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
     }
   
     .business-commute .elementor-element-b485948 .elementor-heading-title {
@@ -4205,7 +4236,7 @@ header a.navbar-brand img{
       font-weight: 700;
       color: #FFFFFF !important;
       line-height: 1.2em;
-      margin-bottom: 20px;
+      letter-spacing: -0.02em;
       text-align: left;
     }
   
@@ -4219,7 +4250,7 @@ header a.navbar-brand img{
       font-weight: 400;
       color: #FFFFFF !important;
       line-height: 1.6em;
-      margin-bottom: 30px;
+      max-width: 42em;
       text-align: left;
     }
   

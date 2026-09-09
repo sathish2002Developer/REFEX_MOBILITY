@@ -15,6 +15,7 @@ import AdminHome from './pages/admin/AdminHome'
 import AdminInvestorRelations from './pages/admin/AdminInvestorRelations'
 import AdminWebsiteHome from './pages/admin/AdminWebsiteHome'
 import AdminLandingPages from './pages/admin/AdminLandingPages'
+import AboutUs from './pages/AboutUs'
 import './App.css'
 
 // ScrollToTop component to scroll to top on route change
@@ -61,6 +62,7 @@ function App() {
         <Route path="/corporate-car-rental" element={<RacLanding />} />
         <Route path="/rac" element={<Navigate to="/CorporateRentals" replace />} />
         <Route path="/drive-for-us" element={<DriveForUs />} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path="/investor-relations" element={<InvestorRelations />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />

@@ -5,6 +5,7 @@ const status = require("../helpers/response");
 
 const ALLOWED_SLUGS = new Set([
   "home",
+  "about-us",
   "drive-for-us",
   "business-commute",
   "employee-transportation",
@@ -16,6 +17,7 @@ const ALLOWED_SLUGS = new Set([
 const CMS_JSON_PATH = path.join(__dirname, "../config/cms.json");
 const SEED_PATHS = {
   home: path.join(__dirname, "../seeds/home_page.json"),
+  "about-us": path.join(__dirname, "../seeds/about_us_page.json"),
   "drive-for-us": path.join(__dirname, "../seeds/drive_for_us.json"),
   "business-commute": path.join(__dirname, "../seeds/business_commute_page.json"),
   "employee-transportation": path.join(__dirname, "../seeds/employee_transportation_page.json"),
