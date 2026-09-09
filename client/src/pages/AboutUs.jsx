@@ -316,6 +316,7 @@ const AboutUs = () => {
               </div>
             </section>
             ) : null}
+          </main>
         </div>
       </div>
       <Footer />

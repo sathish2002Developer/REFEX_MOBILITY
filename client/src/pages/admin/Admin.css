@@ -511,6 +511,35 @@
   width: 100%;
 }
 
+.admin-status-tabs {
+  display: inline-flex;
+  margin: 0 0 12px;
+  padding: 4px;
+  border: 1px solid #eadfdb;
+  border-radius: 999px;
+  background: #fff9f8;
+  gap: 4px;
+}
+
+.admin-status-tab {
+  min-width: 96px;
+  min-height: 36px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #5D3F3A;
+  font-family: "Poppins", Sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-status-tab.is-active {
+  background: #F4553B;
+  color: #fff;
+}
+
 .admin-save-button,
 .admin-add-button {
   font-family: "Poppins", Sans-serif;
