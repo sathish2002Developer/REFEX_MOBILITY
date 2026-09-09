@@ -10,6 +10,19 @@ import { resolveLeadershipImage } from '../constants/leadershipImages'
 import { resolveBrandValueIcon } from '../constants/brandValueIcons'
 import './AboutUs.css'
 
+const MEDIA_FILTERS = [
+  { id: 'all', label: 'All' },
+  { id: 'event', label: 'Event Photos' },
+  { id: 'press', label: 'Press Releases' },
+  { id: 'media', label: 'Media' },
+]
+
+const MEDIA_TYPE_LABELS = {
+  event: 'Event Photo',
+  press: 'Press Release',
+  media: 'Media',
+}
+
 function getInitials(name = '') {
   return String(name)
     .split(/\s+/)
@@ -21,8 +34,10 @@ function getInitials(name = '') {
 
 const AboutUs = () => {
   const cms = useCmsPage('about-us')
-  const { hero, intro, brandValues, brandGoals, leadership } = cms.sections
+  const { hero, intro, brandValues, brandGoals, leadership, momentsMilestones } = cms.sections
   const [selectedLeader, setSelectedLeader] = useState(null)
+  const [selectedMedia, setSelectedMedia] = useState(null)
+  const [mediaFilter, setMediaFilter] = useState('all')
   const [brokenImages, setBrokenImages] = useState({})
 
   useEffect(() => {
@@ -45,12 +60,15 @@ const AboutUs = () => {
       offset: 80,
     })
     AOS.refresh()
-  }, [hero, intro, brandValues, brandGoals, leadership])
+  }, [hero, intro, brandValues, brandGoals, leadership, momentsMilestones])
 
   useEffect(() => {
-    if (!selectedLeader) return undefined
+    if (!selectedLeader && !selectedMedia) return undefined
     const onKeyDown = (event) => {
-      if (event.key === 'Escape') setSelectedLeader(null)
+      if (event.key === 'Escape') {
+        setSelectedLeader(null)
+        setSelectedMedia(null)
+      }
     }
     document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', onKeyDown)
@@ -58,9 +76,12 @@ const AboutUs = () => {
       document.body.style.overflow = ''
       window.removeEventListener('keydown', onKeyDown)
     }
-  }, [selectedLeader])
+  }, [selectedLeader, selectedMedia])
 
   const leaders = leadership?.items || []
+  const mediaItems = (momentsMilestones?.items || []).filter(
+    (item) => mediaFilter === 'all' || item.type === mediaFilter
+  )
 
   return (
     <div id="page" className="site about-us-page">
@@ -89,7 +110,7 @@ const AboutUs = () => {
             <section className="about-us-intro">
               <div className="about-us-container">
                 <h2 className="about-us-section-title" data-aos="fade-up">
-                  {intro?.titlePrefix || 'About'}{' '}
+                  {/* {intro?.titlePrefix || 'About'}{' '} */}
                   <span>{intro?.titleHighlight || 'Refex Mobility'}</span>
                 </h2>
                 <div className="about-us-intro__copy">
@@ -109,7 +130,7 @@ const AboutUs = () => {
             <section className="about-us-values">
               <div className="about-us-container">
                 <div className="about-us-values__heading" data-aos="fade-up">
-                  <p className="about-us-values__eyebrow">What we stand for</p>
+                  {/* <p className="about-us-values__eyebrow">What we stand for</p> */}
                   <h2 className="about-us-section-title about-us-section-title--center">
                     {brandValues?.titlePrefix || 'Brand'}{' '}
                     <span>{brandValues?.titleHighlight || 'Values'}</span>
@@ -173,7 +194,7 @@ const AboutUs = () => {
             <section className="about-us-leadership">
               <div className="about-us-container">
                 <div className="about-us-leadership__heading" data-aos="fade-up">
-                  <p className="about-us-leadership__eyebrow">The people behind the rides</p>
+                  {/* <p className="about-us-leadership__eyebrow">The people behind the rides</p> */}
                   <h2 className="about-us-section-title about-us-section-title--center">
                     {leadership?.titlePrefix || 'Leadership'}{' '}
                     <span>{leadership?.titleHighlight || 'Team'}</span>
@@ -218,6 +239,74 @@ const AboutUs = () => {
                           >
                             Read More
                           </button>
+                        </div>
+                      </article>
+                    )
+                  })}
+                </div>
+              </div>
+            </section>
+
+            <section className="about-us-moments" id="moments-milestones">
+              <div className="about-us-container">
+                <div className="about-us-moments__heading" data-aos="fade-up">
+                  <h2 className="about-us-section-title about-us-section-title--center">
+                    {momentsMilestones?.titlePrefix || 'Moments &'}{' '}
+                    <span>{momentsMilestones?.titleHighlight || 'Milestones'}</span>
+                  </h2>
+                </div>
+                <div className="about-us-moments__filters" role="tablist" aria-label="Gallery filters">
+                  {MEDIA_FILTERS.map((filter) => (
+                    <button
+                      key={filter.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={mediaFilter === filter.id}
+                      className={`about-us-moments__filter${mediaFilter === filter.id ? ' is-active' : ''}`}
+                      onClick={() => setMediaFilter(filter.id)}
+                    >
+                      {filter.label}
+                    </button>
+                  ))}
+                </div>
+                <div className="about-us-moments__grid">
+                  {mediaItems.map((item, index) => {
+                    const imageSrc = resolveCmsAssetUrl(item.image)
+                    return (
+                      <article
+                        key={`${item.title}-${item.order || index}`}
+                        className="about-us-moments-card"
+                        data-aos="fade-up"
+                        data-aos-delay={index * 80}
+                      >
+                        <button
+                          type="button"
+                          className="about-us-moments-card__media"
+                          onClick={() => setSelectedMedia(item)}
+                          aria-label={`Open ${item.title || 'gallery item'}`}
+                        >
+                          {imageSrc ? (
+                            <img src={imageSrc} alt={item.title || ''} loading="lazy" />
+                          ) : (
+                            <span className="about-us-moments-card__placeholder" aria-hidden="true" />
+                          )}
+                          <span className="about-us-moments-card__type">
+                            {MEDIA_TYPE_LABELS[item.type] || 'Media'}
+                          </span>
+                        </button>
+                        <div className="about-us-moments-card__body">
+                          {item.date ? <p className="about-us-moments-card__date">{item.date}</p> : null}
+                          <h3>{item.title}</h3>
+                          {item.type === 'press' && item.link ? (
+                            <a
+                              className="about-us-moments-card__link"
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Read release
+                            </a>
+                          ) : null}
                         </div>
                       </article>
                     )
@@ -278,6 +367,46 @@ const AboutUs = () => {
                 .map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {selectedMedia ? (
+        <div
+          className="about-us-media-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="about-us-media-modal-title"
+          onClick={() => setSelectedMedia(null)}
+        >
+          <div
+            className="about-us-media-modal__panel"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="about-us-media-modal__close"
+              aria-label="Close media"
+              onClick={() => setSelectedMedia(null)}
+            >
+              ×
+            </button>
+            {resolveCmsAssetUrl(selectedMedia.image) ? (
+              <img
+                src={resolveCmsAssetUrl(selectedMedia.image)}
+                alt={selectedMedia.title || ''}
+              />
+            ) : null}
+            <div className="about-us-media-modal__copy">
+              <p>{MEDIA_TYPE_LABELS[selectedMedia.type] || 'Media'}</p>
+              <h3 id="about-us-media-modal-title">{selectedMedia.title}</h3>
+              {selectedMedia.date ? <p>{selectedMedia.date}</p> : null}
+              {selectedMedia.link ? (
+                <a href={selectedMedia.link} target="_blank" rel="noopener noreferrer">
+                  Open link
+                </a>
+              ) : null}
             </div>
           </div>
         </div>

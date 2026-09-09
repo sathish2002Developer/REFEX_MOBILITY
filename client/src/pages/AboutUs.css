@@ -560,8 +560,208 @@
   color: var(--about-muted);
 }
 
+.about-us-moments {
+  padding: 80px 0 96px;
+  background: #fff;
+}
+
+.about-us-moments__heading {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.about-us-moments__heading .about-us-section-title {
+  margin-bottom: 0;
+}
+
+.about-us-moments__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.about-us-moments__filter {
+  min-height: 36px;
+  padding: 0 16px;
+  border: 1px solid var(--about-border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--about-brown);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.about-us-moments__filter.is-active,
+.about-us-moments__filter:hover {
+  background: var(--about-orange);
+  border-color: var(--about-orange);
+  color: #fff;
+}
+
+.about-us-moments__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.about-us-moments-card {
+  background: #fff;
+  border: 1px solid var(--about-border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(61, 44, 41, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.about-us-moments-card__media {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  padding: 0;
+  border: 0;
+  background: #f4eeec;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.about-us-moments-card__media img,
+.about-us-moments-card__placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.about-us-moments-card__placeholder {
+  background: linear-gradient(135deg, #f8e8e4 0%, #f3d4cc 100%);
+}
+
+@media (hover: hover) {
+  .about-us-moments-card:hover .about-us-moments-card__media img {
+    transform: scale(1.05);
+  }
+}
+
+.about-us-moments-card__type {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--about-orange);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.about-us-moments-card__body {
+  padding: 16px 18px 18px;
+}
+
+.about-us-moments-card__date {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--about-orange);
+}
+
+.about-us-moments-card h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--about-brown);
+}
+
+.about-us-moments-card__link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--about-orange);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.about-us-media-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(20, 12, 10, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.about-us-media-modal__panel {
+  position: relative;
+  width: min(860px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  background: #fff;
+  border-radius: 20px;
+}
+
+.about-us-media-modal__panel img {
+  width: 100%;
+  max-height: 58vh;
+  object-fit: cover;
+  display: block;
+}
+
+.about-us-media-modal__copy {
+  padding: 18px 22px 22px;
+}
+
+.about-us-media-modal__copy p {
+  margin: 0 0 6px;
+  color: var(--about-orange);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.about-us-media-modal__copy h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  color: var(--about-brown);
+}
+
+.about-us-media-modal__copy a {
+  color: var(--about-orange);
+  font-weight: 600;
+}
+
+.about-us-media-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--about-brown);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+}
+
 @media (max-width: 1100px) {
   .about-us-leadership__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-us-moments__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -587,7 +787,8 @@
   .about-us-intro,
   .about-us-values,
   .about-us-goals,
-  .about-us-leadership {
+  .about-us-leadership,
+  .about-us-moments {
     padding: 56px 0;
   }
 
@@ -656,5 +857,11 @@
   .about-us-leader-modal__header {
     flex-direction: column;
     text-align: center;
+  }
+
+  .about-us-moments__grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
   }
 }

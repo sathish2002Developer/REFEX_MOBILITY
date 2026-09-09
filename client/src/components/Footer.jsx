@@ -54,11 +54,12 @@ const Footer = () => {
                     <Link to="/about-us">About Us</Link>
                   </li>
                   <li>
-                    <a href="https://refexmobility.com/drive-for-us/">Drive With Us</a>
-                  </li>
-                  <li>
                     <Link to="/business-commute">Business Commute</Link>
                   </li>
+                  <li>
+                    <a href="https://refexmobility.com/drive-for-us/">Drive With Us</a>
+                  </li>
+                 
                 </ul>
               </div>
             </div>

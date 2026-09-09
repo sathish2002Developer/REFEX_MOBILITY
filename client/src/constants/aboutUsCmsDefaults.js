@@ -64,6 +64,60 @@ export const DEFAULT_ABOUT_US_CMS = {
         },
       ],
     },
+    momentsMilestones: {
+      titlePrefix: 'Moments &',
+      titleHighlight: 'Milestones',
+      items: [
+        {
+          order: 1,
+          type: 'event',
+          title: 'Corporate mobility launch event',
+          date: 'July 2025',
+          image: '/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp',
+          link: '',
+        },
+        {
+          order: 2,
+          type: 'press',
+          title: 'Refex Mobility expands clean fleet operations',
+          date: 'June 2025',
+          image: '/wp-content/uploads/2025/07/home-bg-image-1-scaled.webp',
+          link: '',
+        },
+        {
+          order: 3,
+          type: 'media',
+          title: 'All-electric fleet on the road',
+          date: 'May 2025',
+          image: '/wp-content/uploads/2025/07/drive-section-1-scaled.webp',
+          link: '',
+        },
+        {
+          order: 4,
+          type: 'event',
+          title: 'Driver partner meet',
+          date: 'April 2025',
+          image: '/wp-content/uploads/2025/07/drive-section-1-scaled.webp',
+          link: '',
+        },
+        {
+          order: 5,
+          type: 'press',
+          title: 'Sustainability milestone coverage',
+          date: 'March 2025',
+          image: '/wp-content/uploads/2025/07/about-imgss.png',
+          link: '',
+        },
+        {
+          order: 6,
+          type: 'media',
+          title: 'City operations snapshot',
+          date: 'February 2025',
+          image: '/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp',
+          link: '',
+        },
+      ],
+    },
     leadership: {
       titlePrefix: 'Leadership',
       titleHighlight: 'Team',
@@ -157,6 +211,14 @@ export function mergeAboutUsCms(apiData) {
           Array.isArray(api.leadership?.items) && api.leadership.items.length
             ? api.leadership.items
             : d.sections.leadership.items,
+      },
+      momentsMilestones: {
+        ...d.sections.momentsMilestones,
+        ...(api.momentsMilestones || {}),
+        items:
+          Array.isArray(api.momentsMilestones?.items) && api.momentsMilestones.items.length
+            ? api.momentsMilestones.items
+            : d.sections.momentsMilestones.items,
       },
     },
   }

@@ -43,6 +43,7 @@ const ABOUT_SECTIONS = [
   { id: 'brandValues', label: 'Brand Values' },
   { id: 'brandGoals', label: 'Brand Goals' },
   { id: 'leadership', label: 'Leadership Team' },
+  { id: 'momentsMilestones', label: 'Moments & Milestones' },
 ]
 
 const PAGE_SECTIONS = {
@@ -115,7 +116,7 @@ const AdminWebsiteHome = () => {
 
   if (loading) return <div className="admin-home"><p>Loading...</p></div>
 
-  const { hero, sustainabilityImpact, whyChooseUs, rideOptions, expandingNetwork, fleet, aboutUs, whyChooseRefex, industries, faq, body, intro, brandValues, brandGoals, leadership } = sections
+  const { hero, sustainabilityImpact, whyChooseUs, rideOptions, expandingNetwork, fleet, aboutUs, whyChooseRefex, industries, faq, body, intro, brandValues, brandGoals, leadership, momentsMilestones } = sections
   const sectionNav = PAGE_SECTIONS[activePageSlug] || HOME_SECTIONS
   const activePage = CMS_PAGES.find((p) => p.slug === activePageSlug)
 
@@ -458,6 +459,45 @@ const AdminWebsiteHome = () => {
                   <h4>{item.label || `Goal ${i + 1}`}</h4>
                   <div className="admin-form-group"><label>Label</label><input value={item.label || ''} onChange={(e) => patchList('brandGoals', 'items', i, 'label', e.target.value)} /></div>
                   <div className="admin-form-group"><label>Text</label><textarea rows={3} value={item.text || ''} onChange={(e) => patchList('brandGoals', 'items', i, 'text', e.target.value)} /></div>
+                </div>
+              ))}
+            </div>
+          )}
+          {activePageSlug === 'about-us' && activeSection === 'momentsMilestones' && momentsMilestones && (
+            <div className="admin-section-card">
+              <h3>Moments & Milestones</h3>
+              <div className="admin-form-row">
+                <div className="admin-form-group"><label>Title (before)</label><input value={momentsMilestones.titlePrefix || ''} onChange={(e) => patch('momentsMilestones', 'titlePrefix', e.target.value)} /></div>
+                <div className="admin-form-group"><label>Title highlight</label><input value={momentsMilestones.titleHighlight || ''} onChange={(e) => patch('momentsMilestones', 'titleHighlight', e.target.value)} /></div>
+              </div>
+              <p style={{ fontSize: 13, color: '#666', marginBottom: 12 }}>
+                Gallery for event photos, press releases, and media. Type: event, press, or media.
+              </p>
+              {(momentsMilestones.items || []).map((item, i) => (
+                <div key={i} className="admin-item-card">
+                  <h4>{item.title || `Item ${i + 1}`}</h4>
+                  <div className="admin-form-row">
+                    <div className="admin-form-group"><label>Title</label><input value={item.title || ''} onChange={(e) => patchList('momentsMilestones', 'items', i, 'title', e.target.value)} /></div>
+                    <div className="admin-form-group"><label>Date</label><input value={item.date || ''} onChange={(e) => patchList('momentsMilestones', 'items', i, 'date', e.target.value)} /></div>
+                  </div>
+                  <div className="admin-form-row">
+                    <div className="admin-form-group">
+                      <label>Type</label>
+                      <select value={item.type || 'media'} onChange={(e) => patchList('momentsMilestones', 'items', i, 'type', e.target.value)}>
+                        <option value="event">Event Photo</option>
+                        <option value="press">Press Release</option>
+                        <option value="media">Media</option>
+                      </select>
+                    </div>
+                    <div className="admin-form-group"><label>Press / media link</label><input value={item.link || ''} onChange={(e) => patchList('momentsMilestones', 'items', i, 'link', e.target.value)} placeholder="https://" /></div>
+                  </div>
+                  <AdminImageField
+                    label="Image"
+                    variant="logo"
+                    value={item.image || ''}
+                    onChange={(url) => patchList('momentsMilestones', 'items', i, 'image', url)}
+                    hint="Event, press, or media image."
+                  />
                 </div>
               ))}
             </div>

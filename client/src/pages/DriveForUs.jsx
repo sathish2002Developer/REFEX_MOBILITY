@@ -237,17 +237,17 @@ const DriveForUs = () => {
                             <div className="elementor-widget-wrap elementor-element-populated">
                               <div className="elementor-element elementor-element-c00bf29 elementor-widget__width-initial elementor-widget-tablet__width-inherit elementor-widget-mobile__width-inherit elementor-widget elementor-widget-heading" data-id="c00bf29" data-element_type="widget" data-widget_type="heading.default">
                                 <div className="elementor-widget-container">
-                                  <h2 className="mb-3 elementor-heading-title elementor-size-default" style={{ color: '#FFFFFF', fontFamily: '"Poppins", Sans-serif', fontSize: '56px', fontWeight: 700, lineHeight: '1.2em', letterSpacing: '-0.02em', wordSpacing: 'normal' }}>
+                                  <h2 className="mb-5 elementor-heading-title elementor-size-default" style={{ color: '#FFFFFF', fontFamily: '"Poppins", Sans-serif', fontSize: '56px', fontWeight: 700, lineHeight: '1.2em', letterSpacing: '-0.02em', wordSpacing: 'normal' }}>
                                     {hero?.title}
                                   </h2>
                                 </div>
                               </div>
-                              <div className="mb-3 elementor-element elementor-element-a11fdc0 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="a11fdc0" data-element_type="widget" data-widget_type="text-editor.default">
+                              <div className="mb-5  elementor-element elementor-element-a11fdc0 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="a11fdc0" data-element_type="widget" data-widget_type="text-editor.default">
                                 <div className="elementor-widget-container" style={{ color: '#FFFFFF', fontFamily: '"Poppins", Sans-serif', fontSize: '20px', fontWeight: 400, lineHeight: '1.6em', letterSpacing: 'normal', wordSpacing: 'normal', maxWidth: '42em' }}>
                                   <p style={{ color: '#FFFFFF' }}>{hero?.subtitle}</p>
                                 </div>
                               </div>
-                              <div className="elementor-element elementor-element-ed3826a elementor-mobile-align-left elementor-hidden-mobile elementor-widget elementor-widget-button" data-id="ed3826a" data-element_type="widget" data-widget_type="button.default">
+                              <div className="mb-5elementor-element elementor-element-ed3826a elementor-mobile-align-left elementor-hidden-mobile elementor-widget elementor-widget-button" data-id="ed3826a" data-element_type="widget" data-widget_type="button.default">
                                 <div className="elementor-widget-container">
                                   <div className="elementor-button-wrapper">
                                     <a className="elementor-button elementor-button-link elementor-size-sm" href={hero?.ctaLink || '#join-form'} style={{
