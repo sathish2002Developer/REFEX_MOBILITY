@@ -466,6 +466,31 @@ const AdminWebsiteHome = () => {
           {activePageSlug === 'about-us' && activeSection === 'momentsMilestones' && momentsMilestones && (
             <div className="admin-section-card">
               <h3>Moments & Milestones</h3>
+              <div className="admin-status-tabs" role="tablist" aria-label="Section visibility">
+                <button
+                  type="button"
+                  role="tab"
+                  className={`admin-status-tab${!momentsMilestones.enabled ? ' is-active' : ''}`}
+                  aria-selected={!momentsMilestones.enabled}
+                  onClick={() => patch('momentsMilestones', 'enabled', false)}
+                >
+                  Inactive
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  className={`admin-status-tab${momentsMilestones.enabled ? ' is-active' : ''}`}
+                  aria-selected={!!momentsMilestones.enabled}
+                  onClick={() => patch('momentsMilestones', 'enabled', true)}
+                >
+                  Active
+                </button>
+              </div>
+              <p style={{ fontSize: 13, color: '#666', margin: '0 0 16px' }}>
+                {momentsMilestones.enabled
+                  ? 'Active — this section is visible on the About Us page.'
+                  : 'Inactive — this section is hidden on the About Us page.'}
+              </p>
               <div className="admin-form-row">
                 <div className="admin-form-group"><label>Title (before)</label><input value={momentsMilestones.titlePrefix || ''} onChange={(e) => patch('momentsMilestones', 'titlePrefix', e.target.value)} /></div>
                 <div className="admin-form-group"><label>Title highlight</label><input value={momentsMilestones.titleHighlight || ''} onChange={(e) => patch('momentsMilestones', 'titleHighlight', e.target.value)} /></div>

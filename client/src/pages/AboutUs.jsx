@@ -247,6 +247,7 @@ const AboutUs = () => {
               </div>
             </section>
 
+            {momentsMilestones?.enabled ? (
             <section className="about-us-moments" id="moments-milestones">
               <div className="about-us-container">
                 <div className="about-us-moments__heading" data-aos="fade-up">
@@ -314,7 +315,7 @@ const AboutUs = () => {
                 </div>
               </div>
             </section>
-          </main>
+            ) : null}
         </div>
       </div>
       <Footer />

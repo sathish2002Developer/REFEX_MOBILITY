@@ -117,6 +117,7 @@
     "momentsMilestones": {
       "titlePrefix": "Moments &",
       "titleHighlight": "Milestones",
+      "enabled": false,
       "items": [
         {
           "order": 1,

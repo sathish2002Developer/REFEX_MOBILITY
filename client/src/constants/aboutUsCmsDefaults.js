@@ -67,6 +67,7 @@ export const DEFAULT_ABOUT_US_CMS = {
     momentsMilestones: {
       titlePrefix: 'Moments &',
       titleHighlight: 'Milestones',
+      enabled: false,
       items: [
         {
           order: 1,
@@ -215,6 +216,7 @@ export function mergeAboutUsCms(apiData) {
       momentsMilestones: {
         ...d.sections.momentsMilestones,
         ...(api.momentsMilestones || {}),
+        enabled: api.momentsMilestones?.enabled === true,
         items:
           Array.isArray(api.momentsMilestones?.items) && api.momentsMilestones.items.length
             ? api.momentsMilestones.items
