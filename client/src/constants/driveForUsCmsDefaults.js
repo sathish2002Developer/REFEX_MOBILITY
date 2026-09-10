@@ -6,10 +6,10 @@ export const DEFAULT_DRIVE_FOR_US_CMS = {
     hero: {
       title: 'Power Your Earnings - Drive Smart',
       subtitle:
-        'We provide the car. You bring the skill. Join us as a professional driver and start earning with our all-electric fleet.',
+        'We provide the car. You bring the skill.\n\nJoin us as a professional driver and\nstart earning with our fleet.',
       ctaText: 'Get Started',
       ctaLink: '#join-form',
-      backgroundImage: '/wp-content/uploads/2025/07/drive-section-1-scaled.webp',
+      backgroundImage: '/wp-content/uploads/2025/07/drive-for-us-hero.jpg',
     },
     whyChooseUs: {
       titlePrefix: 'Why',
@@ -91,14 +91,24 @@ export const DEFAULT_DRIVE_FOR_US_CMS = {
 }
 
 /** Collapse odd whitespace / spaces before punctuation from CMS copy. */
-export function normalizeCmsText(value) {
+export function normalizeCmsText(value, { keepLineBreaks = false } = {}) {
   if (value == null) return ''
-  return String(value)
+  const next = String(value)
     .replace(/[\u00A0\u2000-\u200B\u202F\u205F\u3000]/g, ' ')
     .replace(/[ \t\f\v]+/g, ' ')
     .replace(/\s+([.,!?;:])/g, '$1')
-    .replace(/\s*\n\s*/g, ' ')
-    .trim()
+  if (keepLineBreaks) {
+    return next.replace(/ *\n */g, '\n').replace(/\n{3,}/g, '\n\n').trim()
+  }
+  return next.replace(/\s*\n\s*/g, ' ').trim()
+}
+
+function isStockDriveHeroSubtitle(text) {
+  const collapsed = String(text || '').replace(/\s+/g, ' ').trim()
+  return (
+    /We provide the car\.\s*You bring the skill/i.test(collapsed) &&
+    /professional driver/i.test(collapsed)
+  )
 }
 
 export function mergeDriveForUsCms(apiData) {
@@ -117,8 +127,14 @@ export function mergeDriveForUsCms(apiData) {
         ...d.sections.hero,
         ...heroIn,
         title: normalizeCmsText(heroIn.title ?? d.sections.hero.title),
-        subtitle: normalizeCmsText(heroIn.subtitle ?? d.sections.hero.subtitle),
+        subtitle: isStockDriveHeroSubtitle(heroIn.subtitle)
+          ? d.sections.hero.subtitle
+          : normalizeCmsText(heroIn.subtitle ?? d.sections.hero.subtitle, { keepLineBreaks: true }),
         ctaText: normalizeCmsText(heroIn.ctaText ?? d.sections.hero.ctaText),
+        backgroundImage:
+          !heroIn.backgroundImage || /drive-section-1/i.test(heroIn.backgroundImage)
+            ? d.sections.hero.backgroundImage
+            : heroIn.backgroundImage,
       },
       whyChooseUs: {
         ...d.sections.whyChooseUs,

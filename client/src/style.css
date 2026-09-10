@@ -4549,6 +4549,38 @@ header a.navbar-brand img{
       padding-top: 0 !important;
       padding-bottom: 100px !important;
     }
+
+    .page-drive-for-us .elementor-element-b485948.drive-for-us-hero {
+      min-height: 0 !important;
+      height: auto !important;
+      display: block !important;
+      align-items: unset !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      overflow: hidden;
+    }
+
+    .page-drive-for-us .drive-for-us-hero__image {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center center;
+    }
+
+    .page-drive-for-us .drive-for-us-hero__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(
+        90deg,
+        rgba(20, 12, 10, 0.58) 0%,
+        rgba(20, 12, 10, 0.32) 34%,
+        rgba(20, 12, 10, 0.08) 58%,
+        rgba(20, 12, 10, 0) 76%
+      );
+    }
   
     .page-drive-for-us .elementor-element-b485948 .elementor-background-overlay {
       background-color: #000000;
@@ -4573,6 +4605,16 @@ header a.navbar-brand img{
       padding-right: 15px !important;
       width: 100% !important;
       box-sizing: border-box !important;
+    }
+
+    .page-drive-for-us .drive-for-us-hero .drive-for-us-hero__content {
+      position: absolute !important;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
     }
   
     .page-drive-for-us .elementor-element-b485948 .elementor-heading-title {
@@ -4613,6 +4655,70 @@ header a.navbar-brand img{
       background-color: #F4553B !important;
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .page-drive-for-us .drive-for-us-hero .drive-for-us-hero__copy {
+      width: auto !important;
+      max-width: min(680px, 48%) !important;
+      flex: 0 1 auto;
+      text-align: left !important;
+    }
+
+    .page-drive-for-us .drive-for-us-hero.elementor-element-b485948 .elementor-heading-title {
+      max-width: none;
+      font-size: clamp(26px, 2.6vw, 36px) !important;
+      line-height: 1.2 !important;
+      white-space: nowrap;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
+    }
+
+    .page-drive-for-us .drive-for-us-hero.elementor-element-b485948 .elementor-widget-text-editor {
+      max-width: 100%;
+      font-size: clamp(14px, 1.2vw, 16px) !important;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    .page-drive-for-us .drive-for-us-hero.elementor-element-b485948 .elementor-button {
+      max-width: 100%;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      padding: 10px 22px !important;
+      white-space: nowrap !important;
+      line-height: 1.25 !important;
+      text-align: center;
+    }
+
+    @media (max-width: 1024px) {
+      .page-drive-for-us .drive-for-us-hero .drive-for-us-hero__copy {
+        max-width: min(520px, 48%) !important;
+      }
+
+      .page-drive-for-us .drive-for-us-hero.elementor-element-b485948 .elementor-heading-title {
+        font-size: clamp(24px, 2.6vw, 28px) !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-drive-for-us .drive-for-us-hero .drive-for-us-hero__content {
+        align-items: flex-start;
+        padding-top: 72px !important;
+      }
+
+      .page-drive-for-us .drive-for-us-hero .drive-for-us-hero__copy {
+        width: min(100%, 420px) !important;
+        max-width: 88% !important;
+      }
+
+      .page-drive-for-us .drive-for-us-hero.elementor-element-b485948 .elementor-heading-title {
+        white-space: normal;
+        font-size: 26px !important;
+      }
+
+      .page-drive-for-us .drive-for-us-hero.elementor-element-b485948 .elementor-button {
+        font-size: 12px !important;
+        padding: 8px 16px !important;
+        white-space: normal !important;
+      }
     }
   
     /* Why Drive For Us Section */

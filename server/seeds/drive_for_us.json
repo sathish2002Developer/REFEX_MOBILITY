@@ -5,10 +5,10 @@
   "sections": {
     "hero": {
       "title": "Power Your Earnings - Drive Smart",
-      "subtitle": "We provide the car. You bring the skill. Join us as a professional driver and start earning with our all-electric fleet.",
+      "subtitle": "We provide the car. You bring the skill.\n\nJoin us as a professional driver and\nstart earning with our fleet.",
       "ctaText": "Get Started",
       "ctaLink": "#join-form",
-      "backgroundImage": "/wp-content/uploads/2025/07/drive-section-1-scaled.webp"
+      "backgroundImage": "/wp-content/uploads/2025/07/drive-for-us-hero.jpg"
     },
     "whyChooseUs": {
       "titlePrefix": "Why",

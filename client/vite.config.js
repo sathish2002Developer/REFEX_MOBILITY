@@ -8,8 +8,14 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:3009',
+        target: 'https://refexmobility.com',
         changeOrigin: true,
+        secure: true,
+      },
+      '/uploads': {
+        target: 'https://refexmobility.com',
+        changeOrigin: true,
+        secure: true,
       },
     },
   },

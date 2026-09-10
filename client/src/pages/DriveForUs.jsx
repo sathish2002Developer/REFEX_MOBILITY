@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useCmsPage } from '../hooks/useCmsPage'
-import { renderCardTitle } from '../utils/renderCmsText'
+import { resolveCmsAssetUrl } from '../utils/cmsAssetUrl'
+import { renderCardTitle, renderTextWithBreaks } from '../utils/renderCmsText'
 import './Home.css'
+
+const DEFAULT_DRIVE_HERO_IMAGE = '/wp-content/uploads/2025/07/drive-for-us-hero.jpg'
 
 const DriveForUs = () => {
   const cms = useCmsPage('drive-for-us')
@@ -208,18 +211,11 @@ const DriveForUs = () => {
                       <section 
                         data-particle_enable="false" 
                         data-particle-mobile-disabled="false" 
-                        className="elementor-section elementor-top-section elementor-element elementor-element-b485948 elementor-section-stretched elementor-section-height-min-height elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-items-middle"
+                        className="elementor-section elementor-top-section elementor-element elementor-element-b485948 drive-for-us-hero elementor-section-stretched elementor-section-height-min-height elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-items-middle"
                         data-id="b485948"
                         data-element_type="section"
                         data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
                         style={{
-                          backgroundImage: `url('${hero?.backgroundImage || '/wp-content/uploads/2025/07/drive-section-1-scaled.webp'}')`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center center',
-                          backgroundRepeat: 'no-repeat',
-                          minHeight: '600px',
-                          display: 'flex',
-                          alignItems: 'flex-start',
                           position: 'relative',
                           width: '100vw',
                           maxWidth: '100%',
@@ -227,41 +223,36 @@ const DriveForUs = () => {
                           marginRight: 'calc(-50vw + 50%)',
                           left: 0,
                           right: 0,
-                          paddingTop: '0',
-                          paddingBottom: '100px'
                         }}
                       >
-                  
-                        <div className="elementor-container elementor-column-gap-default" style={{ position: 'relative', zIndex: 2, maxWidth: '1200px', margin: '0 auto', padding: '90px 15px 0 15px', width: '100%', boxSizing: 'border-box' }}>
-                          <div className="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-cb3f33f" data-id="cb3f33f" data-element_type="column">
+                        <img
+                          className="drive-for-us-hero__image"
+                          src={resolveCmsAssetUrl(hero?.backgroundImage || DEFAULT_DRIVE_HERO_IMAGE)}
+                          alt=""
+                        />
+                        <div
+                          className="drive-for-us-hero__overlay"
+                          aria-hidden="true"
+                        />
+                        <div className="elementor-container elementor-column-gap-default drive-for-us-hero__content" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 15px', width: '100%', boxSizing: 'border-box' }}>
+                          <div className="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-cb3f33f drive-for-us-hero__copy" data-id="cb3f33f" data-element_type="column">
                             <div className="elementor-widget-wrap elementor-element-populated">
-                              <div className="elementor-element elementor-element-c00bf29 elementor-widget__width-initial elementor-widget-tablet__width-inherit elementor-widget-mobile__width-inherit elementor-widget elementor-widget-heading" data-id="c00bf29" data-element_type="widget" data-widget_type="heading.default">
+                              <div className="elementor-element elementor-element-c00bf29 elementor-widget-tablet__width-inherit elementor-widget-mobile__width-inherit elementor-widget elementor-widget-heading" data-id="c00bf29" data-element_type="widget" data-widget_type="heading.default">
                                 <div className="elementor-widget-container">
-                                  <h2 className="mb-5 elementor-heading-title elementor-size-default" style={{ color: '#FFFFFF', fontFamily: '"Poppins", Sans-serif', fontSize: '56px', fontWeight: 700, lineHeight: '1.2em', letterSpacing: '-0.02em', wordSpacing: 'normal' }}>
+                                  <h2 className="mb-4 elementor-heading-title elementor-size-default">
                                     {hero?.title}
                                   </h2>
                                 </div>
                               </div>
-                              <div className="mb-5  elementor-element elementor-element-a11fdc0 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="a11fdc0" data-element_type="widget" data-widget_type="text-editor.default">
-                                <div className="elementor-widget-container" style={{ color: '#FFFFFF', fontFamily: '"Poppins", Sans-serif', fontSize: '20px', fontWeight: 400, lineHeight: '1.6em', letterSpacing: 'normal', wordSpacing: 'normal', maxWidth: '42em' }}>
-                                  <p style={{ color: '#FFFFFF' }}>{hero?.subtitle}</p>
+                              <div className="mb-4 elementor-element elementor-element-a11fdc0 elementor-widget elementor-widget-text-editor" data-id="a11fdc0" data-element_type="widget" data-widget_type="text-editor.default">
+                                <div className="elementor-widget-container">
+                                  <p>{renderTextWithBreaks(hero?.subtitle)}</p>
                                 </div>
                               </div>  
                               <div className="mb-5elementor-element elementor-element-ed3826a elementor-mobile-align-left elementor-hidden-mobile elementor-widget elementor-widget-button" data-id="ed3826a" data-element_type="widget" data-widget_type="button.default">
                                 <div className="elementor-widget-container">
                                   <div className="elementor-button-wrapper">
-                                    <a className="elementor-button elementor-button-link elementor-size-sm" href={hero?.ctaLink || '#join-form'} style={{
-                                      backgroundColor: '#F4553B',
-                                      fontFamily: '"Poppins", Sans-serif',
-                                      fontSize: '18px',
-                                      fontWeight: 600,
-                                      color: '#FFFFFF',
-                                      borderRadius: '50px',
-                                      padding: '15px 40px',
-                                      textDecoration: 'none',
-                                      display: 'inline-block',
-                                      transition: 'all 0.3s ease'
-                                    }}>
+                                    <a className="elementor-button elementor-button-link elementor-size-sm" href={hero?.ctaLink || '#join-form'}>
                                       <span className="elementor-button-content-wrapper">
                                         <span className="elementor-button-text">{hero?.ctaText || 'Get Started'}</span>
                                       </span>
@@ -272,18 +263,7 @@ const DriveForUs = () => {
                               <div className="elementor-element elementor-element-9a17849 elementor-mobile-align-left elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet elementor-widget elementor-widget-button" data-id="9a17849" data-element_type="widget" data-widget_type="button.default">
                                 <div className="elementor-widget-container">
                                   <div className="elementor-button-wrapper">
-                                    <a className="elementor-button elementor-button-link elementor-size-sm" href="#join-forms" style={{
-                                      backgroundColor: '#F4553B',
-                                      fontFamily: '"Poppins", Sans-serif',
-                                      fontSize: '18px',
-                                      fontWeight: 600,
-                                      color: '#FFFFFF',
-                                      borderRadius: '50px',
-                                      padding: '15px 40px',
-                                      textDecoration: 'none',
-                                      display: 'inline-block',
-                                      transition: 'all 0.3s ease'
-                                    }}>
+                                    <a className="elementor-button elementor-button-link elementor-size-sm" href="#join-forms">
                                       <span className="elementor-button-content-wrapper">
                                         <span className="elementor-button-text">{hero?.ctaText || 'Get Started'}</span>
                                       </span>

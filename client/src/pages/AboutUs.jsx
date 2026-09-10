@@ -92,18 +92,17 @@ const AboutUs = () => {
       <div className="site-content-contain">
         <div id="content" className="site-content">
           <main id="main" className="site-main">
-            <section
-              className="about-us-hero"
-              style={{
-                backgroundImage: `url('${resolveCmsAssetUrl(
+            <section className="about-us-hero">
+              <img
+                className="about-us-hero__image"
+                src={resolveCmsAssetUrl(
                   hero?.backgroundImage || '/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp'
-                )}')`,
-              }}
-            >
+                )}
+                alt=""
+              />
               <div className="about-us-hero__overlay" aria-hidden="true" />
               <div className="about-us-hero__content">
                 <h1 data-aos="fade-up">{hero?.title || 'About Us'}</h1>
-                
               </div>
             </section>
 
