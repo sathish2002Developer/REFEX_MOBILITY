@@ -67,7 +67,7 @@ export function useCmsPage(slug, { setTitle = true, setMeta = true, heroStyleId 
     let cancelled = false
     const load = async () => {
       try {
-        const res = await fetch(`${API_BASE_URL}/api/cms/pages/${slug}`)
+        const res = await fetch(`${API_BASE_URL}/api/cms/pages/${encodeURIComponent(slug)}`)
         if (!res.ok) return
         const result = await res.json()
         if (cancelled || !result.success || !result.data) return

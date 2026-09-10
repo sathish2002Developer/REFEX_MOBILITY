@@ -83,7 +83,7 @@ const AdminWebsiteHome = () => {
     setMetaDescription(defaults.metaDescription)
     setSections(JSON.parse(JSON.stringify(defaults.sections)))
     setActiveSection('meta')
-    fetch(`${API_BASE_URL}/api/cms/pages/${activePageSlug}`)
+    fetch(`${API_BASE_URL}/api/cms/pages/${encodeURIComponent(activePageSlug)}`)
       .then((r) => r.json())
       .then((result) => {
         if (result.success && result.data) {
@@ -100,13 +100,34 @@ const AdminWebsiteHome = () => {
   const handleSave = async () => {
     setSaving(true)
     try {
-      const res = await fetch(`${API_BASE_URL}/api/cms/pages/${activePageSlug}`, {
+      const payload = { pageTitle, metaDescription, sections }
+      const res = await fetch(`${API_BASE_URL}/api/cms/pages/${encodeURIComponent(activePageSlug)}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pageTitle, metaDescription, sections }),
+        body: JSON.stringify(payload),
       })
       const result = await res.json()
-      showMsg(result.success ? 'Saved! Website will show updated content.' : (result.message || 'Save failed'))
+      if (result.success) {
+        const saved = mergeCmsPage(activePageSlug, result.data || payload)
+        setPageTitle(saved.pageTitle)
+        setMetaDescription(saved.metaDescription)
+        setSections(saved.sections)
+        try {
+          sessionStorage.setItem(
+            `cms-page-cache:${activePageSlug}`,
+            JSON.stringify({
+              pageTitle: saved.pageTitle,
+              metaDescription: saved.metaDescription,
+              sections: saved.sections,
+            })
+          )
+        } catch {
+          /* ignore quota / private mode */
+        }
+        showMsg('Saved! Refresh About Us to see the updated content.')
+      } else {
+        showMsg(result.message || 'Save failed')
+      }
     } catch {
       showMsg('Error saving')
     } finally {

@@ -129,7 +129,7 @@ function getPageFromSnapshot(slug) {
     const seed = readJsonFile(seedPath);
     if (seed) {
       return {
-        slug: seed.slug,
+        slug: seed.slug || slug,
         pageTitle: seed.pageTitle,
         metaDescription: seed.metaDescription,
         sections: seed.sections || {},
@@ -138,6 +138,11 @@ function getPageFromSnapshot(slug) {
     }
   }
   return null;
+}
+
+function isKnownCmsSlug(slug) {
+  if (ALLOWED_SLUGS.has(slug) || SEED_PATHS[slug]) return true;
+  return Boolean(readCmsJsonSnapshot()?.[slug]);
 }
 
 function writePageToSnapshot(slug, pageData) {
@@ -203,8 +208,8 @@ exports.listPages = async (req, res) => {
 
 exports.getPageBySlug = async (req, res) => {
   try {
-    const slug = String(req.params.slug || "").trim();
-    if (!ALLOWED_SLUGS.has(slug)) {
+    const slug = decodeURIComponent(String(req.params.slug || "").trim());
+    if (!isKnownCmsSlug(slug)) {
       return status.responseStatus(res, 404, "CMS page not found");
     }
 
@@ -220,13 +225,25 @@ exports.getPageBySlug = async (req, res) => {
 
     let row = null;
     try {
-      row = await CmsPage.findOne({ where: { slug, is_active: true } });
+      row = await CmsPage.findOne({ where: { slug } });
+      if (!row) {
+        const snapshotPage = getPageFromSnapshot(slug);
+        if (snapshotPage) {
+          row = await CmsPage.create({
+            slug,
+            page_title: snapshotPage.pageTitle || slug,
+            meta_description: snapshotPage.metaDescription ?? "",
+            sections: snapshotPage.sections || {},
+            is_active: snapshotPage.isActive !== false,
+          });
+        }
+      }
     } catch (dbError) {
       dbReadsEnabled = false;
       console.warn("[CMS] DB disabled after read failure, using snapshot:", dbError.message);
     }
 
-    if (row) {
+    if (row && row.is_active !== false) {
       return status.responseStatus(
         res,
         200,
@@ -253,12 +270,12 @@ exports.getPageBySlug = async (req, res) => {
 
 exports.updatePage = async (req, res) => {
   try {
-    const slug = String(req.params.slug || "").trim();
-    if (!ALLOWED_SLUGS.has(slug)) {
+    const slug = decodeURIComponent(String(req.params.slug || "").trim());
+    const { pageTitle, metaDescription, sections, isActive } = req.body || {};
+    const hasSections = sections && typeof sections === "object" && !Array.isArray(sections);
+    if (!isKnownCmsSlug(slug) && !hasSections) {
       return status.responseStatus(res, 404, "CMS page not found");
     }
-
-    const { pageTitle, metaDescription, sections, isActive } = req.body || {};
     const formatted = {
       slug,
       pageTitle: pageTitle || getPageFromSnapshot(slug)?.pageTitle || "Home",
