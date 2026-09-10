@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-08T11:07:36.010Z",
+  "updatedAt": "2026-09-09T09:45:09.288Z",
   "data": {
     "employee-transportation": {
       "slug": "employee-transportation",
@@ -979,11 +979,17 @@
           "ctaLink": "#connect-form",
           "ctaText": "Talk to Our Experts",
           "subtitle": "Redefining corporate commutes with tailored mobility\nsolutions for modern enterprises that truly care.",
-          "backgroundImage": "/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp",
           "secondaryCtas": [
-            { "label": "Employee Transportation Service", "link": "/employee-transportation" },
-            { "label": "RAC", "link": "/CorporateRentals" }
-          ]
+            {
+              "link": "/employee-transportation",
+              "label": "Employee Transportation Service"
+            },
+            {
+              "link": "/CorporateRentals",
+              "label": "Corporate Rentals"
+            }
+          ],
+          "backgroundImage": "/wp-content/uploads/2025/07/bussiness-banner-1-scaled.webp"
         },
         "industries": {
           "items": [
@@ -1081,7 +1087,7 @@
         }
       },
       "isActive": true,
-      "updatedAt": "2026-09-08T04:01:04.000Z"
+      "updatedAt": "2026-09-09T09:37:15.000Z"
     },
     "drive-for-us": {
       "slug": "drive-for-us",
