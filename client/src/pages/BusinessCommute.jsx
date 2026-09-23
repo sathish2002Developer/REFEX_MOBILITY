@@ -17,6 +17,7 @@ import {
 import SubmissionSuccessOverlay from '../components/SubmissionSuccessOverlay'
 import { useCmsPage } from '../hooks/useCmsPage'
 import { renderCardTitle, renderTextWithBreaks } from '../utils/renderCmsText'
+import { getBusinessEmailFieldError } from '../utils/businessEmail'
 
 // Import all client logos from refexclients folder
 import Amazon from '../assets/refexclients/amazon.png'
@@ -126,7 +127,6 @@ const refexclients = [
 ]
 
 // Align with server/routes/businessCommute.js validators
-const BUSINESS_EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 const BUSINESS_NAME_PATTERN = /^[\p{L}\p{M}\s'.-]+$/u
 
 function validateBusinessName(name) {
@@ -138,10 +138,7 @@ function validateBusinessName(name) {
 }
 
 function validateBusinessEmail(email) {
-  const t = String(email ?? '').trim()
-  if (!t) return 'Email is required'
-  if (!BUSINESS_EMAIL_REGEX.test(t)) return 'Enter a valid email address'
-  return null
+  return getBusinessEmailFieldError(email) || null
 }
 
 function validateBusinessPhone(e164Phone) {
@@ -1998,6 +1995,11 @@ const BusinessCommute = () => {
                                               </button>
                                               <span className={`wpforms-submit-spinner${submitting ? ' is-visible' : ''}`} aria-hidden="true" />
                                             </div>
+                                            <p className="business-form-submit-note">
+                                              <strong>Note: Business &amp; Corporate Inquiries Only.</strong>
+                                              <br />
+                                              Not for driver applications or personal cab requests. Use your company email — personal emails such as Gmail or Yahoo are not accepted.
+                                            </p>
                                           </form>
                                         </div>
                                       </div>

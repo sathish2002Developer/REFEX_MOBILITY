@@ -186,6 +186,19 @@
   display: inline-block;
 }
 
+.business-commute .business-form-submit-note {
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #6b5a56;
+  text-align: center;
+}
+
+.business-commute .business-form-submit-note strong {
+  color: #f4553b;
+  font-weight: 700;
+}
+
 @keyframes businessFormSpin {
   to {
     transform: rotate(360deg);
